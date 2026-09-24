@@ -7,9 +7,8 @@ const product1 = {
 };
 ```
 
-## hãy chuyển đổi mảng thành json và in ra để chứng minh
-
-## chuyển ngược từ dữ liệu json sang object và in ra để chứng minh
+1. hãy chuyển đổi mảng trên thành json và in ra để chứng minh
+2. chuyển ngược từ dữ liệu json sang object và in ra để chứng minh
 
 ---
 
