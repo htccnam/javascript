@@ -8,6 +8,22 @@
 
 ---
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)](#phần-1-khai-báo-chuỗi--ký-tự-thoát-cơ-bản)
+  - [Bài 1.1: Trích dẫn lồng nhau](#bài-11-trích-dẫn-lồng-nhau)
+  - [Bài 1.2: In đường dẫn Windows](#bài-12-in-đường-dẫn-windows)
+  - [Bài 1.3: Định dạng văn bản với Escape Character](#bài-13-định-dạng-văn-bản-với-escape-character)
+- [Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)](#phần-2-toán-tử-nối-chuỗi--cạm-bẫy-cộng-số-trung-bình)
+  - [Bài 2.1: Dự đoán kết quả (Type Coercion)](#bài-21-dự-đoán-kết-quả-type-coercion)
+  - [Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)](#bài-22-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix)
+- [Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)](#phần-3-template-literals--nội-suy-chuỗi-thực-chiến)
+  - [Bài 3.1: Thẻ thông tin người dùng (User Card)](#bài-31-thẻ-thông-tin-người-dùng-user-card)
+  - [Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp](#bài-32-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp)
+
+---
+
 ## Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)
 
 ### Bài 1.1: Trích dẫn lồng nhau
@@ -17,12 +33,16 @@ Tạo một biến `quote1` chứa nội dung sau mà **không gây ra lỗi cú
 - **Yêu cầu 2:** Dùng dấu nháy kép `" "` bao ngoài (bắt buộc dùng ký tự thoát `\"`).
 - **Yêu cầu 3:** Dùng backticks (`` ` ` ``).
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ### Bài 1.2: In đường dẫn Windows
 Tạo biến `windowsPath` chứa chính xác chuỗi đường dẫn sau:
 ```text
 C:\Users\Admin\Documents\Javascript\Project
 ```
 - **Yêu cầu:** Hãy in ra màn hình sao cho không bị mất dấu gạch chéo ngược `\` (sử dụng ký tự thoát `\\`).
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ### Bài 1.3: Định dạng văn bản với Escape Character
 In ra màn hình một đoạn thông báo gồm 3 dòng có thụt lề bằng cách sử dụng **chỉ một chuỗi nháy kép duy nhất** kết hợp với `\n` và `\t`:
@@ -31,6 +51,8 @@ Danh sách môn học:
 	1. JavaScript Cơ Bản
 	2. HTML & CSS
 ```
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -55,6 +77,8 @@ console.log("100" - 20);
 console.log("100" + -20);
 ```
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ### Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)
 Một bạn lập trình viên mới vào nghề viết hàm tính tổng hóa đơn giỏ hàng như sau:
 
@@ -71,6 +95,8 @@ console.log("Tổng thanh toán:", total);
 - **Câu hỏi:**
   1. Kết quả `total` in ra màn hình là gì? Vì sao lại ra kết quả lạ như vậy?
   2. Hãy sửa lại code để in ra đúng số tiền thanh toán thực tế là `160000`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -95,6 +121,8 @@ const user = {
 </div>
 ```
 *(Gợi ý: Dùng toán tử ba ngôi `user.isActive ? "Đang hoạt động" : "Tạm khóa"` trực tiếp bên trong `${...}`)*.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ### Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp
 Cho danh sách thông tin đơn hàng:
@@ -123,3 +151,5 @@ TỔNG CỘNG: 2,640,000 VNĐ
 Cảm ơn quý khách Linh đã mua hàng!
 ```
 *(Gợi ý: Dùng `.toLocaleString('vi-VN')` để format số tiền có dấu phẩy ngăn cách hàng nghìn).*
+
+[⬆️ Quay lại Mục lục](#mục-lục)

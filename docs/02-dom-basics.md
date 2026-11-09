@@ -9,6 +9,23 @@
 
 ---
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [1. Tìm hiểu về DOM](#1-tìm-hiểu-về-dom)
+  - [1.1. DOM là gì?](#11-dom-là-gì)
+- [2. Truy vấn phần tử (DOM Querying)](#2-truy-vấn-phần-tử-dom-querying)
+- [3. Thao tác Nội Dung, Thuộc Tính & Giao Diện](#3-thao-tác-nội-dung-thuộc-tính--giao-diện)
+  - [3.1. Thay đổi nội dung Text và HTML](#31-thay-đổi-nội-dung-text-và-html)
+  - [3.2. Đọc và ghi giá trị ô nhập liệu (`<input>`)](#32-đọc-và-ghi-giá-trị-ô-nhập-liệu-input)
+  - [3.3. Thao tác Class và Style (CSS)](#33-thao-tác-class-và-style-css)
+- [4. Lắng nghe Sự Kiện (Event Handling)](#4-lắng-nghe-sự-kiện-event-handling)
+- [5. Tạo mới & Xóa phần tử (Create & Remove Elements)](#5-tạo-mới--xóa-phần-tử-create--remove-elements)
+- [6. Các lỗi thường gặp khi làm việc với DOM](#6-các-lỗi-thường-gặp-khi-làm-việc-với-dom)
+- [7. Bảng tổng kết phương thức DOM cốt lõi](#7-bảng-tổng-kết-phương-thức-dom-cốt-lõi)
+
+---
+
 ## 1. Tìm hiểu về DOM
 
 ### 1.1. DOM là gì?
@@ -26,6 +43,8 @@
       │       /     \
    <title>  <h1>    <button>
 ```
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -48,6 +67,8 @@ const items = document.getElementsByClassName("item");
 
 > [!TIP]
 > Luôn ưu tiên dùng **`document.querySelector()`** và **`document.querySelectorAll()`** vì chúng hỗ trợ cú pháp CSS Selector cực kỳ linh hoạt và hiện đại.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -89,6 +110,8 @@ card.style.backgroundColor = "#1e293b";
 card.style.fontSize = "18px";
 ```
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 4. Lắng nghe Sự Kiện (Event Handling)
@@ -111,6 +134,8 @@ btn.addEventListener("click", function (event) {
 - `submit`: Nhấn gửi form (thường đi kèm `event.preventDefault()` để chặn trang bị reload).
 - `keydown` / `keyup`: Nhấn hoặc nhả phím bàn phím.
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 5. Tạo mới & Xóa phần tử (Create & Remove Elements)
@@ -131,6 +156,8 @@ todoList.appendChild(newItem); // hoặc todoList.append(newItem);
 newItem.remove();
 ```
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 6. Các lỗi thường gặp khi làm việc với DOM
@@ -145,6 +172,8 @@ newItem.remove();
    - Để lấy nội dung người dùng gõ trong ô input/textarea, bạn phải dùng **`element.value`**, không dùng `element.textContent`.
 4. **Trang web bị tải lại (Reload) khi submit form:**
    - Thẻ `<form>` mặc định sẽ reload lại trang khi nhấn submit hoặc Enter. Hãy luôn gọi `event.preventDefault()` ở dòng đầu tiên của hàm xử lý sự kiện.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -161,3 +190,5 @@ newItem.remove();
 | **Tạo phần tử mới**| `document.createElement(tag)` | `const li = document.createElement("li")` |
 | **Chèn vào DOM** | `parent.appendChild(child)` | `list.appendChild(li)` |
 | **Xóa khỏi DOM** | `element.remove()` | `li.remove()` |
+
+[⬆️ Quay lại Mục lục](#mục-lục)

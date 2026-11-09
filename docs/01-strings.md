@@ -10,6 +10,27 @@
 
 ---
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [1. Tìm hiểu về chuỗi](#1-tìm-hiểu-về-chuỗi)
+  - [1.1. Chuỗi là gì?](#11-chuỗi-là-gì)
+  - [1.2. Tạo chuỗi với nháy đơn (`' '`)](#12-tạo-chuỗi-với-nháy-đơn--)
+  - [1.3. Tạo chuỗi với nháy kép (`" "`)](#13-tạo-chuỗi-với-nháy-kép--)
+  - [1.4. Tạo chuỗi với backticks (`` ` ` ``)](#14-tạo-chuỗi-với-backticks---)
+- [2. Nối chuỗi](#2-nối-chuỗi)
+  - [2.1. Toán tử nối chuỗi (`+`)](#21-toán-tử-nối-chuỗi-)
+  - [2.2. Ví dụ nối chuỗi](#22-ví-dụ-nối-chuỗi)
+  - [2.3. Lưu ý quan trọng khi sử dụng toán tử `+`](#23-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử-)
+- [3. Template Literals](#3-template-literals)
+  - [3.1. Template Literals là gì?](#31-template-literals-là-gì)
+  - [3.2. Nội suy chuỗi (String Interpolation)](#32-nội-suy-chuỗi-string-interpolation)
+  - [3.3. Các ví dụ về nội suy chuỗi](#33-các-ví-dụ-về-nội-suy-chuỗi)
+- [4. Các lỗi thường gặp khi làm việc với chuỗi](#4-các-lỗi-thường-gặp-khi-làm-việc-với-chuỗi)
+- [5. Tóm tắt kiến thức cốt lõi](#5-tóm-tắt-kiến-thức-cốt-lõi)
+
+---
+
 ## 1. Tìm hiểu về chuỗi
 
 ### 1.1. Chuỗi là gì?
@@ -98,6 +119,8 @@ console.log(greeting);
 > [!IMPORTANT]
 > - Sử dụng `${name}` bên trong backticks được gọi là **“Nội suy” (Interpolation)**.
 > - Tạo chuỗi với dấu nháy đơn (`' '`) và nháy kép (`" "`) **KHÔNG hỗ trợ** nội suy.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -202,6 +225,8 @@ console.log(messageFix3); // 'Tổng của 10 và 20 là: 30'
 > **Tại sao nên dùng cách 3?**
 > Việc tính toán trước kết quả và dùng Template Literals với `${...}` giúp mã nguồn trong sáng, dễ đọc, không bị lỗi nối chuỗi ngoài ý muốn.
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 3. Template Literals
@@ -275,6 +300,8 @@ let quote = `She said, "I'm learning JavaScript!"`;
 console.log(quote); // She said, "I'm learning JavaScript!"
 ```
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 4. Các lỗi thường gặp khi làm việc với chuỗi
@@ -288,6 +315,8 @@ console.log(quote); // She said, "I'm learning JavaScript!"
 3. **Cố tình dùng cú pháp nội suy `${...}` bên trong nháy đơn hoặc nháy kép:**
    - Ví dụ: `'Xin chào ${name}'` sẽ in ra nguyên văn chữ `Xin chào ${name}`, vì nháy đơn và nháy kép không hỗ trợ nội suy. Bắt buộc phải dùng backticks `` ` ``.
 
+[⬆️ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ## 5. Tóm tắt kiến thức cốt lõi
@@ -300,3 +329,6 @@ console.log(quote); // She said, "I'm learning JavaScript!"
 | **Xuống dòng trực tiếp** | Không (phải dùng `\n`) | Không (phải dùng `\n`) | **Có** |
 | **Nội suy biến / biểu thức `${...}`** | Không | Không | **Có** |
 | **Nối chuỗi** | Dùng `+` | Dùng `+` | Dùng `${...}` hoặc `+` |
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
