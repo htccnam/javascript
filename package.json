@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test:string": "node exercises/01-strings/practice.js",
+    "test:function-types": "node exercises/03-function-types/practice.js",
     "test:truthy": "node fundamantals/truthy-falsy/practice.js",
     "test:array-declaration": "node array/declaration/practice.js",
     "test:array-methods": "node array/methods/practice.js",
@@ -14,6 +15,7 @@
     "test:map": "node map/practice.js",
     "test:set": "node set/practice.js",
     "solution:string": "node exercises/01-strings/loigiai.js",
+    "solution:function-types": "node exercises/03-function-types/loigiai.js",
     "solution:truthy": "node fundamantals/truthy-falsy/loigiai.js",
     "solution:array-declaration": "node array/declaration/loigiai.js",
     "solution:array-methods": "node array/methods/loigiai.js",
