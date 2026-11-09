@@ -30,15 +30,15 @@ colors.forEach((name, id) => {
 });
 
 console.log("in ra phần tử đầu tiên và phần tử cuối cùng của mảng");
-console.log(colors[1]);
-console.log(colors[colors.length - 1]);
+console.log("Phần tử đầu tiên (index 0):", colors[0]);
+console.log("Phần tử cuối cùng (index length - 1):", colors[colors.length - 1]);
 
-// bai 1.2:khai báo mảng  bằng new array()
+// bai 1.2: khai báo mảng bằng new Array()
 const emptyArr = new Array(5);
-// new Array("An", "Bình") tạo ra một đối tượng mảng.
-// Sau đó, biến queue được gán để trỏ đến mảng đó.
-// Kể từ lúc này, ta nói queue là một mảng, vì giá trị của nó là mảng.
+// new Array(5) tạo mảng có length = 5 nhưng chưa có giá trị thực tế (empty slots / sparse array).
+console.log("tổng số phần tử trong emptyArr là: " + emptyArr.length);
 
 const scores = new Array(10, 20, 30);
-
-console.log("tổng số phần tử trong mảng là:" + emptyArr.length);
+// new Array(10, 20, 30) tạo mảng có 3 phần tử: [10, 20, 30]
+console.log("mảng scores được tạo là:", scores);
+console.log("tổng số phần tử trong scores là: " + scores.length);

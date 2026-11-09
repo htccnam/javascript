@@ -1,0 +1,34 @@
+{
+  "name": "javascript-study-program",
+  "version": "1.0.0",
+  "description": "Kho tài liệu lý thuyết và bài tập thực hành JavaScript có lời giải chi tiết",
+  "main": "index.html",
+  "scripts": {
+    "test:string": "node exercises/01-strings/practice.js",
+    "test:truthy": "node fundamantals/truthy-falsy/practice.js",
+    "test:array-declaration": "node array/declaration/practice.js",
+    "test:array-methods": "node array/methods/practice.js",
+    "test:object": "node object/methods/practice.js",
+    "test:function": "node funtion/bai1/practice.js",
+    "test:json": "node json/practice.js",
+    "test:map": "node map/practice.js",
+    "test:set": "node set/practice.js",
+    "solution:string": "node exercises/01-strings/loigiai.js",
+    "solution:truthy": "node fundamantals/truthy-falsy/loigiai.js",
+    "solution:array-declaration": "node array/declaration/loigiai.js",
+    "solution:array-methods": "node array/methods/loigiai.js",
+    "solution:object": "node object/methods/loigiai.js",
+    "solution:function": "node funtion/bai1/loigiai.js",
+    "solution:json": "node json/loigiai.js",
+    "solution:map": "node map/loigiai.js",
+    "solution:set": "node set/loigiai.js"
+  },
+  "keywords": [
+    "javascript",
+    "study",
+    "practice",
+    "exercises"
+  ],
+  "author": "",
+  "license": "MIT"
+}

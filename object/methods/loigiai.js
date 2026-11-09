@@ -76,7 +76,7 @@ const configArr = [
     ["notifications", true],
 ];
 const config = Object.fromEntries(configArr);
-console.log("object config là: ", config);
+console.log("object config sau khi chuyển từ array là: ", config);
 console.log(
     `config có khóa "them" (cách1):`,
     Object.keys(config).includes("theme"),
@@ -84,4 +84,8 @@ console.log(
 // cách này không khuyến khích vì Tạo mảng mới → tốn bộ nhớ, chậm hơn khi object lớn.
 
 console.log(`config có khóa "them" (cách2):`, Object.hasOwn(config, "theme"));
+
+config.theme = "light";
+const configObject = Object.entries(config);
+console.log("Object config sau khi chuyển thành array là :", configObject);
 console.groupEnd();

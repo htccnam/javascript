@@ -1,11 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Study Program - Lộ Trình Học JS Thực Chiến</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --tag-bg: #dbeafe;
+            --tag-text: #1e40af;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #fef08a;
+            color: #854d0e;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .guide-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: #334155;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .card-links {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <script src="./array/phuongthuc/loigiai.js"></script>
+    <div class="container">
+        <header>
+            <span class="badge">JavaScript Practice Lab</span>
+            <h1>JavaScript Study Program</h1>
+            <p>Hệ thống bài học lý thuyết và bài tập thực hành JavaScript có lời giải chi tiết</p>
+        </header>
+
+        <div class="guide-box">
+            💡 <strong>Mẹo học tập:</strong> Khi mở bất kỳ trang bài giải nào, hãy nhấn <code>F12</code> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) $\rightarrow$ chuyển sang tab <strong>Console</strong> để xem toàn bộ kết quả phân tích và minh họa từng dòng code.
+        </div>
+
+        <!-- PHẦN 1: TÀI LIỆU LÝ THUYẾT -->
+        <h2 class="section-title">📖 Tài Liệu Lý Thuyết (Docs)</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">String</span>
+                        <span class="tag">ES6</span>
+                    </div>
+                    <h3>01. Tìm hiểu về chuỗi</h3>
+                    <p>Khái niệm chuỗi, nháy đơn, nháy kép, backticks, ký tự thoát, nối chuỗi và Template Literals.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./docs/01-strings.md" class="btn btn-primary">Đọc lý thuyết</a>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">DOM</span>
+                        <span class="tag">Events</span>
+                    </div>
+                    <h3>02. Thao tác DOM & Sự kiện</h3>
+                    <p>Cây phả hệ DOM, querySelector, addEventListener, thay đổi nội dung, thuộc tính và CSS class.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./docs/02-dom-basics.md" class="btn btn-primary">Đọc lý thuyết</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN 2: BÀI TẬP THỰC HÀNH -->
+        <h2 class="section-title">⚡ Bài Tập Thực Hành (Exercises)</h2>
+        <div class="grid">
+            <!-- Bài tập chuỗi -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">String</span>
+                        <span class="tag">Template Literals</span>
+                    </div>
+                    <h3>01. Bài tập về Chuỗi</h3>
+                    <p>Trích dẫn lồng nhau, in đường dẫn Windows, giải quyết cạm bẫy nối chuỗi vs cộng số, User Card HTML, hóa đơn VAT.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./exercises/01-strings/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./exercises/01-strings/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Bài tập DOM -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">DOM</span>
+                        <span class="tag">Interactive UI</span>
+                    </div>
+                    <h3>02. Thao tác DOM & Sự kiện</h3>
+                    <p>Ứng dụng Todo List trực quan: Đổi Dark Mode, đếm ký tự input, thêm việc động, xóa và đánh dấu hoàn thành.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./exercises/02-dom-basics/loigiai.html" class="btn btn-primary">Mở Giao Diện</a>
+                    <a href="./exercises/02-dom-basics/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Truthy & Falsy -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Fundamentals</span>
+                        <span class="tag">Boolean</span>
+                    </div>
+                    <h3>02. Truthy & Falsy</h3>
+                    <p>Khám phá 8 giá trị Falsy trong JS, phân loại mảng giá trị đa dạng và cơ chế ép kiểu ngầm (Implicit Coercion).</p>
+                </div>
+                <div class="card-links">
+                    <a href="./fundamantals/truthy-falsy/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./fundamantals/truthy-falsy/truthy-falsy.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Array: Khai báo & Duyệt -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Array</span>
+                        <span class="tag">Loops</span>
+                    </div>
+                    <h3>03. Mảng: Khai báo & Duyệt mảng</h3>
+                    <p>Array Literal, constructor new Array(), duyệt mảng bằng for, for...of, entries(), forEach().</p>
+                </div>
+                <div class="card-links">
+                    <a href="./array/declaration/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./array/declaration/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Array: Phương thức xử lý -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Array Methods</span>
+                        <span class="tag">Functional</span>
+                    </div>
+                    <h3>04. Mảng: Các phương thức xử lý</h3>
+                    <p>Push/pop/shift/unshift, splice, filter lọc sản phẩm, map chuyển đổi, reduce tính tổng tiền giỏ hàng, flat làm phẳng.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./array/methods/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./array/methods/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Object: Thao tác & Phương thức -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Object</span>
+                        <span class="tag">this</span>
+                    </div>
+                    <h3>05. Đối tượng (Object)</h3>
+                    <p>Dot vs Bracket notation, từ khóa this, Object.keys, Object.values, Object.entries, Object.fromEntries, Object.hasOwn.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./object/methods/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./object/methods/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Functions & Hoisting -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Functions</span>
+                        <span class="tag">Hoisting</span>
+                    </div>
+                    <h3>06. Hàm & Hoisting</h3>
+                    <p>Function Declaration vs Arrow Function, Default Parameters, cơ chế Hoisting của var vs let/const (TDZ).</p>
+                </div>
+                <div class="card-links">
+                    <a href="./funtion/bai1/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./funtion/bai1/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- JSON & Try Catch -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">JSON</span>
+                        <span class="tag">Try/Catch</span>
+                    </div>
+                    <h3>07. JSON & Xử lý lỗi</h3>
+                    <p>JSON.stringify format 2 spaces, JSON.parse, bắt lỗi cú pháp, luồng chạy try...catch...finally và return override.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./json/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./json/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Map</span>
+                        <span class="tag">Data Structure</span>
+                    </div>
+                    <h3>08. Cấu trúc dữ liệu Map</h3>
+                    <p>CRUD với .set(), .get(), .has(), .delete(), dùng Object làm key, duyệt for...of, chuyển đổi qua lại giữa Map và Object.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./map/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./map/debai.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+
+            <!-- Set -->
+            <div class="card">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag">Set</span>
+                        <span class="tag">Data Structure</span>
+                    </div>
+                    <h3>09. Cấu trúc dữ liệu Set</h3>
+                    <p>Loại bỏ phần tử trùng lặp trong mảng [...new Set(arr)], thao tác .add(), .has(), các phép toán tập hợp Hợp, Giao, Hiệu.</p>
+                </div>
+                <div class="card-links">
+                    <a href="./set/loigiai.html" class="btn btn-primary">Chạy Console</a>
+                    <a href="./set/kienthuc.md" class="btn btn-secondary">Đề bài</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>JavaScript Study Program &copy; 2026 - Kho tài liệu thực hành JavaScript</p>
+        </footer>
+    </div>
 </body>
 </html>

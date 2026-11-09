@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bài tập: Cấu trúc dữ liệu Set trong JavaScript</title>
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 24px; max-width: 800px; margin: auto; background: #f8fafc; color: #1e293b; }
+        .card { background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .btn { padding: 8px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+    </style>
 </head>
 <body>
-    <script src="./loigiai.js"></script>
+    <div class="card">
+        <h1>Bài tập: Cấu trúc dữ liệu Set (CRUD, Lọc trùng mảng, Phép toán tập hợp)</h1>
+        <div style="display: flex; gap: 10px; margin: 16px 0;">
+            <a href="?mode=practice" id="btn-practice" class="btn" style="background: #2563eb; color: white;">📝 Chạy bài làm (practice.js)</a>
+            <a href="?mode=solution" id="btn-solution" class="btn" style="background: #e2e8f0; color: #334155;">💡 Lời giải mẫu (loigiai.js)</a>
+        </div>
+        <p>Đang nạp: <strong id="current-script-name">practice.js</strong>. Nhấn <strong>F12 &rarr; Console</strong> để xem kết quả.</p>
+    </div>
+    <script>
+        const mode = new URLSearchParams(window.location.search).get('mode') || 'practice';
+        const pBtn = document.getElementById('btn-practice');
+        const sBtn = document.getElementById('btn-solution');
+        const s = document.createElement('script');
+        if (mode === 'solution') {
+            sBtn.style.background = '#2563eb'; sBtn.style.color = 'white';
+            pBtn.style.background = '#e2e8f0'; pBtn.style.color = '#334155';
+            document.getElementById('current-script-name').textContent = 'loigiai.js';
+            s.src = './loigiai.js';
+        } else {
+            pBtn.style.background = '#2563eb'; pBtn.style.color = 'white';
+            sBtn.style.background = '#e2e8f0'; sBtn.style.color = '#334155';
+            document.getElementById('current-script-name').textContent = 'practice.js';
+            s.src = './practice.js';
+        }
+        document.body.appendChild(s);
+    </script>
 </body>
 </html>
