@@ -16,15 +16,17 @@
 
 <a id="mục-lục"></a>
 
-1. [Khái Niệm Truthy & Falsy](#1-khái-niệm-truthy--falsy)
+1. [Khái Niệm Truthy & Falsy](#1-khái-niệm-truthy-falsy)
 2. [Danh Sách 8 Giá Trị Falsy Trong JavaScript](#2-danh-sách-8-giá-trị-falsy-trong-javascript)
-3. [Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)](#3-cơ-chế-ép-kiểu-ngầm-định-implicit-type-coercion)
-4. [Toán Tử Logic: &&, ||, ?? và !!](#4-toán-tử-logic---và-)
-5. [Cạm Bẫy Phổ Biến & So Sánh == vs ===](#5-cạm-bẫy-phổ-biến--so-sánh--vs-)
+   - [Tại Sao Mảng Rỗng và Object Rỗng Lại Là Truthy?](#tại-sao-mảng-rỗng-và-object-rỗng-lại-là-truthy)
+3. [Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)](#3-cơ-chế-ép-kiểu-ngầm-định)
+4. [Toán Tử Logic: &&, ||, ?? và !!](#4-toán-tử-logic)
+5. [Cạm Bẫy Phổ Biến & So Sánh == vs ===](#5-cạm-bẫy-phổ-biến-và-so-sánh)
 6. [Best Practices Trong Thực Tế Dự Án](#6-best-practices-trong-thực-tế-dự-án)
 
 ---
 
+<a id="1-khái-niệm-truthy-falsy"></a>
 ## 1. Khái Niệm Truthy & Falsy
 
 Trong JavaScript, một giá trị **Truthy** là giá trị được coi là `true` khi đặt trong ngữ cảnh luận lý (Boolean context) như câu lệnh điều kiện `if`, vòng lặp `while`, hoặc biểu thức toán tử 3 ngôi (`? :`).
@@ -47,6 +49,7 @@ if (0) {
 
 ---
 
+<a id="2-danh-sách-8-giá-trị-falsy-trong-javascript"></a>
 ## 2. Danh Sách 8 Giá Trị Falsy Trong JavaScript
 
 JavaScript chỉ có duy nhất **8 giá trị Falsy** (tính đến ECMAScript hiện đại). Mọi giá trị khác ngoài 8 giá trị này đều là **Truthy**:
@@ -86,27 +89,112 @@ JavaScript chỉ có duy nhất **8 giá trị Falsy** (tính đến ECMAScript 
 > - `"0"` (chuỗi có số không) là **Truthy**!
 > - `"false"` (chuỗi chữ false) là **Truthy**!
 
+<a id="tại-sao-mảng-rỗng-và-object-rỗng-lại-là-truthy"></a>
+### Tại Sao Mảng Rỗng và Object Rỗng Lại Là Truthy?
+
+Nhiều người thắc mắc: *"Đã là rỗng sao không phải là Falsy?"* — Hãy nhớ 3 điểm cốt lõi:
+
+1. **Ẩn dụ "Chiếc hộp rỗng":**
+   - `null`: Không có chiếc hộp nào trên bàn.
+   - `[]` hay `{}`: **Có một chiếc hộp carton đặt ngay trên bàn**, chỉ là bên trong chưa có đồ. Bản thân chiếc hộp vẫn tồn tại $\rightarrow$ **Truthy**!
+2. **Bản chất vùng nhớ (Reference Type):**
+   - Biến `const arr = []` không chứa giá trị rỗng, mà giữ **địa chỉ ô nhớ** (con trỏ tham chiếu trên RAM) trỏ đến một Object hợp lệ.
+   - Theo chuẩn ECMAScript: **Mọi Object luôn luôn là `true`** khi ép kiểu Boolean (`Boolean([]) === true`).
+3. **Ý nghĩa thực tế:**
+   - `if (cart)`: Kiểm tra đối tượng giỏ hàng **đã được khởi tạo / tải thành công chưa**.
+   - `if (cart.length === 0)`: Kiểm tra giỏ hàng **có món đồ nào bên trong không**.
+
+> [!WARNING]
+> **Cạm bẫy `[] == false`:**
+> Phép so sánh `[] == false` trả về `true` vì toán tử `==` ép kiểu ngầm `[]` thành chuỗi rỗng `""` rồi thành số `0`, `false` thành số `0` (`0 == 0`). Nhưng khi đặt trực tiếp trong câu lệnh điều kiện `if ([])`, JS dùng `Boolean([])` nên **luôn luôn là `true`**!
+
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
+<a id="3-cơ-chế-ép-kiểu-ngầm-định"></a>
 ## 3. Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)
 
-Khi đặt giá trị vào biểu thức điều kiện, JS Engine tự động gọi ngầm hàm `Boolean(val)`:
+Nhiều bạn thường thắc mắc: *"Trong biểu thức so sánh, các số hạng luôn tự ép kiểu về 0 hoặc 1 à? Tôi tưởng ép kiểu ngầm là luôn gọi hàm `Boolean(val)` để ra `true/false`?"*
+
+👉 **Câu trả lời là:** JavaScript **KHÔNG PHẢI** lúc nào cũng ép về Boolean! Ngôn ngữ này có **3 ngữ cảnh ép kiểu ngầm hoàn toàn khác nhau**:
+
+| Ngữ cảnh | Ví dụ điển hình | Hàm nội bộ JS gọi | Kết quả ép kiểu |
+| :--- | :--- | :--- | :--- |
+| **1. Ngữ cảnh Luận lý** *(Boolean Context)* | `if (x)`, `while (x)`, `!x`, `x ? a : b` | **`ToBoolean(x)`** *(tương đương `Boolean(x)`)* | `true` hoặc `false` |
+| **2. Ngữ cảnh Số học & So sánh** *(Numeric / Equality)* | `-`, `*`, `/`, `%`, `>`, `<`, và **phép so sánh `==`** | **`ToNumber(x)`** *(tương đương `Number(x)`)* | Số (`0`, `1`, `NaN`...) |
+| **3. Ngữ cảnh Chuỗi** *(String Context)* | Phép cộng `+` có 1 vế là chuỗi (`5 + "px"`) | **`ToString(x)`** *(tương đương `String(x)`)* | Chuỗi ký tự (`"5px"`) |
+
+### 3.1. Ngữ cảnh Luận lý (Boolean Context): Chỉ quan tâm Đúng hay Sai
+
+Trong các câu lệnh rẽ nhánh (`if`, `while`, toán tử `!`), JS chỉ cần biết biểu thức mang tính **Truthy** (cho qua) hay **Falsy** (chặn lại), nên nó gọi ngầm `Boolean(val)`:
 
 ```javascript
-// JavaScript Engine tự động ép kiểu:
+// JS Engine tự động gọi Boolean(username):
 const username = "Huy";
 if (username) {
   // Tương đương: if (Boolean(username) === true)
   console.log(`Xin chào ${username}`);
 }
+
+// Mảng rỗng [] là Object -> Boolean([]) trả về true:
+if ([]) {
+  console.log("Mảng rỗng vào đây vì là Truthy!"); // ✅ Chạy bình thường!
+}
 ```
+
+### 3.2. Ngữ cảnh Phép so sánh lỏng lẻo (`==`): Cố gắng đưa về Số (ToNumber)
+
+> [!CAUTION]
+> **Quy tắc cốt lõi của toán tử `==`:** 
+> Thuật toán của `==` (Abstract Equality) **KHÔNG BAO GIỜ ép 2 vế về Boolean rồi so sánh!** 
+> *(Nếu ép về Boolean thì `[] == false` sẽ thành `true == false` → `false`, nhưng thực tế nó lại ra `true`)*.
+>
+> Thay vào đó, quy tắc của `==` là: **Hễ gặp Boolean, hãy ép cái Boolean đó thành SỐ (`ToNumber`) trước** để so sánh độ lớn!
+
+Hãy xem từng bước vì sao biểu thức `[] == false` lại trả về `true`:
+
+```mermaid
+flowchart LR
+    A["[] == false"] -->|"1. false ép thành 0"| B["[] == 0"]
+    B -->|"2. [] gọi .toString() ra chuỗi rỗng"| C["'' == 0"]
+    C -->|"3. '' ép thành số 0"| D["0 == 0"]
+    D -->|"4. Hai số bằng nhau"| E["true"]
+```
+
+1. **Bước 1:** Thấy có boolean `false` $\rightarrow$ JS ép thành số: `Number(false) = 0`. Biểu thức trở thành: `[] == 0`.
+2. **Bước 2:** So sánh Object (`[]`) với Số (`0`) $\rightarrow$ JS bắt mảng biến thành kiểu nguyên thủy (gọi `[].toString()`) $\rightarrow$ ra chuỗi rỗng `""`. Biểu thức trở thành: `"" == 0`.
+3. **Bước 3:** So sánh Chuỗi (`""`) với Số (`0`) $\rightarrow$ JS ép chuỗi thành số: `Number("") = 0`. Biểu thức trở thành: `0 == 0`.
+4. **Bước 4:** Cả hai vế đều là số `0`, kết quả cuối cùng: `0 == 0` là **`true`**!
+
+### 3.3. Nghịch lý kinh điển của JavaScript
+
+Chính vì sự khác biệt giữa hai ngữ cảnh trên, JavaScript tạo ra nghịch lý nổi tiếng:
+
+```javascript
+// 1. Trong if (Boolean Context): [] là Truthy!
+if ([]) {
+  console.log("1. Mảng rỗng là Truthy!"); // ✅ In ra màn hình
+}
+
+// 2. Trong phép == (Numeric Context): [] lại bằng false!
+if ([] == false) {
+  console.log("2. Nhưng mảng rỗng == false lại là true?!"); // ✅ In ra màn hình luôn!
+}
+```
+
+> [!TIP]
+> **Giải pháp tối thượng trong dự án:**
+> Tuyệt đối không dùng `==`. Luôn dùng **`===` (Strict Equality)** vì `===` cấm tuyệt đối việc ép kiểu ngầm định:
+> ```javascript
+> [] === false; // ❌ false ngay lập tức (Object khác kiểu Boolean)
+> ```
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
+<a id="4-toán-tử-logic"></a>
 ## 4. Toán Tử Logic: &&, ||, ?? và !!
 
 ### 4.1. Toán tử `&&` (Logical AND - Tìm Falsy đầu tiên)
@@ -149,6 +237,7 @@ const isAuthenticated = !!token; // true
 
 ---
 
+<a id="5-cạm-bẫy-phổ-biến-và-so-sánh"></a>
 ## 5. Cạm Bẫy Phổ Biến & So Sánh == vs ===
 
 Toán tử so sánh bằng lỏng lẻo (`==`) thực hiện ép kiểu ngầm định phức tạp và gây ra nhiều cạm bẫy:
@@ -169,6 +258,7 @@ NaN == NaN; // false (NaN không bằng chính nó!)
 
 ---
 
+<a id="6-best-practices-trong-thực-tế-dự-án"></a>
 ## 6. Best Practices Trong Thực Tế Dự Án
 
 ### 6.1. Kiểm tra mảng rỗng
