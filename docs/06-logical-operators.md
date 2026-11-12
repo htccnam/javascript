@@ -22,6 +22,9 @@
    - [5.3. Kết hợp đan xen AND và OR](#53-kết-hợp-đan-xen-and-và-or)
 6. [Thứ Tự Ưu Tiên Của Các Toán Tử Logic](#6-thứ-tự-ưu-tiên-của-các-toán-tử-logic)
 7. [Bản Chất Cơ Chế Đoản Mạch (Short-Circuit Evaluation)](#7-bản-chất-cơ-chế-đoản-mạch-short-circuit-evaluation)
+   - [7.1. Cơ chế đoản mạch là gì?](#71-cơ-chế-đoản-mạch-là-gì)
+   - [7.2. Giá trị trả về thực tế của && và || (Không chỉ là true/false!)](#72-giá-trị-trả-về-thực-tế-của-toán-tử)
+   - [7.3. Ứng dụng thực tế kinh điển (Guarding, React Rendering, Fallback)](#73-ứng-dụng-thực-tế-kinh-điển)
 8. [Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)](#8-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls)
    - [Bẫy 1: Dùng nhầm toán tử Bitwise & và | thay vì && và ||](#bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và-)
    - [Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp && và ||](#bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và-)
@@ -247,28 +250,122 @@ console.log(result); // true
 
 ---
 
+<a id="7-bản-chất-cơ-chế-đoản-mạch-short-circuit-evaluation"></a>
 ## 7. Bản Chất Cơ Chế Đoản Mạch (Short-Circuit Evaluation)
 
-JavaScript thực thi các biểu thức logic từ **trái sang phải** và sở hữu cơ chế tối ưu hóa hiệu năng gọi là **Đoản mạch (Short-circuit)**:
+<a id="71-cơ-chế-đoản-mạch-là-gì"></a>
+### 7.1. Cơ chế đoản mạch là gì?
 
-### 1. Đoản mạch với `&&` (Dừng ngay khi gặp Falsy đầu tiên)
-Nếu vế bên trái là `false`, JavaScript **sẽ không thèm tính toán vế bên phải**, vì một khi đã có một vế sai thì toàn bộ biểu thức chắc chắn là sai!
+JavaScript thực thi các biểu thức logic từ **trái sang phải** và sở hữu cơ chế tối ưu hóa hiệu năng gọi là **Đoản mạch (Short-circuit)**: Khi kết quả của toàn bộ biểu thức đã được ngã ngũ ngay từ vế đầu tiên, JavaScript **sẽ dừng lại ngay lập tức và không tính toán vế còn lại nữa**.
+
+- **Với toán tử `&&`:** Chỉ cần gặp một vế là **Falsy**, cả biểu thức chắc chắn không thể thỏa mãn $\rightarrow$ **Dừng ngay lập tức**.
+- **Với toán tử `||`:** Chỉ cần gặp một vế là **Truthy**, cả biểu thức chắc chắn đã thỏa mãn $\rightarrow$ **Dừng ngay lập tức**.
+
 ```javascript
-function logError() {
-    console.log("Hàm này được gọi!");
+function sendEmailNotification() {
+    console.log("Đang gửi email thông báo...");
     return true;
 }
 
-// Vế trái là false -> Dừng ngay lập tức, hàm logError() KHÔNG BAO GIỜ bị gọi!
-const check = false && logError();
-console.log(check); // false (Không có chữ nào in ra từ hàm logError)
+// Vế trái là false -> Đoản mạch! Hàm sendEmailNotification KHÔNG BAO GIỜ bị gọi:
+const shouldNotify = false && sendEmailNotification();
+console.log(shouldNotify); // false (Không có thông báo nào được gửi)
 ```
 
-### 2. Đoản mạch với `||` (Dừng ngay khi gặp Truthy đầu tiên)
-Nếu vế bên trái là `true`, JavaScript **dừng lại ngay lập tức**, vì chỉ cần một vế đúng là toàn bộ biểu thức chắc chắn đúng!
+---
+
+<a id="72-giá-trị-trả-về-thực-tế-của-toán-tử"></a>
+### 7.2. Giá trị trả về thực tế của && và || (Không chỉ là true/false!)
+
+> [!IMPORTANT]
+> **Điểm đặc biệt nhất trong JavaScript:**
+> Trong nhiều ngôn ngữ khác (C, C++, Java), toán tử `&&` và `||` luôn ép kết quả về boolean `true` hoặc `false`.
+> Nhưng trong JavaScript, các toán tử này hoạt động như một **bộ chọn giá trị (Value Selector)**: **Chúng trả về chính xác giá trị thực tế của toán hạng dừng lại**, chứ không hề ép kiểu về `true` hay `false`!
+
+#### 1. Cơ chế trả về của `A && B`:
+- Nếu `A` là **Falsy**: JS dừng lại ngay lập tức và **trả về chính giá trị của `A`**!
+- Nếu `A` là **Truthy**: JS đi tiếp sang `B` và **trả về chính giá trị của `B`** (bất kể `B` là gì)!
+
 ```javascript
-const userRole = "ADMIN" || "GUEST";
-console.log(userRole); // "ADMIN" (Dừng ngay khi thấy "ADMIN" là Truthy)
+// A là Truthy -> Trả về giá trị của B:
+console.log(true && "Hello");       // "Hello"
+console.log("Nam" && 100);          // 100
+console.log("Nam" && false);        // false
+console.log("Nam" && null);         // null
+console.log("Nam" && { id: 1 });    // { id: 1 }
+
+// A là Falsy -> Dừng ngay, trả về chính giá trị của A:
+console.log(false && "Hello");      // false
+console.log(0 && "Hello");          // 0 (Không phải false, mà là số 0!)
+console.log("" && "Hello");         // "" (Chuỗi rỗng)
+console.log(null && "Hello");       // null
+console.log(undefined && "Hello");  // undefined
+```
+
+#### 2. Cơ chế trả về của `A || B`:
+- Nếu `A` là **Truthy**: JS dừng lại ngay lập tức và **trả về chính giá trị của `A`**!
+- Nếu `A` là **Falsy**: JS đi tiếp sang `B` và **trả về chính giá trị của `B`**!
+
+```javascript
+// A là Truthy -> Dừng ngay, trả về chính giá trị của A:
+console.log("Nam" || "Khách");      // "Nam"
+console.log(123 || "Fallback");     // 123
+console.log(true || "Fallback");    // true
+
+// A là Falsy -> Đi tiếp, trả về giá trị của B:
+console.log("" || "Khách");         // "Khách"
+console.log(null || "Khách");       // "Khách"
+console.log(undefined || 500);      // 500
+console.log(false || "Fallback");   // "Fallback"
+```
+
+---
+
+<a id="73-ứng-dụng-thực-tế-kinh-điển"></a>
+### 7.3. Ứng dụng thực tế kinh điển (Guarding, React Rendering, Fallback)
+
+Chính nhờ cơ chế trả về giá trị thực tế kết hợp với đoản mạch, lập trình viên JavaScript sử dụng `&&` và `||` trong thực tế dự án vô cùng rộng rãi:
+
+#### Ứng dụng 1: Kỹ thuật Guarding (Phòng thủ truy cập thuộc tính an toàn)
+Trước khi chuẩn ES2020 ra mắt toán tử Optional Chaining (`?.`), lập trình viên luôn dùng `&&` để tránh lỗi sập ứng dụng kinh điển `TypeError: Cannot read property of undefined`:
+
+```javascript
+const user = null; // Giả sử chưa load xong user từ API
+
+// ❌ NGUY HIỂM: Gây sập app ngay lập tức!
+// console.log(user.profile.name); // Uncaught TypeError: Cannot read property of null
+
+// ✅ AN TOÀN: Dùng && để guard (nếu user là null -> dừng ngay, trả về null)
+const userName = user && user.profile && user.profile.name;
+console.log(userName); // null (App chạy êm ru, không hề bị crash!)
+```
+
+#### Ứng dụng 2: Conditional Rendering trong React / UI
+Trong thư viện React, cú pháp `{condition && <Component />}` xuất hiện ở mọi dự án:
+
+```jsx
+// Nếu isLoggedIn là true -> Trả về <UserProfile /> để React vẽ lên màn hình
+// Nếu isLoggedIn là false -> Trả về false (React tự bỏ qua, không vẽ gì)
+function Header({ isLoggedIn, user }) {
+    return (
+        <nav>
+            <h1>My Website</h1>
+            {isLoggedIn && <UserProfile name={user.name} />}
+        </nav>
+    );
+}
+```
+
+#### Ứng dụng 3: Fallback giá trị mặc định với `||`
+```javascript
+function getWelcomeMessage(customGreeting) {
+    // Nếu truyền chuỗi -> Lấy customGreeting; nếu truyền undefined/rỗng -> Lấy "Xin chào"
+    const greeting = customGreeting || "Xin chào";
+    return `${greeting}, chúc bạn một ngày tốt lành!`;
+}
+
+console.log(getWelcomeMessage("Chào buổi sáng")); // "Chào buổi sáng, chúc bạn..."
+console.log(getWelcomeMessage(""));               // "Xin chào, chúc bạn..."
 ```
 
 [⬆️ Quay lại Mục lục](#mục-lục)
