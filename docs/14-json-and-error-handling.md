@@ -9,6 +9,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu cú pháp JSON, nguyên lý tuần tự hóa (serialization) và cơ chế xử lý ngoại lệ `try...catch...finally` trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Cấu trúc Mảng & Đối Tượng (Array & Object)** tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) & [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>    - *Vì sao bắt buộc?* JSON (JavaScript Object Notation) là chuỗi đại diện tuần tự hóa của Mảng và Đối tượng. Bạn không thể hiểu cú pháp JSON nếu chưa thành thạo Object key-value và mảng lồng nhau.
+> 2. **Các kiểu dữ liệu đặc biệt bị JSON bỏ qua** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#11-toàn-diện-về-kiểu-dữ-liệu-trong-javascript-data-types):
+>    - *Vì sao bắt buộc?* Khi chạy `JSON.stringify()`, các trường có giá trị là `undefined`, `Function`, `Symbol` sẽ bị xóa sổ; còn `NaN` và `Infinity` bị ép thành `null`. Bạn cần nắm các kiểu này ở Bài 03 để không bị bất ngờ khi dữ liệu biến mất sau khi parse.
+> 3. **Khối lệnh Block Scope `{}`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
+>    - *Vì sao bắt buộc?* Khối `try {} catch (error) {} finally {}` tạo ra các Block Scope độc lập; biến khai báo bằng `let`/`const` bên trong khối `try` sẽ không thể truy cập từ khối `catch` hay bên ngoài.
+> * **Chúc mừng bạn:** Hoàn thành bài này là bạn đã nắm trọn vẹn toàn bộ 14 bài học nền tảng vững chắc của JavaScript Study Program!
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

@@ -1,5 +1,19 @@
 # Bài Tập 06: Toán Tử Logical Trong JavaScript (&&, ||, !)
 
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [06 - Toán Tử Logical Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Khái niệm cơ bản về Short-Circuit** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 7)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit):
+>      - *Vì sao bắt buộc?* Để giải quyết các bài tập đoản mạch trả về chính giá trị của toán hạng dừng lại.
+>   2. **Độ ưu tiên toán tử (Operator Precedence)** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 9)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#9-bảng-độ-ưu-tiên-toán-tử-operator-precedence):
+>      - *Vì sao bắt buộc?* Giúp xử lý các biểu thức đan xen `!` > `&&` > `||` trong Phần 2.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

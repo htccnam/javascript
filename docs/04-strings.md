@@ -10,6 +10,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu và thao tác tốt với chuỗi và Template Literals trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Khai báo biến với `let` và `const`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#2-khác-biệt-cốt-lõi-scope-re-assign-re-declaration-bảng-so-sánh-var-let-const):
+>    - *Vì sao bắt buộc?* Chuỗi cần được gán vào biến để tái sử dụng và xử lý logic nối chuỗi.
+> 2. **Tính bất biến (Immutability) của kiểu Primitive String** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#111-string-chuỗi):
+>    - *Vì sao bắt buộc?* Người mới học hay nhầm lẫn cố thay đổi một ký tự trong chuỗi bằng chỉ mục (`str[0] = 'A'`). Nắm rõ tính bất biến của kiểu String nguyên thủy trong bộ nhớ Stack giúp bạn tránh lỗi này.
+> 3. **Cạm bẫy toán tử `+` khi cộng chuỗi với số** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-1-nhầm-lẫn-giữa-string-và-number):
+>    - *Vì sao bắt buộc?* Bài 04 đi sâu vào bẫy ép kiểu chuỗi `'2' + 2 = '22'`. Bạn phải hiểu cơ chế này để biết khi nào nên dùng Template Literals `` `${expression}` `` thay vì phép `+`.
+> * **Đích đến tiếp theo:** Kết quả chuỗi được sử dụng trực tiếp trong câu lệnh rẽ nhánh tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

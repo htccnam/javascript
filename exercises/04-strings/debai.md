@@ -8,6 +8,18 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [04 - Chuỗi Trong JavaScript (Strings)](file:///d:/github/studyProgram/javascript/docs/04-strings.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Khai báo biến `let` và `const`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#2-khác-biệt-cốt-lõi-scope-re-assign-re-declaration-bảng-so-sánh-var-let-const):
+>      - *Vì sao bắt buộc?* Chuỗi cần được gán vào biến để tái sử dụng và xử lý logic nối chuỗi.
+>   2. **Cạm bẫy toán tử `+` khi cộng chuỗi với số** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-1-nhầm-lẫn-giữa-string-và-number):
+>      - *Vì sao bắt buộc?* Để giải quyết bài tập phân biệt `'2' + 2` vs `2 + 2` và chuyển sang dùng Template Literals.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

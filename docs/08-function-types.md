@@ -9,6 +9,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu 3 loại hàm, cú pháp rút gọn của Arrow Function và cơ chế Callback trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Quy tắc đặt tên hàm: Động từ + Tân ngữ** tại [02 - Quy Ước Đặt Tên (Mục 4)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ):
+>    - *Vì sao bắt buộc?* Để viết hàm sạch chuẩn Clean Code (`calculateTotal`, `getUserById`), tránh đặt tên danh từ gây nhầm lẫn với biến.
+> 2. **Kiểu dữ liệu Function (Hàm là Object đặc biệt)** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1182-function-hàm):
+>    - *Vì sao bắt buộc?* Giúp bạn hiểu vì sao có thể gán một hàm vào một biến (`const myFunc = function() {}` - Function Expression) và truyền hàm như một tham số đối số (First-class Citizens).
+> 3. **Lệnh `return` và rẽ nhánh `if...else`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 1)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#1-câu-lệnh-điều-kiện-if-else-if-else-if-else):
+>    - *Vì sao bắt buộc?* Bên trong thân hàm cần xử lý logic rẽ nhánh điều kiện và trả về giá trị qua từ khóa `return`.
+> * **Đích đến tiếp theo:** Hàm là động cơ của mọi cấu trúc dữ liệu! Cú pháp Arrow Function và Callback ở bài này là **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC** cho [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md), [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md), và [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

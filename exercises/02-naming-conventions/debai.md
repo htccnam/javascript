@@ -9,6 +9,16 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [02 - Quy Ước Đặt Tên Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Tính nhạy chữ hoa - chữ thường (Case-sensitive)** tại [01 - Tổng Quan Về JavaScript (Mục 2.4)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#24-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity):
+>      - *Vì sao bắt buộc?* Quy ước `camelCase` (`isLoggedIn`), `PascalCase` (`BankAccount`), và `UPPER_SNAKE_CASE` (`MAX_RETRIES`) hoàn toàn dựa trên sự phân biệt chữ hoa/thường.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

@@ -12,6 +12,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu tường tận cơ chế Truthy/Falsy và thuật toán ép kiểu ngầm định (Type Coercion) trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **8 Kiểu dữ liệu trong JavaScript** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#11-toàn-diện-về-kiểu-dữ-liệu-trong-javascript-data-types):
+>    - *Vì sao bắt buộc?* 8 giá trị Falsy trong JavaScript (`false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN`) xuất phát trực tiếp từ các kiểu dữ liệu đã học ở Bài 03.
+> 2. **Toán tử phủ định `!` và kỹ thuật Double NOT `!!`** tại [06 - Toán Tử Logical (Mục 4)](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md#4-toán-tử-not--kỹ-thuật-double-not-):
+>    - *Vì sao bắt buộc?* Bài 07 dùng kỹ thuật `!!value` để ép bất kỳ giá trị nào về đúng chuẩn Boolean chân lý (`true`/`false`).
+> 3. **So sánh `==` vs `===`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 5)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#5-toán-tử-so-sánh-comparison-operators):
+>    - *Vì sao bắt buộc?* Hiểu cơ chế ép kiểu ngầm định của `==` (ToNumber, ToPrimitive algorithm) giải thích vì sao `[] == false` lại ra `true`.
+> * **Đích đến tiếp theo:** Khái niệm Truthy/Falsy là điều kiện bắt buộc để viết callback cho các phương thức lọc mảng `.filter()` và `.find()` tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 
 <a id="mục-lục"></a>

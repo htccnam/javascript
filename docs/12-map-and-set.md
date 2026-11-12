@@ -9,6 +9,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sức mạnh của hai cấu trúc dữ liệu hiện đại Map và Set trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Hạn chế của Object thông thường (Key luôn là chuỗi)** tại [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>    - *Vì sao bắt buộc?* Trong Object thông thường, mọi key đều bị ép thành String, không thể dùng một Object khác làm key. Bạn cần hiểu hạn chế này ở Bài 11 để nhận thấy giá trị vượt trội của `Map`.
+> 2. **Spread Operator `...` và các thao tác trên Mảng** tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+>    - *Vì sao bắt buộc?* Kỹ thuật kinh điển nhất khi dùng `Set` là khử trùng lặp mảng một dòng: `[...new Set(array)]`. Cú pháp này sử dụng Spread Operator của Mảng.
+> 3. **So sánh địa chỉ ô nhớ của Đối tượng trong Heap** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
+>    - *Vì sao bắt buộc?* Để hiểu vì sao 2 object có cùng nội dung rỗng `map.set({}, "A")` và `map.get({})` trả về `undefined` (do 2 object là 2 địa chỉ ô nhớ khác nhau hoàn toàn trong bộ nhớ Heap).
+> * **Đích đến tiếp theo:** Thành thạo các cấu trúc dữ liệu giúp bạn tổ chức state linh hoạt trong [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

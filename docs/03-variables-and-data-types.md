@@ -11,6 +11,18 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu bản chất biến, phạm vi bộ nhớ và 8 kiểu dữ liệu trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Dynamic Typing (Kiểu dữ liệu động)** tại [01 - Tổng Quan Về JavaScript (Mục 2.3)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#23-ngôn-ngữ-định-kiểu-động-dynamic-typing):
+>    - *Vì sao bắt buộc?* Để hiểu tại sao từ khóa `let` cho phép gán lại biến sang một kiểu dữ liệu hoàn toàn khác, trong khi `const` ngăn chặn việc gán lại nhãn biến.
+> 2. **Quy tắc đặt tên Clean Code** tại [02 - Quy Ước Đặt Tên (Mục 2 & 3)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno):
+>    - *Vì sao bắt buộc?* Bài 03 yêu cầu bạn đặt tên chuẩn cho 8 kiểu dữ liệu khác nhau (`is` cho boolean, danh từ số nhiều cho mảng, số ít cho object).
+> * **Đích đến tiếp theo:** Bài 03 là nền móng của mọi cấu trúc dữ liệu! Bạn sẽ sử dụng trực tiếp các kiểu dữ liệu này trong [04 - Chuỗi](file:///d:/github/studyProgram/javascript/docs/04-strings.md), [05 - Rẽ Nhánh & Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md), [10 - Mảng](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) và [11 - Đối Tượng](file:///d:/github/studyProgram/javascript/docs/11-objects.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

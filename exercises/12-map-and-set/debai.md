@@ -1,6 +1,23 @@
 # Bài Tập 12: Cấu Trúc Dữ Liệu Map & Set trong JavaScript
 
+---
+
+> [!IMPORTANT]
+>
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+>
+> - **Lý thuyết bài này:** Đọc kỹ [12 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-map-and-set.md).
+> - **Kiến thức bài trước bắt buộc:**
+>   1. **Hạn chế của Object** tại [11 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>      - _Vì sao bắt buộc?_ Hiểu vì sao Map ra đời để cho phép Object làm key.
+>   2. **Spread Operator `...` và Mảng** tại [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+>      - _Vì sao bắt buộc?_ Để giải quyết Phần 5 lọc trùng mảng `[...new Set(arr)]` và các phép toán tập hợp ở Phần 6.
+> - 🗺️ _Xem bản đồ lộ trình tổng thể:_ [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
+
 <a id="mục-lục"></a>
 
 1. [Phần 1: Cấu Trúc Dữ Liệu Map (CRUD Cơ Bản)](#phần-1-cấu-trúc-dữ-liệu-map-crud-cơ-bản)
@@ -13,12 +30,17 @@
 ---
 
 <a id="phần-1-cấu-trúc-dữ-liệu-map-crud-cơ-bản"></a>
+
 ## Phần 1: Cấu Trúc Dữ Liệu Map (CRUD Cơ Bản)
+
 1. Tạo một Map rỗng tên `userRoles`.
 2. Thêm các cặp key-value sau vào `userRoles` bằng phương thức `.set()`:
-   - `"admin"` $ightarrow$ `"Toàn quyền quản trị"`
-   - `"editor"` $ightarrow$ `"Chỉnh sửa bài viết"`
-   - `"viewer"` $ightarrow$ `"Chỉ xem nội dung"`
+   - `"admin"` $
+ightarrow$ `"Toàn quyền quản trị"`
+   - `"editor"` $
+ightarrow$ `"Chỉnh sửa bài viết"`
+   - `"viewer"` $
+ightarrow$ `"Chỉ xem nội dung"`
 3. Lấy ra quyền của `"editor"` bằng `.get()` và in ra màn hình.
 4. Kiểm tra xem quyền `"moderator"` có tồn tại trong Map không bằng `.has()`.
 5. In ra tổng số lượng quyền hiện có bằng `.size`.
@@ -29,12 +51,16 @@
 ---
 
 <a id="phần-2-sử-dụng-object-function-làm-key-trong-map"></a>
+
 ## Phần 2: Sử Dụng Object & Function Làm Key Trong Map
+
 1. Tạo 2 object người dùng: `userA = { name: "Huy" }` và `userB = { name: "Linh" }`.
 2. Tạo một Map tên `userPreferences`.
 3. Gán cấu hình giao diện cho từng người dùng:
-   - `userA` $ightarrow$ `{ theme: "dark", lang: "vi" }`
-   - `userB` $ightarrow$ `{ theme: "light", lang: "en" }`
+   - `userA` $
+ightarrow$ `{ theme: "dark", lang: "vi" }`
+   - `userB` $
+ightarrow$ `{ theme: "light", lang: "en" }`
 4. Lấy cấu hình của `userA` thông qua chính object `userA`. Giải thích lý do Plain Object `{}` không thể làm được điều này một cách trực tiếp.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
@@ -42,15 +68,19 @@
 ---
 
 <a id="phần-3-duyệt-map-chuyển-đổi-map-object-array"></a>
+
 ## Phần 3: Duyệt Map & Chuyển Đổi Map <-> Object / Array
+
 Cho Map lưu trữ bảng điểm sinh viên:
+
 ```javascript
 const studentGrades = new Map([
   ["Toán", 9.0],
   ["Văn", 8.0],
-  ["Anh", 8.5]
+  ["Anh", 8.5],
 ]);
 ```
+
 1. Dùng vòng lặp `for...of` kết hợp Destructuring `[subject, grade]` để in ra: `Môn [subject]: [grade] điểm`.
 2. Lấy danh sách toàn bộ các môn học (`.keys()`) và tính điểm trung bình (`.values()`).
 3. Chuyển Map thành mảng 2 chiều (`Array.from()` hoặc `[...map]`).
@@ -61,7 +91,9 @@ const studentGrades = new Map([
 ---
 
 <a id="phần-4-cấu-trúc-dữ-liệu-set-crud-tính-duy-nhất"></a>
+
 ## Phần 4: Cấu Trúc Dữ Liệu Set (CRUD & Tính Duy Nhất)
+
 1. Khởi tạo một `Set` rỗng tên `tags`.
 2. Dùng `.add()` để thêm lần lượt các chuỗi: `"javascript"`, `"react"`, `"nodejs"`, `"javascript"` (thêm 2 lần để quan sát phản ứng loại trùng).
 3. In ra kích thước của Set (`tags.size`).
@@ -73,11 +105,15 @@ const studentGrades = new Map([
 ---
 
 <a id="phần-5-lọc-trùng-mảng-bằng-set-trong-thực-tế"></a>
+
 ## Phần 5: Lọc Trùng Mảng Bằng Set Trong Thực Tế
+
 Cho mảng chứa ID người dùng ghé thăm website:
+
 ```javascript
 const visitorIds = [101, 102, 103, 101, 104, 102, 105, 101];
 ```
+
 1. Tạo một mảng mới `uniqueVisitorIds` chỉ chứa các ID duy nhất (loại bỏ toàn bộ phần tử trùng lặp bằng cú pháp `[...new Set(visitorIds)]`).
 2. Đếm số lượng người dùng thực tế đã truy cập website.
 
@@ -86,12 +122,16 @@ const visitorIds = [101, 102, 103, 101, 104, 102, 105, 101];
 ---
 
 <a id="phần-6-các-phép-toán-tập-hợp-union-intersection-difference"></a>
+
 ## Phần 6: Các Phép Toán Tập Hợp (Union, Intersection, Difference)
+
 Cho 2 tập hợp kỹ năng:
+
 ```javascript
 const teamFrontend = new Set(["HTML", "CSS", "JavaScript", "React"]);
 const teamBackend = new Set(["NodeJS", "JavaScript", "SQL", "Docker"]);
 ```
+
 1. **Phép Hợp (Union):** Tìm tập hợp tất cả các kỹ năng mà cả hai team có (không trùng lặp).
 2. **Phép Giao (Intersection):** Tìm các kỹ năng chung mà cả hai team đều sử dụng.
 3. **Phép Hiệu (Difference):** Tìm các kỹ năng chỉ Frontend có mà Backend không có.

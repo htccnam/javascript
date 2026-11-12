@@ -11,6 +11,15 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> * **Kiến thức bắt buộc:** *Không có.* Đây là vạch xuất phát khởi đầu cho toàn bộ lộ trình học JavaScript.
+> * **Hành trang khuyến nghị:** Khái niệm cơ bản về lập trình hoặc HTML/CSS căn bản (giúp hình dung vai trò của JS đối với cấu trúc HTML và giao diện CSS).
+> * **Đích đến tiếp theo:** Sau khi nắm bài này, bạn sẽ đủ điều kiện tiến sang [02 - Quy Ước Đặt Tên (Clean Code)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md) và [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

@@ -1,5 +1,19 @@
 # Bài Tập 14: JSON & Xử Lý Lỗi (Error Handling với try...catch) trong JavaScript
 
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [14 - JSON & Xử Lý Lỗi Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/14-json-and-error-handling.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Mảng & Đối tượng** tại [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) và [11 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>      - *Vì sao bắt buộc?* Dữ liệu JSON tuần tự hóa từ Object và Array.
+>   2. **Kiểu `undefined` và `Symbol` bị bỏ qua** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#11-toàn-diện-về-kiểu-dữ-liệu-trong-javascript-data-types):
+>      - *Vì sao bắt buộc?* Để giải quyết các tình huống biến mất dữ liệu khi dùng `JSON.stringify()`.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

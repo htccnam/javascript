@@ -15,6 +15,16 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu và áp dụng chuẩn xác quy ước đặt tên trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Tính nhạy chữ hoa - chữ thường (Case-sensitive)** tại [01 - Tổng Quan Về JavaScript (Mục 2.4)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#24-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity):
+>    - *Vì sao bắt buộc?* Quy ước `camelCase` (`isLoggedIn`), `PascalCase` (`BankAccount`), và `UPPER_SNAKE_CASE` (`MAX_RETRIES`) hoàn toàn dựa trên sự phân biệt chữ hoa/thường. Nếu không hiểu tính chất case-sensitive của JS Engine, bạn sẽ gọi sai tên biến và sinh lỗi `ReferenceError`.
+> * **Đích đến tiếp theo:** Kiến thức bài này là hành trang bắt buộc để bạn đặt tên biến, mảng, hàm sạch đẹp trong [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md) và [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

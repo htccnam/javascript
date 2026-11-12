@@ -8,6 +8,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [13 - Thao Tác DOM & Sự Kiện](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Callback & Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>      - *Vì sao bắt buộc?* Dùng để viết hàm callback cho `addEventListener('click', (e) => {})`.
+>   2. **Thao tác thuộc tính Object** tại [11 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>      - *Vì sao bắt buộc?* Đọc và ghi các thuộc tính trên phần tử DOM (`el.textContent`, `input.value`, `el.style`).
+>   3. **Ngăn chặn hành vi mặc định** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 8.4)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế):
+>      - *Vì sao bắt buộc?* Sử dụng `event.preventDefault()` khi submit form Todo để trang không bị tải lại.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

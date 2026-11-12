@@ -1,5 +1,19 @@
 # Bài Tập 11: Đối Tượng (Object) trong JavaScript
 
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [11 - Đối Tượng Trong JavaScript (Object)](file:///d:/github/studyProgram/javascript/docs/11-objects.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Từ khóa `this` trong Regular Function vs Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>      - *Vì sao bắt buộc?* Phần 2 yêu cầu viết phương thức cho Object dùng `this.brand`, nếu dùng Arrow function sẽ bị lỗi mất ngữ cảnh.
+>   2. **Duyệt Mảng & Phương thức mảng** tại [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+>      - *Vì sao bắt buộc?* Phần 3 và Phần 4 sử dụng `Object.keys()`, `Object.entries()` kết hợp duyệt mảng.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

@@ -1,5 +1,19 @@
 # Bài Tập 10: Mảng trong JavaScript (Khai Báo, Duyệt & Phương Thức Xử Lý)
 
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Arrow Function & Callback** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>      - *Vì sao bắt buộc?* 100% các bài tập về `map`, `filter`, `reduce`, `some`, `every` đều yêu cầu viết hàm callback mũi tên.
+>   2. **Truthy & Falsy** tại [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
+>      - *Vì sao bắt buộc?* Hiểu điều kiện trả về của hàm filter để lọc phần tử hợp lệ.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

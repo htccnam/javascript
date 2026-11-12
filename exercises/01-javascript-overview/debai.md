@@ -9,6 +9,14 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [01 - Tổng Quan Về JavaScript & Các Cách Viết](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md).
+> * **Kiến thức tiên quyết:** Không có. Đây là bài tập mở đầu cho toàn bộ lộ trình.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

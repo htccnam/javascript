@@ -12,6 +12,18 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu cơ chế Hoisting, 2 pha thực thi Creation/Execution và vùng chết tạm thời (TDZ) trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Phân biệt Function Declaration vs Function Expression** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>    - *Vì sao bắt buộc?* Trọng tâm bài 09 là giải thích tại sao Function Declaration được hoisted toàn bộ lên đầu và gọi trước khi khai báo được, trong khi Function Expression gọi trước sẽ bị bắn lỗi `ReferenceError` hoặc `TypeError`.
+> 2. **Bản chất Scope (Block Scope vs Function Scope)** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
+>    - *Vì sao bắt buộc?* Hoisting diễn ra trong từng Scope cụ thể. Nếu không nắm Lexical Scope và Scope Chain ở Bài 03, bạn sẽ không thể phân tích được hiện tượng che khuất biến (Variable Shadowing) và phạm vi của TDZ.
+> * **Đích đến tiếp theo:** Hiểu rõ vòng đời và phạm vi biến sẽ giúp bạn tự tin viết các hàm xử lý dữ liệu nâng cao trong [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) và [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

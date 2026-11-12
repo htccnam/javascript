@@ -9,6 +9,22 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu cách JavaScript tương tác với giao diện Web (DOM) và xử lý sự kiện trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Callback Function & Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>    - *Vì sao bắt buộc?* Cơ chế lắng nghe sự kiện (`click`, `submit`, `input`) trong DOM 100% sử dụng Callback Function: `btn.addEventListener("click", (event) => {})`.
+> 2. **Thuộc tính & Phương thức của Đối tượng (Object)** tại [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>    - *Vì sao bắt buộc?* Mỗi phần tử HTML trên trang khi được chọn (`querySelector`) đều là một **DOM Element Object**. Việc đổi chữ (`el.textContent`), đổi màu (`el.style.color`), hay lấy giá trị (`event.target.value`) thực chất là đọc và gán thuộc tính của Object.
+> 3. **Duyệt mảng danh sách phần tử** tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+>    - *Vì sao bắt buộc?* `querySelectorAll` trả về một danh sách các phần tử (`NodeList`); bạn cần kỹ năng duyệt mảng để gán sự kiện hoặc render danh sách thẻ động.
+> 4. **Hành vi mặc định và chặn reload trang** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 8.4)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế):
+>    - *Vì sao bắt buộc?* Dùng `event.preventDefault()` để ngăn chặn hành vi submit form reload lại trang hoặc thẻ `<a>` nhảy trang đột ngột.
+> * **Đích đến tiếp theo:** Khi xây dựng ứng dụng Web thực tế có DOM, bạn sẽ cần lưu trữ trạng thái người dùng vào LocalStorage hoặc giao tiếp Backend qua [14 - JSON & Xử Lý Lỗi](file:///d:/github/studyProgram/javascript/docs/14-json-and-error-handling.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

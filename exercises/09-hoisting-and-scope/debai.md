@@ -9,6 +9,18 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [09 - Hoisting & Scope Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-hoisting-and-scope.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Function Declaration vs Function Expression** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>      - *Vì sao bắt buộc?* Giải thích sự khác biệt khi gọi hàm trước dòng định nghĩa.
+>   2. **Block Scope vs Function Scope** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
+>      - *Vì sao bắt buộc?* Hiểu cơ chế tìm biến trong Scope Chain và TDZ của `let`/`const`.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

@@ -8,6 +8,18 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Quy tắc đặt tên hàm: Động từ + Tân ngữ** tại [02 - Quy Ước Đặt Tên (Mục 4)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ):
+>      - *Vì sao bắt buộc?* Đặt tên hàm chuẩn `calculateTotal`, `filterValidUsers`.
+>   2. **Kiểu dữ liệu Function** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1182-function-hàm):
+>      - *Vì sao bắt buộc?* Hiểu hàm như một biến để gán vào `const` và truyền làm callback.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 <a id="mục-lục"></a>
 ## Mục Lục
 

@@ -1,5 +1,19 @@
 # Bài Tập 07: Truthy & Falsy trong JavaScript
 
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [07 - Truthy & Falsy Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **8 Kiểu dữ liệu JS** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#11-toàn-diện-về-kiểu-dữ-liệu-trong-javascript-data-types):
+>      - *Vì sao bắt buộc?* 8 giá trị Falsy bắt nguồn từ các kiểu dữ liệu này.
+>   2. **Toán tử `!` và `!!`** tại [06 - Toán Tử Logical (Mục 4)](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md#4-toán-tử-not--kỹ-thuật-double-not-):
+>      - *Vì sao bắt buộc?* Để giải quyết Phần 3 và kiểm tra ép kiểu boolean.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

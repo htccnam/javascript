@@ -11,6 +11,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu và làm chủ các câu lệnh rẽ nhánh và hệ thống toán tử trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Kiểu dữ liệu Boolean (`true` / `false`)** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.4)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#114-boolean-đúng--sai):
+>    - *Vì sao bắt buộc?* Mọi cấu trúc `if...else`, `switch...case` và toán tử ba ngôi `? :` đều hoạt động dựa trên việc đánh giá biểu thức ra `true` hoặc `false`.
+> 2. **Phân biệt `null` vs `undefined`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-2-không-hiểu-rõ-sự-khác-biệt-giữa-null-và-undefined):
+>    - *Vì sao bắt buộc?* Để hiểu bản chất của toán tử Nullish Coalescing `??` (chỉ bắt `null`/`undefined`) và toán tử `void 0` (chống shadowing undefined ở Mục 8.4).
+> 3. **Chuỗi & Template Literals** tại [04 - Chuỗi](file:///d:/github/studyProgram/javascript/docs/04-strings.md):
+>    - *Vì sao bắt buộc?* Kết quả rẽ nhánh thường in ra các chuỗi thông báo động ghép biến (`"Chào bạn " + name` hoặc `` `Chào bạn ${name}` ``).
+> * **Đích đến tiếp theo:** Toán tử logic cơ bản tại bài này sẽ được đào sâu cơ chế ngắn mạch tại [06 - Toán Tử Logical Chuyên Sâu](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md) và [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 

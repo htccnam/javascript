@@ -9,6 +9,20 @@
 
 ---
 
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu cấu trúc Object, từ khóa `this` và các phương thức tĩnh trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Ngữ cảnh `this` của Regular Function vs Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>    - *Vì sao bắt buộc?* Khi viết phương thức (Method) cho Object, dùng Function thường thì `this` trỏ đúng vào đối tượng gọi nó; nếu dùng Arrow Function thì `this` bị mất ngữ cảnh (trỏ ra ngoài Window/Global).
+> 2. **Bản chất Object lưu theo tham chiếu vùng nhớ Heap** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
+>    - *Vì sao bắt buộc?* Để hiểu vì sao copy object bằng dấu `=` (`obj2 = obj1`) sẽ làm thay đổi cả object gốc, từ đó hiểu tại sao cần dùng Spread Operator `{...obj}` hoặc `Object.assign()`.
+> 3. **Thao tác duyệt Mảng** tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+>    - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 10 để biến đổi dữ liệu.
+> * **Đích đến tiếp theo:** Object là viên gạch nền móng để bạn tiến sang [12 - Cấu Trúc Map & Set](file:///d:/github/studyProgram/javascript/docs/12-map-and-set.md) và quản lý phần tử DOM tại [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
+
+---
+
 ## Mục Lục
 <a id="mục-lục"></a>
 
