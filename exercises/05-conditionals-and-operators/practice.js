@@ -86,6 +86,22 @@ console.log("\nTháng cần kiểm tra:", month);
 
 
 
+// TODO 2.4: Bảo Vệ Biến Undefined & Giải Mã Toán Tử void 0
+// a. In ra kết quả của void 0, void (2 + 2), và void sum(5, 10):
+function sum(a, b) {
+    return a + b;
+}
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+
+// b. Viết hàm isSafeUndefined(val) bên trong có khai báo let undefined = "hacked":
+// - Trả về object { unsafeCheck: val === undefined, safeCheck: val === void 0 }
+// - Kiểm chứng với colors = ["red"] và phần tử colors[9]
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+
 console.groupEnd();
 
 // ============================================

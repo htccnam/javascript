@@ -125,6 +125,41 @@ console.log("      1. NOT chạy trước    : !false -> true");
 console.log("      2. AND chạy tiếp theo: false && false -> false");
 console.log("      3. OR chạy cuối cùng : true || false -> true");
 
+// 2.4. Bảo Vệ Biến Undefined & Giải Mã Toán Tử void 0
+console.log("\n--- Kiểm chứng Toán tử void & void 0 ---");
+
+// a. Biểu thức void luôn trả về undefined
+console.log("void 0              :", void 0);             // undefined
+console.log("void (2 + 2)        :", void (2 + 2));       // undefined
+
+function sum(a, b) {
+    return a + b;
+}
+console.log("void sum(5, 10)     :", void sum(5, 10));     // undefined
+console.log("   💡 Giải thích: Toán tử void đánh giá biểu thức (hàm sum vẫn tính ra 15), nhưng nuốt kết quả và luôn trả về undefined.");
+
+// b. Cạm bẫy Variable Shadowing với biến undefined trong hàm
+function isSafeUndefined(val) {
+    // ⚠️ Mô phỏng tình huống nguy hiểm: vô tình khai báo biến cục bộ tên là undefined
+    let undefined = "hacked";
+
+    const unsafeCheck = (val === undefined);
+    const safeCheck = (val === void 0);
+
+    return { unsafeCheck, safeCheck, localUndefined: undefined };
+}
+
+const colors = ["red"];
+const targetValue = colors[9]; // undefined thực sự
+const testCheck = isSafeUndefined(targetValue);
+
+console.log("\nKiểm tra giá trị colors[9] (vốn là undefined):");
+console.log("  - So sánh thường (val === undefined):", testCheck.unsafeCheck, `❌ (Bị sai vì biến undefined đã bị gán thành '${testCheck.localUndefined}')`);
+console.log("  - So sánh chuẩn (val === void 0)    :", testCheck.safeCheck, "✅ (Chính xác tuyệt đối!)");
+console.log("   💡 Vì sao thư viện lớn & Webpack/Terser luôn dùng 'void 0' thay vì 'undefined':");
+console.log("      1. 'void 0' bất biến 100%, không bao giờ bị Variable Shadowing ghi đè.");
+console.log("      2. Giảm dung lượng khi minify code: 'void 0' (6 ký tự) ngắn hơn 'undefined' (9 ký tự).");
+
 console.groupEnd();
 
 // ============================================

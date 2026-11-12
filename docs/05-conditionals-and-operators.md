@@ -21,7 +21,11 @@
 5. [Toán Tử So Sánh (Comparison Operators)](#5-toán-tử-so-sánh-comparison-operators)
 6. [Toán Tử Ba Ngôi (Ternary Operator)](#6-toán-tử-ba-ngôi-ternary-operator)
 7. [Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)](#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit)
-8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof)
+8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, void, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof)
+   - [8.1. Optional Chaining (?.)](#81-optional-chaining-)
+   - [8.2. Nullish Coalescing Operator (??)](#82-nullish-coalescing-operator-)
+   - [8.3. Các toán tử đặc biệt khác (typeof, instanceof, ...)](#83-các-toán-tử-đặc-biệt-khác)
+   - [8.4. Toán tử void — Khái Niệm, Cơ Chế & 3 Ứng Dụng Thực Tế](#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế)
 9. [Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)](#9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence)
 10. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#10-các-cạm-bẫy-phổ-biến-common-pitfalls)
 11. [Bảng So Sánh Tổng Kết Cốt Lõi](#11-bảng-so-sánh-tổng-kết-cốt-lõi)
@@ -301,6 +305,90 @@ const b = count ?? 10; // 0  (CHÍNH XÁC: vì 0 không phải là null/undefine
 - **Spread / Rest Operator (`...`):** Trải các phần tử của mảng/object (`const clone = [...arr]`) hoặc gom nhóm các tham số của hàm (`function sum(...nums)`).
 - **Toán tử Bitwise (`&`, `|`, `^`, `~`, `<<`, `>>`):** Thao tác trên từng bit nhị phân của số nguyên. Thường dùng trong mã hóa, đồ họa, xử lý nhị phân cấp thấp (ít dùng trong logic ứng dụng web).
 
+<a id="84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế"></a>
+### 8.4. Toán tử void — Khái Niệm, Cơ Chế & 3 Ứng Dụng Thực Tế
+
+> [!NOTE]
+> **Toán tử `void` (nghĩa là: không có giá trị)** là một toán tử một ngôi (Unary Operator) dùng để đánh giá một biểu thức bất kỳ và **luôn luôn trả về giá trị `undefined`**, bất kể biểu thức đó tính ra kết quả gì.
+
+#### 1. Cú pháp cơ bản:
+```javascript
+void expression;   // trả về undefined
+void(expression);  // dấu ngoặc đơn tùy chọn, thường dùng cho biểu thức phức tạp
+```
+
+Ví dụ minh họa:
+```javascript
+console.log(void 0);             // undefined
+console.log(void (2 + 2));       // undefined (tính 2 + 2 = 4, nhưng nuốt kết quả và trả về undefined)
+
+function sum(a, b) {
+    return a + b;
+}
+console.log(void sum(2, 3));     // undefined (hàm sum vẫn chạy nhưng kết quả trả về bị ép thành undefined)
+```
+
+---
+
+#### 2. Ba Ứng Dụng Thực Tế Kinh Điển Của void
+
+##### Ứng dụng 1: Tránh kết quả trả về ngoài ý muốn
+Khi bạn muốn thực thi một biểu thức nhưng **không muốn trả về kết quả của biểu thức đó**, dùng `void` sẽ đảm bảo hàm luôn trả về `undefined`.
+Ví dụ trong Arrow Function ngắn gọn:
+```javascript
+// Đảm bảo hàm callback thực thi hiệu ứng phụ nhưng tuyệt đối không leak kết quả trả về ra ngoài:
+const handleClick = () => void doSomethingSideEffect();
+```
+
+##### Ứng dụng 2: Ngăn chặn hành động mặc định của liên kết (`javascript:void(0)`)
+Trong các trang web cổ điển, `void` rất hay xuất hiện trong thuộc tính `href` của thẻ `<a>` để biến liên kết thành một nút bấm chỉ chạy JS mà không bị chuyển trang hay cuộn nhảy lên đầu trang:
+```html
+<!-- Khi nhấp vào, trang KHÔNG bị chuyển hướng hay reload vì kết quả là undefined -->
+<a href="javascript:void(0);" onclick="openPopup()">Mở Popup</a>
+```
+
+> [!IMPORTANT]
+> **Góc nhìn hiện đại:** Cú pháp `javascript:void(0)` hiện nay chủ yếu bắt gặp trong các dự án cũ (legacy code). Trong lập trình web hiện đại:
+> - Nếu là nút bấm thực hiện hành động $\rightarrow$ **Hãy dùng thẻ `<button type="button">`**.
+> - Nếu bắt buộc phải dùng thẻ `<a>` $\rightarrow$ Hãy chặn chuyển trang chuẩn mực bằng phương thức `event.preventDefault()` trong hàm xử lý sự kiện (bạn sẽ học chi tiết ở Bài 13: DOM).
+
+##### Ứng dụng 3: An toàn tuyệt đối khi so sánh với undefined (`void 0`)
+Trong JavaScript, `undefined` **không phải là một từ khóa bất biến được bảo vệ (reserved keyword)** như `null`, `true`, hay `false`!
+- Ở phạm vi toàn cục (Global Scope), biến `window.undefined` là read-only (từ ES5 trở đi).
+- Nhưng **bên trong một hàm**, bất kỳ ai cũng có thể khai báo một biến tên là `undefined` (bằng `var`, `let`, `const`) và gán giá trị khác cho nó! Hiện tượng này gọi là **Variable Shadowing (Che khuất biến)**.
+
+```javascript
+function checkValue(value) {
+    // ❌ Giả sử có một biến cục bộ vô tình đặt tên là undefined:
+    let undefined = "hacked";
+    
+    // So sánh thông thường sẽ bị SAI BẢN CHẤT:
+    console.log(value === undefined); // false (vì so sánh value với chuỗi "hacked"!)
+    
+    // ✅ Giải pháp chuẩn xác 100% với void 0:
+    console.log(value === void 0);    // true! (void 0 luôn luôn sinh ra undefined nguyên bản)
+}
+
+const colors = ["red"];
+checkValue(colors[9]); // colors[9] là undefined thực sự
+```
+
+##### ❓ Tại sao lại là `void 0` mà không phải `void 1`, `void true`, hay `void "xyz"`?
+Về mặt kỹ thuật, `void 1`, `void true`, `void null` đều trả về `undefined` y hệt nhau. Tuy nhiên, **`void 0`** đã trở thành quy ước chuẩn mực quốc tế (de-facto standard) bởi:
+1. `0` là ký tự ngắn nhất và dễ gõ nhất.
+2. **Tối ưu dung lượng khi Minify Code:** Các công cụ build hiện đại (như Terser, Webpack, Vite, UglifyJS) luôn tự động quét mã nguồn và thay thế từ `undefined` (9 ký tự) thành `void 0` (6 ký tự) để giảm kích thước file tải về trình duyệt.
+
+---
+
+#### 🏆 Bảng Tóm Tắt Về Toán Tử void
+
+| Đặc điểm | Mô tả |
+| :--- | :--- |
+| **Cú pháp** | `void expression` |
+| **Giá trị trả về** | Luôn luôn là `undefined` |
+| **Nhóm toán tử** | Toán tử một ngôi (Unary Operator) |
+| **Ứng dụng phổ biến nhất** | Dùng `void 0` để đại diện an toàn và siêu nhẹ cho `undefined` |
+
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
@@ -311,10 +399,10 @@ const b = count ?? 10; // 0  (CHÍNH XÁC: vì 0 không phải là null/undefine
 Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript xử lý tuần tự theo thứ tự ưu tiên nghiêm ngặt từ cao xuống thấp:
 
 | Mức ưu tiên | Nhóm toán tử | Các ký hiệu cụ thể | Hướng kết hợp (Associativity) |
-| :---: | :--- | :--- | :---: |
+| :---: | :--- | :--- | :--- | :---: |
 | **1 (Cao nhất)** | **Dấu ngoặc đơn** | `( ... )` | Từ trong ra ngoài |
 | **2** | **Truy cập thuộc tính & Gọi hàm** | `.` , `?.` , `[ ]` , `( )` | Trái sang phải |
-| **3** | **Toán tử một ngôi (Unary)** | `++` , `--` , `!` , `typeof` , `+` (dương) , `-` (âm) | Phải sang trái |
+| **3** | **Toán tử một ngôi (Unary)** | `++` , `--` , `!` , `typeof` , `void` , `delete` , `+` (dương) , `-` (âm) | Phải sang trái |
 | **4** | **Lũy thừa** | `**` | **Phải sang trái** ($2^{3^2} = 2^9$) |
 | **5** | **Nhân, Chia, Lấy dư** | `*` , `/` , `%` | Trái sang phải |
 | **6** | **Cộng, Trừ** | `+` , `-` | Trái sang phải |

@@ -778,6 +778,9 @@ console.log(userLocation);        // undefined
 console.log(typeof userLocation); // "undefined"
 ```
 
+> [!TIP]
+> **Bí kíp chuyên sâu (`void 0`):** Do `undefined` không phải là từ khóa bất biến trong JavaScript (có thể bị khai báo đè biến cục bộ trong hàm), các thư viện lớn thường dùng biểu thức `void 0` để đảm bảo luôn tạo ra giá trị `undefined` nguyên bản và an toàn tuyệt đối (xem chi tiết tại [Bài 05: Hệ thống Toán tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế)).
+
 ---
 
 <a id="null-trống-rỗng-có-chủ-đích--bug-typeof-null"></a>

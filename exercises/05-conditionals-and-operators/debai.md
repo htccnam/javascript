@@ -7,10 +7,11 @@
    - [Bài 1.1: Chào hỏi theo khung giờ trong ngày](#bài-1-1-chào-hỏi-theo-khung-giờ-trong-ngày)
    - [Bài 1.2: Tra cứu lịch làm việc trong tuần với switch...case](#bài-1-2-tra-cứu-lịch-làm-việc-trong-tuần-với-switch-case)
    - [Bài 1.3: So sánh nghiêm ngặt (===) vs lỏng lẻo (==)](#bài-1-3-so-sánh-nghiêm-ngặt-vs-lỏng-lẻo)
-2. [Phần 2: Cấp Độ Trung Bình (Ternary, Fall-Through, Short-Circuit)](#phần-2-cấp-độ-trung-bình-ternary-fall-through-short-circuit)
+2. [Phần 2: Cấp Độ Trung Bình (Ternary, Fall-Through, Short-Circuit, Toán Tử void)](#phần-2-cấp-độ-trung-bình-ternary-fall-through-short-circuit)
    - [Bài 2.1: Rút gọn trạng thái đơn hàng bằng Toán tử ba ngôi](#bài-2-1-rút-gọn-trạng-thái-đơn-hàng-bằng-toán-tử-ba-ngôi)
    - [Bài 2.2: Kỹ thuật Fall-through và gom nhóm case trong switch](#bài-2-2-kỹ-thuật-fall-through-và-gom-nhóm-case-trong-switch)
    - [Bài 2.3: Đoản mạch (Short-Circuit) với &&, || và !](#bài-2-3-đoản-mạch-short-circuit-với-và)
+   - [Bài 2.4: Bảo Vệ Biến Undefined & Giải Mã Toán Tử void 0](#bài-2-4-bảo-vệ-biến-undefined--giải-mã-toán-tử-void-0)
 3. [Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)](#phần-3-cấp-độ-thực-chiến-role-checker-tính-cước-vận-chuyển)
    - [Bài 3.1: Hệ thống kiểm soát quyền truy cập đa tầng](#bài-3-1-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng)
    - [Bài 3.2: Máy tính tính cước phí vận chuyển (Shipping Calculator)](#bài-3-2-máy-tính-tính-cước-phí-vận-chuyển-shipping-calculator)
@@ -121,7 +122,43 @@ const g = !false || false && false; // Chú ý độ ưu tiên ! > && > ||
 
 ---
 
-<a id="phần-3-cấp-độ-thực-chiến-role-checker-tính-cước-vận-chuyển"></a>
+<a id="bài-2-4-bảo-vệ-biến-undefined--giải-mã-toán-tử-void-0"></a>
+### Bài 2.4: Bảo Vệ Biến Undefined & Giải Mã Toán Tử void 0
+
+**Mô tả:**
+Toán tử `void` là một toán tử một ngôi độc đáo trong JavaScript, luôn đánh giá biểu thức và trả về `undefined`. Bài tập này giúp bạn làm chủ cơ chế của `void` và hiểu vì sao `void 0` được sử dụng rộng rãi trong các thư viện lớn.
+
+**Yêu cầu thực hiện:**
+1. **Thử nghiệm biểu thức `void`:**
+   - In ra kết quả của `void 0`, `void (2 + 2)`.
+   - Viết hàm `sum(a, b) { return a + b; }`. In ra kết quả của `void sum(5, 10)` và giải thích giá trị nhận được.
+2. **Tái hiện cạm bẫy Variable Shadowing với `undefined`:**
+   - Viết hàm `isSafeUndefined(val)`:
+     ```javascript
+     function isSafeUndefined(val) {
+         // Cố tình tạo một biến cục bộ trùng tên undefined:
+         let undefined = "hacked";
+         
+         // 1. So sánh val với biến 'undefined' cục bộ:
+         const unsafeCheck = (val === undefined);
+         
+         // 2. So sánh val với 'void 0':
+         const safeCheck = (val === void 0);
+         
+         return { unsafeCheck, safeCheck };
+     }
+     ```
+   - Thử nghiệm gọi hàm với một mảng có index không tồn tại:
+     ```javascript
+     const colors = ["red"];
+     const result = isSafeUndefined(colors[9]);
+     ```
+   - In ra kết quả và giải thích vì sao `unsafeCheck` ra `false` trong khi `safeCheck` ra `true`.
+3. **Phân tích thực tế:**
+   - Trả lời: Tại sao các công cụ minify code (như Webpack, Terser, Vite) lại tự động chuyển từ khóa `undefined` thành `void 0`?
+   - Trả lời: Trong thẻ HTML `<a>`, đoạn mã `href="javascript:void(0);"` có tác dụng gì và giải pháp hiện đại thay thế nó là gì?
+
+[⬆️ Quay lại Mục lục](#mục-lục)
 ## Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)
 
 <a id="bài-3-1-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng"></a>
