@@ -1,4 +1,4 @@
-# 13 - JSON & Xử Lý Lỗi Trong JavaScript (JSON & Exception Handling)
+# 14 - JSON & Xử Lý Lỗi Trong JavaScript (JSON & Exception Handling)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

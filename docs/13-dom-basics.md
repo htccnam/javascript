@@ -1,4 +1,4 @@
-# 12 - Thao Tác DOM & Sự Kiện (DOM Manipulation & Events) trong JavaScript
+# 13 - Thao Tác DOM & Sự Kiện (DOM Manipulation & Events) trong JavaScript
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

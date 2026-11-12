@@ -1,4 +1,4 @@
-# Bài Tập 13: JSON & Xử Lý Lỗi (Error Handling với try...catch) trong JavaScript
+# Bài Tập 14: JSON & Xử Lý Lỗi (Error Handling với try...catch) trong JavaScript
 
 ## Mục Lục
 <a id="mục-lục"></a>

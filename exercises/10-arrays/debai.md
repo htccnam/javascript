@@ -1,4 +1,4 @@
-# Bài Tập 09: Mảng trong JavaScript (Khai Báo, Duyệt & Phương Thức Xử Lý)
+# Bài Tập 10: Mảng trong JavaScript (Khai Báo, Duyệt & Phương Thức Xử Lý)
 
 ## Mục Lục
 <a id="mục-lục"></a>

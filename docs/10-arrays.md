@@ -1,4 +1,4 @@
-# 09 - Mảng Trong JavaScript (Arrays: Bản Chất & Toàn Bộ Phương Thức Thực Chiến)
+# 10 - Mảng Trong JavaScript (Arrays: Bản Chất & Toàn Bộ Phương Thức Thực Chiến)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

@@ -1,4 +1,4 @@
-# 10 - Đối Tượng Trong JavaScript (Object: Cấu Trúc, Phương Thức & Từ Khóa this)
+# 11 - Đối Tượng Trong JavaScript (Object: Cấu Trúc, Phương Thức & Từ Khóa this)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

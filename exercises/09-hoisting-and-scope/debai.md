@@ -1,4 +1,4 @@
-# Bài Tập 08: Làm Chủ Cơ Chế Hoisting & Scope Trong JavaScript
+# Bài Tập 09: Làm Chủ Cơ Chế Hoisting & Scope Trong JavaScript
 
 > **Mục tiêu thực hành:**
 > - Hiểu sâu bản chất 2 pha thực thi của JavaScript Engine: Creation Phase (cấp phát bộ nhớ) và Execution Phase (thực thi code).

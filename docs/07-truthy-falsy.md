@@ -1,4 +1,4 @@
-# 06 - Truthy & Falsy trong JavaScript (Bản Chất & Ép Kiểu Ngầm Định)
+# 07 - Truthy & Falsy trong JavaScript (Bản Chất & Ép Kiểu Ngầm Định)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

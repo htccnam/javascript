@@ -1,4 +1,4 @@
-# Bài Tập 06: Truthy & Falsy trong JavaScript
+# Bài Tập 07: Truthy & Falsy trong JavaScript
 
 ## Mục Lục
 <a id="mục-lục"></a>

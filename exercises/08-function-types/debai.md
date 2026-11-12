@@ -1,4 +1,4 @@
-# Bài Tập 07: 3 Loại Hàm Trong JavaScript (Declaration, Expression, Arrow)
+# Bài Tập 08: 3 Loại Hàm Trong JavaScript (Declaration, Expression, Arrow)
 
 > **Mục tiêu thực hành:**
 > - Nắm vững cú pháp và sự khác biệt giữa Function Declaration, Function Expression và Arrow Function.

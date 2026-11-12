@@ -1,4 +1,4 @@
-# 08 - Cơ Chế Hoisting & Scope Trong JavaScript (Từ Bản Chất Đến Thực Chiến)
+# 09 - Cơ Chế Hoisting & Scope Trong JavaScript (Từ Bản Chất Đến Thực Chiến)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

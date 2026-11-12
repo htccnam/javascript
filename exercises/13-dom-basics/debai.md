@@ -1,4 +1,4 @@
-# Bài Tập 12: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
+# Bài Tập 13: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
 
 > **Mục tiêu thực hành:**
 > - Sử dụng `document.querySelector` để tìm kiếm phần tử trên trang.

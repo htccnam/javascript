@@ -1,4 +1,4 @@
-# Bài Tập 10: Đối Tượng (Object) trong JavaScript
+# Bài Tập 11: Đối Tượng (Object) trong JavaScript
 
 ## Mục Lục
 <a id="mục-lục"></a>

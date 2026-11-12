@@ -1,4 +1,4 @@
-# 07 - 3 Loại Hàm Trong JavaScript (Declaration, Expression & Arrow Function)
+# 08 - 3 Loại Hàm Trong JavaScript (Declaration, Expression & Arrow Function)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**

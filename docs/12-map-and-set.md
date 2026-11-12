@@ -1,4 +1,4 @@
-# 11 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
+# 12 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
