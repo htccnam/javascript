@@ -321,17 +321,67 @@ for (var i = 0; i < 3; i++) {
     }, 100);
 }
 // Kết quả in ra sau 100ms: 3, 3, 3! (Không phải 0, 1, 2)
-// Vì: 'var i' không có Block Scope, chỉ có duy nhất 1 biến 'i' dùng chung cho cả vòng lặp.
-// Khi hàm setTimeout chạy, vòng for đã chạy xong và i đã bằng 3.
+```
 
-// --- DÙNG LET: CHUẨN XÁC ---
+> [!WARNING]
+> **Thắc mắc thường gặp:** *"Ủa, hàm `function() {}` bên trong `setTimeout` cũng có Function Scope mà, tại sao nó không ngăn biến `var i` lại?"*
+
+**Bóc tách 3 điểm cốt tử để hiểu tường tận:**
+
+1. **Biến `var i` thực sự được sinh ra ở ĐÂU?**
+   - Hãy nhìn kỹ: `var i` được khai báo ở dòng `for (var i = 0; ...)` — tức là **BÊN NGOÀI** hàm `setTimeout`!
+   - Bên trong thân hàm `function() { console.log(i); }` **hoàn toàn KHÔNG có dòng `var i` nào cả**.
+   - Vì `var` không có Block Scope, JavaScript Engine thực chất hiểu đoạn code trên là:
+     ```javascript
+     var i; // 👈 Nằm ở Global Scope / Scope cha bên ngoài!
+     for (i = 0; i < 3; i++) {
+         setTimeout(function() {
+             console.log(i); // Hàm này chỉ mở cửa sổ nhìn ra ngoài tìm i!
+         }, 100);
+     }
+     ```
+
+2. **Quy tắc chiếc lồng: Function Scope chỉ nhốt theo chiều từ TRONG ra NGOÀI!**
+   - Hàm chỉ nhốt những gì được sinh ra **bên trong** nó.
+   - Nhưng theo cơ chế **Scope Chain** (nguyên tắc "kính một chiều"), hàm con luôn luôn có toàn quyền **nhìn ra ngoài** để đọc biến của môi trường cha.
+   - Trong ví dụ trên, biến `i` giống như **"đồ vật để ở ngoài sân"**. Hàm bên trong `setTimeout` không hề sở hữu biến `i`, nó chỉ là kẻ **đứng trong nhà nhìn qua cửa sổ ra ngoài sân** để đọc giá trị của `i`.
+
+3. **Trục thời gian (Timeline): Tại sao lại là số 3?**
+   - Vòng lặp `for` chạy trong tích tắc ($0.0001\text{ ms}$):
+     - Lần lặp 1: Hẹn giờ hàm #1 (100ms nữa chạy).
+     - Lần lặp 2: Hẹn giờ hàm #2 (100ms nữa chạy).
+     - Lần lặp 3: Hẹn giờ hàm #3 (100ms nữa chạy).
+     - `i++` làm $i = 3$, điều kiện $3 < 3$ sai $\rightarrow$ **Vòng lặp `for` KẾT THÚC ngay lập tức, ô nhớ duy nhất của `i` đang giữ giá trị `3`!**
+   - **100ms sau:** 3 hàm hẹn giờ mới lần lượt được lôi ra chạy. Cả 3 hàm cùng nhìn ra ngoài ô nhớ chung duy nhất $\rightarrow$ thấy số `3` $\rightarrow$ in ra: **`3, 3, 3`**!
+
+---
+
+**Cách giải quyết 1 (Chuẩn hiện đại ES6): Dùng `let`**
+```javascript
 for (let j = 0; j < 3; j++) {
     setTimeout(function() {
         console.log("let j:", j);
     }, 100);
 }
-// Kết quả in ra sau 100ms: 0, 1, 2!
-// Vì: 'let' có Block Scope. Mỗi vòng lặp tạo ra một phạm vi mới với một biến 'j' độc lập!
+// Kết quả: 0, 1, 2
+```
+*Vì sao `let` chạy đúng?* Vì `let` có **Block Scope**. Ở mỗi vòng lặp, JavaScript Engine tạo ra một **bản sao biến `j` mới toanh** độc lập cho lần lặp đó (*per-iteration binding*). Mỗi hàm `setTimeout` được giữ một biến `j` riêng của vòng lặp đó!
+
+---
+
+**Cách giải quyết 2 (Kỹ thuật thời ES5 trước 2015): Dùng IIFE**
+Trước khi ES6 ra đời, để biến `i` thực sự bị nhốt vào Function Scope, lập trình viên bắt buộc phải dùng **IIFE (Hàm tự gọi)** để truyền `i` vào làm **tham số** của hàm:
+```javascript
+for (var i = 0; i < 3; i++) {
+    (function(savedI) { // 👈 savedI là THAM SỐ CỦA HÀM!
+        // Tham số của hàm chính là biến nội bộ BÊN TRONG hàm!
+        // Lúc này savedI MỚI THỰC SỰ BỊ NHỐT trong Function Scope này!
+        setTimeout(function() {
+            console.log("iife:", savedI);
+        }, 100);
+    })(i); // Đóng gói giá trị i vào lồng ngay tại thời điểm vòng lặp chạy
+}
+// Kết quả: 0, 1, 2
 ```
 
 #### Bẫy 2: Quên từ khóa khai báo (`x = 10`) biến thành Biến Toàn Cục Tự Động (Implicit Global)
