@@ -1,70 +1,362 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài tập 03: Từ Khóa Khai Báo (var, let, const) & Kiểu Dữ Liệu</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #f8fafc;
-            color: #1e293b;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-        h1 { color: #2563eb; margin-top: 0; }
-        .instructions {
-            background-color: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 15px;
-            border-radius: 4px;
-            margin: 20px 0;
-        }
-        code {
-            background: #e2e8f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        .nav-links {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
-        }
-        .nav-links a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 03 — Từ Khóa Khai Báo (var, let, const), Scope & Kiểu Dữ Liệu</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --practice-accent: #0891b2;
+      --solution-accent: #7c3aed;
+      --tag-bg: #dbeafe;
+      --tag-text: #1e40af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 4px 24px -4px rgb(0 0 0 / 0.08);
+    }
+    .lesson-badge {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+    h1 {
+      font-size: 1.55rem;
+      color: #1e293b;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    /* Mode indicator */
+    .mode-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .mode-indicator.practice {
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+      color: var(--practice-accent);
+    }
+    .mode-indicator.solution {
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      color: var(--solution-accent);
+    }
+    .mode-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      animation: pulse 1.8s infinite;
+    }
+    .practice .mode-dot { background: var(--practice-accent); }
+    .solution .mode-dot { background: var(--solution-accent); }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      flex: 1;
+      justify-content: center;
+      min-width: 160px;
+    }
+    .btn-practice {
+      background: var(--practice-accent);
+      color: white;
+    }
+    .btn-practice:hover { background: #0e7490; transform: translateY(-1px); }
+    .btn-solution {
+      background: var(--solution-accent);
+      color: white;
+    }
+    .btn-solution:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn.active {
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.15), 0 4px 12px -2px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Divider */
+    .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+    /* Tips section */
+    .tip-box {
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: #1e40af;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .tip-box strong { color: #1e3a8a; }
+
+    /* Quick reference table */
+    .type-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 24px;
+    }
+    .type-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .type-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #475569;
+    }
+    .type-table tr:last-child td { border-bottom: none; }
+    .type-table code {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 0.8rem;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      color: #2563eb;
+    }
+    .warn { color: #dc2626; font-weight: 700; }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: #475569;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .nav-link:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Bài tập 03: Từ Khóa Khai Báo (var, let, const) & Kiểu Dữ Liệu</h1>
-        <div class="instructions">
-            <p><strong>Hướng dẫn xem kết quả:</strong></p>
-            <ol>
-                <li>Nhấn phím <code>F12</code> (hoặc chuột phải &rarr; chọn <strong>Kiểm tra</strong> / <strong>Inspect</strong>).</li>
-                <li>Chuyển qua tab <strong>Console</strong> để xem toàn bộ kết quả phân tích: Block Scope, thao tác mảng với <code>const</code>, 4 cạm bẫy thường gặp và 7 kiểu dữ liệu nguyên thủy.</li>
-            </ol>
-        </div>
-        <p>Tệp mã nguồn giải thích: <code>loigiai.js</code></p>
-        <div class="nav-links">
-            <a href="../../index.html">&larr; Quay lại Trang chủ Dashboard</a>
-            <a href="./debai.md">Xem Đề bài</a>
-        </div>
+  <div class="card">
+    <span class="lesson-badge">📚 Bài 03 — Variables & Data Types</span>
+    <h1>Từ Khóa Khai Báo, Scope & Kiểu Dữ Liệu</h1>
+    <p class="subtitle">var vs let vs const · Scope · Toàn diện 8 Kiểu Dữ Liệu JS</p>
+
+    <!-- Mode indicator -->
+    <div class="mode-indicator" id="modeIndicator">
+      <span class="mode-dot"></span>
+      <span id="modeText">Đang tải...</span>
     </div>
-    <script src="./loigiai.js"></script>
+
+    <!-- Nút chuyển đổi chế độ -->
+    <div class="btn-group">
+      <button class="btn btn-practice" id="btnPractice" onclick="switchMode('practice')">
+        📝 Chạy bài làm <span style="opacity:0.8;font-weight:400">(practice.js)</span>
+      </button>
+      <button class="btn btn-solution" id="btnSolution" onclick="switchMode('solution')">
+        💡 Lời giải mẫu <span style="opacity:0.8;font-weight:400">(loigiai.js)</span>
+      </button>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>Hướng dẫn:</strong> Nhấn nút để chọn chế độ chạy script, sau đó nhấn <strong>F12</strong> (hoặc chuột phải &rarr; chọn <strong>Kiểm tra</strong>) và chuyển sang tab <strong>Console</strong> để xem toàn bộ kết quả phân tích.
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Bảng tra cứu nhanh 8 kiểu dữ liệu -->
+    <p style="font-size:0.85rem;font-weight:700;color:#334155;margin-bottom:10px;">📋 Bảng tra cứu nhanh typeof & 8 Kiểu dữ liệu:</p>
+    <table class="type-table">
+      <thead>
+        <tr>
+          <th>Kiểu dữ liệu</th>
+          <th>Ví dụ</th>
+          <th>typeof trả về</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>String</td><td><code>"Nguyễn Văn A"</code></td><td><code>"string"</code></td></tr>
+        <tr><td>Number</td><td><code>42</code>, <code>3.14</code>, <code>NaN</code></td><td><code>"number"</code></td></tr>
+        <tr><td>BigInt</td><td><code>9007199254740991n</code></td><td><code>"bigint"</code></td></tr>
+        <tr><td>Boolean</td><td><code>true</code>, <code>false</code></td><td><code>"boolean"</code></td></tr>
+        <tr><td>Undefined</td><td><code>undefined</code></td><td><code>"undefined"</code></td></tr>
+        <tr>
+          <td>Null</td>
+          <td><code>null</code></td>
+          <td><code>"object"</code> <span class="warn">⚠️ Bug lịch sử!</span></td>
+        </tr>
+        <tr><td>Symbol</td><td><code>Symbol("id")</code></td><td><code>"symbol"</code></td></tr>
+        <tr>
+          <td>Array</td>
+          <td><code>["Táo", "Cam"]</code></td>
+          <td><code>"object"</code> <span class="warn">⚠️ Array.isArray()</span></td>
+        </tr>
+        <tr><td>Object</td><td><code>{ id: 1, name: "A" }</code></td><td><code>"object"</code></td></tr>
+        <tr><td>Function</td><td><code>function() {}</code></td><td><code>"function"</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Khung 4 ca bệnh khó của Dr. JavaScript -->
+    <p style="font-size:0.85rem;font-weight:700;color:#0e7490;margin: 18px 0 10px 0;">🩺 Bí kíp chẩn đoán của Dr. JavaScript (4 Ca Bệnh Khó):</p>
+    <table class="type-table">
+      <thead>
+        <tr>
+          <th>Ca bệnh</th>
+          <th>Triệu chứng nhầm lẫn</th>
+          <th>Công thức chẩn đoán chuẩn 100%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Number</strong></td>
+          <td><code>typeof NaN === "number"</code></td>
+          <td><code>typeof val === "number" && !isNaN(val)</code></td>
+        </tr>
+        <tr>
+          <td><strong>2. Null</strong></td>
+          <td><code>typeof null === "object"</code> ⚠️</td>
+          <td><code>val === null</code></td>
+        </tr>
+        <tr>
+          <td><strong>3. Array</strong></td>
+          <td><code>typeof [] === "object"</code></td>
+          <td><code>Array.isArray(val)</code></td>
+        </tr>
+        <tr>
+          <td><strong>4. Object</strong></td>
+          <td>Trùng cả <code>null</code> &amp; mảng <code>[]</code></td>
+          <td><code>typeof val === "object" && val !== null && !Array.isArray(val)</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <!-- Điều hướng -->
+    <div class="nav-links">
+      <a href="../../docs/03-variables-and-data-types.md" class="nav-link">📖 Đọc lý thuyết</a>
+      <a href="./debai.md" class="nav-link">📋 Xem đề bài</a>
+      <a href="../../index.html" class="nav-link">🏠 Trang chủ</a>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode') || 'practice';
+
+    const indicator = document.getElementById('modeIndicator');
+    const modeText = document.getElementById('modeText');
+    const btnPractice = document.getElementById('btnPractice');
+    const btnSolution = document.getElementById('btnSolution');
+
+    function switchMode(newMode) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', newMode);
+      window.location.href = url.toString();
+    }
+
+    function applyMode(mode) {
+      if (mode === 'solution') {
+        indicator.className = 'mode-indicator solution';
+        modeText.textContent = 'Chế độ: 💡 Lời giải mẫu (loigiai.js) đang chạy trong Console';
+        btnSolution.classList.add('active');
+        btnPractice.classList.remove('active');
+        loadScript('./loigiai.js');
+      } else {
+        indicator.className = 'mode-indicator practice';
+        modeText.textContent = 'Chế độ: 📝 Bài làm thực hành (practice.js) đang chạy trong Console';
+        btnPractice.classList.add('active');
+        btnSolution.classList.remove('active');
+        loadScript('./practice.js');
+      }
+    }
+
+    function loadScript(src) {
+      const existing = document.getElementById('dynamic-script');
+      if (existing) existing.remove();
+
+      const script = document.createElement('script');
+      script.id = 'dynamic-script';
+      script.src = src + '?t=' + Date.now();
+      script.onerror = () => {
+        console.error(`[Lỗi] Không thể tải file: ${src}`);
+      };
+      document.body.appendChild(script);
+    }
+
+    applyMode(mode);
+  </script>
 </body>
 </html>

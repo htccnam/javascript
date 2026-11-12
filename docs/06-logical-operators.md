@@ -25,11 +25,19 @@
    - [7.1. Cơ chế đoản mạch là gì?](#71-cơ-chế-đoản-mạch-là-gì)
    - [7.2. Giá trị trả về thực tế của && và || (Không chỉ là true/false!)](#72-giá-trị-trả-về-thực-tế-của-toán-tử)
    - [7.3. Ứng dụng thực tế kinh điển (Guarding, React Rendering, Fallback)](#73-ứng-dụng-thực-tế-kinh-điển)
-8. [Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)](#8-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls)
+8. [Toán Tử Nullish Coalescing (??) — Xử Lý Giá Trị Mặc Định ES2020](#8-toán-tử-nullish-coalescing-xử-lý-giá-trị-mặc-định-es2020)
+   - [8.1. Khái niệm & Cú pháp cơ bản](#81-khái-niệm-cú-pháp-cơ-bản)
+   - [8.2. Ví dụ sử dụng cơ bản](#82-ví-dụ-sử-dụng-cơ-bản)
+   - [8.3. Tình huống thực tế: Vấn đề của toán tử || với giá trị Falsy trong mảng](#83-tình-huống-thực-tế-vấn-đề-của-toán-tử-với-giá-trị-falsy-trong-mảng)
+   - [8.4. Cách khắc phục: if-else vs Toán tử 3 ngôi vs ??](#84-cách-khắc-phục-if-else-vs-toán-tử-3-ngôi-vs)
+   - [8.5. So sánh toàn diện Nullish Coalescing (??) và OR (||)](#85-so-sánh-toàn-diện-nullish-coalescing-và-or)
+   - [8.6. Cơ chế đoản mạch (Short-Circuit Evaluation) của ??](#86-cơ-chế-đoản-mạch-short-circuit-evaluation-của)
+   - [8.7. Cạm bẫy cú pháp: Bắt buộc dùng dấu ngoặc đơn () khi kết hợp với AND/OR](#87-cạm-bẫy-cú-pháp-bắt-buộc-dùng-dấu-ngoặc-đơn-khi-kết-hợp-với-and-or)
+9. [Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)](#9-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls)
    - [Bẫy 1: Dùng nhầm toán tử Bitwise & và | thay vì && và ||](#bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và)
    - [Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp && và ||](#bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và)
    - [Bẫy 3: Phép gán giá trị mặc định của || bị lỗi với số 0 và chuỗi rỗng](#bẫy-3-phép-gán-giá-trị-mặc-định-của-bị-lỗi-với-số-0-và-chuỗi-rỗng)
-9. [Bảng So Sánh Tổng Kết Cốt Lõi](#9-bảng-so-sánh-tổng-kết-cốt-lõi)
+10. [Bảng So Sánh Tổng Kết Cốt Lõi](#10-bảng-so-sánh-tổng-kết-cốt-lõi)
 
 ---
 
@@ -37,10 +45,11 @@
 ## 1. Toán Tử Logical Là Gì?
 Trong lập trình JavaScript, **toán tử logical (toán tử luận lý)** là các ký hiệu đặc biệt dùng để kết hợp hoặc biến đổi một hay nhiều biểu thức điều kiện. Kết quả của chúng giúp luồng chương trình đưa ra quyết định rẽ nhánh (`if...else`, vòng lặp) chính xác.
 
-JavaScript cung cấp 3 toán tử logical cơ bản:
+JavaScript cung cấp 4 toán tử logical chính:
 - **`&&` (Logical AND):** Phép hội logic (VÀ).
 - **`||` (Logical OR):** Phép tuyển logic (HOẶC).
 - **`!` (Logical NOT):** Phép phủ định (KHÔNG / ĐẢO NGƯỢC).
+- **`??` (Nullish Coalescing):** Phép gán giá trị mặc định an toàn cho `null` và `undefined` (từ ES2020).
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
@@ -381,8 +390,227 @@ console.log(getWelcomeMessage(""));               // "Xin chào, chúc bạn..."
 
 ---
 
-<a id="8-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls"></a>
-## 8. Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)
+<a id="8-toán-tử-nullish-coalescing-xử-lý-giá-trị-mặc-định-es2020"></a>
+## 8. Toán Tử Nullish Coalescing (??) — Xử Lý Giá Trị Mặc Định ES2020
+
+<a id="81-khái-niệm-cú-pháp-cơ-bản"></a>
+### 8.1. Khái niệm & Cú pháp cơ bản
+
+**Toán tử Nullish Coalescing (`??`)** là một toán tử logical trả về **toán hạng bên phải** khi toán hạng bên trái là `null` hoặc `undefined`. Ngược lại, nó sẽ trả về **toán hạng bên trái**.
+
+Được giới thiệu chính thức từ chuẩn **ECMAScript 2020 (ES11)**, toán tử `??` cung cấp giải pháp tiện lợi và chuẩn xác nhất để xử lý các giá trị `null` và `undefined` mà **không làm mất** các giá trị Falsy hợp lệ khác như số `0`, chuỗi rỗng `""`, hay `false`.
+
+#### Cú pháp sử dụng:
+```javascript
+let kết_quả = biến ?? giá_trị_mặc_định;
+```
+* **`biến`:** Giá trị bạn muốn kiểm tra.
+* **`giá_trị_mặc_định`:** Giá trị sẽ được sử dụng nếu `biến` là `null` hoặc `undefined`.
+* Nếu `biến` có **bất kỳ giá trị nào khác** ngoài `null` và `undefined` (kể cả `0`, `""`, `false`), giá trị của `biến` sẽ được giữ nguyên và sử dụng.
+
+---
+
+<a id="82-ví-dụ-sử-dụng-cơ-bản"></a>
+### 8.2. Ví dụ sử dụng cơ bản
+
+#### Ví dụ 1: Đặt giá trị mặc định khi `tenNguoiDung` là `null`
+```javascript
+let tenNguoiDung = null; // Giả sử tên người dùng trống
+let macDinh = "Khách";
+
+let tenHienThi = tenNguoiDung ?? macDinh;
+console.log(tenHienThi); // "Khách"
+// Ở đây, tenNguoiDung là null -> tenHienThi nhận giá trị "Khách" từ macDinh.
+```
+
+#### Ví dụ 2: Đặt giá trị mặc định khi `tenNguoiDung` là `undefined`
+```javascript
+let tenNguoiDung; // Biến chưa khởi tạo giá trị (undefined)
+let macDinh = "Khách";
+
+let tenHienThi = tenNguoiDung ?? macDinh;
+console.log(tenHienThi); // "Khách"
+// tenNguoiDung là undefined -> tenHienThi nhận giá trị "Khách" từ macDinh.
+```
+
+#### Ví dụ 3: Trường hợp người dùng có tên hợp lệ
+```javascript
+let tenNguoiDung = "Nguyễn Văn A";
+let macDinh = "Khách";
+
+let tenHienThi = tenNguoiDung ?? macDinh;
+console.log(tenHienThi); // "Nguyễn Văn A"
+// tenNguoiDung khác null và undefined -> lấy chính xác "Nguyễn Văn A".
+```
+
+---
+
+<a id="83-tình-huống-thực-tế-vấn-đề-của-toán-tử-với-giá-trị-falsy-trong-mảng"></a>
+### 8.3. Tình huống thực tế: Vấn đề của toán tử || với giá trị Falsy trong mảng
+
+Hãy xem xét một bài toán thực tế thường gặp: Xây dựng hàm `getElement(array, index, defaultValue)` để lấy phần tử trong mảng theo chỉ số `index`. Nếu phần tử đó không tồn tại (`undefined`) hoặc là `null`, hàm sẽ trả về `defaultValue`.
+
+#### Thử nghiệm 1: Sử dụng toán tử OR `||`
+```javascript
+function getElement(array, index, defaultValue) {
+    return array[index] || defaultValue;
+}
+
+let colors = ["Red", "Green", "Blue"];
+
+console.log(getElement(colors, 0, "Empty")); // "Red"
+console.log(getElement(colors, 1, "Empty")); // "Green"
+console.log(getElement(colors, 2, "Empty")); // "Blue"
+console.log(getElement(colors, 3, "Empty")); // "Empty" (index 3 không tồn tại -> undefined -> lấy "Empty" -> đúng!)
+```
+Ban đầu, kết quả có vẻ hoàn toàn như mong đợi!
+
+#### Thử nghiệm 2: Lỗi phát sinh khi mảng chứa số 0 (Falsy)
+```javascript
+let numbers = [1, 5, 0];
+
+console.log(getElement(numbers, 0, "Empty")); // 1
+console.log(getElement(numbers, 1, "Empty")); // 5
+console.log(getElement(numbers, 2, "Empty")); // "Empty" (❌ SAI LOGIC!)
+```
+> [!WARNING]
+> Tại vị trí `index = 2`, giá trị hợp lệ trong mảng là số `0`. Nhưng vì `0` là một giá trị **Falsy**, toán tử `||` coi đó là "không hợp lệ" và bỏ qua để lấy `defaultValue` $\rightarrow$ Kết quả in ra `"Empty"` thay vì `0`!
+
+#### Thử nghiệm 3: Lỗi phát sinh khi mảng chứa chuỗi rỗng `""` (Falsy)
+```javascript
+let strings = ["Hello", ""];
+
+console.log(getElement(strings, 0, "Empty")); // "Hello"
+console.log(getElement(strings, 1, "Empty")); // "Empty" (❌ SAI LOGIC!)
+```
+Phần tử tại `index = 1` là chuỗi rỗng `""`. Chuỗi rỗng là một giá trị hợp lệ của người dùng nhập, nhưng vì `""` là **Falsy**, toán tử `||` nhảy sang lấy `"Empty"`.
+
+---
+
+<a id="84-cách-khắc-phục-if-else-vs-toán-tử-3-ngôi-vs"></a>
+### 8.4. Cách khắc phục: if-else vs Toán tử 3 ngôi vs ??
+
+Để chỉ kiểm tra đúng `null` và `undefined` mà không ảnh hưởng tới `0` hay `""`:
+
+#### Cách 1: Dùng câu lệnh `if...else` truyền thống
+```javascript
+function getElement(array, index, defaultValue) {
+    const value = array[index];
+    if (value !== null && value !== undefined) {
+        return value;
+    }
+    return defaultValue;
+}
+```
+
+#### Cách 2: Dùng toán tử 3 ngôi (Ternary Operator)
+```javascript
+function getElement(array, index, defaultValue) {
+    const value = array[index];
+    const hasValue = value !== null && value !== undefined;
+    return hasValue ? value : defaultValue;
+}
+```
+Cả hai cách trên đều cho kết quả chính xác:
+```javascript
+console.log(getElement(["Hello", ""], 1, "Empty")); // "" (Chính xác!)
+console.log(getElement([1, 2, 0], 2, "Empty"));      // 0  (Chính xác!)
+```
+Tuy nhiên, code phải viết dài dòng và lặp lại điều kiện `!== null && !== undefined`.
+
+#### Cách 3: Sử dụng toán tử Nullish Coalescing `??` (Tối ưu tuyệt đối)
+```javascript
+function getElement(array, index, defaultValue) {
+    return array[index] ?? defaultValue;
+}
+
+let strings = ["Hello", ""];
+console.log(getElement(strings, 0, "Empty")); // "Hello"
+console.log(getElement(strings, 1, "Empty")); // "" (Giữ nguyên chuỗi rỗng!)
+console.log(getElement(strings, 2, "Empty")); // "Empty" (undefined -> fallback)
+
+let numbers = [2, 0];
+console.log(getElement(numbers, 0, "Empty")); // 2
+console.log(getElement(numbers, 1, "Empty")); // 0 (Giữ nguyên số 0!)
+console.log(getElement(numbers, 2, "Empty")); // "Empty" (undefined -> fallback)
+```
+Code trở nên ngắn gọn, thanh thoát, dễ đọc và thể hiện đúng 100% ý đồ logic của lập trình viên!
+
+---
+
+<a id="85-so-sánh-toàn-diện-nullish-coalescing-và-or"></a>
+### 8.5. So sánh toàn diện Nullish Coalescing (??) và OR (||)
+
+| Tiêu chí | Toán tử OR (`\|\|`) | Toán tử Nullish Coalescing (`??`) |
+| :--- | :--- | :--- |
+| **Quy tắc kích hoạt Fallback** | Kích hoạt khi vế trái là **bất kỳ giá trị Falsy nào** | **Chỉ kích hoạt** khi vế trái là `null` hoặc `undefined` |
+| **Hành vi với số `0`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `0` |
+| **Hành vi với chuỗi rỗng `""`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `""` |
+| **Hành vi với `false`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `false` |
+| **Hành vi với `NaN`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `NaN` |
+| **Khi nào nên sử dụng?** | Khi muốn giá trị hợp lệ **bắt buộc phải mang tính Truthy** | Khi xử lý dữ liệu cấu trúc (mảng, object, API) mà các giá trị `0`, `""`, `false` là dữ liệu thực tế |
+
+---
+
+<a id="86-cơ-chế-đoản-mạch-short-circuit-evaluation-của"></a>
+### 8.6. Cơ chế đoản mạch (Short-Circuit Evaluation) của ??
+
+Tương tự như `&&` và `||`, toán tử `??` cũng sở hữu tính chất **Đoản mạch (Short-circuit)**:
+* Toán tử `??` **chỉ tính toán vế thứ hai nếu vế thứ nhất là `null` hoặc `undefined`**.
+* Nếu vế thứ nhất có giá trị khác `null` và `undefined`, JavaScript sẽ trả về ngay giá trị đó mà **không thèm đụng tới vế thứ hai**.
+
+```javascript
+let message = null;
+// message là null -> Đi tiếp sang vế phải -> gọi hàm alert / console.log
+message ?? console.log("Không có message!"); // In ra: "Không có message!"
+
+let activeTitle = "Trang chủ";
+function computeDefaultTitle() {
+    console.log("Hàm tính toán tiêu đề phức tạp...");
+    return "Tiêu đề mặc định";
+}
+
+// activeTitle đã có giá trị hợp lệ -> Dừng ngay lập tức!
+// Hàm computeDefaultTitle() KHÔNG BAO GIỜ bị gọi:
+const finalTitle = activeTitle ?? computeDefaultTitle();
+console.log(finalTitle); // "Trang chủ"
+```
+
+---
+
+<a id="87-cạm-bẫy-cú-pháp-bắt-buộc-dùng-dấu-ngoặc-đơn-khi-kết-hợp-với-and-or"></a>
+### 8.7. Cạm bẫy cú pháp: Bắt buộc dùng dấu ngoặc đơn () khi kết hợp với AND/OR
+
+> [!CAUTION]
+> **Lỗi cú pháp (SyntaxError) phổ biến:**
+> Trong JavaScript, bạn **KHÔNG ĐƯỢC PHÉP** dùng trực tiếp toán tử `??` chung với `&&` hoặc `||` mà không có dấu ngoặc đơn `()`:
+> ```javascript
+> // ❌ LỖI CÚ PHÁP NGAY LẬP TỨC:
+> let result1 = value1 ?? value2 && value3; // SyntaxError: Cannot use '??' unparenthesized within '||' and '&&' expressions
+> let result2 = value1 || value2 ?? value3; // SyntaxError
+> ```
+
+#### Cách khắc phục: Luôn dùng dấu ngoặc đơn `()` để định rõ độ ưu tiên
+```javascript
+// ✅ Cách 1: Ưu tiên gom nhóm ?? trước:
+let result1 = (value1 ?? value2) && value3;
+
+// ✅ Cách 2: Ưu tiên gom nhóm && trước:
+let result2 = value1 ?? (value2 && value3);
+```
+
+#### Tại sao JavaScript lại đưa ra quy tắc cấm này?
+Quy tắc này được đặt ra để **bảo vệ lập trình viên tránh các lỗi logic ngầm**:
+* Cả `&&`, `||` và `??` đều có tính chất đoản mạch.
+* Nếu JS tự ý quy định độ ưu tiên giữa `??` và `||`/`&&`, người đọc code sẽ rất dễ nhầm lẫn về thứ tự thực thi của biểu thức.
+* Ép buộc lập trình viên phải đặt dấu ngoặc đơn `()` giúp code luôn **tường minh, dễ đọc và dễ bảo trì**.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="9-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls"></a>
+## 9. Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)
 
 <a id="bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và"></a>
 ### Bẫy 1: Dùng nhầm toán tử Bitwise `&` và `|` thay vì `&&` và `||`
@@ -453,14 +681,15 @@ console.log(fixedScore); // 0 (Chính xác! ?? chỉ bỏ qua null và undefined
 
 ---
 
-<a id="9-bảng-so-sánh-tổng-kết-cốt-lõi"></a>
-## 9. Bảng So Sánh Tổng Kết Cốt Lõi
+<a id="10-bảng-so-sánh-tổng-kết-cốt-lõi"></a>
+## 10. Bảng So Sánh Tổng Kết Cốt Lõi
 
-| Toán tử | Tên gọi | Điều kiện trả về `true` | Hành vi đoản mạch (Short-circuit) | Khi nào nên sử dụng? |
+| Toán tử | Tên gọi | Điều kiện kích hoạt / Trả về `true` | Hành vi đoản mạch (Short-circuit) | Khi nào nên sử dụng? |
 | :---: | :--- | :--- | :--- | :--- |
 | **`&&`** | Logical AND (VÀ) | Khi **tất cả** các biểu thức đều đúng (`true`) | Gặp Falsy đầu tiên $\rightarrow$ Dừng ngay | Kiểm tra điều kiện bắt buộc đồng thời, guarding. |
-| **`||`** | Logical OR (HOẶC) | Khi **ít nhất một** biểu thức đúng (`true`) | Gặp Truthy đầu tiên $\rightarrow$ Dừng ngay | Kiểm tra điều kiện thỏa hiệp một trong nhiều, fallback. |
+| **`||`** | Logical OR (HOẶC) | Khi **ít nhất một** biểu thức đúng (`true`) | Gặp Truthy đầu tiên $\rightarrow$ Dừng ngay | Kiểm tra điều kiện thỏa hiệp một trong nhiều, fallback đơn giản. |
 | **`!`** | Logical NOT (PHỦ ĐỊNH) | Đảo ngược giá trị logic (`!false === true`) | Không áp dụng (toán tử 1 ngôi) | Đảo cờ trạng thái, kiểm tra tính rỗng/phủ định. |
-| **`()`** | Dấu ngoặc tròn gom nhóm | Ép độ ưu tiên cao nhất trong biểu thức | Không áp dụng | **Bắt buộc dùng** khi kết hợp đan xen giữa `&&` và `||`. |
+| **`??`** | Nullish Coalescing | Trả về vế trái nếu khác `null`/`undefined` | Vế trái khác `null`/`undefined` $\rightarrow$ Dừng ngay | **Gán giá trị mặc định chuẩn xác**, bảo toàn số `0`, chuỗi rỗng `""`, `false`. |
+| **`()`** | Dấu ngoặc tròn gom nhóm | Ép độ ưu tiên cao nhất trong biểu thức | Không áp dụng | **Bắt buộc dùng** khi kết hợp đan xen giữa `&&`, `||` và `??`. |
 
 [⬆️ Quay lại Mục lục](#mục-lục)
