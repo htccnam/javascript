@@ -3,16 +3,17 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Phần 1: Khai Báo Bằng Array Literal & Duyệt Mảng](#phần-1-khai-báo-bằng-array-literal--duyệt-mảng)
+1. [Phần 1: Khai Báo Bằng Array Literal & Duyệt Mảng](#phần-1-khai-báo-bằng-array-literal-duyệt-mảng)
 2. [Phần 2: Khai Báo Bằng new Array() Constructor](#phần-2-khai-báo-bằng-new-array-constructor)
-3. [Phần 3: Thao Tác Thêm, Xóa Đầu/Cuối Mảng (push, pop, shift, unshift)](#phần-3-thao-tác-thêm-xóa-đầucuối-mảng-push-pop-shift-unshift)
-4. [Phần 4: Chèn, Xóa & Thay Thế Phần Tử Linh Hoạt (splice)](#phần-4-chèn-xóa--thay-thế-phần-tử-linh-hoạt-splice)
-5. [Phần 5: Lọc & Biến Đổi Dữ Liệu (filter, map)](#phần-5-lọc--biến-đổi-dữ-liệu-filter-map)
-6. [Phần 6: Tính Toán & Gom Nhóm Dữ Liệu (reduce)](#phần-6-tính-toán--gom-nhóm-dữ-liệu-reduce)
-7. [Phần 7: Kiểm Tra Điều Kiện & Tiện Ích Mảng (some, every, includes, flat, sort)](#phần-7-kiểm-tra-điều-kiện--tiện-ích-mảng-some-every-includes-flat-sort)
+3. [Phần 3: Thao Tác Thêm, Xóa Đầu/Cuối Mảng (push, pop, shift, unshift)](#phần-3-thao-tác-thêm-xóa-đầu-cuối-mảng-push-pop-shift-unshift)
+4. [Phần 4: Chèn, Xóa & Thay Thế Phần Tử Linh Hoạt (splice)](#phần-4-chèn-xóa-thay-thế-phần-tử-linh-hoạt-splice)
+5. [Phần 5: Lọc & Biến Đổi Dữ Liệu (filter, map)](#phần-5-lọc-biến-đổi-dữ-liệu-filter-map)
+6. [Phần 6: Tính Toán & Gom Nhóm Dữ Liệu (reduce)](#phần-6-tính-toán-gom-nhóm-dữ-liệu-reduce)
+7. [Phần 7: Kiểm Tra Điều Kiện & Tiện Ích Mảng (some, every, includes, flat, sort)](#phần-7-kiểm-tra-điều-kiện-tiện-ích-mảng-some-every-includes-flat-sort)
 
 ---
 
+<a id="phần-1-khai-báo-bằng-array-literal-duyệt-mảng"></a>
 ## Phần 1: Khai Báo Bằng Array Literal & Duyệt Mảng
 1. Tạo một mảng `colors` chứa 3 màu sắc bất kỳ bằng cú pháp Array Literal (`[]`).
 2. Duyệt qua mảng `colors` và in ra vị trí (index) kèm nội dung theo 3 cách:
@@ -25,6 +26,7 @@
 
 ---
 
+<a id="phần-2-khai-báo-bằng-new-array-constructor"></a>
 ## Phần 2: Khai Báo Bằng new Array() Constructor
 1. Tạo một mảng rỗng gồm 5 ô bằng `new Array(5)`. In ra mảng và kiểm tra độ dài `.length`.
 2. Tạo một mảng chứa 3 số: 10, 20, 30 bằng `new Array(10, 20, 30)`. In ra mảng và độ dài của nó.
@@ -34,6 +36,7 @@
 
 ---
 
+<a id="phần-3-thao-tác-thêm-xóa-đầu-cuối-mảng-push-pop-shift-unshift"></a>
 ## Phần 3: Thao Tác Thêm, Xóa Đầu/Cuối Mảng (push, pop, shift, unshift)
 Cho mảng ban đầu: `const friend = ["An", "Bình"];`
 1. Thêm khách hàng `"Cường"` vào cuối hàng đợi (`push`).
@@ -45,6 +48,7 @@ Cho mảng ban đầu: `const friend = ["An", "Bình"];`
 
 ---
 
+<a id="phần-4-chèn-xóa-thay-thế-phần-tử-linh-hoạt-splice"></a>
 ## Phần 4: Chèn, Xóa & Thay Thế Phần Tử Linh Hoạt (splice)
 Cho mảng: `const palette = ["Red", "Green", "Blue", "Yellow"];`
 1. Thay thế màu `"Blue"` bằng `"Purple"` bằng phương thức `splice()`.
@@ -54,6 +58,7 @@ Cho mảng: `const palette = ["Red", "Green", "Blue", "Yellow"];`
 
 ---
 
+<a id="phần-5-lọc-biến-đổi-dữ-liệu-filter-map"></a>
 ## Phần 5: Lọc & Biến Đổi Dữ Liệu (filter, map)
 Cho danh sách sản phẩm:
 ```javascript
@@ -71,6 +76,7 @@ const products = [
 
 ---
 
+<a id="phần-6-tính-toán-gom-nhóm-dữ-liệu-reduce"></a>
 ## Phần 6: Tính Toán & Gom Nhóm Dữ Liệu (reduce)
 Cho giỏ hàng:
 ```javascript
@@ -87,6 +93,7 @@ const cart = [
 
 ---
 
+<a id="phần-7-kiểm-tra-điều-kiện-tiện-ích-mảng-some-every-includes-flat-sort"></a>
 ## Phần 7: Kiểm Tra Điều Kiện & Tiện Ích Mảng (some, every, includes, flat, sort)
 1. Cho mảng điểm: `const examScores = [8.5, 7.0, 9.2, 4.5, 6.8];`
    - Dùng `some()` kiểm tra xem có học sinh nào bị điểm dưới 5.0 không?

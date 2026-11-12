@@ -14,20 +14,21 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-ifelse-ifelse-ifelse)
-2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switchcase-kỹ-thuật-fall-through)
+1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-if-else-if-else-if-else)
+2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switch-case-kỹ-thuật-fall-through)
 3. [Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x](#3-toán-tử-số-học-arithmetic-operators-khác-biệt-x-vs-x)
 4. [Toán Tử Gán (Assignment Operators)](#4-toán-tử-gán-assignment-operators)
 5. [Toán Tử So Sánh (Comparison Operators)](#5-toán-tử-so-sánh-comparison-operators)
 6. [Toán Tử Ba Ngôi (Ternary Operator)](#6-toán-tử-ba-ngôi-ternary-operator)
 7. [Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)](#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit)
-8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof-)
+8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof)
 9. [Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)](#9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence)
 10. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#10-các-cạm-bẫy-phổ-biến-common-pitfalls)
 11. [Bảng So Sánh Tổng Kết Cốt Lõi](#11-bảng-so-sánh-tổng-kết-cốt-lõi)
 
 ---
 
+<a id="1-câu-lệnh-điều-kiện-if-else-if-else-if-else"></a>
 ## 1. Câu Lệnh Điều Kiện if...else & if...else if...else
 
 ### 1.1. Cấu trúc `if...else` cơ bản
@@ -66,6 +67,7 @@ if (time < 12) {
 
 ---
 
+<a id="2-cấu-trúc-rẽ-nhánh-switch-case-kỹ-thuật-fall-through"></a>
 ## 2. Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through
 
 ### 2.1. Cú pháp và mục đích
@@ -123,6 +125,7 @@ switch (true) {
 
 ---
 
+<a id="3-toán-tử-số-học-arithmetic-operators-khác-biệt-x-vs-x"></a>
 ## 3. Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x
 
 Toán tử số học thực hiện các phép tính toán số học căn bản trong JavaScript:
@@ -157,6 +160,7 @@ console.log(x, y); // x = 6, y = 6
 
 ---
 
+<a id="4-toán-tử-gán-assignment-operators"></a>
 ## 4. Toán Tử Gán (Assignment Operators)
 
 Dùng để gán hoặc vừa tính toán vừa gán giá trị cho một biến:
@@ -186,6 +190,7 @@ console.log(nickname); // "Khách vãng lai"
 
 ---
 
+<a id="5-toán-tử-so-sánh-comparison-operators"></a>
 ## 5. Toán Tử So Sánh (Comparison Operators)
 
 Toán tử so sánh dùng để đối chiếu 2 giá trị và luôn trả về kết quả kiểu Boolean (`true` hoặc `false`):
@@ -212,6 +217,7 @@ console.log(0 === false);// false (number !== boolean)
 
 ---
 
+<a id="6-toán-tử-ba-ngôi-ternary-operator"></a>
 ## 6. Toán Tử Ba Ngôi (Ternary Operator)
 
 Toán tử ba ngôi là cú pháp rút gọn cho câu lệnh `if...else` đơn giản, trả về giá trị trực tiếp để gán cho biến hoặc return trong hàm:
@@ -236,6 +242,7 @@ if (age >= 18) {
 
 ---
 
+<a id="7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit"></a>
 ## 7. Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)
 
 Dùng để kết hợp hoặc đảo ngược các biểu thức điều kiện:
@@ -257,6 +264,7 @@ Dùng để kết hợp hoặc đảo ngược các biểu thức điều kiện
 
 ---
 
+<a id="8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof"></a>
 ## 8. Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)
 
 JavaScript hiện đại (ES6 đến ES2022) bổ sung các toán tử cực kỳ mạnh mẽ giúp viết code an toàn và ngắn gọn:
@@ -297,6 +305,7 @@ const b = count ?? 10; // 0  (CHÍNH XÁC: vì 0 không phải là null/undefine
 
 ---
 
+<a id="9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence"></a>
 ## 9. Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)
 
 Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript xử lý tuần tự theo thứ tự ưu tiên nghiêm ngặt từ cao xuống thấp:
@@ -323,6 +332,7 @@ Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript x�
 
 ---
 
+<a id="10-các-cạm-bẫy-phổ-biến-common-pitfalls"></a>
 ## 10. Các Cạm Bẫy Phổ Biến (Common Pitfalls)
 
 ### 10.1. Bẫy số 1: Dùng nhầm toán tử gán `=` trong điều kiện `if`
@@ -363,6 +373,7 @@ let res = n++ * 2; // res = 20, KHÔNG PHẢI 22! (vì n++ trả về 10 rồi m
 
 ---
 
+<a id="11-bảng-so-sánh-tổng-kết-cốt-lõi"></a>
 ## 11. Bảng So Sánh Tổng Kết Cốt Lõi
 
 | Cấu trúc / Toán tử | Khi nào nên sử dụng? | Lưu ý cốt lõi |

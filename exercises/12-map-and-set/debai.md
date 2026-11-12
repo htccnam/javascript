@@ -4,14 +4,15 @@
 <a id="mục-lục"></a>
 
 1. [Phần 1: Cấu Trúc Dữ Liệu Map (CRUD Cơ Bản)](#phần-1-cấu-trúc-dữ-liệu-map-crud-cơ-bản)
-2. [Phần 2: Sử Dụng Object & Function Làm Key Trong Map](#phần-2-sử-dụng-object--function-làm-key-trong-map)
-3. [Phần 3: Duyệt Map & Chuyển Đổi Map <-> Object / Array](#phần-3-duyệt-map--chuyển-đổi-map---object--array)
-4. [Phần 4: Cấu Trúc Dữ Liệu Set (CRUD & Tính Duy Nhất)](#phần-4-cấu-trúc-dữ-liệu-set-crud--tính-duy-nhất)
+2. [Phần 2: Sử Dụng Object & Function Làm Key Trong Map](#phần-2-sử-dụng-object-function-làm-key-trong-map)
+3. [Phần 3: Duyệt Map & Chuyển Đổi Map <-> Object / Array](#phần-3-duyệt-map-chuyển-đổi-map-object-array)
+4. [Phần 4: Cấu Trúc Dữ Liệu Set (CRUD & Tính Duy Nhất)](#phần-4-cấu-trúc-dữ-liệu-set-crud-tính-duy-nhất)
 5. [Phần 5: Lọc Trùng Mảng Bằng Set Trong Thực Tế](#phần-5-lọc-trùng-mảng-bằng-set-trong-thực-tế)
 6. [Phần 6: Các Phép Toán Tập Hợp (Union, Intersection, Difference)](#phần-6-các-phép-toán-tập-hợp-union-intersection-difference)
 
 ---
 
+<a id="phần-1-cấu-trúc-dữ-liệu-map-crud-cơ-bản"></a>
 ## Phần 1: Cấu Trúc Dữ Liệu Map (CRUD Cơ Bản)
 1. Tạo một Map rỗng tên `userRoles`.
 2. Thêm các cặp key-value sau vào `userRoles` bằng phương thức `.set()`:
@@ -27,6 +28,7 @@
 
 ---
 
+<a id="phần-2-sử-dụng-object-function-làm-key-trong-map"></a>
 ## Phần 2: Sử Dụng Object & Function Làm Key Trong Map
 1. Tạo 2 object người dùng: `userA = { name: "Huy" }` và `userB = { name: "Linh" }`.
 2. Tạo một Map tên `userPreferences`.
@@ -39,6 +41,7 @@
 
 ---
 
+<a id="phần-3-duyệt-map-chuyển-đổi-map-object-array"></a>
 ## Phần 3: Duyệt Map & Chuyển Đổi Map <-> Object / Array
 Cho Map lưu trữ bảng điểm sinh viên:
 ```javascript
@@ -57,6 +60,7 @@ const studentGrades = new Map([
 
 ---
 
+<a id="phần-4-cấu-trúc-dữ-liệu-set-crud-tính-duy-nhất"></a>
 ## Phần 4: Cấu Trúc Dữ Liệu Set (CRUD & Tính Duy Nhất)
 1. Khởi tạo một `Set` rỗng tên `tags`.
 2. Dùng `.add()` để thêm lần lượt các chuỗi: `"javascript"`, `"react"`, `"nodejs"`, `"javascript"` (thêm 2 lần để quan sát phản ứng loại trùng).
@@ -68,6 +72,7 @@ const studentGrades = new Map([
 
 ---
 
+<a id="phần-5-lọc-trùng-mảng-bằng-set-trong-thực-tế"></a>
 ## Phần 5: Lọc Trùng Mảng Bằng Set Trong Thực Tế
 Cho mảng chứa ID người dùng ghé thăm website:
 ```javascript
@@ -80,6 +85,7 @@ const visitorIds = [101, 102, 103, 101, 104, 102, 105, 101];
 
 ---
 
+<a id="phần-6-các-phép-toán-tập-hợp-union-intersection-difference"></a>
 ## Phần 6: Các Phép Toán Tập Hợp (Union, Intersection, Difference)
 Cho 2 tập hợp kỹ năng:
 ```javascript

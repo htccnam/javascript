@@ -3,13 +3,14 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Phần 1: Khai Báo, Truy Cập & Cập Nhật Object (Dot & Bracket Notation)](#phần-1-khai-báo-truy-cập--cập-nhật-object-dot--bracket-notation)
+1. [Phần 1: Khai Báo, Truy Cập & Cập Nhật Object (Dot & Bracket Notation)](#phần-1-khai-báo-truy-cập-cập-nhật-object-dot-bracket-notation)
 2. [Phần 2: Phương Thức (Method) và Từ Khóa this](#phần-2-phương-thức-method-và-từ-khóa-this)
-3. [Phần 3: Duyệt và Thống Kê Dữ Liệu (Object.keys, values, entries)](#phần-3-duyệt-và-thống-kê-dữ-liệu-objectkeys-values-entries)
-4. [Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)](#phần-4-chuyển-đổi-dữ-liệu-object---array-objectfromentries-objecthasown)
+3. [Phần 3: Duyệt và Thống Kê Dữ Liệu (Object.keys, values, entries)](#phần-3-duyệt-và-thống-kê-dữ-liệu-object-keys-values-entries)
+4. [Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)](#phần-4-chuyển-đổi-dữ-liệu-object-array-object-fromentries-object-hasown)
 
 ---
 
+<a id="phần-1-khai-báo-truy-cập-cập-nhật-object-dot-bracket-notation"></a>
 ## Phần 1: Khai Báo, Truy Cập & Cập Nhật Object (Dot & Bracket Notation)
 Tạo một object `car` gồm các thuộc tính: `brand: "Toyota"`, `model: "Camry"`, `year: 2020`.
 1. Thêm thuộc tính `color: "Black"` vào `car` bằng Dot notation (`.`).
@@ -22,6 +23,7 @@ Tạo một object `car` gồm các thuộc tính: `brand: "Toyota"`, `model: "C
 
 ---
 
+<a id="phần-2-phương-thức-method-và-từ-khóa-this"></a>
 ## Phần 2: Phương Thức (Method) và Từ Khóa this
 Tạo một object `rectangle` đại diện cho hình chữ nhật có:
 - Thuộc tính: `width: 10`, `height: 5`.
@@ -32,6 +34,7 @@ Tạo một object `rectangle` đại diện cho hình chữ nhật có:
 
 ---
 
+<a id="phần-3-duyệt-và-thống-kê-dữ-liệu-object-keys-values-entries"></a>
 ## Phần 3: Duyệt và Thống Kê Dữ Liệu (Object.keys, values, entries)
 Cho object chứa điểm số của một học sinh:
 ```javascript
@@ -52,6 +55,7 @@ const studentScores = {
 
 ---
 
+<a id="phần-4-chuyển-đổi-dữ-liệu-object-array-object-fromentries-object-hasown"></a>
 ## Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)
 Cho một mảng lưu trữ cấu hình dưới dạng cặp key-value:
 ```javascript

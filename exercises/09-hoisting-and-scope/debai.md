@@ -13,20 +13,22 @@
 ## Mục Lục
 
 - [Phần 1: Khám Phá Hoisting Với Biến (Cơ Bản)](#phần-1-khám-phá-hoisting-với-biến-cơ-bản)
-  - [Bài 1.1: Cơ chế Hoisting của `var`](#bài-11-cơ-chế-hoisting-của-var)
-  - [Bài 1.2: Vùng chết tạm thời (TDZ) với `let` và `const`](#bài-12-vùng-chết-tạm-thời-tdz-với-let-và-const)
+  - [Bài 1.1: Cơ chế Hoisting của `var`](#bài-1-1-cơ-chế-hoisting-của-var)
+  - [Bài 1.2: Vùng chết tạm thời (TDZ) với `let` và `const`](#bài-1-2-vùng-chết-tạm-thời-tdz-với-let-và-const)
 - [Phần 2: Function Declaration vs Function Expression (Trung Bình)](#phần-2-function-declaration-vs-function-expression-trung-bình)
-  - [Bài 2.1: Gọi Function Declaration trước định nghĩa](#bài-21-gọi-function-declaration-trước-định-nghĩa)
-  - [Bài 2.2: Gọi Function Expression với `var`](#bài-22-gọi-function-expression-với-var)
-  - [Bài 2.3: Gọi Function Expression với `const` (Arrow Function)](#bài-23-gọi-function-expression-với-const-arrow-function)
-- [Phần 3: Phạm Vi Hoisting & Thử Thách Thực Chiến (Nâng Cao)](#phần-3-phạm-vi-hoisting--thử-thách-thực-chiến-nâng-cao)
-  - [Bài 3.1: Hoisting trong phạm vi hàm ("Đầu phạm vi")](#bài-31-hoisting-trong-phạm-vi-hàm-đầu-phạm-vi)
-  - [Bài 3.2: Thử thách "Tư duy như JS Engine" (Mô phỏng sắp xếp bộ nhớ)](#bài-32-thử-thách-tư-duy-như-js-engine-mô-phỏng-sắp-xếp-bộ-nhớ)
+  - [Bài 2.1: Gọi Function Declaration trước định nghĩa](#bài-2-1-gọi-function-declaration-trước-định-nghĩa)
+  - [Bài 2.2: Gọi Function Expression với `var`](#bài-2-2-gọi-function-expression-với-var)
+  - [Bài 2.3: Gọi Function Expression với `const` (Arrow Function)](#bài-2-3-gọi-function-expression-với-const-arrow-function)
+- [Phần 3: Phạm Vi Hoisting & Thử Thách Thực Chiến (Nâng Cao)](#phần-3-phạm-vi-hoisting-thử-thách-thực-chiến-nâng-cao)
+  - [Bài 3.1: Hoisting trong phạm vi hàm ("Đầu phạm vi")](#bài-3-1-hoisting-trong-phạm-vi-hàm-đầu-phạm-vi)
+  - [Bài 3.2: Thử thách "Tư duy như JS Engine" (Mô phỏng sắp xếp bộ nhớ)](#bài-3-2-thử-thách-tư-duy-như-js-engine-mô-phỏng-sắp-xếp-bộ-nhớ)
 
 ---
 
+<a id="phần-1-khám-phá-hoisting-với-biến-cơ-bản"></a>
 ## Phần 1: Khám Phá Hoisting Với Biến (Cơ Bản)
 
+<a id="bài-1-1-cơ-chế-hoisting-của-var"></a>
 ### Bài 1.1: Cơ chế Hoisting của `var`
 1. Cho đoạn code sau:
    ```javascript
@@ -39,6 +41,7 @@
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-2-vùng-chết-tạm-thời-tdz-với-let-và-const"></a>
 ### Bài 1.2: Vùng chết tạm thời (TDZ) với `let` và `const`
 1. Hãy thử truy cập biến `soThuHai` (khai báo bằng `let`) và `soThuBa` (khai báo bằng `const`) trước dòng khai báo của chúng trong một khối `try...catch`.
 2. Quan sát và trả lời:
@@ -50,8 +53,10 @@
 
 ---
 
+<a id="phần-2-function-declaration-vs-function-expression-trung-bình"></a>
 ## Phần 2: Function Declaration vs Function Expression (Trung Bình)
 
+<a id="bài-2-1-gọi-function-declaration-trước-định-nghĩa"></a>
 ### Bài 2.1: Gọi Function Declaration trước định nghĩa
 1. Định nghĩa hàm `chaoMung(ten)` bằng cú pháp **Function Declaration** (in ra chuỗi `"Xin chào, " + ten`).
 2. Gọi hàm này **TRƯỚC** khi dòng định nghĩa xuất hiện.
@@ -59,6 +64,7 @@
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-2-2-gọi-function-expression-với-var"></a>
 ### Bài 2.2: Gọi Function Expression với `var`
 1. Gán một hàm ẩn danh vào biến `var tamBiet = function() { ... }`.
 2. Thử gọi `tamBiet()` **TRƯỚC** dòng gán đó bên trong khối `try...catch`.
@@ -68,6 +74,7 @@
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-2-3-gọi-function-expression-với-const-arrow-function"></a>
 ### Bài 2.3: Gọi Function Expression với `const` (Arrow Function)
 1. Gán một Arrow Function vào biến `const henGapLai = () => { ... }`.
 2. Thử gọi `henGapLai()` **TRƯỚC** dòng gán bên trong khối `try...catch`.
@@ -77,8 +84,10 @@
 
 ---
 
+<a id="phần-3-phạm-vi-hoisting-thử-thách-thực-chiến-nâng-cao"></a>
 ## Phần 3: Phạm Vi Hoisting & Thử Thách Thực Chiến (Nâng Cao)
 
+<a id="bài-3-1-hoisting-trong-phạm-vi-hàm-đầu-phạm-vi"></a>
 ### Bài 3.1: Hoisting trong phạm vi hàm ("Đầu phạm vi")
 Cho cấu trúc hàm `chayUngDung()` như sau:
 ```javascript
@@ -99,6 +108,7 @@ function chayUngDung() {
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-3-2-thử-thách-tư-duy-như-js-engine-mô-phỏng-sắp-xếp-bộ-nhớ"></a>
 ### Bài 3.2: Thử thách "Tư duy như JS Engine" (Mô phỏng sắp xếp bộ nhớ)
 Cho đoạn code lộn xộn sau:
 ```javascript

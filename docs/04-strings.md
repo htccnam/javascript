@@ -14,25 +14,27 @@
 ## Mục Lục
 
 - [1. Tìm hiểu về chuỗi](#1-tìm-hiểu-về-chuỗi)
-  - [1.1. Chuỗi là gì?](#11-chuỗi-là-gì)
-  - [1.2. Tạo chuỗi với nháy đơn (`' '`)](#12-tạo-chuỗi-với-nháy-đơn--)
-  - [1.3. Tạo chuỗi với nháy kép (`" "`)](#13-tạo-chuỗi-với-nháy-kép--)
-  - [1.4. Tạo chuỗi với backticks (`` ` ` ``)](#14-tạo-chuỗi-với-backticks---)
+  - [1.1. Chuỗi là gì?](#1-1-chuỗi-là-gì)
+  - [1.2. Tạo chuỗi với nháy đơn (`' '`)](#1-2-tạo-chuỗi-với-nháy-đơn)
+  - [1.3. Tạo chuỗi với nháy kép (`" "`)](#1-3-tạo-chuỗi-với-nháy-kép)
+  - [1.4. Tạo chuỗi với backticks (`` ` ` ``)](#1-4-tạo-chuỗi-với-backticks)
 - [2. Nối chuỗi](#2-nối-chuỗi)
-  - [2.1. Toán tử nối chuỗi (`+`)](#21-toán-tử-nối-chuỗi-)
-  - [2.2. Ví dụ nối chuỗi](#22-ví-dụ-nối-chuỗi)
-  - [2.3. Lưu ý quan trọng khi sử dụng toán tử `+`](#23-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử-)
+  - [2.1. Toán tử nối chuỗi (`+`)](#2-1-toán-tử-nối-chuỗi)
+  - [2.2. Ví dụ nối chuỗi](#2-2-ví-dụ-nối-chuỗi)
+  - [2.3. Lưu ý quan trọng khi sử dụng toán tử `+`](#2-3-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử)
 - [3. Template Literals](#3-template-literals)
-  - [3.1. Template Literals là gì?](#31-template-literals-là-gì)
-  - [3.2. Nội suy chuỗi (String Interpolation)](#32-nội-suy-chuỗi-string-interpolation)
-  - [3.3. Các ví dụ về nội suy chuỗi](#33-các-ví-dụ-về-nội-suy-chuỗi)
+  - [3.1. Template Literals là gì?](#3-1-template-literals-là-gì)
+  - [3.2. Nội suy chuỗi (String Interpolation)](#3-2-nội-suy-chuỗi-string-interpolation)
+  - [3.3. Các ví dụ về nội suy chuỗi](#3-3-các-ví-dụ-về-nội-suy-chuỗi)
 - [4. Các lỗi thường gặp khi làm việc với chuỗi](#4-các-lỗi-thường-gặp-khi-làm-việc-với-chuỗi)
 - [5. Tóm tắt kiến thức cốt lõi](#5-tóm-tắt-kiến-thức-cốt-lõi)
 
 ---
 
+<a id="1-tìm-hiểu-về-chuỗi"></a>
 ## 1. Tìm hiểu về chuỗi
 
+<a id="1-1-chuỗi-là-gì"></a>
 ### 1.1. Chuỗi là gì?
 
 **Chuỗi (String)** là một kiểu dữ liệu nguyên thủy (primitive data type) trong JavaScript, được sử dụng để biểu diễn và lưu trữ văn bản.
@@ -58,6 +60,7 @@ const str3 = `This is yet another string!`;
 
 ---
 
+<a id="1-2-tạo-chuỗi-với-nháy-đơn"></a>
 ### 1.2. Tạo chuỗi với nháy đơn (`' '`)
 
 - **Đặc điểm:** Đây là cách truyền thống và phổ biến nhất để tạo chuỗi trong JavaScript.
@@ -70,6 +73,7 @@ console.log(quote); // Xin chào, đây là "JavaScript"!
 
 ---
 
+<a id="1-3-tạo-chuỗi-với-nháy-kép"></a>
 ### 1.3. Tạo chuỗi với nháy kép (`" "`)
 
 - **Đặc điểm:** Tương tự dấu nháy đơn, nhưng thường được ưu tiên khi nội dung chuỗi có chứa dấu nháy đơn.
@@ -103,6 +107,7 @@ console.log("C:\\Users\\Admin"); // In ra: C:\Users\Admin
 
 ---
 
+<a id="1-4-tạo-chuỗi-với-backticks"></a>
 ### 1.4. Tạo chuỗi với backticks (`` ` ` ``)
 
 - **Đặc điểm:** Hỗ trợ **nội suy chuỗi (String Interpolation)** — cho phép chèn biến hoặc biểu thức trực tiếp vào chuỗi qua cú pháp `${...}`, đồng thời cho phép **xuống dòng trực tiếp** trong chuỗi.
@@ -124,8 +129,10 @@ console.log(greeting);
 
 ---
 
+<a id="2-nối-chuỗi"></a>
 ## 2. Nối chuỗi
 
+<a id="2-1-toán-tử-nối-chuỗi"></a>
 ### 2.1. Toán tử nối chuỗi (`+`)
 
 Toán tử nối chuỗi cho phép kết hợp hai hoặc nhiều chuỗi thành một chuỗi duy nhất bằng cách sử dụng ký tự `+`.
@@ -140,6 +147,7 @@ console.log(greeting); // Xin chào, tôi là Huy.
 
 ---
 
+<a id="2-2-ví-dụ-nối-chuỗi"></a>
 ### 2.2. Ví dụ nối chuỗi
 
 #### a. Nối chuỗi cố định với chuỗi cố định:
@@ -169,6 +177,7 @@ console.log(message); // Đây là chuỗi chứa dấu nháy kép: "JavaScript 
 
 ---
 
+<a id="2-3-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử"></a>
 ### 2.3. Lưu ý quan trọng khi sử dụng toán tử `+`
 
 Khi sử dụng toán tử `+` trong JavaScript, bạn cần phân biệt rõ ràng giữa **nối chuỗi** và **phép cộng số học**.
@@ -229,8 +238,10 @@ console.log(messageFix3); // 'Tổng của 10 và 20 là: 30'
 
 ---
 
+<a id="3-template-literals"></a>
 ## 3. Template Literals
 
+<a id="3-1-template-literals-là-gì"></a>
 ### 3.1. Template Literals là gì?
 
 **Template Literals** (còn được gọi là **Template Strings**) là một tính năng mạnh mẽ được giới thiệu từ phiên bản **ECMAScript 2015 (ES6)**:
@@ -240,6 +251,7 @@ console.log(messageFix3); // 'Tổng của 10 và 20 là: 30'
 
 ---
 
+<a id="3-2-nội-suy-chuỗi-string-interpolation"></a>
 ### 3.2. Nội suy chuỗi (String Interpolation)
 
 Nội suy chuỗi là cơ chế nhúng trực tiếp biểu thức, biến vào văn bản thông qua sự kết hợp của:
@@ -255,6 +267,7 @@ console.log(story); // Và đây là câu chuyện của Linh.
 
 ---
 
+<a id="3-3-các-ví-dụ-về-nội-suy-chuỗi"></a>
 ### 3.3. Các ví dụ về nội suy chuỗi
 
 #### Ví dụ 1: Nội suy biến vào chuỗi
@@ -304,6 +317,7 @@ console.log(quote); // She said, "I'm learning JavaScript!"
 
 ---
 
+<a id="4-các-lỗi-thường-gặp-khi-làm-việc-với-chuỗi"></a>
 ## 4. Các lỗi thường gặp khi làm việc với chuỗi
 
 1. **Quên dùng ký tự thoát (Escape character):**
@@ -319,6 +333,7 @@ console.log(quote); // She said, "I'm learning JavaScript!"
 
 ---
 
+<a id="5-tóm-tắt-kiến-thức-cốt-lõi"></a>
 ## 5. Tóm tắt kiến thức cốt lõi
 
 | Đặc điểm | Nháy đơn (`' '`) | Nháy kép (`" "`) | Backticks (`` ` ` ``) |

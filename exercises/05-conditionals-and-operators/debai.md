@@ -3,22 +3,24 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Phần 1: Cấp Độ Cơ Bản (if...else, switch...case, so sánh nghiêm ngặt)](#phần-1-cấp-độ-cơ-bản-ifelse-switchcase-so-sánh-nghiêm-ngặt)
-   - [Bài 1.1: Chào hỏi theo khung giờ trong ngày](#bài-11-chào-hỏi-theo-khung-giờ-trong-ngày)
-   - [Bài 1.2: Tra cứu lịch làm việc trong tuần với switch...case](#bài-12-tra-cứu-lịch-làm-việc-trong-tuần-với-switchcase)
-   - [Bài 1.3: So sánh nghiêm ngặt (===) vs lỏng lẻo (==)](#bài-13-so-sánh-nghiêm-ngặt--vs-lỏng-lẻo-)
+1. [Phần 1: Cấp Độ Cơ Bản (if...else, switch...case, so sánh nghiêm ngặt)](#phần-1-cấp-độ-cơ-bản-if-else-switch-case-so-sánh-nghiêm-ngặt)
+   - [Bài 1.1: Chào hỏi theo khung giờ trong ngày](#bài-1-1-chào-hỏi-theo-khung-giờ-trong-ngày)
+   - [Bài 1.2: Tra cứu lịch làm việc trong tuần với switch...case](#bài-1-2-tra-cứu-lịch-làm-việc-trong-tuần-với-switch-case)
+   - [Bài 1.3: So sánh nghiêm ngặt (===) vs lỏng lẻo (==)](#bài-1-3-so-sánh-nghiêm-ngặt-vs-lỏng-lẻo)
 2. [Phần 2: Cấp Độ Trung Bình (Ternary, Fall-Through, Short-Circuit)](#phần-2-cấp-độ-trung-bình-ternary-fall-through-short-circuit)
-   - [Bài 2.1: Rút gọn trạng thái đơn hàng bằng Toán tử ba ngôi](#bài-21-rút-gọn-trạng-thái-đơn-hàng-bằng-toán-tử-ba-ngôi)
-   - [Bài 2.2: Kỹ thuật Fall-through và gom nhóm case trong switch](#bài-22-kỹ-thuật-fall-through-và-gom-nhóm-case-trong-switch)
-   - [Bài 2.3: Đoản mạch (Short-Circuit) với &&, || và !](#bài-23-đoản-mạch-short-circuit-với---và-)
-3. [Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)](#phần-3-cấp-độ-thực-chiến-role-checker--tính-cước-vận-chuyển)
-   - [Bài 3.1: Hệ thống kiểm soát quyền truy cập đa tầng](#bài-31-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng)
-   - [Bài 3.2: Máy tính tính cước phí vận chuyển (Shipping Calculator)](#bài-32-máy-tính-tính-cước-phí-vận-chuyển-shipping-calculator)
+   - [Bài 2.1: Rút gọn trạng thái đơn hàng bằng Toán tử ba ngôi](#bài-2-1-rút-gọn-trạng-thái-đơn-hàng-bằng-toán-tử-ba-ngôi)
+   - [Bài 2.2: Kỹ thuật Fall-through và gom nhóm case trong switch](#bài-2-2-kỹ-thuật-fall-through-và-gom-nhóm-case-trong-switch)
+   - [Bài 2.3: Đoản mạch (Short-Circuit) với &&, || và !](#bài-2-3-đoản-mạch-short-circuit-với-và)
+3. [Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)](#phần-3-cấp-độ-thực-chiến-role-checker-tính-cước-vận-chuyển)
+   - [Bài 3.1: Hệ thống kiểm soát quyền truy cập đa tầng](#bài-3-1-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng)
+   - [Bài 3.2: Máy tính tính cước phí vận chuyển (Shipping Calculator)](#bài-3-2-máy-tính-tính-cước-phí-vận-chuyển-shipping-calculator)
 
 ---
 
+<a id="phần-1-cấp-độ-cơ-bản-if-else-switch-case-so-sánh-nghiêm-ngặt"></a>
 ## Phần 1: Cấp Độ Cơ Bản (if...else, switch...case, so sánh nghiêm ngặt)
 
+<a id="bài-1-1-chào-hỏi-theo-khung-giờ-trong-ngày"></a>
 ### Bài 1.1: Chào hỏi theo khung giờ trong ngày
 Cho biến lưu thời gian hiện tại:
 ```javascript
@@ -33,6 +35,7 @@ const hour = 14; // Giờ trong ngày (0 đến 23)
 
 ---
 
+<a id="bài-1-2-tra-cứu-lịch-làm-việc-trong-tuần-với-switch-case"></a>
 ### Bài 1.2: Tra cứu lịch làm việc trong tuần với switch...case
 Cho biến lưu tên ngày trong tuần:
 ```javascript
@@ -49,6 +52,7 @@ const day = "Wednesday";
 
 ---
 
+<a id="bài-1-3-so-sánh-nghiêm-ngặt-vs-lỏng-lẻo"></a>
 ### Bài 1.3: So sánh nghiêm ngặt (===) vs lỏng lẻo (==)
 Hãy dự đoán và in ra màn hình kết quả boolean của các phép so sánh sau, đồng thời giải thích ngắn gọn nguyên nhân:
 1. `5 === "5"`
@@ -62,8 +66,10 @@ Hãy dự đoán và in ra màn hình kết quả boolean của các phép so s�
 
 ---
 
+<a id="phần-2-cấp-độ-trung-bình-ternary-fall-through-short-circuit"></a>
 ## Phần 2: Cấp Độ Trung Bình (Ternary, Fall-Through, Short-Circuit)
 
+<a id="bài-2-1-rút-gọn-trạng-thái-đơn-hàng-bằng-toán-tử-ba-ngôi"></a>
 ### Bài 2.1: Rút gọn trạng thái đơn hàng bằng Toán tử ba ngôi
 Cho thông tin trạng thái đơn hàng:
 ```javascript
@@ -78,6 +84,7 @@ const totalAmount = 250000;
 
 ---
 
+<a id="bài-2-2-kỹ-thuật-fall-through-và-gom-nhóm-case-trong-switch"></a>
 ### Bài 2.2: Kỹ thuật Fall-through và gom nhóm case trong switch
 Cho biến lưu số tháng trong năm:
 ```javascript
@@ -96,6 +103,7 @@ const month = 8; // Tháng 8
 
 ---
 
+<a id="bài-2-3-đoản-mạch-short-circuit-với-và"></a>
 ### Bài 2.3: Đoản mạch (Short-Circuit) với &&, || và !
 Dự đoán giá trị trả về thực tế của JavaScript khi chạy các dòng lệnh sau (không chỉ trả về boolean):
 ```javascript
@@ -113,8 +121,10 @@ const g = !false || false && false; // Chú ý độ ưu tiên ! > && > ||
 
 ---
 
+<a id="phần-3-cấp-độ-thực-chiến-role-checker-tính-cước-vận-chuyển"></a>
 ## Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)
 
+<a id="bài-3-1-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng"></a>
 ### Bài 3.1: Hệ thống kiểm soát quyền truy cập đa tầng
 Cho thông tin tài khoản người dùng:
 ```javascript
@@ -139,6 +149,7 @@ Người dùng được cấp quyền truy cập vào trang Quản Trị Hệ Th
 
 ---
 
+<a id="bài-3-2-máy-tính-tính-cước-phí-vận-chuyển-shipping-calculator"></a>
 ### Bài 3.2: Máy tính tính cước phí vận chuyển (Shipping Calculator)
 Cho thông tin đơn hàng:
 ```javascript

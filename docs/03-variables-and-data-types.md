@@ -17,14 +17,14 @@
 1. [Từ Khóa Khai Báo Là Gì?](#1-từ-khóa-khai-báo-là-gì)
 2. [Khác Biệt Cốt Lõi: Scope, Re-assign & Re-declaration (Bảng So Sánh var, let, const)](#2-khác-biệt-cốt-lõi-scope-re-assign-re-declaration-bảng-so-sánh-var-let-const)
 3. [Bản Chất Toàn Diện Về Phạm Vi (Scope) Trong JavaScript — Xóa Bỏ Hoàn Toàn Nhầm Lẫn](#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn)
-   - [3.1. Scope (Phạm Vi) Thực Sự Là Gì?](#31-scope-phạm-vi-thực-sự-là-gì)
-   - [3.2. Bốn Cấp Độ Scope Cốt Lõi Trong JavaScript](#32-bốn-cấp-độ-scope-cốt-lõi-trong-javascript)
-   - [3.3. So Sánh Sinh Tử: Function Scope vs Block Scope (Nguồn Cơn Mọi Nhầm Lẫn)](#33-so-sánh-sinh-tử-function-scope-vs-block-scope-nguồn-cơn-mọi-nhầm-lẫn)
-   - [3.4. Lexical Scope (Phạm Vi Tĩnh) & Ẩn Dụ "Kính Một Chiều"](#34-lexical-scope-phạm-vi-tĩnh-ẩn-dụ-kính-một-chiều)
-   - [3.5. Chuỗi Phạm Vi (Scope Chain) & Cơ Chế Tìm Kiếm Biến](#35-chuỗi-phạm-vi-scope-chain-cơ-chế-tìm-kiếm-biến)
-   - [3.6. Hiện Tượng Che Khuất Biến (Variable Shadowing)](#36-hiện-tượng-che-khuất-biến-variable-shadowing)
-   - [3.7. 4 Tình Huống "Lú Lẫn" Kinh Điển Nhất Về Scope & Cách Tránh Bẫy](#37-4-tình-huống-lú-lẫn-kinh-điển-nhất-về-scope-cách-tránh-bẫy)
-   - [3.8. Bảng "Cheat Sheet" Tổng Kết Toàn Diện Các Loại Scope](#38-bảng-cheat-sheet-tổng-kết-toàn-diện-các-loại-scope)
+   - [3.1. Scope (Phạm Vi) Thực Sự Là Gì?](#3-1-scope-phạm-vi-thực-sự-là-gì)
+   - [3.2. Bốn Cấp Độ Scope Cốt Lõi Trong JavaScript](#3-2-bốn-cấp-độ-scope-cốt-lõi-trong-javascript)
+   - [3.3. So Sánh Sinh Tử: Function Scope vs Block Scope (Nguồn Cơn Mọi Nhầm Lẫn)](#3-3-so-sánh-sinh-tử-function-scope-vs-block-scope-nguồn-cơn-mọi-nhầm-lẫn)
+   - [3.4. Lexical Scope (Phạm Vi Tĩnh) & Ẩn Dụ "Kính Một Chiều"](#3-4-lexical-scope-phạm-vi-tĩnh-ẩn-dụ-kính-một-chiều)
+   - [3.5. Chuỗi Phạm Vi (Scope Chain) & Cơ Chế Tìm Kiếm Biến](#3-5-chuỗi-phạm-vi-scope-chain-cơ-chế-tìm-kiếm-biến)
+   - [3.6. Hiện Tượng Che Khuất Biến (Variable Shadowing)](#3-6-hiện-tượng-che-khuất-biến-variable-shadowing)
+   - [3.7. 4 Tình Huống "Lú Lẫn" Kinh Điển Nhất Về Scope & Cách Tránh Bẫy](#3-7-4-tình-huống-lú-lẫn-kinh-điển-nhất-về-scope-cách-tránh-bẫy)
+   - [3.8. Bảng "Cheat Sheet" Tổng Kết Toàn Diện Các Loại Scope](#3-8-bảng-cheat-sheet-tổng-kết-toàn-diện-các-loại-scope)
 4. [Đi Sâu Vào const: Bản Chất Khóa Biến Chứ Không Khóa Giá Trị](#4-đi-sâu-vào-const-bản-chất-khóa-biến-chứ-không-khóa-giá-trị)
 5. [Hai Nhóm Kiểu Dữ Liệu: Primitive (Nguyên Thủy) vs Reference (Tham Chiếu)](#5-hai-nhóm-kiểu-dữ-liệu-primitive-nguyên-thủy-vs-reference-tham-chiếu)
 6. [const Với Kiểu Primitive vs const Với Mảng / Object](#6-const-với-kiểu-primitive-vs-const-với-mảng-object)
@@ -36,6 +36,7 @@
 
 ---
 
+<a id="1-từ-khóa-khai-báo-là-gì"></a>
 ## 1. Từ Khóa Khai Báo Là Gì?
 Trong JavaScript, **từ khóa khai báo (`var`, `let`, `const`)** quy định:
 1. Cách thức một biến được cấp phát vào bộ nhớ trong quá trình khởi tạo.
@@ -53,6 +54,7 @@ const API_URL = "https://api.example.com";
 
 ---
 
+<a id="2-khác-biệt-cốt-lõi-scope-re-assign-re-declaration-bảng-so-sánh-var-let-const"></a>
 ## 2. Khác Biệt Cốt Lõi: Scope, Re-assign & Re-declaration (Bảng So Sánh var, let, const)
 Cả `let` và `var` đều cho phép gán lại giá trị, còn `const` thì không. Tuy nhiên, lý do lớn nhất khiến `var` bị loại bỏ trong lập trình hiện đại nằm ở **phạm vi hoạt động (scope)** và **cơ chế Hoisting**:
 
@@ -67,6 +69,7 @@ Cả `let` và `var` đều cho phép gán lại giá trị, còn `const` thì k
 
 ---
 
+<a id="3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn"></a>
 ## 3. Bản Chất Toàn Diện Về Phạm Vi (Scope) Trong JavaScript — Xóa Bỏ Hoàn Toàn Nhầm Lẫn
 
 > [!IMPORTANT]
@@ -76,6 +79,7 @@ Cả `let` và `var` đều cho phép gán lại giá trị, còn `const` thì k
 
 ---
 
+<a id="3-1-scope-phạm-vi-thực-sự-là-gì"></a>
 ### 3.1. Scope (Phạm Vi) Thực Sự Là Gì?
 **Scope** (Phạm vi) là ranh giới không gian trong mã nguồn xác định:
 - Nơi một biến/hàm được **sinh ra**.
@@ -87,6 +91,7 @@ Nếu bạn cố tình truy cập một biến ở bên ngoài phạm vi cho ph�
 
 ---
 
+<a id="3-2-bốn-cấp-độ-scope-cốt-lõi-trong-javascript"></a>
 ### 3.2. Bốn Cấp Độ Scope Cốt Lõi Trong JavaScript
 
 JavaScript có **4 cấp độ Scope** xếp theo thứ tự từ rộng nhất đến hẹp nhất:
@@ -156,6 +161,7 @@ JavaScript có **4 cấp độ Scope** xếp theo thứ tự từ rộng nhất 
 
 ---
 
+<a id="3-3-so-sánh-sinh-tử-function-scope-vs-block-scope-nguồn-cơn-mọi-nhầm-lẫn"></a>
 ### 3.3. So Sánh Sinh Tử: Function Scope vs Block Scope (Nguồn Cơn Mọi Nhầm Lẫn)
 
 Hãy quan sát sự khác nhau 180 độ giữa khối lệnh `{}` và hàm `function`:
@@ -192,6 +198,7 @@ kiemTraHam();
 
 ---
 
+<a id="3-4-lexical-scope-phạm-vi-tĩnh-ẩn-dụ-kính-một-chiều"></a>
 ### 3.4. Lexical Scope (Phạm Vi Tĩnh) & Ẩn Dụ "Kính Một Chiều"
 
 JavaScript sử dụng cơ chế **Lexical Scope** (còn gọi là *Static Scope* - Phạm vi tĩnh).
@@ -246,6 +253,7 @@ testScope(); // 👉 Kết quả in ra là "Hà Nội", KHÔNG PHẢI "Đà Nẵ
 
 ---
 
+<a id="3-5-chuỗi-phạm-vi-scope-chain-cơ-chế-tìm-kiếm-biến"></a>
 ### 3.5. Chuỗi Phạm Vi (Scope Chain) & Cơ Chế Tìm Kiếm Biến
 
 Khi bạn yêu cầu JavaScript sử dụng một biến, JS Engine sẽ kích hoạt cơ chế **Scope Chain** (Chuỗi phạm vi) tìm kiếm theo quy tắc 1 chiều từ trong ra ngoài:
@@ -281,6 +289,7 @@ cap1(); // In ra: 100
 
 ---
 
+<a id="3-6-hiện-tượng-che-khuất-biến-variable-shadowing"></a>
 ### 3.6. Hiện Tượng Che Khuất Biến (Variable Shadowing)
 
 Khi một biến ở Scope con có **cùng tên** với một biến ở Scope cha, biến ở Scope con sẽ **"che khuất" (shadow)** biến ở Scope cha trong suốt phạm vi của nó:
@@ -309,6 +318,7 @@ let a = 10;
 
 ---
 
+<a id="3-7-4-tình-huống-lú-lẫn-kinh-điển-nhất-về-scope-cách-tránh-bẫy"></a>
 ### 3.7. 4 Tình Huống "Lú Lẫn" Kinh Điển Nhất Về Scope & Cách Tránh Bẫy
 
 #### Bẫy 1: Biến `var` trong vòng lặp `for` & bài toán bất đồng bộ
@@ -421,6 +431,7 @@ const tongDiem = 100;
 
 ---
 
+<a id="3-8-bảng-cheat-sheet-tổng-kết-toàn-diện-các-loại-scope"></a>
 ### 3.8. Bảng "Cheat Sheet" Tổng Kết Toàn Diện Các Loại Scope
 
 | Loại Scope | Được Tạo Ra Bởi Gì? | Từ Khóa Tuân Thủ | `var` Có Bị Giới Hạn Không? | Nhìn Thấy Gì? | Bên Ngoài Nhìn Thấy Không? |
@@ -434,6 +445,7 @@ const tongDiem = 100;
 
 ---
 
+<a id="4-đi-sâu-vào-const-bản-chất-khóa-biến-chứ-không-khóa-giá-trị"></a>
 ## 4. Đi Sâu Vào const: Bản Chất Khóa Biến Chứ Không Khóa Giá Trị
 
 ### 4.1. `const` là gì?
@@ -454,6 +466,7 @@ x = 20; // ❌ TypeError: Assignment to constant variable.
 
 ---
 
+<a id="5-hai-nhóm-kiểu-dữ-liệu-primitive-nguyên-thủy-vs-reference-tham-chiếu"></a>
 ## 5. Hai Nhóm Kiểu Dữ Liệu: Primitive (Nguyên Thủy) vs Reference (Tham Chiếu)
 Lý do vì sao `const` có hành vi khác nhau giữa số/chuỗi và mảng/object bắt nguồn từ cách JavaScript tổ chức bộ nhớ:
 
@@ -466,6 +479,7 @@ Lý do vì sao `const` có hành vi khác nhau giữa số/chuỗi và mảng/ob
 
 ---
 
+<a id="6-const-với-kiểu-primitive-vs-const-với-mảng-object"></a>
 ## 6. const Với Kiểu Primitive vs const Với Mảng / Object
 
 ### 6.1. `const` với kiểu Primitive (Gần như đóng băng hoàn toàn)
@@ -522,6 +536,7 @@ friend = 123;       // ❌ TypeError
 
 ---
 
+<a id="7-bảng-so-sánh-chi-tiết-const-vs-let"></a>
 ## 7. Bảng So Sánh Chi Tiết: const vs let
 
 | Hành động | `const` | `let` |
@@ -536,6 +551,7 @@ friend = 123;       // ❌ TypeError
 
 ---
 
+<a id="8-4-lỗi-thường-gặp-nhất-khi-làm-việc-với-const"></a>
 ## 8. 4 Lỗi Thường Gặp Nhất Khi Làm Việc Với const
 
 ### Lỗi 1: Nghĩ rằng `const` làm mảng trở nên bất biến
@@ -567,6 +583,7 @@ Array.isArray(arr); // ✅ true (Đây mới là cách chuẩn xác nhất để
 
 ---
 
+<a id="9-vì-sao-hiện-nay-không-ai-dùng-var-nữa"></a>
 ## 9. Vì Sao Hiện Nay Không Ai Dùng var Nữa?
 `var` là tàn dư từ phiên bản JavaScript đầu tiên năm 1995. Có 3 lý do cốt tử khiến `var` bị "cấm chỉ định" trong code hiện đại:
 
@@ -585,6 +602,7 @@ Array.isArray(arr); // ✅ true (Đây mới là cách chuẩn xác nhất để
 
 ---
 
+<a id="10-quy-tắc-vàng-khi-chọn-từ-khóa-khai-báo-biến"></a>
 ## 10. Quy Tắc Vàng Khi Chọn Từ Khóa Khai Báo Biến
 Trừ khi bạn phải bảo trì các dự án di sản (legacy code) từ hơn một thập kỷ trước, nguyên tắc làm việc chuẩn Clean Code quốc tế hiện nay là:
 
@@ -598,6 +616,7 @@ Trừ khi bạn phải bảo trì các dự án di sản (legacy code) từ hơn
 
 ---
 
+<a id="11-7-kiểu-dữ-liệu-nguyên-thủy-primitive-types-trong-javascript"></a>
 ## 11. 7 Kiểu Dữ Liệu Nguyên Thủy (Primitive Types) Trong JavaScript
 Các kiểu dữ liệu nguyên thủy lưu trữ giá trị trực tiếp tại vùng nhớ **Stack** (truy xuất siêu tốc). Chúng là những giá trị đơn lẻ và **không thể sửa đổi nội dung gốc (Immutable)**. Mọi thao tác biến đổi đều tạo ra một bản sao hoàn toàn mới:
 

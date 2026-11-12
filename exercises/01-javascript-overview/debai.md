@@ -12,20 +12,22 @@
 <a id="mục-lục"></a>
 ## Mục Lục
 
-- [Phần 1: Đặc Tính Động (Dynamic Typing) & Phân Biệt Hoa Thường (Cơ Bản)](#phần-1-đặc-tính-động-dynamic-typing--phân-biệt-hoa-thường-cơ-bản)
-  - [Bài 1.1: Trải nghiệm biến đổi kiểu dữ liệu động (Dynamic Typing)](#bài-11-trải-nghiệm-biến-đổi-kiểu-dữ-liệu-động-dynamic-typing)
-  - [Bài 1.2: Bẫy phân biệt chữ hoa - chữ thường (Case Sensitivity)](#bài-12-bẫy-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
-- [Phần 2: Cạm Bẫy Ép Kiểu & Phân Tích 5 Cách Viết JS (Trung Bình)](#phần-2-cạm-bẫy-ép-kiểu--phân-tích-5-cách-viết-js-trung-bình)
-  - [Bài 2.1: Phép tính toán lai và ép kiểu ngầm định (Type Coercion)](#bài-21-phép-tính-toán-lai-và-ép-kiểu-ngầm-định-type-coercion)
-  - [Bài 2.2: Phân tích ưu / nhược điểm của 5 cách viết JavaScript](#bài-22-phân-tích-ưu--nhược-điểm-của-5-cách-viết-javascript)
-- [Phần 3: Thử Thách Thực Chiến & Chẩn Đoán Môi Trường (Nâng Cao)](#phần-3-thử-thách-thực-chiến--chẩn-đoán-môi-trường-nâng-cao)
-  - [Bài 3.1: Xây dựng hàm chẩn đoán môi trường thực thi (Environment Detector)](#bài-31-xây-dựng-hàm-chẩn-đoán-môi-trường-thực-thi-environment-detector)
-  - [Bài 3.2: Refactor từ Inline Event sang External Event Listener chuẩn mực](#bài-32-refactor-từ-inline-event-sang-external-event-listener-chuẩn-mực)
+- [Phần 1: Đặc Tính Động (Dynamic Typing) & Phân Biệt Hoa Thường (Cơ Bản)](#phần-1-đặc-tính-động-dynamic-typing-phân-biệt-hoa-thường-cơ-bản)
+  - [Bài 1.1: Trải nghiệm biến đổi kiểu dữ liệu động (Dynamic Typing)](#bài-1-1-trải-nghiệm-biến-đổi-kiểu-dữ-liệu-động-dynamic-typing)
+  - [Bài 1.2: Bẫy phân biệt chữ hoa - chữ thường (Case Sensitivity)](#bài-1-2-bẫy-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
+- [Phần 2: Cạm Bẫy Ép Kiểu & Phân Tích 5 Cách Viết JS (Trung Bình)](#phần-2-cạm-bẫy-ép-kiểu-phân-tích-5-cách-viết-js-trung-bình)
+  - [Bài 2.1: Phép tính toán lai và ép kiểu ngầm định (Type Coercion)](#bài-2-1-phép-tính-toán-lai-và-ép-kiểu-ngầm-định-type-coercion)
+  - [Bài 2.2: Phân tích ưu / nhược điểm của 5 cách viết JavaScript](#bài-2-2-phân-tích-ưu-nhược-điểm-của-5-cách-viết-javascript)
+- [Phần 3: Thử Thách Thực Chiến & Chẩn Đoán Môi Trường (Nâng Cao)](#phần-3-thử-thách-thực-chiến-chẩn-đoán-môi-trường-nâng-cao)
+  - [Bài 3.1: Xây dựng hàm chẩn đoán môi trường thực thi (Environment Detector)](#bài-3-1-xây-dựng-hàm-chẩn-đoán-môi-trường-thực-thi-environment-detector)
+  - [Bài 3.2: Refactor từ Inline Event sang External Event Listener chuẩn mực](#bài-3-2-refactor-từ-inline-event-sang-external-event-listener-chuẩn-mực)
 
 ---
 
+<a id="phần-1-đặc-tính-động-dynamic-typing-phân-biệt-hoa-thường-cơ-bản"></a>
 ## Phần 1: Đặc Tính Động (Dynamic Typing) & Phân Biệt Hoa Thường (Cơ Bản)
 
+<a id="bài-1-1-trải-nghiệm-biến-đổi-kiểu-dữ-liệu-động-dynamic-typing"></a>
 ### Bài 1.1: Trải nghiệm biến đổi kiểu dữ liệu động (Dynamic Typing)
 Trong JavaScript, một biến có thể tự do thay đổi kiểu dữ liệu theo giá trị được gán.
 - **Yêu cầu:**
@@ -40,6 +42,7 @@ Trong JavaScript, một biến có thể tự do thay đổi kiểu dữ liệu 
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-2-bẫy-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity"></a>
 ### Bài 1.2: Bẫy phân biệt chữ hoa - chữ thường (Case Sensitivity)
 Cho 3 biến được đặt tên gần giống nhau:
 ```javascript
@@ -56,8 +59,10 @@ let USERNAME = "Charlie";
 
 ---
 
+<a id="phần-2-cạm-bẫy-ép-kiểu-phân-tích-5-cách-viết-js-trung-bình"></a>
 ## Phần 2: Cạm Bẫy Ép Kiểu & Phân Tích 5 Cách Viết JS (Trung Bình)
 
+<a id="bài-2-1-phép-tính-toán-lai-và-ép-kiểu-ngầm-định-type-coercion"></a>
 ### Bài 2.1: Phép tính toán lai và ép kiểu ngầm định (Type Coercion)
 Hãy **dự đoán kết quả** và **kiểu dữ liệu** của các biểu thức sau trước khi chạy code:
 ```javascript
@@ -80,6 +85,7 @@ const ketQua5 = null + 10;
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-2-2-phân-tích-ưu-nhược-điểm-của-5-cách-viết-javascript"></a>
 ### Bài 2.2: Phân tích ưu / nhược điểm của 5 cách viết JavaScript
 Cho 3 tình huống thực tế sau, hãy chọn cách viết JavaScript phù hợp nhất và giải thích lý do:
 1. **Tình huống A:** Bạn cần xây dựng toàn bộ logic tương tác cho một website thương mại điện tử lớn gồm 20 trang khác nhau.
@@ -92,8 +98,10 @@ Cho 3 tình huống thực tế sau, hãy chọn cách viết JavaScript phù h�
 
 ---
 
+<a id="phần-3-thử-thách-thực-chiến-chẩn-đoán-môi-trường-nâng-cao"></a>
 ## Phần 3: Thử Thách Thực Chiến & Chẩn Đoán Môi Trường (Nâng Cao)
 
+<a id="bài-3-1-xây-dựng-hàm-chẩn-đoán-môi-trường-thực-thi-environment-detector"></a>
 ### Bài 3.1: Xây dựng hàm chẩn đoán môi trường thực thi (Environment Detector)
 JavaScript là ngôn ngữ chạy được ở cả môi trường Trình duyệt (Browser) và môi trường Máy chủ (Node.js). Tuy nhiên, mỗi môi trường lại có các đối tượng toàn cục khác nhau:
 - Trình duyệt có đối tượng toàn cục `window` và `document`.
@@ -109,6 +117,7 @@ JavaScript là ngôn ngữ chạy được ở cả môi trường Trình duyệ
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-3-2-refactor-từ-inline-event-sang-external-event-listener-chuẩn-mực"></a>
 ### Bài 3.2: Refactor từ Inline Event sang External Event Listener chuẩn mực
 Cho đoạn mã HTML và JS cũ (Legacy Code):
 ```html

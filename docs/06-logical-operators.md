@@ -15,24 +15,25 @@
 1. [Toán Tử Logical Là Gì?](#1-toán-tử-logical-là-gì)
 2. [Toán Tử AND (&&) — Tất Cả Phải Cùng Đúng](#2-toán-tử-and-tất-cả-phải-cùng-đúng)
 3. [Toán Tử OR (||) — Chỉ Cần Một Điều Kiện Đúng](#3-toán-tử-or-chỉ-cần-một-điều-kiện-đúng)
-4. [Toán Tử NOT (!) & Kỹ Thuật Double NOT (!!)](#4-toán-tử-not-kỹ-thuật-double-not-)
+4. [Toán Tử NOT (!) & Kỹ Thuật Double NOT (!!)](#4-toán-tử-not-kỹ-thuật-double-not)
 5. [Kết Hợp Nhiều Toán Tử Logical](#5-kết-hợp-nhiều-toán-tử-logical)
-   - [5.1. Kết hợp nhiều toán tử AND (&&)](#51-kết-hợp-nhiều-toán-tử-and-)
-   - [5.2. Kết hợp nhiều toán tử OR (||)](#52-kết-hợp-nhiều-toán-tử-or-)
-   - [5.3. Kết hợp đan xen AND và OR](#53-kết-hợp-đan-xen-and-và-or)
+   - [5.1. Kết hợp nhiều toán tử AND (&&)](#5-1-kết-hợp-nhiều-toán-tử-and)
+   - [5.2. Kết hợp nhiều toán tử OR (||)](#5-2-kết-hợp-nhiều-toán-tử-or)
+   - [5.3. Kết hợp đan xen AND và OR](#5-3-kết-hợp-đan-xen-and-và-or)
 6. [Thứ Tự Ưu Tiên Của Các Toán Tử Logic](#6-thứ-tự-ưu-tiên-của-các-toán-tử-logic)
 7. [Bản Chất Cơ Chế Đoản Mạch (Short-Circuit Evaluation)](#7-bản-chất-cơ-chế-đoản-mạch-short-circuit-evaluation)
    - [7.1. Cơ chế đoản mạch là gì?](#71-cơ-chế-đoản-mạch-là-gì)
    - [7.2. Giá trị trả về thực tế của && và || (Không chỉ là true/false!)](#72-giá-trị-trả-về-thực-tế-của-toán-tử)
    - [7.3. Ứng dụng thực tế kinh điển (Guarding, React Rendering, Fallback)](#73-ứng-dụng-thực-tế-kinh-điển)
 8. [Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)](#8-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls)
-   - [Bẫy 1: Dùng nhầm toán tử Bitwise & và | thay vì && và ||](#bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và-)
-   - [Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp && và ||](#bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và-)
+   - [Bẫy 1: Dùng nhầm toán tử Bitwise & và | thay vì && và ||](#bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và)
+   - [Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp && và ||](#bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và)
    - [Bẫy 3: Phép gán giá trị mặc định của || bị lỗi với số 0 và chuỗi rỗng](#bẫy-3-phép-gán-giá-trị-mặc-định-của-bị-lỗi-với-số-0-và-chuỗi-rỗng)
 9. [Bảng So Sánh Tổng Kết Cốt Lõi](#9-bảng-so-sánh-tổng-kết-cốt-lõi)
 
 ---
 
+<a id="1-toán-tử-logical-là-gì"></a>
 ## 1. Toán Tử Logical Là Gì?
 Trong lập trình JavaScript, **toán tử logical (toán tử luận lý)** là các ký hiệu đặc biệt dùng để kết hợp hoặc biến đổi một hay nhiều biểu thức điều kiện. Kết quả của chúng giúp luồng chương trình đưa ra quyết định rẽ nhánh (`if...else`, vòng lặp) chính xác.
 
@@ -45,6 +46,7 @@ JavaScript cung cấp 3 toán tử logical cơ bản:
 
 ---
 
+<a id="2-toán-tử-and-tất-cả-phải-cùng-đúng"></a>
 ## 2. Toán Tử AND (&&) — Tất Cả Phải Cùng Đúng
 Biểu thức `expr1 && expr2` trả về `true` **khi và chỉ khi CẢ HAI vế đều là `true`**. Nếu có bất kỳ vế nào là `false`, toàn bộ biểu thức lập tức trả về `false`.
 
@@ -88,6 +90,7 @@ if (isWeatherGood && isDayOff) {
 
 ---
 
+<a id="3-toán-tử-or-chỉ-cần-một-điều-kiện-đúng"></a>
 ## 3. Toán Tử OR (||) — Chỉ Cần Một Điều Kiện Đúng
 Biểu thức `expr1 || expr2` trả về `true` **nếu ÍT NHẤT MỘT TRONG HAI vế là `true`**. Nó chỉ trả về `false` khi toàn bộ các vế đều là `false`.
 
@@ -118,6 +121,7 @@ if (isComedyAvailable || isActionAvailable) {
 
 ---
 
+<a id="4-toán-tử-not-kỹ-thuật-double-not"></a>
 ## 4. Toán Tử NOT (!) & Kỹ Thuật Double NOT (!!)
 
 ### 4.1. Phủ định giá trị với `!`
@@ -148,10 +152,12 @@ console.log(!!{});      // true (Object là Truthy)
 
 ---
 
+<a id="5-kết-hợp-nhiều-toán-tử-logical"></a>
 ## 5. Kết Hợp Nhiều Toán Tử Logical
 
 Trong các bài toán thực tế, một quyết định thường phụ thuộc vào nhiều điều kiện đan xen phức tạp.
 
+<a id="5-1-kết-hợp-nhiều-toán-tử-and"></a>
 ### 5.1. Kết hợp nhiều toán tử AND (`&&`)
 **Tình huống:** Đủ điều kiện đăng ký khóa học lập trình nâng cao khi thỏa mãn đồng thời:
 1. Đủ từ 16 tuổi trở lên (`age >= 16`).
@@ -173,6 +179,7 @@ if (age >= 16 && hasBasicComputerSkills && isRegistered) {
 
 ---
 
+<a id="5-2-kết-hợp-nhiều-toán-tử-or"></a>
 ### 5.2. Kết hợp nhiều toán tử OR (`||`)
 **Tình huống:** Một dịch vụ xem phim trực tuyến cho phép xem nội dung VIP nếu người dùng đáp ứng **ít nhất 1 trong 3** tiêu chuẩn:
 1. Là thành viên VIP (`isVipMember`).
@@ -194,6 +201,7 @@ if (isVipMember || hasGiftCode || hasPaidSubscription) {
 
 ---
 
+<a id="5-3-kết-hợp-đan-xen-and-và-or"></a>
 ### 5.3. Kết hợp đan xen AND và OR
 **Tình huống:** Một sàn thương mại điện tử tặng quà đặc biệt cho khách hàng khi:
 - (Khách hàng mới **HOẶC** là thành viên VIP) **VÀ** đơn hàng phải trên $500.000\text{ VNĐ}$.
@@ -216,6 +224,7 @@ if ((isNewUser || isVipMember) && purchaseAmount > 500000) {
 
 ---
 
+<a id="6-thứ-tự-ưu-tiên-của-các-toán-tử-logic"></a>
 ## 6. Thứ Tự Ưu Tiên Của Các Toán Tử Logic
 
 Khi một dòng lệnh chứa nhiều toán tử khác nhau mà không có dấu ngoặc tròn, JavaScript thực thi theo bảng xếp hạng độ ưu tiên nghiêm ngặt từ cao xuống thấp:
@@ -372,8 +381,10 @@ console.log(getWelcomeMessage(""));               // "Xin chào, chúc bạn..."
 
 ---
 
+<a id="8-các-cạm-bẫy-thường-gặp-nhất-common-pitfalls"></a>
 ## 8. Các Cạm Bẫy Thường Gặp Nhất (Common Pitfalls)
 
+<a id="bẫy-1-dùng-nhầm-toán-tử-bitwise-và-thay-vì-và"></a>
 ### Bẫy 1: Dùng nhầm toán tử Bitwise `&` và `|` thay vì `&&` và `||`
 Đây là lỗi cực kỳ phổ biến của người mới bắt đầu lập trình:
 - `&&` và `||` là **toán tử logic (Boolean logic)**: Làm việc với điều kiện đúng/sai và có tính đoản mạch.
@@ -397,6 +408,7 @@ console.log(count); // 1 (NGUY HIỂM: tangDem vẫn bị ép chạy, gây tác 
 
 ---
 
+<a id="bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và"></a>
 ### Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp `&&` và `||`
 Xem xét trường hợp tặng quà ở mục 5.3:
 ```javascript
@@ -424,6 +436,7 @@ if ((isNewUser || isVipMember) && purchaseAmount > 500000) {
 
 ---
 
+<a id="bẫy-3-phép-gán-giá-trị-mặc-định-của-bị-lỗi-với-số-0-và-chuỗi-rỗng"></a>
 ### Bẫy 3: Phép gán giá trị mặc định của `||` bị lỗi với số 0 và chuỗi rỗng
 Toán tử `||` thường được dùng để tạo fallback value:
 ```javascript
@@ -440,6 +453,7 @@ console.log(fixedScore); // 0 (Chính xác! ?? chỉ bỏ qua null và undefined
 
 ---
 
+<a id="9-bảng-so-sánh-tổng-kết-cốt-lõi"></a>
 ## 9. Bảng So Sánh Tổng Kết Cốt Lõi
 
 | Toán tử | Tên gọi | Điều kiện trả về `true` | Hành vi đoản mạch (Short-circuit) | Khi nào nên sử dụng? |

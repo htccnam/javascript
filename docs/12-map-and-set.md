@@ -12,15 +12,16 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Cấu Trúc Dữ Liệu Map: Bản Chất & Điểm Khác Biệt Với Object](#1-cấu-trúc-dữ-liệu-map-bản-chất--điểm-khác-biệt-với-object)
+1. [Cấu Trúc Dữ Liệu Map: Bản Chất & Điểm Khác Biệt Với Object](#1-cấu-trúc-dữ-liệu-map-bản-chất-điểm-khác-biệt-với-object)
 2. [Các Thao Tác CRUD Cơ Bản Với Map](#2-các-thao-tác-crud-cơ-bản-với-map)
 3. [Sức Mạnh Khi Dùng Object Làm Key](#3-sức-mạnh-khi-dùng-object-làm-key)
-4. [Duyệt Map & Chuyển Đổi Map <-> Object / Array](#4-duyệt-map--chuyển-đổi-map---object--array)
+4. [Duyệt Map & Chuyển Đổi Map <-> Object / Array](#4-duyệt-map-chuyển-đổi-map-object-array)
 5. [Cấu Trúc Dữ Liệu Set: Tính Duy Nhất (Uniqueness)](#5-cấu-trúc-dữ-liệu-set-tính-duy-nhất-uniqueness)
-6. [Thực Chiến Set: Lọc Trùng Mảng & Phép Toán Tập Hợp](#6-thực-chiến-set-lọc-trùng-mảng--phép-toán-tập-hợp)
+6. [Thực Chiến Set: Lọc Trùng Mảng & Phép Toán Tập Hợp](#6-thực-chiến-set-lọc-trùng-mảng-phép-toán-tập-hợp)
 
 ---
 
+<a id="1-cấu-trúc-dữ-liệu-map-bản-chất-điểm-khác-biệt-với-object"></a>
 ## 1. Cấu Trúc Dữ Liệu Map: Bản Chất & Điểm Khác Biệt Với Object
 
 | Tiêu chí so sánh | Plain Object (`{}`) | Map |
@@ -34,6 +35,7 @@
 
 ---
 
+<a id="2-các-thao-tác-crud-cơ-bản-với-map"></a>
 ## 2. Các Thao Tác CRUD Cơ Bản Với Map
 
 ```javascript
@@ -63,6 +65,7 @@ userRoles.clear();
 
 ---
 
+<a id="3-sức-mạnh-khi-dùng-object-làm-key"></a>
 ## 3. Sức Mạnh Khi Dùng Object Làm Key
 Với Plain Object thông thường, nếu bạn dùng object làm key: `obj[{ id: 1 }] = "data"`, key sẽ bị tự động ép kiểu thành chuỗi `"[object Object]"`.
 Trong Map, tham chiếu của Object được giữ nguyên vẹn:
@@ -82,6 +85,7 @@ console.log(preferences.get(userA).theme); // "dark"
 
 ---
 
+<a id="4-duyệt-map-chuyển-đổi-map-object-array"></a>
 ## 4. Duyệt Map & Chuyển Đổi Map <-> Object / Array
 
 ```javascript
@@ -109,6 +113,7 @@ const newMap = new Map(Object.entries(obj));
 
 ---
 
+<a id="5-cấu-trúc-dữ-liệu-set-tính-duy-nhất-uniqueness"></a>
 ## 5. Cấu Trúc Dữ Liệu Set: Tính Duy Nhất (Uniqueness)
 `Set` là tập hợp các giá trị không trùng lặp:
 
@@ -127,6 +132,7 @@ tags.delete("react");
 
 ---
 
+<a id="6-thực-chiến-set-lọc-trùng-mảng-phép-toán-tập-hợp"></a>
 ## 6. Thực Chiến Set: Lọc Trùng Mảng & Phép Toán Tập Hợp
 
 ### 6.1. Lọc trùng mảng siêu tốc

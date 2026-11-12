@@ -11,21 +11,23 @@
 <a id="mục-lục"></a>
 ## Mục Lục
 
-- [Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)](#phần-1-khai-báo-chuỗi--ký-tự-thoát-cơ-bản)
-  - [Bài 1.1: Trích dẫn lồng nhau](#bài-11-trích-dẫn-lồng-nhau)
-  - [Bài 1.2: In đường dẫn Windows](#bài-12-in-đường-dẫn-windows)
-  - [Bài 1.3: Định dạng văn bản với Escape Character](#bài-13-định-dạng-văn-bản-với-escape-character)
-- [Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)](#phần-2-toán-tử-nối-chuỗi--cạm-bẫy-cộng-số-trung-bình)
-  - [Bài 2.1: Dự đoán kết quả (Type Coercion)](#bài-21-dự-đoán-kết-quả-type-coercion)
-  - [Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)](#bài-22-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix)
-- [Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)](#phần-3-template-literals--nội-suy-chuỗi-thực-chiến)
-  - [Bài 3.1: Thẻ thông tin người dùng (User Card)](#bài-31-thẻ-thông-tin-người-dùng-user-card)
-  - [Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp](#bài-32-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp)
+- [Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)](#phần-1-khai-báo-chuỗi-ký-tự-thoát-cơ-bản)
+  - [Bài 1.1: Trích dẫn lồng nhau](#bài-1-1-trích-dẫn-lồng-nhau)
+  - [Bài 1.2: In đường dẫn Windows](#bài-1-2-in-đường-dẫn-windows)
+  - [Bài 1.3: Định dạng văn bản với Escape Character](#bài-1-3-định-dạng-văn-bản-với-escape-character)
+- [Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)](#phần-2-toán-tử-nối-chuỗi-cạm-bẫy-cộng-số-trung-bình)
+  - [Bài 2.1: Dự đoán kết quả (Type Coercion)](#bài-2-1-dự-đoán-kết-quả-type-coercion)
+  - [Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)](#bài-2-2-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix)
+- [Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)](#phần-3-template-literals-nội-suy-chuỗi-thực-chiến)
+  - [Bài 3.1: Thẻ thông tin người dùng (User Card)](#bài-3-1-thẻ-thông-tin-người-dùng-user-card)
+  - [Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp](#bài-3-2-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp)
 
 ---
 
+<a id="phần-1-khai-báo-chuỗi-ký-tự-thoát-cơ-bản"></a>
 ## Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)
 
+<a id="bài-1-1-trích-dẫn-lồng-nhau"></a>
 ### Bài 1.1: Trích dẫn lồng nhau
 Tạo một biến `quote1` chứa nội dung sau mà **không gây ra lỗi cú pháp**:
 > `Bác Hồ từng nói: "Không có gì quý hơn độc lập, tự do!"`
@@ -35,6 +37,7 @@ Tạo một biến `quote1` chứa nội dung sau mà **không gây ra lỗi cú
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-2-in-đường-dẫn-windows"></a>
 ### Bài 1.2: In đường dẫn Windows
 Tạo biến `windowsPath` chứa chính xác chuỗi đường dẫn sau:
 ```text
@@ -44,6 +47,7 @@ C:\Users\Admin\Documents\Javascript\Project
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-3-định-dạng-văn-bản-với-escape-character"></a>
 ### Bài 1.3: Định dạng văn bản với Escape Character
 In ra màn hình một đoạn thông báo gồm 3 dòng có thụt lề bằng cách sử dụng **chỉ một chuỗi nháy kép duy nhất** kết hợp với `\n` và `\t`:
 ```text
@@ -56,8 +60,10 @@ Danh sách môn học:
 
 ---
 
+<a id="phần-2-toán-tử-nối-chuỗi-cạm-bẫy-cộng-số-trung-bình"></a>
 ## Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)
 
+<a id="bài-2-1-dự-đoán-kết-quả-type-coercion"></a>
 ### Bài 2.1: Dự đoán kết quả (Type Coercion)
 Hãy **dự đoán kết quả** và **giải thích lý do** cho từng biểu thức sau trước khi chạy code:
 ```javascript
@@ -79,6 +85,7 @@ console.log("100" + -20);
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-2-2-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix"></a>
 ### Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)
 Một bạn lập trình viên mới vào nghề viết hàm tính tổng hóa đơn giỏ hàng như sau:
 
@@ -100,8 +107,10 @@ console.log("Tổng thanh toán:", total);
 
 ---
 
+<a id="phần-3-template-literals-nội-suy-chuỗi-thực-chiến"></a>
 ## Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)
 
+<a id="bài-3-1-thẻ-thông-tin-người-dùng-user-card"></a>
 ### Bài 3.1: Thẻ thông tin người dùng (User Card)
 Cho thông tin người dùng:
 ```javascript
@@ -124,6 +133,7 @@ const user = {
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-3-2-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp"></a>
 ### Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp
 Cho danh sách thông tin đơn hàng:
 ```javascript

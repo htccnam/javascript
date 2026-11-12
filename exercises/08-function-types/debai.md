@@ -11,24 +11,27 @@
 <a id="mục-lục"></a>
 ## Mục Lục
 
-- [Phần 1: Khai báo hàm & Rút gọn cú pháp (Cơ bản)](#phần-1-khai-báo-hàm--rút-gọn-cú-pháp-cơ-bản)
-  - [Bài 1.1: Function Declaration vs Function Expression](#bài-11-function-declaration-vs-function-expression)
-  - [Bài 1.2: Luyện tập rút gọn với Arrow Function](#bài-12-luyện-tập-rút-gọn-với-arrow-function)
-- [Phần 2: Kiểm chứng Hoisting & Vùng chết tạm thời (Trung bình)](#phần-2-kiểm-chứng-hoisting--vùng-chết-tạm-thời-trung-bình)
-  - [Bài 2.1: Dự đoán lỗi khi gọi trước định nghĩa](#bài-21-dự-đoán-lỗi-khi-gọi-trước-định-nghĩa)
+- [Phần 1: Khai báo hàm & Rút gọn cú pháp (Cơ bản)](#phần-1-khai-báo-hàm-rút-gọn-cú-pháp-cơ-bản)
+  - [Bài 1.1: Function Declaration vs Function Expression](#bài-1-1-function-declaration-vs-function-expression)
+  - [Bài 1.2: Luyện tập rút gọn với Arrow Function](#bài-1-2-luyện-tập-rút-gọn-với-arrow-function)
+- [Phần 2: Kiểm chứng Hoisting & Vùng chết tạm thời (Trung bình)](#phần-2-kiểm-chứng-hoisting-vùng-chết-tạm-thời-trung-bình)
+  - [Bài 2.1: Dự đoán lỗi khi gọi trước định nghĩa](#bài-2-1-dự-đoán-lỗi-khi-gọi-trước-định-nghĩa)
 - [Phần 3: Ứng dụng thực chiến làm Callback (Nâng cao)](#phần-3-ứng-dụng-thực-chiến-làm-callback-nâng-cao)
-  - [Bài 3.1: Xử lý dữ liệu sinh viên với Arrow Function](#bài-31-xử-lý-dữ-liệu-sinh-viên-với-arrow-function)
+  - [Bài 3.1: Xử lý dữ liệu sinh viên với Arrow Function](#bài-3-1-xử-lý-dữ-liệu-sinh-viên-với-arrow-function)
 
 ---
 
+<a id="phần-1-khai-báo-hàm-rút-gọn-cú-pháp-cơ-bản"></a>
 ## Phần 1: Khai báo hàm & Rút gọn cú pháp (Cơ bản)
 
+<a id="bài-1-1-function-declaration-vs-function-expression"></a>
 ### Bài 1.1: Function Declaration vs Function Expression
 1. Định nghĩa hàm `tinhTong(a, b)` bằng cú pháp **Function Declaration** nhận vào 2 số và trả về tổng của chúng.
 2. Định nghĩa hàm `tinhHieu(a, b)` bằng cú pháp **Function Expression** (gán vào biến `const`) nhận vào 2 số và trả về hiệu của chúng.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-2-luyện-tập-rút-gọn-với-arrow-function"></a>
 ### Bài 1.2: Luyện tập rút gọn với Arrow Function
 Chuyển đổi các hàm sau sang dạng **Arrow Function ngắn gọn nhất có thể**:
 1. Hàm tính tích:
@@ -57,8 +60,10 @@ Chuyển đổi các hàm sau sang dạng **Arrow Function ngắn gọn nhất c
 
 ---
 
+<a id="phần-2-kiểm-chứng-hoisting-vùng-chết-tạm-thời-trung-bình"></a>
 ## Phần 2: Kiểm chứng Hoisting & Vùng chết tạm thời (Trung bình)
 
+<a id="bài-2-1-dự-đoán-lỗi-khi-gọi-trước-định-nghĩa"></a>
 ### Bài 2.1: Dự đoán lỗi khi gọi trước định nghĩa
 Cho đoạn code sau, hãy **dự đoán kết quả** khi chạy từng hàm trước dòng định nghĩa:
 
@@ -94,8 +99,10 @@ const chayThu3 = () => {
 
 ---
 
+<a id="phần-3-ứng-dụng-thực-chiến-làm-callback-nâng-cao"></a>
 ## Phần 3: Ứng dụng thực chiến làm Callback (Nâng cao)
 
+<a id="bài-3-1-xử-lý-dữ-liệu-sinh-viên-với-arrow-function"></a>
 ### Bài 3.1: Xử lý dữ liệu sinh viên với Arrow Function
 Cho danh sách điểm thi của các học sinh:
 ```javascript

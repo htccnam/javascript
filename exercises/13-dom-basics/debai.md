@@ -12,16 +12,18 @@
 ## Mục Lục
 
 - [Phần 1: Thao tác giao diện cơ bản (Cơ bản)](#phần-1-thao-tác-giao-diện-cơ-bản-cơ-bản)
-  - [Bài 1.1: Bật / Tắt chế độ tối (Dark Mode Toggle)](#bài-11-bật--tắt-chế-độ-tối-dark-mode-toggle)
-  - [Bài 1.2: Bộ đếm ký tự trực tiếp (Live Character Counter)](#bài-12-bộ-đếm-ký-tự-trực-tiếp-live-character-counter)
-- [Phần 2: Xây dựng Todo List động (Trung bình & Thực chiến)](#phần-2-xây-dựng-todo-list-động-trung-bình--thực-chiến)
-  - [Bài 2.1: Thêm công việc mới vào danh sách](#bài-21-thêm-công-việc-mới-vào-danh-sách)
-  - [Bài 2.2: Đánh dấu hoàn thành & Xóa công việc (Event Delegation)](#bài-22-đánh-dấu-hoàn-thành--xóa-công-việc-event-delegation)
+  - [Bài 1.1: Bật / Tắt chế độ tối (Dark Mode Toggle)](#bài-1-1-bật-tắt-chế-độ-tối-dark-mode-toggle)
+  - [Bài 1.2: Bộ đếm ký tự trực tiếp (Live Character Counter)](#bài-1-2-bộ-đếm-ký-tự-trực-tiếp-live-character-counter)
+- [Phần 2: Xây dựng Todo List động (Trung bình & Thực chiến)](#phần-2-xây-dựng-todo-list-động-trung-bình-thực-chiến)
+  - [Bài 2.1: Thêm công việc mới vào danh sách](#bài-2-1-thêm-công-việc-mới-vào-danh-sách)
+  - [Bài 2.2: Đánh dấu hoàn thành & Xóa công việc (Event Delegation)](#bài-2-2-đánh-dấu-hoàn-thành-xóa-công-việc-event-delegation)
 
 ---
 
+<a id="phần-1-thao-tác-giao-diện-cơ-bản-cơ-bản"></a>
 ## Phần 1: Thao tác giao diện cơ bản (Cơ bản)
 
+<a id="bài-1-1-bật-tắt-chế-độ-tối-dark-mode-toggle"></a>
 ### Bài 1.1: Bật / Tắt chế độ tối (Dark Mode Toggle)
 - **Mô tả:** Trên trang có một nút bấm ID `#theme-toggle-btn`.
 - **Yêu cầu:** 
@@ -31,6 +33,7 @@
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-1-2-bộ-đếm-ký-tự-trực-tiếp-live-character-counter"></a>
 ### Bài 1.2: Bộ đếm ký tự trực tiếp (Live Character Counter)
 - **Mô tả:** Có ô nhập liệu `#task-input` và thẻ hiển thị số lượng ký tự `#char-count`.
 - **Yêu cầu:**
@@ -42,8 +45,10 @@
 
 ---
 
+<a id="phần-2-xây-dựng-todo-list-động-trung-bình-thực-chiến"></a>
 ## Phần 2: Xây dựng Todo List động (Trung bình & Thực chiến)
 
+<a id="bài-2-1-thêm-công-việc-mới-vào-danh-sách"></a>
 ### Bài 2.1: Thêm công việc mới vào danh sách
 - **Mô tả:** Có form `#todo-form`, ô nhập `#task-input`, và danh sách `#todo-list`.
 - **Yêu cầu:**
@@ -60,6 +65,7 @@
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
+<a id="bài-2-2-đánh-dấu-hoàn-thành-xóa-công-việc-event-delegation"></a>
 ### Bài 2.2: Đánh dấu hoàn thành & Xóa công việc (Event Delegation)
 - **Yêu cầu:**
   1. Lắng nghe sự kiện `click` trên danh sách cha `#todo-list` (Kỹ thuật Event Delegation).

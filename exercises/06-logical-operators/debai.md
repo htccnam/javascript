@@ -4,21 +4,23 @@
 <a id="mục-lục"></a>
 
 1. [Phần 1: Cấp Độ Cơ Bản (AND, OR, NOT & Kỹ Thuật Tách Biến)](#phần-1-cấp-độ-cơ-bản-and-or-not-kỹ-thuật-tách-biến)
-   - [Bài 1.1: Kế hoạch dã ngoại với toán tử AND (&&)](#bài-11-kế-hoạch-dã-ngoại-với-toán-tử-and-)
-   - [Bài 1.2: Chọn phim giải trí cuối tuần với toán tử OR (||)](#bài-12-chọn-phim-giải-trí-cuối-tuần-với-toán-tử-or-)
-   - [Bài 1.3: Đảo ngược trạng thái với toán tử NOT (!) & Ép kiểu với (!!)](#bài-13-đảo-ngược-trạng-thái-với-toán-tử-not-ép-kiểu-với-)
+   - [Bài 1.1: Kế hoạch dã ngoại với toán tử AND (&&)](#bài-1-1-kế-hoạch-dã-ngoại-với-toán-tử-and)
+   - [Bài 1.2: Chọn phim giải trí cuối tuần với toán tử OR (||)](#bài-1-2-chọn-phim-giải-trí-cuối-tuần-với-toán-tử-or)
+   - [Bài 1.3: Đảo ngược trạng thái với toán tử NOT (!) & Ép kiểu với (!!)](#bài-1-3-đảo-ngược-trạng-thái-với-toán-tử-not-ép-kiểu-với)
 2. [Phần 2: Cấp Độ Trung Bình (Kết Hợp Đa Điều Kiện & Độ Ưu Tiên)](#phần-2-cấp-độ-trung-bình-kết-hợp-đa-điều-kiện-độ-ưu-tiên)
-   - [Bài 2.1: Thẩm định điều kiện nhập học khóa lập trình (Nhiều &&)](#bài-21-thẩm-định-điều-kiện-nhập-học-khóa-lập-trình-nhiều-)
-   - [Bài 2.2: Hệ thống phân quyền xem phim VIP Streaming (Nhiều ||)](#bài-22-hệ-thống-phân-quyền-xem-phim-vip-streaming-nhiều-)
-   - [Bài 2.3: Chiến dịch tặng quà tri ân đơn hàng (Đan xen && và || có ngoặc)](#bài-23-chiến-dịch-tặng-quà-tri-ân-đơn-hàng-đan-xen-và-có-ngoặc)
+   - [Bài 2.1: Thẩm định điều kiện nhập học khóa lập trình (Nhiều &&)](#bài-2-1-thẩm-định-điều-kiện-nhập-học-khóa-lập-trình-nhiều)
+   - [Bài 2.2: Hệ thống phân quyền xem phim VIP Streaming (Nhiều ||)](#bài-2-2-hệ-thống-phân-quyền-xem-phim-vip-streaming-nhiều)
+   - [Bài 2.3: Chiến dịch tặng quà tri ân đơn hàng (Đan xen && và || có ngoặc)](#bài-2-3-chiến-dịch-tặng-quà-tri-ân-đơn-hàng-đan-xen-và-có-ngoặc)
 3. [Phần 3: Cấp Độ Thực Chiến (Đoản Mạch & Bẫy Bitwise vs Logic)](#phần-3-cấp-độ-thực-chiến-đoản-mạch-bẫy-bitwise-vs-logic)
-   - [Bài 3.1: Vạch trần sự khác biệt giữa Toán tử Logic (&&, ||) và Bitwise (&, |)](#bài-31-vạch-trần-sự-khác-biệt-giữa-toán-tử-logic-và-bitwise-)
-   - [Bài 3.2: Ứng dụng Guarding & Fallback trong dự án thực tế](#bài-32-ứng-dụng-guarding-fallback-trong-dự-án-thực-tế)
+   - [Bài 3.1: Vạch trần sự khác biệt giữa Toán tử Logic (&&, ||) và Bitwise (&, |)](#bài-3-1-vạch-trần-sự-khác-biệt-giữa-toán-tử-logic-và-bitwise)
+   - [Bài 3.2: Ứng dụng Guarding & Fallback trong dự án thực tế](#bài-3-2-ứng-dụng-guarding-fallback-trong-dự-án-thực-tế)
 
 ---
 
+<a id="phần-1-cấp-độ-cơ-bản-and-or-not-kỹ-thuật-tách-biến"></a>
 ## Phần 1: Cấp Độ Cơ Bản (AND, OR, NOT & Kỹ Thuật Tách Biến)
 
+<a id="bài-1-1-kế-hoạch-dã-ngoại-với-toán-tử-and"></a>
 ### Bài 1.1: Kế hoạch dã ngoại với toán tử AND (&&)
 Cho thông tin dự báo thời tiết và lịch trình như sau:
 ```javascript
@@ -34,6 +36,7 @@ let today = "Sunday";  // Ngày hôm nay
 
 ---
 
+<a id="bài-1-2-chọn-phim-giải-trí-cuối-tuần-với-toán-tử-or"></a>
 ### Bài 1.2: Chọn phim giải trí cuối tuần với toán tử OR (||)
 Cho danh sách thể loại phim đang chiếu tại rạp:
 ```javascript
@@ -48,6 +51,7 @@ let isActionAvailable = false;  // Không có phim hành động
 
 ---
 
+<a id="bài-1-3-đảo-ngược-trạng-thái-với-toán-tử-not-ép-kiểu-với"></a>
 ### Bài 1.3: Đảo ngược trạng thái với toán tử NOT (!) & Ép kiểu với (!!)
 Cho biến biểu thị sở thích:
 ```javascript
@@ -66,8 +70,10 @@ let isCatLover = false; // Không thích mèo
 
 ---
 
+<a id="phần-2-cấp-độ-trung-bình-kết-hợp-đa-điều-kiện-độ-ưu-tiên"></a>
 ## Phần 2: Cấp Độ Trung Bình (Kết Hợp Đa Điều Kiện & Độ Ưu Tiên)
 
+<a id="bài-2-1-thẩm-định-điều-kiện-nhập-học-khóa-lập-trình-nhiều"></a>
 ### Bài 2.1: Thẩm định điều kiện nhập học khóa lập trình (Nhiều &&)
 Một học viên muốn tham gia khóa học lập trình nâng cao cần thỏa mãn **đồng thời cả 3 điều kiện**:
 1. Đủ từ 16 tuổi trở lên (`age > 16`).
@@ -89,6 +95,7 @@ let isRegistered = true;
 
 ---
 
+<a id="bài-2-2-hệ-thống-phân-quyền-xem-phim-vip-streaming-nhiều"></a>
 ### Bài 2.2: Hệ thống phân quyền xem phim VIP Streaming (Nhiều ||)
 Một ứng dụng chiếu phim trực tuyến cho phép xem nội dung đặc biệt nếu người dùng thỏa mãn **ít nhất 1 trong 3 điều kiện**:
 1. Tài khoản đăng ký gói VIP (`isVipMember`).
@@ -109,6 +116,7 @@ let hasPaidSubscription = false;
 
 ---
 
+<a id="bài-2-3-chiến-dịch-tặng-quà-tri-ân-đơn-hàng-đan-xen-và-có-ngoặc"></a>
 ### Bài 2.3: Chiến dịch tặng quà tri ân đơn hàng (Đan xen && và || có ngoặc)
 Một sàn thương mại điện tử triển khai chương trình tặng quà tri ân:
 - **Điều kiện nhận quà:** Khách hàng phải là **Người dùng mới đăng ký** (`isNewUser`) **HOẶC** là **Thành viên VIP** (`isVipMember`), **VÀ** tổng giá trị đơn hàng hiện tại (`purchaseAmount`) phải **trên 500.000 VNĐ**.
@@ -127,8 +135,10 @@ let purchaseAmount = 600000;
 
 ---
 
+<a id="phần-3-cấp-độ-thực-chiến-đoản-mạch-bẫy-bitwise-vs-logic"></a>
 ## Phần 3: Cấp Độ Thực Chiến (Đoản Mạch & Bẫy Bitwise vs Logic)
 
+<a id="bài-3-1-vạch-trần-sự-khác-biệt-giữa-toán-tử-logic-và-bitwise"></a>
 ### Bài 3.1: Vạch trần sự khác biệt giữa Toán tử Logic (&&, ||) và Bitwise (&, |)
 Người mới học rất hay gõ nhầm một dấu `&` hoặc `|` thay vì `&&` hoặc `||`.
 Cho hàm thực hiện gửi email thông báo (có tác dụng phụ - side effect):
@@ -147,6 +157,7 @@ function sendNotificationEmail() {
 
 ---
 
+<a id="bài-3-2-ứng-dụng-guarding-fallback-trong-dự-án-thực-tế"></a>
 ### Bài 3.2: Ứng dụng Guarding & Fallback trong dự án thực tế
 Trong lập trình thực tế, toán tử `&&` và `||` thường được dùng để thay thế các câu lệnh `if` rườm rà:
 1. **Guarding với `&&`:** Chỉ gọi hàm gửi thông báo khi đối tượng `user` tồn tại và đã đăng nhập:

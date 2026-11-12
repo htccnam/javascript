@@ -13,14 +13,15 @@
 <a id="mục-lục"></a>
 
 1. [Định Dạng Dữ Liệu JSON](#1-định-dạng-dữ-liệu-json)
-2. [Phương Thức JSON.stringify & JSON.parse](#2-phương-thức-jsonstringify--jsonparse)
-3. [Cơ Chế Bắt Lỗi Với try...catch](#3-cơ-chế-bắt-lỗi-với-trycatch)
-4. [Khối finally & Cạm Bẫy Return Ghi Đè (Override)](#4-khối-finally--cạm-bẫy-return-ghi-đè-override)
+2. [Phương Thức JSON.stringify & JSON.parse](#2-phương-thức-json-stringify-json-parse)
+3. [Cơ Chế Bắt Lỗi Với try...catch](#3-cơ-chế-bắt-lỗi-với-try-catch)
+4. [Khối finally & Cạm Bẫy Return Ghi Đè (Override)](#4-khối-finally-cạm-bẫy-return-ghi-đè-override)
 5. [Tự Tạo Và Bắn Lỗi Với throw new Error](#5-tự-tạo-và-bắn-lỗi-với-throw-new-error)
 6. [Mô Hình Safe JSON Parsing Trong Thực Tế](#6-mô-hình-safe-json-parsing-trong-thực-tế)
 
 ---
 
+<a id="1-định-dạng-dữ-liệu-json"></a>
 ## 1. Định Dạng Dữ Liệu JSON
 JSON là định dạng văn bản dựa trên cú pháp Object của JavaScript:
 - Key bắt buộc phải đặt trong dấu ngoặc kép `"key"`.
@@ -31,6 +32,7 @@ JSON là định dạng văn bản dựa trên cú pháp Object của JavaScript
 
 ---
 
+<a id="2-phương-thức-json-stringify-json-parse"></a>
 ## 2. Phương Thức JSON.stringify & JSON.parse
 
 ### 2.1. `JSON.stringify(value, replacer, space)`
@@ -57,6 +59,7 @@ console.log(parsedObj.name); // "An"
 
 ---
 
+<a id="3-cơ-chế-bắt-lỗi-với-try-catch"></a>
 ## 3. Cơ Chế Bắt Lỗi Với try...catch
 
 ```javascript
@@ -74,6 +77,7 @@ try {
 
 ---
 
+<a id="4-khối-finally-cạm-bẫy-return-ghi-đè-override"></a>
 ## 4. Khối finally & Cạm Bẫy Return Ghi Đè (Override)
 
 Khối `finally` luôn luôn được thực thi trong mọi kịch bản:
@@ -99,6 +103,7 @@ console.log(testFlow()); // "Từ Finally"
 
 ---
 
+<a id="5-tự-tạo-và-bắn-lỗi-với-throw-new-error"></a>
 ## 5. Tự Tạo Và Bắn Lỗi Với throw new Error
 Bạn có thể chủ động ném ra ngoại lệ khi dữ liệu không hợp lệ:
 
@@ -115,6 +120,7 @@ function checkAge(age) {
 
 ---
 
+<a id="6-mô-hình-safe-json-parsing-trong-thực-tế"></a>
 ## 6. Mô Hình Safe JSON Parsing Trong Thực Tế
 Trong các ứng dụng production, lập trình viên thường viết một hàm tiện ích an toàn (Safe Parser) để không bao giờ làm crash ứng dụng:
 

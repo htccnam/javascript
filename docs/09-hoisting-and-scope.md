@@ -16,19 +16,20 @@
 ## Mục Lục
 
 - [1. Hoisting Là Gì?](#1-hoisting-là-gì)
-- [2. Hoisting Với Biến (`var` vs `let` / `const`)](#2-hoisting-với-biến-var-vs-let--const)
-  - [2.1. Ví dụ 1: Biến khai báo bằng `var`](#21-ví-dụ-1-biến-khai-báo-bằng-var)
-  - [2.2. Ví dụ 2: Biến khai báo bằng `let` và `const` (Vùng Chết Tạm Thời - TDZ)](#22-ví-dụ-2-biến-khai-báo-bằng-let-và-const-vùng-chết-tạm-thời---tdz)
+- [2. Hoisting Với Biến (`var` vs `let` / `const`)](#2-hoisting-với-biến-var-vs-let-const)
+  - [2.1. Ví dụ 1: Biến khai báo bằng `var`](#2-1-ví-dụ-1-biến-khai-báo-bằng-var)
+  - [2.2. Ví dụ 2: Biến khai báo bằng `let` và `const` (Vùng Chết Tạm Thời - TDZ)](#2-2-ví-dụ-2-biến-khai-báo-bằng-let-và-const-vùng-chết-tạm-thời---tdz)
 - [3. Hoisting Với Hàm (Function)](#3-hoisting-với-hàm-function)
-  - [3.1. Ví dụ 3: Hàm khai báo (Function Declaration)](#31-ví-dụ-3-hàm-khai-báo-function-declaration)
-  - [3.2. Ví dụ 4: Hàm biểu thức (Function Expression)](#32-ví-dụ-4-hàm-biểu-thức-function-expression)
-- [4. "Đầu Phạm Vi" Là Gì? (Scope & Hoisting)](#4-đầu-phạm-vi-là-gì-scope--hoisting)
-- [5. Cạm Bẫy Thường Gặp & Cách Phòng Tránh (Common Pitfalls)](#5-cạm-bẫy-thường-gặp--cách-phòng-tránh-common-pitfalls)
+  - [3.1. Ví dụ 3: Hàm khai báo (Function Declaration)](#3-1-ví-dụ-3-hàm-khai-báo-function-declaration)
+  - [3.2. Ví dụ 4: Hàm biểu thức (Function Expression)](#3-2-ví-dụ-4-hàm-biểu-thức-function-expression)
+- [4. "Đầu Phạm Vi" Là Gì? (Scope & Hoisting)](#4-đầu-phạm-vi-là-gì-scope-hoisting)
+- [5. Cạm Bẫy Thường Gặp & Cách Phòng Tránh (Common Pitfalls)](#5-cạm-bẫy-thường-gặp-cách-phòng-tránh-common-pitfalls)
 - [6. Bảng Tổng Kết So Sánh Cơ Chế Hoisting](#6-bảng-tổng-kết-so-sánh-cơ-chế-hoisting)
 - [7. Lời Khuyên Thực Chiến](#7-lời-khuyên-thực-chiến)
 
 ---
 
+<a id="1-hoisting-là-gì"></a>
 ## 1. Hoisting Là Gì?
 
 **Hoisting** (nghĩa đen là *"kéo lên/nâng lên"*) là một cơ chế đặc thù của JavaScript, trong đó các phần khai báo biến và hàm được đưa lên **đầu phạm vi (scope)** của chúng trước khi bất kỳ dòng code nào được thực thi.
@@ -41,8 +42,10 @@
 
 ---
 
+<a id="2-hoisting-với-biến-var-vs-let-const"></a>
 ## 2. Hoisting Với Biến (`var` vs `let` / `const`)
 
+<a id="2-1-ví-dụ-1-biến-khai-báo-bằng-var"></a>
 ### 2.1. Ví dụ 1: Biến khai báo bằng `var`
 
 Xét đoạn code sau:
@@ -67,6 +70,7 @@ console.log(x); // In ra 5
 
 ---
 
+<a id="2-2-ví-dụ-2-biến-khai-báo-bằng-let-và-const-vùng-chết-tạm-thời---tdz"></a>
 ### 2.2. Ví dụ 2: Biến khai báo bằng `let` và `const` (Vùng Chết Tạm Thời - TDZ)
 
 Xét đoạn code sau:
@@ -100,8 +104,10 @@ Phạm vi kết thúc --------------------------------+
 
 ---
 
+<a id="3-hoisting-với-hàm-function"></a>
 ## 3. Hoisting Với Hàm (Function)
 
+<a id="3-1-ví-dụ-3-hàm-khai-báo-function-declaration"></a>
 ### 3.1. Ví dụ 3: Hàm khai báo (Function Declaration)
 
 ```javascript
@@ -117,6 +123,7 @@ Hàm khai báo (Function Declaration) được JS Engine **hoisted toàn phần*
 
 ---
 
+<a id="3-2-ví-dụ-4-hàm-biểu-thức-function-expression"></a>
 ### 3.2. Ví dụ 4: Hàm biểu thức (Function Expression)
 
 Hàm biểu thức là khi bạn định nghĩa một hàm và gán nó vào một biến:
@@ -148,6 +155,7 @@ Lúc này biến `welcome` nằm trong **TDZ**, nên việc truy cập trước 
 
 ---
 
+<a id="4-đầu-phạm-vi-là-gì-scope-hoisting"></a>
 ## 4. "Đầu Phạm Vi" Là Gì? (Scope & Hoisting)
 
 > [!IMPORTANT]
@@ -188,6 +196,7 @@ function run() {
 
 ---
 
+<a id="5-cạm-bẫy-thường-gặp-cách-phòng-tránh-common-pitfalls"></a>
 ## 5. Cạm Bẫy Thường Gặp & Cách Phòng Tránh (Common Pitfalls)
 
 ### Cạm bẫy 1: Biến trùng tên ghi đè lẫn nhau do `var`
@@ -219,6 +228,7 @@ function diem() {
 
 ---
 
+<a id="6-bảng-tổng-kết-so-sánh-cơ-chế-hoisting"></a>
 ## 6. Bảng Tổng Kết So Sánh Cơ Chế Hoisting
 
 | Loại khai báo | Có Hoisting không? | Giá trị khởi tạo khi Hoist | Dùng trước khai báo được không? | Lỗi sinh ra nếu gọi sai |
@@ -233,6 +243,7 @@ function diem() {
 
 ---
 
+<a id="7-lời-khuyên-thực-chiến"></a>
 ## 7. Lời Khuyên Thực Chiến
 
 1. **Luôn dùng `const` (mặc định) và `let` (khi cần gán lại giá trị).** Hạn chế tối đa hoặc bỏ hẳn việc dùng `var` trong các dự án hiện đại để tránh các lỗi tiềm ẩn do Hoisting gây ra.

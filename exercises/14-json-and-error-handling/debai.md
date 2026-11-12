@@ -4,13 +4,14 @@
 <a id="mục-lục"></a>
 
 1. [Phần 1: JSON (JavaScript Object Notation)](#phần-1-json-javascript-object-notation)
-2. [Phần 2: Xử Lý Lỗi Cơ Bản Với try...catch](#phần-2-xử-lý-lỗi-cơ-bản-với-trycatch)
+2. [Phần 2: Xử Lý Lỗi Cơ Bản Với try...catch](#phần-2-xử-lý-lỗi-cơ-bản-với-try-catch)
 3. [Phần 3: Luồng Chạy Khi Có Lỗi (Exception Throwing)](#phần-3-luồng-chạy-khi-có-lỗi-exception-throwing)
-4. [Phần 4: Khối finally & Quy Tắc Return Ghi Đè (Override)](#phần-4-khối-finally--quy-tắc-return-ghi-đè-override)
+4. [Phần 4: Khối finally & Quy Tắc Return Ghi Đè (Override)](#phần-4-khối-finally-quy-tắc-return-ghi-đè-override)
 5. [Phần 5: Bài Tập Ứng Dụng Thực Tế (Safe JSON Parsing)](#phần-5-bài-tập-ứng-dụng-thực-tế-safe-json-parsing)
 
 ---
 
+<a id="phần-1-json-javascript-object-notation"></a>
 ## Phần 1: JSON (JavaScript Object Notation)
 Cho object sau:
 ```javascript
@@ -30,6 +31,7 @@ const product1 = {
 
 ---
 
+<a id="phần-2-xử-lý-lỗi-cơ-bản-với-try-catch"></a>
 ## Phần 2: Xử Lý Lỗi Cơ Bản Với try...catch
 Dự đoán thứ tự log in ra màn hình khi chạy đoạn code sau:
 ```javascript
@@ -51,6 +53,7 @@ testBasic();
 
 ---
 
+<a id="phần-3-luồng-chạy-khi-có-lỗi-exception-throwing"></a>
 ## Phần 3: Luồng Chạy Khi Có Lỗi (Exception Throwing)
 Nếu trong khối `try` có câu lệnh ném lỗi:
 ```javascript
@@ -65,6 +68,7 @@ Hãy cho biết:
 
 ---
 
+<a id="phần-4-khối-finally-quy-tắc-return-ghi-đè-override"></a>
 ## Phần 4: Khối finally & Quy Tắc Return Ghi Đè (Override)
 Dự đoán giá trị trả về của hàm sau và giải thích cặn kẽ vì sao:
 ```javascript
@@ -84,6 +88,7 @@ console.log(checkReturnFlow());
 
 ---
 
+<a id="phần-5-bài-tập-ứng-dụng-thực-tế-safe-json-parsing"></a>
 ## Phần 5: Bài Tập Ứng Dụng Thực Tế (Safe JSON Parsing)
 Viết một hàm tiện ích an toàn `safeJsonParse(jsonString, defaultValue = null)`:
 - Nhận vào một chuỗi `jsonString` và giá trị mặc định `defaultValue`.

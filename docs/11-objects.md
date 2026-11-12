@@ -12,7 +12,7 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Khai Báo & Truy Cập Thuộc Tính: Dot vs Bracket Notation](#1-khai-báo--truy-cập-thuộc-tính-dot-vs-bracket-notation)
+1. [Khai Báo & Truy Cập Thuộc Tính: Dot vs Bracket Notation](#1-khai-báo-truy-cập-thuộc-tính-dot-vs-bracket-notation)
 2. [Thao Tác Thuộc Tính: Thêm, Sửa, Xóa (delete)](#2-thao-tác-thuộc-tính-thêm-sửa-xóa-delete)
 3. [Phương Thức (Method) và Từ Khóa this](#3-phương-thức-method-và-từ-khóa-this)
 4. [Các Phương Thức Tĩnh Cốt Lõi Của Object](#4-các-phương-thức-tĩnh-cốt-lõi-của-object)
@@ -21,6 +21,7 @@
 
 ---
 
+<a id="1-khai-báo-truy-cập-thuộc-tính-dot-vs-bracket-notation"></a>
 ## 1. Khai Báo & Truy Cập Thuộc Tính: Dot vs Bracket Notation
 
 ```javascript
@@ -44,6 +45,7 @@ console.log(user[keyName]); // 25
 
 ---
 
+<a id="2-thao-tác-thuộc-tính-thêm-sửa-xóa-delete"></a>
 ## 2. Thao Tác Thuộc Tính: Thêm, Sửa, Xóa (delete)
 
 ```javascript
@@ -64,6 +66,7 @@ delete car.color;
 
 ---
 
+<a id="3-phương-thức-method-và-từ-khóa-this"></a>
 ## 3. Phương Thức (Method) và Từ Khóa this
 Phương thức là một hàm được gán làm thuộc tính của Object. Từ khóa `this` bên trong một regular method trỏ về chính object đang gọi phương thức đó:
 
@@ -89,6 +92,7 @@ console.log(rectangle.getArea()); // 50
 
 ---
 
+<a id="4-các-phương-thức-tĩnh-cốt-lõi-của-object"></a>
 ## 4. Các Phương Thức Tĩnh Cốt Lõi Của Object
 Constructor `Object` cung cấp các phương thức tĩnh cực mạnh:
 
@@ -110,6 +114,7 @@ console.log(Object.hasOwn(scores, "math")); // true
 
 ---
 
+<a id="5-chuyển-đổi-qua-lại-giữa-object-và-array"></a>
 ## 5. Chuyển Đổi Qua Lại Giữa Object và Array
 
 ```javascript
@@ -126,6 +131,7 @@ const obj = Object.fromEntries(entries);
 
 ---
 
+<a id="6-best-practices-trong-thực-tế"></a>
 ## 6. Best Practices Trong Thực Tế
 1. Duyệt Object bằng `Object.entries()` kết hợp `for...of` và Destructuring:
    ```javascript

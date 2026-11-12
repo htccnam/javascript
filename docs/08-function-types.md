@@ -13,24 +13,26 @@
 ## Mục Lục
 
 - [1. Hàm Khai Báo (Function Declaration)](#1-hàm-khai-báo-function-declaration)
-  - [1.1. Khái niệm & Cú pháp](#11-khái-niệm--cú-pháp)
-  - [1.2. Ví dụ thực tế](#12-ví-dụ-thực-tế)
-  - [1.3. Đặc điểm cốt lõi: Cơ chế Hoisting](#13-đặc-điểm-cốt-lõi-cơ-chế-hoisting)
+  - [1.1. Khái niệm & Cú pháp](#1-1-khái-niệm-cú-pháp)
+  - [1.2. Ví dụ thực tế](#1-2-ví-dụ-thực-tế)
+  - [1.3. Đặc điểm cốt lõi: Cơ chế Hoisting](#1-3-đặc-điểm-cốt-lõi-cơ-chế-hoisting)
 - [2. Hàm Biểu Thức (Function Expression)](#2-hàm-biểu-thức-function-expression)
-  - [2.1. Khái niệm & Cú pháp](#21-khái-niệm--cú-pháp)
-  - [2.2. Ví dụ thực tế](#22-ví-dụ-thực-tế)
-  - [2.3. Đặc điểm cốt lõi: Không thể gọi trước khi định nghĩa](#23-đặc-điểm-cốt-lõi-không-thể-gọi-trước-khi-định-nghĩa)
+  - [2.1. Khái niệm & Cú pháp](#2-1-khái-niệm-cú-pháp)
+  - [2.2. Ví dụ thực tế](#2-2-ví-dụ-thực-tế)
+  - [2.3. Đặc điểm cốt lõi: Không thể gọi trước khi định nghĩa](#2-3-đặc-điểm-cốt-lõi-không-thể-gọi-trước-khi-định-nghĩa)
 - [3. Hàm Mũi Tên (Arrow Function - ES6)](#3-hàm-mũi-tên-arrow-function---es6)
-  - [3.1. Khái niệm & Cú pháp](#31-khái-niệm--cú-pháp)
-  - [3.2. Các cấp độ rút gọn đỉnh cao của Arrow Function](#32-các-cấp-độ-rút-gọn-đỉnh-cao-của-arrow-function)
+  - [3.1. Khái niệm & Cú pháp](#3-1-khái-niệm-cú-pháp)
+  - [3.2. Các cấp độ rút gọn đỉnh cao của Arrow Function](#3-2-các-cấp-độ-rút-gọn-đỉnh-cao-của-arrow-function)
 - [4. Khi Nào Thì Sử Dụng Loại Hàm Nào?](#4-khi-nào-thì-sử-dụng-loại-hàm-nào)
-- [5. Những Khác Biệt Sâu & Cạm Bẫy Cần Nhớ](#5-những-khác-biệt-sâu--cạm-bẫy-cần-nhớ)
+- [5. Những Khác Biệt Sâu & Cạm Bẫy Cần Nhớ](#5-những-khác-biệt-sâu-cạm-bẫy-cần-nhớ)
 - [6. Bảng Tổng Kết So Sánh 3 Loại Hàm](#6-bảng-tổng-kết-so-sánh-3-loại-hàm)
 
 ---
 
+<a id="1-hàm-khai-báo-function-declaration"></a>
 ## 1. Hàm Khai Báo (Function Declaration)
 
+<a id="1-1-khái-niệm-cú-pháp"></a>
 ### 1.1. Khái niệm & Cú pháp
 Hàm khai báo là cách truyền thống và lâu đời nhất để định nghĩa một hàm trong JavaScript kể từ những phiên bản đầu tiên.
 
@@ -41,6 +43,7 @@ function tenHam(thamSo1, thamSo2) {
 }
 ```
 
+<a id="1-2-ví-dụ-thực-tế"></a>
 ### 1.2. Ví dụ thực tế
 ```javascript
 function tinhTong(a, b) {
@@ -50,6 +53,7 @@ function tinhTong(a, b) {
 console.log(tinhTong(5, 3)); // 8
 ```
 
+<a id="1-3-đặc-điểm-cốt-lõi-cơ-chế-hoisting"></a>
 ### 1.3. Đặc điểm cốt lõi: Cơ chế Hoisting
 Điểm đặc biệt nhất của Function Declaration là **được đưa lên đầu phạm vi (Hoisted hoàn toàn)** cả tên hàm lẫn thân hàm trước khi code được thực thi. Do đó, bạn có thể gọi hàm **TRƯỚC** khi định nghĩa nó trong file:
 
@@ -69,8 +73,10 @@ function chaoBuoiSang(name) {
 
 ---
 
+<a id="2-hàm-biểu-thức-function-expression"></a>
 ## 2. Hàm Biểu Thức (Function Expression)
 
+<a id="2-1-khái-niệm-cú-pháp"></a>
 ### 2.1. Khái niệm & Cú pháp
 Hàm biểu thức là cách định nghĩa hàm thông qua việc **gán một hàm (thường là hàm ẩn danh - anonymous function) vào một biến**.
 
@@ -81,6 +87,7 @@ const tenHam = function (thamSo1, thamSo2) {
 };
 ```
 
+<a id="2-2-ví-dụ-thực-tế"></a>
 ### 2.2. Ví dụ thực tế
 ```javascript
 const tinhHieu = function (a, b) {
@@ -90,6 +97,7 @@ const tinhHieu = function (a, b) {
 console.log(tinhHieu(5, 3)); // 2
 ```
 
+<a id="2-3-đặc-điểm-cốt-lõi-không-thể-gọi-trước-khi-định-nghĩa"></a>
 ### 2.3. Đặc điểm cốt lõi: Không thể gọi trước khi định nghĩa
 Khác với Function Declaration, hàm biểu thức tuân theo quy tắc khai báo biến:
 - Nếu khai báo bằng `const` hoặc `let`, biến sẽ nằm trong **Vùng chết tạm thời (TDZ - Temporal Dead Zone)**.
@@ -112,8 +120,10 @@ const tinhHieu = function (a, b) {
 
 ---
 
+<a id="3-hàm-mũi-tên-arrow-function---es6"></a>
 ## 3. Hàm Mũi Tên (Arrow Function - ES6)
 
+<a id="3-1-khái-niệm-cú-pháp"></a>
 ### 3.1. Khái niệm & Cú pháp
 Được giới thiệu từ phiên bản **ECMAScript 2015 (ES6)**, Hàm mũi tên là cú pháp viết ngắn gọn và thanh lịch hơn của Hàm biểu thức, sử dụng ký hiệu mũi tên suy ra `=>` (fat arrow).
 
@@ -124,6 +134,7 @@ const tenHam = (thamSo1, thamSo2) => {
 };
 ```
 
+<a id="3-2-các-cấp-độ-rút-gọn-đỉnh-cao-của-arrow-function"></a>
 ### 3.2. Các cấp độ rút gọn đỉnh cao của Arrow Function
 
 #### Cấp độ 1: Cú pháp đầy đủ (Có `{}` và `return`)
@@ -166,6 +177,7 @@ console.log(createUserRight(1, "Huy")); // { id: 1, name: "Huy" }
 
 ---
 
+<a id="4-khi-nào-thì-sử-dụng-loại-hàm-nào"></a>
 ## 4. Khi Nào Thì Sử Dụng Loại Hàm Nào?
 
 | Loại Hàm | Khi nào nên sử dụng? | Ưu điểm nổi bật |
@@ -178,6 +190,7 @@ console.log(createUserRight(1, "Huy")); // { id: 1, name: "Huy" }
 
 ---
 
+<a id="5-những-khác-biệt-sâu-cạm-bẫy-cần-nhớ"></a>
 ## 5. Những Khác Biệt Sâu & Cạm Bẫy Cần Nhớ
 
 1. **Arrow Function KHÔNG có `this` riêng:**
@@ -197,6 +210,7 @@ console.log(createUserRight(1, "Huy")); // { id: 1, name: "Huy" }
 
 ---
 
+<a id="6-bảng-tổng-kết-so-sánh-3-loại-hàm"></a>
 ## 6. Bảng Tổng Kết So Sánh 3 Loại Hàm
 
 | Tiêu chí | Function Declaration | Function Expression | Arrow Function |

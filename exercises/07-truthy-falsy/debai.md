@@ -3,15 +3,16 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Phần 1: Xác định Truthy / Falsy](#phần-1-xác-định-truthy--falsy)
+1. [Phần 1: Xác định Truthy / Falsy](#phần-1-xác-định-truthy-falsy)
 2. [Phần 2: Ép kiểu ngầm (Implicit Coercion) trong điều kiện](#phần-2-ép-kiểu-ngầm-implicit-coercion-trong-điều-kiện)
-3. [Phần 3: Toán tử logic &&, ||, !!](#phần-3-toán-tử-logic---)
-4. [Phần 4: Ứng dụng thực tế - Validation & Default Values](#phần-4-ứng-dụng-thực-tế---validation--default-values)
-5. [Phần 5: So sánh == vs === (Type Coercion)](#phần-5-so-sánh--vs--type-coercion)
-6. [Phần 6: Edge Cases & Best Practices](#phần-6-edge-cases--best-practices)
+3. [Phần 3: Toán tử logic &&, ||, !!](#phần-3-toán-tử-logic)
+4. [Phần 4: Ứng dụng thực tế - Validation & Default Values](#phần-4-ứng-dụng-thực-tế---validation-default-values)
+5. [Phần 5: So sánh == vs === (Type Coercion)](#phần-5-so-sánh-vs-type-coercion)
+6. [Phần 6: Edge Cases & Best Practices](#phần-6-edge-cases-best-practices)
 7. [Phần 7: Thử thách - Viết hàm tiện ích](#phần-7-thử-thách---viết-hàm-tiện-ích)
 
 ---
+<a id="phần-1-xác-định-truthy-falsy"></a>
 ## Phần 1: Xác định Truthy / Falsy
 
 Cho danh sách các giá trị sau:
@@ -50,6 +51,7 @@ const values = [
 
 ---
 
+<a id="phần-2-ép-kiểu-ngầm-implicit-coercion-trong-điều-kiện"></a>
 ## Phần 2: Ép kiểu ngầm (Implicit Coercion) trong điều kiện
 
 Cho các đoạn code sau, hãy **dự đoán kết quả** (true/false) và **giải thích lý do**:
@@ -131,6 +133,7 @@ if (new Date()) {
 
 ---
 
+<a id="phần-3-toán-tử-logic"></a>
 ## Phần 3: Toán tử logic &&, ||, !!
 
 Cho các biểu thức sau, hãy **dự đoán giá trị trả về** (không phải true/false, mà là **giá trị thực tế** được trả về):
@@ -184,6 +187,7 @@ console.log("3.10:", j);
 
 ---
 
+<a id="phần-4-ứng-dụng-thực-tế---validation-default-values"></a>
 ## Phần 4: Ứng dụng thực tế - Validation & Default Values
 
 ### Bài 4.1: Hàm kiểm tra dữ liệu hợp lệ
@@ -241,6 +245,7 @@ const user = { name: "An", isLoggedIn: true };
 
 ---
 
+<a id="phần-5-so-sánh-vs-type-coercion"></a>
 ## Phần 5: So sánh == vs === (Type Coercion)
 
 Dự đoán kết quả `true`/`false` và giải thích:
@@ -271,6 +276,7 @@ console.log("5.13:", null === undefined); // ?
 
 ---
 
+<a id="phần-6-edge-cases-best-practices"></a>
 ## Phần 6: Edge Cases & Best Practices
 
 ### Bài 6.1: Kiểm tra mảng rỗng
@@ -318,6 +324,7 @@ Giải thích sự khác biệt.
 
 ---
 
+<a id="phần-7-thử-thách---viết-hàm-tiện-ích"></a>
 ## Phần 7: Thử thách - Viết hàm tiện ích
 
 Viết các hàm sau **chỉ dùng các kiến thức Truthy/Falsy, &&, ||, !!** (không dùng if/else, không dùng ternary):

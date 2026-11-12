@@ -16,24 +16,25 @@
 
 - [1. JavaScript Là Gì? Bản Chất Đa Mô Hình (Multi-Paradigm)](#1-javascript-là-gì-bản-chất-đa-mô-hình-multi-paradigm)
 - [2. Đặc Điểm Cốt Lõi Của JavaScript](#2-đặc-điểm-cốt-lõi-của-javascript)
-  - [2.1. Ngôn ngữ thông dịch (Interpreted) & Cơ chế JIT Compilation](#21-ngôn-ngữ-thông-dịch-interpreted--cơ-chế-jit-compilation)
-  - [2.2. Ngôn ngữ kịch bản phía Client (Client-Side Scripting)](#22-ngôn-ngữ-kịch-bản-phía-client-client-side-scripting)
-  - [2.3. Ngôn ngữ định kiểu động (Dynamic Typing)](#23-ngôn-ngữ-định-kiểu-động-dynamic-typing)
-  - [2.4. Phân biệt chữ hoa - chữ thường (Case Sensitivity)](#24-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
+  - [2.1. Ngôn ngữ thông dịch (Interpreted) & Cơ chế JIT Compilation](#2-1-ngôn-ngữ-thông-dịch-interpreted-cơ-chế-jit-compilation)
+  - [2.2. Ngôn ngữ kịch bản phía Client (Client-Side Scripting)](#2-2-ngôn-ngữ-kịch-bản-phía-client-client-side-scripting)
+  - [2.3. Ngôn ngữ định kiểu động (Dynamic Typing)](#2-3-ngôn-ngữ-định-kiểu-động-dynamic-typing)
+  - [2.4. Phân biệt chữ hoa - chữ thường (Case Sensitivity)](#2-4-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
 - [3. Điểm Mạnh Vượt Trội Của JavaScript](#3-điểm-mạnh-vượt-trội-của-javascript)
-- [4. Những Hạn Chế & Thách Thức Cần Biết](#4-những-hạn-chế--thách-thức-cần-biết)
-- [5. 5 Cách Viết & Nhúng JavaScript Vào Ứng Dụng](#5-5-cách-viết--nhúng-javascript-vào-ứng-dụng)
-  - [5.1. Thẻ `<script>` nội tuyến trong HTML](#51-thẻ-script-nội-tuyến-trong-html)
-  - [5.2. Trong file JavaScript riêng biệt (`.js` External)](#52-trong-file-javascript-riêng-biệt-js-external)
-  - [5.3. Trong Console trình duyệt (DevTools)](#53-trong-console-trình-duyệt-devtools)
-  - [5.4. Trong URL trình duyệt (JavaScript URI) & Cảnh báo an ninh](#54-trong-url-trình-duyệt-javascript-uri--cảnh-báo-an-ninh)
-  - [5.5. Trong các thuộc tính xử lý sự kiện HTML (Inline Event Handlers)](#55-trong-các-thuộc-tính-xử-lý-sự-kiện-html-inline-event-handlers)
-- [6. Cạm Bẫy Thường Gặp & Lỗi Ngầm Định (Common Pitfalls)](#6-cạm-bẫy-thường-gặp--lỗi-ngầm-định-common-pitfalls)
+- [4. Những Hạn Chế & Thách Thức Cần Biết](#4-những-hạn-chế-thách-thức-cần-biết)
+- [5. 5 Cách Viết & Nhúng JavaScript Vào Ứng Dụng](#5-5-cách-viết-nhúng-javascript-vào-ứng-dụng)
+  - [5.1. Thẻ `<script>` nội tuyến trong HTML](#5-1-thẻ-nội-tuyến-trong-html)
+  - [5.2. Trong file JavaScript riêng biệt (`.js` External)](#5-2-trong-file-javascript-riêng-biệt-js-external)
+  - [5.3. Trong Console trình duyệt (DevTools)](#5-3-trong-console-trình-duyệt-devtools)
+  - [5.4. Trong URL trình duyệt (JavaScript URI) & Cảnh báo an ninh](#5-4-trong-url-trình-duyệt-javascript-uri-cảnh-báo-an-ninh)
+  - [5.5. Trong các thuộc tính xử lý sự kiện HTML (Inline Event Handlers)](#5-5-trong-các-thuộc-tính-xử-lý-sự-kiện-html-inline-event-handlers)
+- [6. Cạm Bẫy Thường Gặp & Lỗi Ngầm Định (Common Pitfalls)](#6-cạm-bẫy-thường-gặp-lỗi-ngầm-định-common-pitfalls)
 - [7. Bảng Tổng Kết So Sánh 5 Cách Viết JavaScript](#7-bảng-tổng-kết-so-sánh-5-cách-viết-javascript)
 - [8. Lời Khuyên Thực Chiến Dành Cho Lập Trình Viên](#8-lời-khuyên-thực-chiến-dành-cho-lập-trình-viên)
 
 ---
 
+<a id="1-javascript-là-gì-bản-chất-đa-mô-hình-multi-paradigm"></a>
 ## 1. JavaScript Là Gì? Bản Chất Đa Mô Hình (Multi-Paradigm)
 
 **JavaScript (JS)** là một ngôn ngữ lập trình **bậc cao (high-level)**, **thông dịch (interpreted)** và có tính tương thích tuyệt đối trên 100% các trình duyệt web hiện đại.
@@ -48,15 +49,19 @@ JavaScript không gò ép lập trình viên vào một khuôn mẫu cứng nh�
 
 ---
 
+<a id="2-đặc-điểm-cốt-lõi-của-javascript"></a>
 ## 2. Đặc Điểm Cốt Lõi Của JavaScript
 
+<a id="2-1-ngôn-ngữ-thông-dịch-interpreted-cơ-chế-jit-compilation"></a>
 ### 2.1. Ngôn ngữ thông dịch (Interpreted) & Cơ chế JIT Compilation
 - **Bản chất truyền thống:** Các ngôn ngữ như C/C++ cần trình biên dịch (Compiler) dịch toàn bộ mã nguồn sang mã máy nhị phân (`.exe` hoặc binary) trước khi chạy. Ngược lại, JavaScript được trình duyệt đọc và **thực thi trực tiếp từng dòng một**.
 - **Động cơ hiện đại (V8, SpiderMonkey):** Ngày nay, trình duyệt sử dụng cơ chế **Biên dịch tức thời (JIT - Just-In-Time Compilation)**: Vừa thông dịch nhanh vừa âm thầm biên dịch các đoạn code thường xuyên lặp lại thành mã máy tối ưu cao trong bộ nhớ để đạt tốc độ cực nhanh.
 
+<a id="2-2-ngôn-ngữ-kịch-bản-phía-client-client-side-scripting"></a>
 ### 2.2. Ngôn ngữ kịch bản phía Client (Client-Side Scripting)
 - Chạy trực tiếp trên thiết bị của người dùng (trình duyệt web), giúp can thiệp vào cây DOM, xử lý tính toán, gửi yêu cầu API ngầm (**AJAX / Fetch**) mà **không cần làm tải lại (reload) toàn bộ trang web**.
 
+<a id="2-3-ngôn-ngữ-định-kiểu-động-dynamic-typing"></a>
 ### 2.3. Ngôn ngữ định kiểu động (Dynamic Typing)
 - Trong JavaScript, bạn **không cần và không thể khai báo kiểu dữ liệu cố định** cho một biến (`int`, `float`, `string` như C/Java).
 - Kiểu dữ liệu gắn liền với **giá trị** mà biến đang nắm giữ tại thời điểm runtime, chứ không gắn liền với bản thân biến đó:
@@ -67,6 +72,7 @@ data = "Xin chào!";     // data tự động đổi thành kiểu String
 data = { isAdmin: true }; // data đổi thành kiểu Object
 ```
 
+<a id="2-4-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity"></a>
 ### 2.4. Phân biệt chữ hoa - chữ thường (Case Sensitivity)
 - JavaScript phân biệt tuyệt đối giữa chữ in hoa và chữ thường:
 ```javascript
@@ -81,6 +87,7 @@ console.log(myScore); // 100 - Ba biến trên hoàn toàn độc lập và lưu
 
 ---
 
+<a id="3-điểm-mạnh-vượt-trội-của-javascript"></a>
 ## 3. Điểm Mạnh Vượt Trội Của JavaScript
 
 1. **Ngôn ngữ phổ biến nhất thế giới:** Hơn 98% trang web trên toàn cầu sử dụng JavaScript ở frontend. Được hỗ trợ sẵn trên mọi trình duyệt mà không cần cài thêm plugin.
@@ -95,6 +102,7 @@ console.log(myScore); // 100 - Ba biến trên hoàn toàn độc lập và lưu
 
 ---
 
+<a id="4-những-hạn-chế-thách-thức-cần-biết"></a>
 ## 4. Những Hạn Chế & Thách Thức Cần Biết
 
 Bên cạnh sức mạnh to lớn, JavaScript cũng có những điểm yếu cố hữu xuất phát từ lịch sử phát triển:
@@ -110,8 +118,10 @@ Bên cạnh sức mạnh to lớn, JavaScript cũng có những điểm yếu c�
 
 ---
 
+<a id="5-5-cách-viết-nhúng-javascript-vào-ứng-dụng"></a>
 ## 5. 5 Cách Viết & Nhúng JavaScript Vào Ứng Dụng
 
+<a id="5-1-thẻ-nội-tuyến-trong-html"></a>
 ### 5.1. Thẻ `<script>` nội tuyến trong HTML
 
 Đoạn code JavaScript được đặt trực tiếp bên trong cặp thẻ `<script> ... </script>` của trang HTML:
@@ -140,6 +150,7 @@ Bên cạnh sức mạnh to lớn, JavaScript cũng có những điểm yếu c�
 
 ---
 
+<a id="5-2-trong-file-javascript-riêng-biệt-js-external"></a>
 ### 5.2. Trong file JavaScript riêng biệt (`.js` External)
 
 Tách toàn bộ mã nguồn sang một file đuôi `.js` độc lập và liên kết vào HTML qua thuộc tính `src`:
@@ -162,6 +173,7 @@ console.log("Xin chào từ file JavaScript độc lập!");
 
 ---
 
+<a id="5-3-trong-console-trình-duyệt-devtools"></a>
 ### 5.3. Trong Console trình duyệt (DevTools)
 
 Nhấn phím **F12** (hoặc `Ctrl + Shift + I` / `Cmd + Option + I`), chuyển sang tab **Console** và gõ trực tiếp lệnh:
@@ -176,6 +188,7 @@ alert("Hello from DevTools!");
 
 ---
 
+<a id="5-4-trong-url-trình-duyệt-javascript-uri-cảnh-báo-an-ninh"></a>
 ### 5.4. Trong URL trình duyệt (JavaScript URI) & Cảnh báo an ninh
 
 Gõ trực tiếp vào thanh địa chỉ của trình duyệt hoặc trong thẻ `<a>`:
@@ -191,6 +204,7 @@ Gõ trực tiếp vào thanh địa chỉ của trình duyệt hoặc trong th�
 
 ---
 
+<a id="5-5-trong-các-thuộc-tính-xử-lý-sự-kiện-html-inline-event-handlers"></a>
 ### 5.5. Trong các thuộc tính xử lý sự kiện HTML (Inline Event Handlers)
 
 Gắn code trực tiếp vào các thuộc tính sự kiện của thẻ HTML như `onclick`, `onmouseover`, `onkeydown`:
@@ -212,6 +226,7 @@ Gắn code trực tiếp vào các thuộc tính sự kiện của thẻ HTML nh
 
 ---
 
+<a id="6-cạm-bẫy-thường-gặp-lỗi-ngầm-định-common-pitfalls"></a>
 ## 6. Cạm Bẫy Thường Gặp & Lỗi Ngầm Định (Common Pitfalls)
 
 ### Cạm bẫy 1: Quên tính chất phân biệt hoa thường (Case-Sensitivity)
@@ -236,6 +251,7 @@ let logic = true + 1;  // Kết quả: 2 (Do true được ép ngầm thành s�
 
 ---
 
+<a id="7-bảng-tổng-kết-so-sánh-5-cách-viết-javascript"></a>
 ## 7. Bảng Tổng Kết So Sánh 5 Cách Viết JavaScript
 
 | Tiêu chí | File độc lập (`.js`) | Thẻ `<script>` nội tuyến | Console DevTools | Inline Event (`onclick`) | JavaScript URI |
@@ -251,6 +267,7 @@ let logic = true + 1;  // Kết quả: 2 (Do true được ép ngầm thành s�
 
 ---
 
+<a id="8-lời-khuyên-thực-chiến-dành-cho-lập-trình-viên"></a>
 ## 8. Lời Khuyên Thực Chiến Dành Cho Lập Trình Viên
 
 1. **Luôn tách biệt file JS độc lập (`.js`):** Giữ file HTML sạch đẹp, chỉ chứa thẻ biểu diễn cấu trúc. Toàn bộ logic tương tác phải đặt trong file `.js`.

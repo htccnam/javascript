@@ -13,21 +13,23 @@
 ## Mục Lục
 
 - [1. Tìm hiểu về DOM](#1-tìm-hiểu-về-dom)
-  - [1.1. DOM là gì?](#11-dom-là-gì)
+  - [1.1. DOM là gì?](#1-1-dom-là-gì)
 - [2. Truy vấn phần tử (DOM Querying)](#2-truy-vấn-phần-tử-dom-querying)
-- [3. Thao tác Nội Dung, Thuộc Tính & Giao Diện](#3-thao-tác-nội-dung-thuộc-tính--giao-diện)
-  - [3.1. Thay đổi nội dung Text và HTML](#31-thay-đổi-nội-dung-text-và-html)
-  - [3.2. Đọc và ghi giá trị ô nhập liệu (`<input>`)](#32-đọc-và-ghi-giá-trị-ô-nhập-liệu-input)
-  - [3.3. Thao tác Class và Style (CSS)](#33-thao-tác-class-và-style-css)
+- [3. Thao tác Nội Dung, Thuộc Tính & Giao Diện](#3-thao-tác-nội-dung-thuộc-tính-giao-diện)
+  - [3.1. Thay đổi nội dung Text và HTML](#3-1-thay-đổi-nội-dung-text-và-html)
+  - [3.2. Đọc và ghi giá trị ô nhập liệu (`<input>`)](#3-2-đọc-và-ghi-giá-trị-ô-nhập-liệu)
+  - [3.3. Thao tác Class và Style (CSS)](#3-3-thao-tác-class-và-style-css)
 - [4. Lắng nghe Sự Kiện (Event Handling)](#4-lắng-nghe-sự-kiện-event-handling)
-- [5. Tạo mới & Xóa phần tử (Create & Remove Elements)](#5-tạo-mới--xóa-phần-tử-create--remove-elements)
+- [5. Tạo mới & Xóa phần tử (Create & Remove Elements)](#5-tạo-mới-xóa-phần-tử-create-remove-elements)
 - [6. Các lỗi thường gặp khi làm việc với DOM](#6-các-lỗi-thường-gặp-khi-làm-việc-với-dom)
 - [7. Bảng tổng kết phương thức DOM cốt lõi](#7-bảng-tổng-kết-phương-thức-dom-cốt-lõi)
 
 ---
 
+<a id="1-tìm-hiểu-về-dom"></a>
 ## 1. Tìm hiểu về DOM
 
+<a id="1-1-dom-là-gì"></a>
 ### 1.1. DOM là gì?
 **DOM (Document Object Model)** là mô hình hướng đối tượng đại diện cho toàn bộ tài liệu HTML của trang web:
 - Khi trình duyệt tải xong một trang web, nó sẽ biên dịch toàn bộ mã HTML thành một **Cây phả hệ các đối tượng (DOM Tree)**.
@@ -48,6 +50,7 @@
 
 ---
 
+<a id="2-truy-vấn-phần-tử-dom-querying"></a>
 ## 2. Truy vấn phần tử (DOM Querying)
 
 Để thao tác với một phần tử, bước đầu tiên là phải "tìm thấy" nó trên trang:
@@ -72,8 +75,10 @@ const items = document.getElementsByClassName("item");
 
 ---
 
+<a id="3-thao-tác-nội-dung-thuộc-tính-giao-diện"></a>
 ## 3. Thao tác Nội Dung, Thuộc Tính & Giao Diện
 
+<a id="3-1-thay-đổi-nội-dung-text-và-html"></a>
 ### 3.1. Thay đổi nội dung Text và HTML
 ```javascript
 const box = document.querySelector("#box");
@@ -85,6 +90,7 @@ box.textContent = "Nội dung văn bản mới!";
 box.innerHTML = "<strong>Nội dung in đậm</strong>";
 ```
 
+<a id="3-2-đọc-và-ghi-giá-trị-ô-nhập-liệu"></a>
 ### 3.2. Đọc và ghi giá trị ô nhập liệu (`<input>`)
 ```javascript
 const input = document.querySelector("#username-input");
@@ -96,6 +102,7 @@ console.log(input.value);
 input.value = "";
 ```
 
+<a id="3-3-thao-tác-class-và-style-css"></a>
 ### 3.3. Thao tác Class và Style (CSS)
 ```javascript
 const card = document.querySelector(".card");
@@ -114,6 +121,7 @@ card.style.fontSize = "18px";
 
 ---
 
+<a id="4-lắng-nghe-sự-kiện-event-handling"></a>
 ## 4. Lắng nghe Sự Kiện (Event Handling)
 
 Sự kiện là những hành động xảy ra trên trang web (người dùng click chuột, gõ phím, cuộn trang, gửi form...).
@@ -138,6 +146,7 @@ btn.addEventListener("click", function (event) {
 
 ---
 
+<a id="5-tạo-mới-xóa-phần-tử-create-remove-elements"></a>
 ## 5. Tạo mới & Xóa phần tử (Create & Remove Elements)
 
 ```javascript
@@ -160,6 +169,7 @@ newItem.remove();
 
 ---
 
+<a id="6-các-lỗi-thường-gặp-khi-làm-việc-với-dom"></a>
 ## 6. Các lỗi thường gặp khi làm việc với DOM
 
 1. **Chạy code JavaScript trước khi HTML tải xong:**
@@ -177,6 +187,7 @@ newItem.remove();
 
 ---
 
+<a id="7-bảng-tổng-kết-phương-thức-dom-cốt-lõi"></a>
 ## 7. Bảng tổng kết phương thức DOM cốt lõi
 
 | Thao tác | Phương thức / Thuộc tính | Ví dụ minh họa |

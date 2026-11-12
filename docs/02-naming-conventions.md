@@ -19,18 +19,19 @@
 ## Mục Lục
 
 - [1. Các Phong Cách Viết Chữ (Casing Styles) Trong JavaScript](#1-các-phong-cách-viết-chữ-casing-styles-trong-javascript)
-- [2. Quy Tắc Đặt Tên Biến Boolean (Dạng Câu Hỏi Yes/No)](#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno)
-- [3. Quy Tắc Đặt Tên Biến Thông Thường (Danh Từ Số Ít & Số Nhiều)](#3-quy-tắc-đặt-tên-biến-thông-thường-danh-từ-số-ít--số-nhiều)
-- [4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)](#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ)
+- [2. Quy Tắc Đặt Tên Biến Boolean (Dạng Câu Hỏi Yes/No)](#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yes-no)
+- [3. Quy Tắc Đặt Tên Biến Thông Thường (Danh Từ Số Ít & Số Nhiều)](#3-quy-tắc-đặt-tên-biến-thông-thường-danh-từ-số-ít-số-nhiều)
+- [4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)](#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ-tân-ngữ)
 - [5. Quy Tắc Đặt Tên Class Và Constructor (PascalCase)](#5-quy-tắc-đặt-tên-class-và-constructor-pascalcase)
-- [6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)](#6-hằng-số-bất-biến-upper_snake_case-vs-const-thông-thường)
-- [7. Thuộc Tính & Phương Thức Nội Bộ / Riêng Tư (`_` và `#`)](#7-thuộc-tính--phương-thức-nội-bộ--riêng-tư-_-và-)
+- [6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)](#6-hằng-số-bất-biến-uppersnakecase-vs-const-thông-thường)
+- [7. Thuộc Tính & Phương Thức Nội Bộ / Riêng Tư (`_` và `#`)](#7-thuộc-tính-phương-thức-nội-bộ-riêng-tư-và)
 - [8. Cạm Bẫy Thường Gặp Khi Đặt Tên (Common Pitfalls)](#8-cạm-bẫy-thường-gặp-khi-đặt-tên-common-pitfalls)
 - [9. Bảng Tổng Kết Quy Ước Đặt Tên Toàn Diện](#9-bảng-tổng-kết-quy-ước-đặt-tên-toàn-diện)
-- [10. Lời Khuyên Thực Chiến Từ Google & Airbnb Style Guides](#10-lời-khuyên-thực-chiến-từ-google--airbnb-style-guides)
+- [10. Lời Khuyên Thực Chiến Từ Google & Airbnb Style Guides](#10-lời-khuyên-thực-chiến-từ-google-airbnb-style-guides)
 
 ---
 
+<a id="1-các-phong-cách-viết-chữ-casing-styles-trong-javascript"></a>
 ## 1. Các Phong Cách Viết Chữ (Casing Styles) Trong JavaScript
 
 JavaScript phân biệt chữ hoa và chữ thường (**Case-sensitive**). Cộng đồng JavaScript trên thế giới đã thống nhất 4 phong cách viết chuẩn mực cho từng thành phần:
@@ -49,6 +50,7 @@ JavaScript phân biệt chữ hoa và chữ thường (**Case-sensitive**). Cộ
 
 ---
 
+<a id="2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yes-no"></a>
 ## 2. Quy Tắc Đặt Tên Biến Boolean (Dạng Câu Hỏi Yes/No)
 
 Biến Boolean chỉ chứa giá trị `true` hoặc `false`. Vì vậy, tên biến phải mang tính chất của một **câu hỏi Yes/No**, bắt đầu bằng các tiền tố trợ động từ:
@@ -88,6 +90,7 @@ if (isLoggedIn && hasPermission) {
 
 ---
 
+<a id="3-quy-tắc-đặt-tên-biến-thông-thường-danh-từ-số-ít-số-nhiều"></a>
 ## 3. Quy Tắc Đặt Tên Biến Thông Thường (Danh Từ Số Ít & Số Nhiều)
 
 Tên biến thông thường (chứa số, chuỗi, đối tượng, mảng) nên là **Danh từ hoặc Cụm danh từ** mô tả dữ liệu mà nó đang chứa, viết theo kiểu `lowerCamelCase`.
@@ -119,6 +122,7 @@ Khi tên biến chứa từ viết tắt (như URL, HTTP, HTML, ID, API):
 
 ---
 
+<a id="4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ-tân-ngữ"></a>
 ## 4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)
 
 Hàm đại diện cho một **hành động**, do đó tên hàm luôn bắt đầu bằng một **Động từ**, theo cấu trúc:  
@@ -162,6 +166,7 @@ class User {
 
 ---
 
+<a id="5-quy-tắc-đặt-tên-class-và-constructor-pascalcase"></a>
 ## 5. Quy Tắc Đặt Tên Class Và Constructor (PascalCase)
 
 Lớp (Class) và hàm khởi tạo (Constructor) đại diện cho một **bản thiết kế đối tượng**, bắt buộc đặt tên theo chuẩn **`PascalCase`** (viết hoa chữ cái đầu của mỗi từ) và là **Danh từ số ít**:
@@ -187,6 +192,7 @@ class BankAccount { ... }
 
 ---
 
+<a id="6-hằng-số-bất-biến-uppersnakecase-vs-const-thông-thường"></a>
 ## 6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)
 
 > [!CAUTION]
@@ -215,6 +221,7 @@ const currentDate = new Date();
 
 ---
 
+<a id="7-thuộc-tính-phương-thức-nội-bộ-riêng-tư-và"></a>
 ## 7. Thuộc Tính & Phương Thức Nội Bộ / Riêng Tư (`_` và `#`)
 
 Khi thiết kế thư viện, module hoặc Class, bạn thường có những biến chỉ dùng nội bộ mà **không muốn người ngoài gọi trực tiếp**:
@@ -252,6 +259,7 @@ const vault = new BankVault();
 
 ---
 
+<a id="8-cạm-bẫy-thường-gặp-khi-đặt-tên-common-pitfalls"></a>
 ## 8. Cạm Bẫy Thường Gặp Khi Đặt Tên (Common Pitfalls)
 
 1. **Đặt tên kiểu ký hiệu Hungary lỗi thời (Hungarian Notation):**
@@ -277,6 +285,7 @@ const vault = new BankVault();
 
 ---
 
+<a id="9-bảng-tổng-kết-quy-ước-đặt-tên-toàn-diện"></a>
 ## 9. Bảng Tổng Kết Quy Ước Đặt Tên Toàn Diện
 
 | Thành phần | Phong cách Casing | Quy tắc ngữ pháp | Ví dụ chuẩn mực | Ví dụ cần tránh |
@@ -293,6 +302,7 @@ const vault = new BankVault();
 
 ---
 
+<a id="10-lời-khuyên-thực-chiến-từ-google-airbnb-style-guides"></a>
 ## 10. Lời Khuyên Thực Chiến Từ Google & Airbnb Style Guides
 
 1. **"Tính nhất quán quan trọng hơn sở thích cá nhân":** Nếu bạn bước vào một dự án đã chọn phong cách `apiUrl`, hãy tuân thủ nó xuyên suốt toàn bộ file, đừng tự ý chêm vào `apiURL`.

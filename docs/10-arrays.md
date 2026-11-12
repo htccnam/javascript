@@ -14,15 +14,16 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Khai Báo & Duyệt Mảng](#1-khai-báo--duyệt-mảng)
-2. [Thao Tác Thêm & Xóa: push, pop, shift, unshift](#2-thao-tác-thêm--xóa-push-pop-shift-unshift)
+1. [Khai Báo & Duyệt Mảng](#1-khai-báo-duyệt-mảng)
+2. [Thao Tác Thêm & Xóa: push, pop, shift, unshift](#2-thao-tác-thêm-xóa-push-pop-shift-unshift)
 3. [Phương Thức Đa Năng: splice](#3-phương-thức-đa-năng-splice)
 4. [Bộ Ba Bất Biến Lập Trình Hàm: filter, map, reduce](#4-bộ-ba-bất-biến-lập-trình-hàm-filter-map-reduce)
-5. [Kiểm Tra & Tìm Kiếm: some, every, includes, find](#5-kiểm-tra--tìm-kiếm-some-every-includes-find)
-6. [Làm Phẳng & Sắp Xếp: flat, sort](#6-làm-phẳng--sắp-xếp-flat-sort)
+5. [Kiểm Tra & Tìm Kiếm: some, every, includes, find](#5-kiểm-tra-tìm-kiếm-some-every-includes-find)
+6. [Làm Phẳng & Sắp Xếp: flat, sort](#6-làm-phẳng-sắp-xếp-flat-sort)
 
 ---
 
+<a id="1-khai-báo-duyệt-mảng"></a>
 ## 1. Khai Báo & Duyệt Mảng
 
 ### 1.1. Khai báo
@@ -57,6 +58,7 @@ fruits.forEach((fruit, index) => {
 
 ---
 
+<a id="2-thao-tác-thêm-xóa-push-pop-shift-unshift"></a>
 ## 2. Thao Tác Thêm & Xóa: push, pop, shift, unshift
 
 | Phương thức | Vị trí tác động | Hành động | Giá trị trả về | Làm biến đổi mảng gốc? |
@@ -70,6 +72,7 @@ fruits.forEach((fruit, index) => {
 
 ---
 
+<a id="3-phương-thức-đa-năng-splice"></a>
 ## 3. Phương Thức Đa Năng: splice
 Cú pháp: `arr.splice(startIndex, deleteCount, ...itemsToAdd)`
 - Xóa, chèn, hoặc thay thế phần tử trực tiếp trên mảng gốc.
@@ -88,6 +91,7 @@ colors.splice(1, 0, "Pink");
 
 ---
 
+<a id="4-bộ-ba-bất-biến-lập-trình-hàm-filter-map-reduce"></a>
 ## 4. Bộ Ba Bất Biến Lập Trình Hàm: filter, map, reduce
 Cả 3 phương thức này đều **không làm thay đổi mảng gốc (Non-mutating)**:
 
@@ -114,6 +118,7 @@ const total = numbers.reduce((acc, curr) => acc + curr, 0); // 21
 
 ---
 
+<a id="5-kiểm-tra-tìm-kiếm-some-every-includes-find"></a>
 ## 5. Kiểm Tra & Tìm Kiếm: some, every, includes, find
 - **`.some(fn)`**: Trả về `true` nếu có **ít nhất 1** phần tử thỏa mãn điều kiện.
 - **`.every(fn)`**: Trả về `true` nếu **tất cả** phần tử đều thỏa mãn điều kiện.
@@ -124,6 +129,7 @@ const total = numbers.reduce((acc, curr) => acc + curr, 0); // 21
 
 ---
 
+<a id="6-làm-phẳng-sắp-xếp-flat-sort"></a>
 ## 6. Làm Phẳng & Sắp Xếp: flat, sort
 
 ### 6.1. Làm phẳng mảng lồng nhau với `.flat(depth)`

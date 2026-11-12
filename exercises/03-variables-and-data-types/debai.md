@@ -3,13 +3,14 @@
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Phần 1: Phạm Vi (Scope) & Tái Khai Báo (var vs let vs const)](#phần-1-phạm-vi-scope--tái-khai-báo-var-vs-let-vs-const)
-2. [Phần 2: Bản Chất của const với Kiểu Primitive vs Mảng & Object](#phần-2-bản-chất-của-const-với-kiểu-primitive-vs-mảng--object)
-3. [Phần 3: Nhận Diện & Tránh 4 Cạm Bẫy Phổ Biến Khi Dùng const](#phần-3-nhận-diện--tránh-4-cạm-bẫy-phổ-biến-khi-dùng-const)
+1. [Phần 1: Phạm Vi (Scope) & Tái Khai Báo (var vs let vs const)](#phần-1-phạm-vi-scope-tái-khai-báo-var-vs-let-vs-const)
+2. [Phần 2: Bản Chất của const với Kiểu Primitive vs Mảng & Object](#phần-2-bản-chất-của-const-với-kiểu-primitive-vs-mảng-object)
+3. [Phần 3: Nhận Diện & Tránh 4 Cạm Bẫy Phổ Biến Khi Dùng const](#phần-3-nhận-diện-tránh-4-cạm-bẫy-phổ-biến-khi-dùng-const)
 4. [Phần 4: Khám Phá 7 Kiểu Dữ Liệu Nguyên Thủy (Primitive Types)](#phần-4-khám-phá-7-kiểu-dữ-liệu-nguyên-thủy-primitive-types)
 
 ---
 
+<a id="phần-1-phạm-vi-scope-tái-khai-báo-var-vs-let-vs-const"></a>
 ## Phần 1: Phạm Vi (Scope) & Tái Khai Báo (var vs let vs const)
 
 ### 1.1. Kiểm chứng Block Scope vs Function Scope
@@ -34,6 +35,7 @@ Cho đoạn mã sau bên trong một khối lệnh `{}`:
 
 ---
 
+<a id="phần-2-bản-chất-của-const-với-kiểu-primitive-vs-mảng-object"></a>
 ## Phần 2: Bản Chất của const với Kiểu Primitive vs Mảng & Object
 
 ### 2.1. Thử thách với biến nguyên thủy
@@ -59,6 +61,7 @@ const friend = ["An", "Bình"];
 
 ---
 
+<a id="phần-3-nhận-diện-tránh-4-cạm-bẫy-phổ-biến-khi-dùng-const"></a>
 ## Phần 3: Nhận Diện & Tránh 4 Cạm Bẫy Phổ Biến Khi Dùng const
 
 ### 3.1. Bẫy số 1: Nghĩ rằng `const` làm mảng trở nên bất biến
@@ -76,6 +79,7 @@ const friend = ["An", "Bình"];
 
 ---
 
+<a id="phần-4-khám-phá-7-kiểu-dữ-liệu-nguyên-thủy-primitive-types"></a>
 ## Phần 4: Khám Phá 7 Kiểu Dữ Liệu Nguyên Thủy (Primitive Types)
 
 ### 4.1. Khởi tạo và kiểm tra `typeof` của 7 kiểu nguyên thủy
