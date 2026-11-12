@@ -1,26 +1,30 @@
-# 05 - Câu Lệnh Rẽ Nhánh & Toán Tử Logic Trong JavaScript
+# 05 - Câu Lệnh Rẽ Nhánh & Toàn Bộ Hệ Thống Toán Tử Trong JavaScript (Operators)
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng luồng chạy của mã nguồn JavaScript giống như một **đoàn tàu hỏa trên mạng lưới đường ray**:
 > - Mặc định, con tàu luôn chạy thẳng một mạch từ ga đầu đến ga cuối (thực thi tuần tự từng dòng code từ trên xuống dưới).
 > - **Câu lệnh rẽ nhánh (`if...else`, `switch`)** chính là các **chiếc cần bẻ ghi đường ray (Track Switches)**: Tùy thuộc vào tín hiệu điều kiện (đèn xanh hay đèn đỏ, `true` hay `false`), con tàu sẽ được chuyển hướng đi vào nhánh đường ray phù hợp nhất mà không bao giờ bị đâm vào ngõ cụt.
-> - **Toán tử so sánh nghiêm ngặt (`===`, `!==`)** là chiếc **cảm biến kiểm định công nghệ cao**: Đo lường chuẩn xác cả "kích thước" (giá trị) lẫn "chất liệu" (kiểu dữ liệu) của toa tàu trước khi cho phép ghép toa.
-> - **Toán tử logic (`!`, `&&`, `||`)** là **hệ thống điều phối liên hoàn**: Phải thỏa mãn toàn bộ các trạm kiểm tra (`&&`), hoặc chỉ cần một lối đi thông thoáng (`||`), con tàu mới có thể tiến bước. Khi có sự cố, toán tử đảo ngược (`!`) sẽ lập tức biến tín hiệu cho phép thành lệnh dừng khẩn cấp!
+> - **Toán tử số học & gán (`+`, `-`, `*`, `/`, `+=`, `++`)** là **động cơ và hộp số**: Biến đổi dữ liệu, cộng dồn nhiên liệu, gia tốc con tàu.
+> - **Toán tử so sánh (`===`, `!==`, `>`, `<`)** là **cảm biến kiểm định công nghệ cao**: Đo lường chuẩn xác cả "kích thước" (giá trị) lẫn "chất liệu" (kiểu dữ liệu) của toa tàu trước khi cho phép ghép toa.
+> - **Toán tử hiện đại (`?.`, `??`)** là **túi khí an toàn thông minh**: Giúp con tàu lướt êm qua những đoạn đường ray bị khuyết dữ liệu (`null`, `undefined`) mà không bao giờ bị trật bánh crash ứng dụng.
 
 ---
 
 ## Mục Lục
 <a id="mục-lục"></a>
 
-1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-ifelse--ifelse-ifelse)
-2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switchcase--kỹ-thuật-fall-through)
-3. [Toán Tử So Sánh: Nghiêm Ngặt (===, !==) vs Lỏng Lẻo (==, !=)](#3-toán-tử-so-sánh-nghiêm-ngặt----vs-lỏng-lẻo--)
-4. [Toán Tử Ba Ngôi (Ternary Operator)](#4-toán-tử-ba-ngôi-ternary-operator)
-5. [Toán Tử Logic: NOT (!, !!), AND (&&), OR (||)](#5-toán-tử-logic-not---and--or-)
-6. [Thứ Tự Ưu Tiên Của Các Toán Tử Logic](#6-thứ-tự-ưu-tiên-của-các-toán-tử-logic)
-7. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#7-các-cạm-bẫy-phổ-biến-common-pitfalls)
-8. [Bảng So Sánh Tổng Kết Cốt Lõi](#8-bảng-so-sánh-tổng-kết-cốt-lõi)
+1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-ifelse-ifelse-ifelse)
+2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switchcase-kỹ-thuật-fall-through)
+3. [Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x](#3-toán-tử-số-học-arithmetic-operators-khác-biệt-x-vs-x)
+4. [Toán Tử Gán (Assignment Operators)](#4-toán-tử-gán-assignment-operators)
+5. [Toán Tử So Sánh (Comparison Operators)](#5-toán-tử-so-sánh-comparison-operators)
+6. [Toán Tử Ba Ngôi (Ternary Operator)](#6-toán-tử-ba-ngôi-ternary-operator)
+7. [Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)](#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit)
+8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof-)
+9. [Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)](#9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence)
+10. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#10-các-cạm-bẫy-phổ-biến-common-pitfalls)
+11. [Bảng So Sánh Tổng Kết Cốt Lõi](#11-bảng-so-sánh-tổng-kết-cốt-lõi)
 
 ---
 
@@ -119,56 +123,112 @@ switch (true) {
 
 ---
 
-## 3. Toán Tử So Sánh: Nghiêm Ngặt (===, !==) vs Lỏng Lẻo (==, !=)
+## 3. Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x
 
-### 3.1. So sánh nghiêm ngặt (Strict Equality: `===` và `!==`)
-- So sánh cả **giá trị** và **kiểu dữ liệu**.
-- Tuyệt đối không thực hiện ép kiểu ngầm định.
+Toán tử số học thực hiện các phép tính toán số học căn bản trong JavaScript:
+
+| Toán tử | Tên toán tử | Ví dụ | Kết quả ($x = 10, y = 3$) |
+| :---: | :--- | :--- | :--- |
+| **`+`** | Cộng / Nối chuỗi | `x + y` | `13` (hoặc `"103"` nếu một bên là chuỗi) |
+| **`-`** | Trừ | `x - y` | `7` |
+| **`*`** | Nhân | `x * y` | `30` |
+| **`/`** | Chia | `x / y` | `3.3333333333333335` |
+| **`%`** | Chia lấy dư (Modulus) | `x % y` | `1` (vì $10 = 3 \times 3 + 1$) |
+| **`**`** | Lũy thừa (ES6) | `x ** y` | `1000` (tương đương $10^3$) |
+| **`++`** | Tăng 1 đơn vị | `x++` hoặc `++x` | `11` |
+| **`--`** | Giảm 1 đơn vị | `x--` hoặc `--x` | `9` |
+
+### Phân biệt sống còn giữa `x++` (Post-increment) và `++x` (Pre-increment):
+Đây là bẫy kinh điển trong bài tập trắc nghiệm và phỏng vấn:
+- **`x++` (Hậu tố - Post-increment):** **Trả về giá trị HIỆN TẠI** của $x$ trước để tham gia vào biểu thức tính toán, **rồi sau đó mới tăng** $x$ lên 1 đơn vị.
+- **`++x` (Tiền tố - Pre-increment):** **Tăng $x$ lên 1 đơn vị TRƯỚC**, rồi mới trả về giá trị mới đó để tính toán.
 
 ```javascript
-console.log(5 === 5);    // true  (cùng số 5)
-console.log(5 === "5");  // false (number !== string)
-console.log(5 !== 10);   // true
-console.log(5 !== "5");  // true  (khác kiểu dữ liệu)
+let a = 5;
+let b = a++; // b nhận giá trị hiện tại là 5, sau đó a mới tăng lên 6
+console.log(a, b); // a = 6, b = 5
+
+let x = 5;
+let y = ++x; // x tăng ngay lên 6, sau đó y nhận giá trị mới là 6
+console.log(x, y); // x = 6, y = 6
 ```
-
-### 3.2. So sánh lỏng lẻo (Loose Equality: `==` và `!=`)
-- Tự động thực hiện **ép kiểu ngầm (Type Coercion)** về cùng kiểu dữ liệu trước khi so sánh.
-- Rất dễ sinh ra lỗi ngầm nguy hiểm:
-
-```javascript
-console.log(5 == "5");   // true  (chuỗi "5" bị ép về số 5)
-console.log(0 == false); // true  (cả 2 đều bị ép về 0)
-console.log("" == false);// true  (chuỗi rỗng bị ép về 0)
-console.log(5 != "6");   // true
-console.log(0 != false); // false
-```
-
-> [!TIP]
-> **Khuyến nghị vàng:** Luôn luôn dùng `===` và `!==` trong mọi dự án thực tế. Không bao giờ dùng `==` trừ khi bạn có chủ đích kiểm tra cả `null` và `undefined` cùng lúc (`val == null`).
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
-## 4. Toán Tử Ba Ngôi (Ternary Operator)
+## 4. Toán Tử Gán (Assignment Operators)
+
+Dùng để gán hoặc vừa tính toán vừa gán giá trị cho một biến:
+
+| Toán tử | Cách viết ngắn gọn | Tương đương với | Giải thích ý nghĩa |
+| :---: | :--- | :--- | :--- |
+| **`=`** | `x = y` | `x = y` | Gán giá trị vế phải cho biến vế trái |
+| **`+=`** | `x += y` | `x = x + y` | Cộng thêm $y$ vào $x$ |
+| **`-=`** | `x -= y` | `x = x - y` | Trừ bớt $y$ khỏi $x$ |
+| **`*=`** | `x *= y` | `x = x * y` | Nhân $x$ với $y$ |
+| **`/=`** | `x /= y` | `x = x / y` | Chia $x$ cho $y$ |
+| **`%=`** | `x %= y` | `x = x % y` | Lấy phần dư của $x$ chia $y$ |
+| **`**=`** | `x **= y` | `x = x ** y` | Nâng $x$ lên lũy thừa $y$ |
+| **`??=`** | `x ??= y` | `x = x ?? y` | **Gán logic:** Chỉ gán $y$ nếu $x$ đang là `null` hoặc `undefined` (ES2021) |
+
+```javascript
+let score = 100;
+score += 50; // score = 150
+score *= 2;  // score = 300
+
+let nickname = null;
+nickname ??= "Khách vãng lai"; // Gán vì nickname là null
+console.log(nickname); // "Khách vãng lai"
+```
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+## 5. Toán Tử So Sánh (Comparison Operators)
+
+Toán tử so sánh dùng để đối chiếu 2 giá trị và luôn trả về kết quả kiểu Boolean (`true` hoặc `false`):
+
+| Toán tử | Mô tả | Ví dụ | Kết quả | Ghi chú quan trọng |
+| :---: | :--- | :--- | :---: | :--- |
+| **`===`** | Bằng tuyệt đối (Strict Equality) | `'5' === 5` | `false` | **Khuyên dùng 100%:** So sánh cả giá trị lẫn kiểu dữ liệu. |
+| **`==`** | Bằng lỏng lẻo (Loose Equality) | `'5' == 5` | `true` | **Tránh dùng:** Tự động ép kiểu ngầm định nguy hiểm. |
+| **`!==`** | Không bằng tuyệt đối (Strict Inequality) | `'5' !== 5` | `true` | Khác nhau về kiểu hoặc giá trị. |
+| **`!=`** | Không bằng lỏng lẻo (Loose Inequality) | `'5' != 5` | `false` | Tự động ép kiểu ngầm định. |
+| **`>`** | Lớn hơn | `10 > 5` | `true` | |
+| **`<`** | Nhỏ hơn | `10 < 5` | `false` | |
+| **`>=`** | Lớn hơn hoặc bằng | `10 >= 10` | `true` | |
+| **`<=`** | Nhỏ hơn hoặc bằng | `10 <= 5` | `false` | |
+
+```javascript
+console.log(5 === "5");  // false (number !== string)
+console.log(5 == "5");   // true  (chuỗi "5" bị ép kiểu về số 5)
+console.log(0 == false); // true  (cả 2 đều bị ép về 0)
+console.log(0 === false);// false (number !== boolean)
+```
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+## 6. Toán Tử Ba Ngôi (Ternary Operator)
+
 Toán tử ba ngôi là cú pháp rút gọn cho câu lệnh `if...else` đơn giản, trả về giá trị trực tiếp để gán cho biến hoặc return trong hàm:
 
 $$\text{điều\_kiện} \mathbin{?} \text{biểu\_thức\_khi\_true} \mathbin{:} \text{biểu\_thức\_khi\_false}$$
 
 ```javascript
-const hour = 21;
+const age = 20;
+const status = age >= 18 ? "Người lớn" : "Trẻ em";
+console.log(status); // "Người lớn"
 
-// Cách viết ngắn gọn với Ternary Operator:
-const greeting = hour < 12 ? "Chào buổi sáng!" : "Chào buổi tối!";
-console.log(greeting); // "Chào buổi tối!"
-
-// Tương đương với cách viết if...else truyền thống:
-let greetingIf;
-if (hour < 12) {
-    greetingIf = "Chào buổi sáng!";
+// Tương đương if...else:
+let statusIf;
+if (age >= 18) {
+    statusIf = "Người lớn";
 } else {
-    greetingIf = "Chào buổi tối!";
+    statusIf = "Trẻ em";
 }
 ```
 
@@ -176,87 +236,96 @@ if (hour < 12) {
 
 ---
 
-## 5. Toán Tử Logic: NOT (!, !!), AND (&&), OR (||)
+## 7. Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)
 
-### 5.1. Toán tử NOT (`!`) và ép kiểu boolean tường minh (`!!`)
-- Đảo ngược giá trị logic: nếu biểu thức là `true` thì thành `false`, và ngược lại.
-- Tự động ép giá trị về kiểu boolean trước khi đảo:
+Dùng để kết hợp hoặc đảo ngược các biểu thức điều kiện:
 
-```javascript
-const isActive = true;
-console.log(!isActive); // false
-console.log(!false);    // true
-console.log(!0);        // true (vì 0 là falsy -> phủ định thành true)
-console.log(!"hello");  // false (vì "hello" là truthy -> phủ định thành false)
+| Toán tử | Tên gọi | Mô tả | Ví dụ |
+| :---: | :--- | :--- | :--- |
+| **`&&`** | AND (Và) | Trả về `true` khi **tất cả** các vế đều đúng. | `(5 > 2) && (10 > 3)` $\rightarrow$ `true` |
+| **`||`** | OR (Hoặc) | Trả về `true` khi **ít nhất một** vế đúng. | `(5 < 2) || (10 > 3)` $\rightarrow$ `true` |
+| **`!`** | NOT (Phủ định) | Đảo ngược giá trị Boolean. | `!(5 > 2)` $\rightarrow$ `false` |
 
-// Dùng !! (Double NOT) để ép kiểu boolean tường minh:
-console.log(!!0);       // false
-console.log(!!"admin"); // true
-```
-
-### 5.2. Toán tử AND (`&&` - Tìm Falsy đầu tiên)
-- Đánh giá biểu thức từ trái sang phải.
-- **Cơ chế đoản mạch (Short-circuit):** Dừng lại ngay lập tức khi gặp giá trị `false` (hoặc Falsy) đầu tiên và trả về giá trị đó.
-- Nếu tất cả biểu thức đều `true`, trả về giá trị của biểu thức cuối cùng:
-
-```javascript
-console.log(5 > 0 && 10 > 0); // true  (cả 2 đều true)
-console.log(5 > 0 && 10 < 0); // false (vế sau là false)
-
-// Cơ chế Short-circuit với giá trị thực tế:
-console.log(0 && 5);          // 0  (dừng ngay ở 0 vì 0 là falsy)
-console.log(5 && 10);         // 10 (cả 2 truthy -> trả về vế cuối)
-console.log("An" && "" && "Bình"); // "" (falsy đầu tiên)
-```
-
-### 5.3. Toán tử OR (`||` - Tìm Truthy đầu tiên)
-- Đánh giá biểu thức từ trái sang phải.
-- **Cơ chế đoản mạch (Short-circuit):** Dừng lại ngay lập tức khi gặp giá trị `true` (hoặc Truthy) đầu tiên và trả về giá trị đó.
-- Nếu tất cả biểu thức đều `false`, trả về giá trị của biểu thức cuối cùng:
-
-```javascript
-console.log(0 > 0 || 10 > 0); // true  (vế sau là true)
-console.log(0 > 0 || 10 < 0); // false (cả 2 đều false)
-
-// Cơ chế Short-circuit với giá trị thực tế:
-console.log(0 || 5);          // 5  (trả về truthy đầu tiên)
-console.log(10 || 20);        // 10 (trả về truthy đầu tiên)
-console.log(0 || "" || null); // null (tất cả đều falsy -> trả về vế cuối)
-```
-
-[⬆️ Quay lại Mục lục](#mục-lục)
-
----
-
-## 6. Thứ Tự Ưu Tiên Của Các Toán Tử Logic
-Khi kết hợp nhiều toán tử logic trong cùng một biểu thức, JavaScript thực thi theo thứ tự ưu tiên từ cao xuống thấp:
-
-$$\text{1. } \mathbf{!} \text{ (NOT - Cao nhất)} \quad \longrightarrow \quad \text{2. } \mathbf{\&\&} \text{ (AND - Trung bình)} \quad \longrightarrow \quad \text{3. } \mathbf{||} \text{ (OR - Thấp nhất)}$$
-
-```javascript
-// Phân tích biểu thức sau:
-const result = !false || false && false;
-
-// Bước 1: Thực thi NOT trước: !false -> true
-// Biểu thức trở thành: true || false && false
-
-// Bước 2: Thực thi AND trước OR: false && false -> false
-// Biểu thức trở thành: true || false
-
-// Bước 3: Thực thi OR: true || false -> true
-console.log(result); // true
-```
+### Cơ chế Đoản mạch (Short-circuit):
+- **`A && B`:** Nếu $A$ sai (`false` / Falsy), JavaScript **dừng lại ngay lập tức** và trả về $A$, không thèm kiểm tra $B$.
+- **`A || B`:** Nếu $A$ đúng (`true` / Truthy), JavaScript **dừng lại ngay lập tức** và trả về $A$, không thèm kiểm tra $B$.
 
 > [!TIP]
-> **Quy tắc Clean Code:** Đừng bắt đồng đội phải nhớ bảng độ ưu tiên! Luôn sử dụng cặp ngoặc tròn `()` để biểu thị rõ ràng ý định gom nhóm logic: `(!false) || (false && false)`.
+> Để tìm hiểu chuyên sâu về bài toán bữa ăn, dã ngoại, phân quyền VIP streaming, bẫy bitwise `&`/`|` và độ ưu tiên kết hợp nhiều toán tử logic, mời bạn xem tiếp bài học chuyên biệt: [`docs/06-logical-operators.md`](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md).
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
-## 7. Các Cạm Bẫy Phổ Biến (Common Pitfalls)
+## 8. Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, ...)
 
-### 7.1. Bẫy số 1: Dùng nhầm toán tử gán `=` trong điều kiện `if`
+JavaScript hiện đại (ES6 đến ES2022) bổ sung các toán tử cực kỳ mạnh mẽ giúp viết code an toàn và ngắn gọn:
+
+### 8.1. Optional Chaining (`?.`)
+Giúp truy cập an toàn vào thuộc tính lồng sâu bên trong Object mà không làm sập (crash) chương trình nếu gặp `null` hoặc `undefined`:
+
+```javascript
+const user = {
+    name: "Hoàng Nam"
+    // Không có thuộc tính address
+};
+
+// ❌ Cách cũ không có ?.: Gây lỗi nghiêm trọng!
+// console.log(user.address.street); // TypeError: Cannot read properties of undefined (reading 'street')
+
+// ✅ Cách hiện đại với Optional Chaining:
+console.log(user?.address?.street); // undefined (An toàn tuyệt đối, không bị crash!)
+```
+
+### 8.2. Nullish Coalescing Operator (`??`)
+Trả về vế bên phải **chỉ khi** vế bên trái là `null` hoặc `undefined` (khác với `||` vốn coi cả `0`, `""`, `false` là Falsy):
+
+```javascript
+const count = 0; // Điểm số hợp lệ của người chơi là 0
+
+const a = count || 10; // 10 (LỖI LOGIC: vì 0 bị coi là Falsy nên || nhảy sang 10)
+const b = count ?? 10; // 0  (CHÍNH XÁC: vì 0 không phải là null/undefined)
+```
+
+### 8.3. Các toán tử đặc biệt khác
+- **`typeof`:** Kiểm tra kiểu dữ liệu của một giá trị (`typeof "Nam"` $\rightarrow$ `"string"`, `typeof 123` $\rightarrow$ `"number"`).
+- **`instanceof`:** Kiểm tra xem một đối tượng có thuộc về một Constructor/Class nào đó hay không (`[1, 2] instanceof Array` $\rightarrow$ `true`).
+- **Spread / Rest Operator (`...`):** Trải các phần tử của mảng/object (`const clone = [...arr]`) hoặc gom nhóm các tham số của hàm (`function sum(...nums)`).
+- **Toán tử Bitwise (`&`, `|`, `^`, `~`, `<<`, `>>`):** Thao tác trên từng bit nhị phân của số nguyên. Thường dùng trong mã hóa, đồ họa, xử lý nhị phân cấp thấp (ít dùng trong logic ứng dụng web).
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+## 9. Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)
+
+Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript xử lý tuần tự theo thứ tự ưu tiên nghiêm ngặt từ cao xuống thấp:
+
+| Mức ưu tiên | Nhóm toán tử | Các ký hiệu cụ thể | Hướng kết hợp (Associativity) |
+| :---: | :--- | :--- | :---: |
+| **1 (Cao nhất)** | **Dấu ngoặc đơn** | `( ... )` | Từ trong ra ngoài |
+| **2** | **Truy cập thuộc tính & Gọi hàm** | `.` , `?.` , `[ ]` , `( )` | Trái sang phải |
+| **3** | **Toán tử một ngôi (Unary)** | `++` , `--` , `!` , `typeof` , `+` (dương) , `-` (âm) | Phải sang trái |
+| **4** | **Lũy thừa** | `**` | **Phải sang trái** ($2^{3^2} = 2^9$) |
+| **5** | **Nhân, Chia, Lấy dư** | `*` , `/` , `%` | Trái sang phải |
+| **6** | **Cộng, Trừ** | `+` , `-` | Trái sang phải |
+| **7** | **So sánh thứ tự** | `<` , `<=` , `>` , `>=` , `instanceof` | Trái sang phải |
+| **8** | **So sánh bằng** | `===` , `!==` , `==` , `!=` | Trái sang phải |
+| **9** | **Logical AND** | `&&` | Trái sang phải |
+| **10** | **Logical OR & Nullish** | `||` , `??` | Trái sang phải |
+| **11** | **Toán tử ba ngôi** | `? :` | Phải sang trái |
+| **12 (Thấp nhất)**| **Toán tử gán** | `=` , `+=` , `-=` , `*=` , `/=` , `??=` | **Phải sang trái** |
+
+> [!TIP]
+> **Lời khuyên vàng:** Bạn không cần phải ghi nhớ máy móc toàn bộ bảng 12 bậc ưu tiên này! Khi viết các biểu thức phức tạp, **hãy luôn chủ động dùng dấu ngoặc đơn `()`** để nhóm các phép tính theo đúng ý đồ của mình. Code vừa dễ đọc vừa không bao giờ bị bug do độ ưu tiên!
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+## 10. Các Cạm Bẫy Phổ Biến (Common Pitfalls)
+
+### 10.1. Bẫy số 1: Dùng nhầm toán tử gán `=` trong điều kiện `if`
 ```javascript
 let isLoggedIn = false;
 
@@ -271,40 +340,38 @@ if (isLoggedIn === true) { ... }
 if (isLoggedIn) { ... }
 ```
 
-### 7.2. Bẫy số 2: Quên `break` trong `switch` ngoài ý muốn
+### 10.2. Bẫy số 2: Quên `break` trong `switch` ngoài ý muốn
 ```javascript
 const action = "create";
 switch (action) {
     case "create":
         console.log("Tạo mới tài nguyên");
-        // Quên break! Code sẽ chạy tiếp sang nhánh delete!
+        // Quên break! Code sẽ tiếp tục chảy xuống nhánh delete!
     case "delete":
         console.log("Xóa tài nguyên!");
         break;
 }
 ```
 
-### 7.3. Bẫy số 3: Lạm dụng toán tử ba ngôi lồng nhau (Nested Ternary)
+### 10.3. Bẫy số 3: Nhầm lẫn giữa `x++` và `++x` trong biểu thức gán
 ```javascript
-// ❌ RẤT KHÓ ĐỌC (Code Smell):
-const message = score > 90 ? "Xuất sắc" : score > 80 ? "Giỏi" : score > 65 ? "Khá" : "Trung bình";
-
-// ✅ NÊN DÙNG: if...else if...else hoặc hàm có return sớm
+let n = 10;
+let res = n++ * 2; // res = 20, KHÔNG PHẢI 22! (vì n++ trả về 10 rồi mới tăng n lên 11)
 ```
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
 ---
 
-## 8. Bảng So Sánh Tổng Kết Cốt Lõi
+## 11. Bảng So Sánh Tổng Kết Cốt Lõi
 
 | Cấu trúc / Toán tử | Khi nào nên sử dụng? | Lưu ý cốt lõi |
 | :--- | :--- | :--- |
 | **`if...else`** | Rẽ nhánh điều kiện logic phức tạp, so sánh khoảng giá trị (`<`, `>`, `>=`). | Hỗ trợ mọi biểu thức boolean. |
-| **`switch...case`** | So sánh 1 giá trị cố định với danh sách nhiều trường hợp cụ thể (Menu, Mã lỗi, Trạng thái đơn hàng). | So sánh bằng `===`, nhớ có `break` để tránh Fall-through ngoài ý muốn. |
-| **`Ternary ( ? : )`** | Gán giá trị hoặc return biểu thức đơn giản dựa trên 1 điều kiện duy nhất. | Tránh lồng nhau quá 1 cấp để đảm bảo tính dễ đọc. |
+| **`switch...case`** | So sánh 1 giá trị cố định với danh sách nhiều trường hợp cụ thể. | So sánh bằng `===`, nhớ có `break` để tránh Fall-through ngoài ý muốn. |
+| **`Ternary ( ? : )`** | Gán giá trị hoặc return biểu thức đơn giản dựa trên 1 điều kiện duy nhất. | Tránh lồng nhau quá 1 cấp. |
 | **`===` vs `==`** | Luôn ưu tiên `===` trong mọi trường hợp. | `==` tự ý ép kiểu ngầm, tạo ra các bug logic tiềm ẩn. |
-| **`&&` (AND)** | Kiểm tra đồng thời nhiều điều kiện; thực hiện short-circuit khi cần guarded execution. | Dừng ngay ở Falsy đầu tiên. |
-| **`||` (OR)** | Cung cấp giá trị dự phòng (fallback); kiểm tra ít nhất 1 điều kiện đúng. | Dừng ngay ở Truthy đầu tiên. |
+| **`?.` (Optional Chaining)** | Truy cập an toàn vào thuộc tính object lồng sâu. | Tránh lỗi crash `Cannot read properties of undefined`. |
+| **`??` (Nullish)** | Cung cấp giá trị dự phòng khi giá trị là `null` hoặc `undefined`. | Không đè lên các giá trị Falsy hợp lệ như `0`, `""`, `false`. |
 
 [⬆️ Quay lại Mục lục](#mục-lục)
