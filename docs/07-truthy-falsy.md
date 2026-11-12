@@ -3,6 +3,7 @@
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng JavaScript là một **nhân viên soát vé rạp chiếu phim**:
+>
 > - Trước cửa vào phòng chiếu, nhân viên này chỉ quan tâm đúng một câu hỏi nhị phân: **"Có được vào xem hay không (true/false)?"**
 > - Thay vì đòi hỏi một tấm vé boolean thuần túy, người xem có thể đưa ra rất nhiều thứ khác nhau: một chuỗi văn bản `"hello"`, một mảng rỗng `[]`, số `0`, hay chiếc ví rỗng `null`.
 > - Người soát vé sẽ tự động "phiên dịch" (ép kiểu ngầm):
@@ -12,6 +13,7 @@
 ---
 
 ## Mục Lục
+
 <a id="mục-lục"></a>
 
 1. [Khái Niệm Truthy & Falsy](#1-khái-niệm-truthy--falsy)
@@ -24,6 +26,7 @@
 ---
 
 ## 1. Khái Niệm Truthy & Falsy
+
 Trong JavaScript, một giá trị **Truthy** là giá trị được coi là `true` khi đặt trong ngữ cảnh luận lý (Boolean context) như câu lệnh điều kiện `if`, vòng lặp `while`, hoặc biểu thức toán tử 3 ngôi (`? :`).
 
 Ngược lại, một giá trị **Falsy** là giá trị sẽ được chuyển đổi thành `false` trong ngữ cảnh luận lý.
@@ -45,21 +48,39 @@ if (0) {
 ---
 
 ## 2. Danh Sách 8 Giá Trị Falsy Trong JavaScript
+
 JavaScript chỉ có duy nhất **8 giá trị Falsy** (tính đến ECMAScript hiện đại). Mọi giá trị khác ngoài 8 giá trị này đều là **Truthy**:
 
-| STT | Giá trị Falsy | Kiểu dữ liệu (`typeof`) | Ý nghĩa thực tế |
-| :---: | :--- | :--- | :--- |
-| 1 | `false` | `boolean` | Giá trị boolean sai nguyên bản |
-| 2 | `0` | `number` | Số không |
-| 3 | `-0` | `number` | Số âm không |
-| 4 | `0n` | `bigint` | Số 0 kiểu BigInt |
-| 5 | `""` (hoặc `''`, ````) | `string` | Chuỗi ký tự rỗng (độ dài 0) |
-| 6 | `null` | `object` (bug lịch sử) | Giá trị rỗng có chủ ý |
-| 7 | `undefined` | `undefined` | Biến chưa được gán giá trị |
-| 8 | `NaN` | `number` | "Not-a-Number" (kết quả phép toán lỗi) |
+| STT | Giá trị Falsy          | Kiểu dữ liệu (`typeof`) | Ý nghĩa thực tế                        |
+| :-: | :--------------------- | :---------------------- | :------------------------------------- |
+|  1  | `false`                | `boolean`               | Giá trị boolean sai nguyên bản         |
+|  2  | `0`                    | `number`                | Số không                               |
+|  3  | `-0`                   | `number`                | Số âm không                            |
+|  4  | `0n`                   | `bigint`                | Số 0 kiểu BigInt                       |
+|  5  | `""` (hoặc `''`, ````) | `string`                | Chuỗi ký tự rỗng (độ dài 0)            |
+|  6  | `null`                 | `object` (bug lịch sử)  | Giá trị rỗng có chủ ý                  |
+|  7  | `undefined`            | `undefined`             | Biến chưa được gán giá trị             |
+|  8  | `NaN`                  | `number`                | "Not-a-Number" (kết quả phép toán lỗi) |
+
+> [!TIP]
+> **Mẹo ghi nhớ siêu nhanh — Câu vè thần chú Falsy:**
+>
+> 🗣️ **"false – không – rỗng – null – ăn – nak"**
+>
+> | Từ khóa vè | Đại diện cho giá trị JS | Ý nghĩa / Giải thích |
+> | :--- | :--- | :--- |
+> | **false** | `false` | Giá trị boolean sai nguyên bản |
+> | **không** | `0`, `-0`, `0n` | Số 0 (số thường, số âm không, BigInt zero) |
+> | **rỗng** | `""` (hoặc `''`, ````) | Chuỗi ký tự rỗng (độ dài 0) |
+> | **null** | `null` | Giá trị rỗng có chủ ý |
+> | **ăn** | `undefined` | Đọc chệch từ âm đầu **un-** / **ân-** của `undefined` |
+> | **nak** | `NaN` | Đọc vui theo phiên âm tắt của **NaN** ("Not a Number") |
+>
+> 💡 **Quy tắc vàng:** Chỉ cần thuộc câu vè 6 từ trên, **tất cả mọi giá trị khác** trong JavaScript (kể cả mảng rỗng `[]`, object rỗng `{}`, chuỗi `"0"`, chuỗi `"false"`) đều là **Truthy**!
 
 > [!IMPORTANT]
 > **Đặc biệt lưu ý:**
+>
 > - `[]` (mảng rỗng) là **Truthy**!
 > - `{}` (object rỗng) là **Truthy**!
 > - `"0"` (chuỗi có số không) là **Truthy**!
@@ -70,12 +91,14 @@ JavaScript chỉ có duy nhất **8 giá trị Falsy** (tính đến ECMAScript 
 ---
 
 ## 3. Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)
+
 Khi đặt giá trị vào biểu thức điều kiện, JS Engine tự động gọi ngầm hàm `Boolean(val)`:
 
 ```javascript
 // JavaScript Engine tự động ép kiểu:
 const username = "Huy";
-if (username) { // Tương đương: if (Boolean(username) === true)
+if (username) {
+  // Tương đương: if (Boolean(username) === true)
   console.log(`Xin chào ${username}`);
 }
 ```
@@ -87,20 +110,26 @@ if (username) { // Tương đương: if (Boolean(username) === true)
 ## 4. Toán Tử Logic: &&, ||, ?? và !!
 
 ### 4.1. Toán tử `&&` (Logical AND - Tìm Falsy đầu tiên)
+
 Toán tử `&&` trả về **giá trị Falsy đầu tiên** mà nó bắt gặp. Nếu tất cả đều Truthy, nó trả về giá trị cuối cùng.
+
 ```javascript
 console.log(true && "An" && 0 && "Linh"); // 0 (Falsy đầu tiên)
-console.log("An" && "Bình" && "Cường");   // "Cường" (Truthy cuối)
+console.log("An" && "Bình" && "Cường"); // "Cường" (Truthy cuối)
 ```
 
 ### 4.2. Toán tử `||` (Logical OR - Tìm Truthy đầu tiên)
+
 Toán tử `||` trả về **giá trị Truthy đầu tiên** mà nó bắt gặp. Nếu tất cả đều Falsy, nó trả về giá trị cuối cùng.
+
 ```javascript
 const defaultName = userInput || "Khách vãng lai";
 ```
 
 ### 4.3. Toán tử `??` (Nullish Coalescing)
+
 Toán tử `??` chỉ coi `null` và `undefined` là giá trị rỗng, cho phép giữ lại `0`, `""`, và `false`.
+
 ```javascript
 const count = 0;
 console.log(count || 10); // 10 (vì 0 là falsy -> sai mong muốn!)
@@ -108,7 +137,9 @@ console.log(count ?? 10); // 0 (vì 0 không phải null/undefined -> chuẩn x�
 ```
 
 ### 4.4. Toán tử `!!` (Double NOT)
+
 Ép kiểu tường minh bất kỳ biến nào về `true` hoặc `false` primitive:
+
 ```javascript
 const token = "eyJhbGciOi...";
 const isAuthenticated = !!token; // true
@@ -119,14 +150,16 @@ const isAuthenticated = !!token; // true
 ---
 
 ## 5. Cạm Bẫy Phổ Biến & So Sánh == vs ===
+
 Toán tử so sánh bằng lỏng lẻo (`==`) thực hiện ép kiểu ngầm định phức tạp và gây ra nhiều cạm bẫy:
+
 ```javascript
-0 == false;         // true (0 và false đều ép về số 0)
-"" == false;        // true ("" ép về 0)
-[] == false;        // true ([] ép về "" rồi ép về 0)
-null == undefined;  // true (quy ước đặc biệt)
-null == false;      // false (null chỉ bằng null hoặc undefined)
-NaN == NaN;         // false (NaN không bằng chính nó!)
+0 == false; // true (0 và false đều ép về số 0)
+"" == false; // true ("" ép về 0)
+[] == false; // true ([] ép về "" rồi ép về 0)
+null == undefined; // true (quy ước đặc biệt)
+null == false; // false (null chỉ bằng null hoặc undefined)
+NaN == NaN; // false (NaN không bằng chính nó!)
 ```
 
 > [!TIP]
@@ -139,6 +172,7 @@ NaN == NaN;         // false (NaN không bằng chính nó!)
 ## 6. Best Practices Trong Thực Tế Dự Án
 
 ### 6.1. Kiểm tra mảng rỗng
+
 ```javascript
 // ❌ SAI:
 if (arr) { ... } // Luôn true dù mảng rỗng!
@@ -150,6 +184,7 @@ if (arr.length === 0) {
 ```
 
 ### 6.2. Kiểm tra object rỗng
+
 ```javascript
 // ❌ SAI:
 if (obj) { ... } // Luôn true dù {} rỗng!
