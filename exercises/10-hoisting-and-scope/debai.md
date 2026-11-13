@@ -1,25 +1,4 @@
-# Bài Tập 09: Làm Chủ Cơ Chế Hoisting & Scope Trong JavaScript
-
-> **Mục tiêu thực hành:**
-> - Hiểu sâu bản chất 2 pha thực thi của JavaScript Engine: Creation Phase (cấp phát bộ nhớ) và Execution Phase (thực thi code).
-> - Phân biệt chính xác cách thức hoisting của `var` vs `let` / `const` (khái niệm Temporal Dead Zone - TDZ).
-> - Nắm rõ cơ chế Hoisting toàn phần của Function Declaration so với Function Expression.
-> - Phân biệt rành rọt 2 loại lỗi kinh điển: `TypeError` vs `ReferenceError`.
-> - Hiểu rõ khái niệm "đầu phạm vi" (Global Scope vs Function Scope) khi lồng hàm.
-
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [09 - Hoisting & Scope Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-hoisting-and-scope.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Function Declaration vs Function Expression** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
->      - *Vì sao bắt buộc?* Giải thích sự khác biệt khi gọi hàm trước dòng định nghĩa.
->   2. **Block Scope vs Function Scope** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
->      - *Vì sao bắt buộc?* Hiểu cơ chế tìm biến trong Scope Chain và TDZ của `let`/`const`.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
+# Bài Tập 10: Làm Chủ Cơ Chế Hoisting & Scope Trong JavaScript
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -34,6 +13,27 @@
 - [Phần 3: Phạm Vi Hoisting & Thử Thách Thực Chiến (Nâng Cao)](#phần-3-phạm-vi-hoisting-thử-thách-thực-chiến-nâng-cao)
   - [Bài 3.1: Hoisting trong phạm vi hàm ("Đầu phạm vi")](#bài-3-1-hoisting-trong-phạm-vi-hàm-đầu-phạm-vi)
   - [Bài 3.2: Thử thách "Tư duy như JS Engine" (Mô phỏng sắp xếp bộ nhớ)](#bài-3-2-thử-thách-tư-duy-như-js-engine-mô-phỏng-sắp-xếp-bộ-nhớ)
+
+---
+
+> **Mục tiêu thực hành:**
+> - Hiểu sâu bản chất 2 pha thực thi của JavaScript Engine: Creation Phase (cấp phát bộ nhớ) và Execution Phase (thực thi code).
+> - Phân biệt chính xác cách thức hoisting của `var` vs `let` / `const` (khái niệm Temporal Dead Zone - TDZ).
+> - Nắm rõ cơ chế Hoisting toàn phần của Function Declaration so với Function Expression.
+> - Phân biệt rành rọt 2 loại lỗi kinh điển: `TypeError` vs `ReferenceError`.
+> - Hiểu rõ khái niệm "đầu phạm vi" (Global Scope vs Function Scope) khi lồng hàm.
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [10 - Hoisting & Scope Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Function Declaration vs Function Expression** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+>      - *Vì sao bắt buộc?* Giải thích sự khác biệt khi gọi hàm trước dòng định nghĩa.
+>   2. **Block Scope vs Function Scope** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
+>      - *Vì sao bắt buộc?* Hiểu cơ chế tìm biến trong Scope Chain và TDZ của `let`/`const`.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

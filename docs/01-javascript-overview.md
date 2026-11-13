@@ -1,25 +1,5 @@
 # 01 - Tổng Quan Về JavaScript & Các Cách Viết JavaScript
 
-> [!NOTE]
-> **Câu chuyện ẩn dụ:**
-> Hãy tưởng tượng một trang web giống như một **vở kịch trên sân khấu lớn**:
-> - **HTML** là bộ khung xương, đạo cụ và danh sách nhân vật cố định trên sân khấu.
-> - **CSS** là ánh sáng rực rỡ, trang phục lộng lẫy và tông màu trang trí bắt mắt.
-> - **JavaScript** chính là **hành động và linh hồn sống động của các diễn viên**: Diễn viên biết cất lời thoại khi khán giả tương tác, biết thay đổi diện mạo tức thì mà không cần hạ màn làm lại từ đầu (**Không cần tải lại trang**), và phản hồi linh hoạt với mọi sự kiện diễn ra.
-> 
-> Ra đời từ năm 1995 (do Brendan Eich tạo ra chỉ trong 10 ngày), JavaScript từ một công cụ đơn sơ dùng để kiểm tra form và tạo tuyết rơi nay đã vươn lên trở thành ngôn ngữ lập trình phổ biến nhất hành tinh: Chạy trên trình duyệt (Client), điều hành máy chủ (Node.js), xây dựng ứng dụng di động (React Native) và ứng dụng máy tính (Electron).
-
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
-> * **Kiến thức bắt buộc:** *Không có.* Đây là vạch xuất phát khởi đầu cho toàn bộ lộ trình học JavaScript.
-> * **Hành trang khuyến nghị:** Khái niệm cơ bản về lập trình hoặc HTML/CSS căn bản (giúp hình dung vai trò của JS đối với cấu trúc HTML và giao diện CSS).
-> * **Đích đến tiếp theo:** Sau khi nắm bài này, bạn sẽ đủ điều kiện tiến sang [02 - Quy Ước Đặt Tên (Clean Code)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md) và [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md).
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
 <a id="mục-lục"></a>
 ## Mục Lục
 
@@ -40,6 +20,26 @@
 - [6. Cạm Bẫy Thường Gặp & Lỗi Ngầm Định (Common Pitfalls)](#6-cạm-bẫy-thường-gặp-lỗi-ngầm-định-common-pitfalls)
 - [7. Bảng Tổng Kết So Sánh 5 Cách Viết JavaScript](#7-bảng-tổng-kết-so-sánh-5-cách-viết-javascript)
 - [8. Lời Khuyên Thực Chiến Dành Cho Lập Trình Viên](#8-lời-khuyên-thực-chiến-dành-cho-lập-trình-viên)
+
+---
+
+> [!NOTE]
+> **Câu chuyện ẩn dụ:**
+> Hãy tưởng tượng một trang web giống như một **vở kịch trên sân khấu lớn**:
+> - **HTML** là bộ khung xương, đạo cụ và danh sách nhân vật cố định trên sân khấu.
+> - **CSS** là ánh sáng rực rỡ, trang phục lộng lẫy và tông màu trang trí bắt mắt.
+> - **JavaScript** chính là **hành động và linh hồn sống động của các diễn viên**: Diễn viên biết cất lời thoại khi khán giả tương tác, biết thay đổi diện mạo tức thì mà không cần hạ màn làm lại từ đầu (**Không cần tải lại trang**), và phản hồi linh hoạt với mọi sự kiện diễn ra.
+> 
+> Ra đời từ năm 1995 (do Brendan Eich tạo ra chỉ trong 10 ngày), JavaScript từ một công cụ đơn sơ dùng để kiểm tra form và tạo tuyết rơi nay đã vươn lên trở thành ngôn ngữ lập trình phổ biến nhất hành tinh: Chạy trên trình duyệt (Client), điều hành máy chủ (Node.js), xây dựng ứng dụng di động (React Native) và ứng dụng máy tính (Electron).
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> * **Kiến thức bắt buộc:** *Không có.* Đây là vạch xuất phát khởi đầu cho toàn bộ lộ trình học JavaScript.
+> * **Hành trang khuyến nghị:** Khái niệm cơ bản về lập trình hoặc HTML/CSS căn bản (giúp hình dung vai trò của JS đối với cấu trúc HTML và giao diện CSS).
+> * **Đích đến tiếp theo:** Sau khi nắm bài này, bạn sẽ đủ điều kiện tiến sang [02 - Quy Ước Đặt Tên (Clean Code)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md) và [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

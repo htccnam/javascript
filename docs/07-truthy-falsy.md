@@ -1,5 +1,18 @@
 # 07 - Truthy & Falsy trong JavaScript (Bản Chất & Ép Kiểu Ngầm Định)
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+1. [Khái Niệm Truthy & Falsy](#1-khái-niệm-truthy-falsy)
+2. [Danh Sách 8 Giá Trị Falsy Trong JavaScript](#2-danh-sách-8-giá-trị-falsy-trong-javascript)
+   - [Tại Sao Mảng Rỗng và Object Rỗng Lại Là Truthy?](#tại-sao-mảng-rỗng-và-object-rỗng-lại-là-truthy)
+3. [Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)](#3-cơ-chế-ép-kiểu-ngầm-định)
+4. [Toán Tử Logic: &&, ||, ?? và !!](#4-toán-tử-logic)
+5. [Cạm Bẫy Phổ Biến & So Sánh == vs ===](#5-cạm-bẫy-phổ-biến-và-so-sánh)
+6. [Best Practices Trong Thực Tế Dự Án](#6-best-practices-trong-thực-tế-dự-án)
+
+---
+
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng JavaScript là một **nhân viên soát vé rạp chiếu phim**:
@@ -21,22 +34,8 @@
 >    - *Vì sao bắt buộc?* Bài 07 dùng kỹ thuật `!!value` để ép bất kỳ giá trị nào về đúng chuẩn Boolean chân lý (`true`/`false`).
 > 3. **So sánh `==` vs `===`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 5)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#5-toán-tử-so-sánh-comparison-operators):
 >    - *Vì sao bắt buộc?* Hiểu cơ chế ép kiểu ngầm định của `==` (ToNumber, ToPrimitive algorithm) giải thích vì sao `[] == false` lại ra `true`.
-> * **Đích đến tiếp theo:** Khái niệm Truthy/Falsy là điều kiện bắt buộc để viết callback cho các phương thức lọc mảng `.filter()` và `.find()` tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md).
+> * **Đích đến tiếp theo:** Khái niệm Truthy/Falsy là điều kiện bắt buộc để xác định điều kiện dừng của vòng lặp tại [08 - Ép Kiểu & Các Cấu Trúc Vòng Lặp](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md) và viết callback cho các phương thức lọc mảng `.filter()` tại [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
-
-<a id="mục-lục"></a>
-
-1. [Khái Niệm Truthy & Falsy](#1-khái-niệm-truthy-falsy)
-2. [Danh Sách 8 Giá Trị Falsy Trong JavaScript](#2-danh-sách-8-giá-trị-falsy-trong-javascript)
-   - [Tại Sao Mảng Rỗng và Object Rỗng Lại Là Truthy?](#tại-sao-mảng-rỗng-và-object-rỗng-lại-là-truthy)
-3. [Cơ Chế Ép Kiểu Ngầm Định (Implicit Type Coercion)](#3-cơ-chế-ép-kiểu-ngầm-định)
-4. [Toán Tử Logic: &&, ||, ?? và !!](#4-toán-tử-logic)
-5. [Cạm Bẫy Phổ Biến & So Sánh == vs ===](#5-cạm-bẫy-phổ-biến-và-so-sánh)
-6. [Best Practices Trong Thực Tế Dự Án](#6-best-practices-trong-thực-tế-dự-án)
 
 ---
 

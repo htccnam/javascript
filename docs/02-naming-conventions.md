@@ -1,5 +1,21 @@
 # 02 - Quy Ước Đặt Tên Trong JavaScript (JavaScript Naming Conventions)
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [1. Các Phong Cách Viết Chữ (Casing Styles) Trong JavaScript](#1-các-phong-cách-viết-chữ-casing-styles-trong-javascript)
+- [2. Quy Tắc Đặt Tên Biến Boolean (Dạng Câu Hỏi Yes/No)](#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yes-no)
+- [3. Quy Tắc Đặt Tên Biến Thông Thường (Danh Từ Số Ít & Số Nhiều)](#3-quy-tắc-đặt-tên-biến-thông-thường-danh-từ-số-ít-số-nhiều)
+- [4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)](#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ-tân-ngữ)
+- [5. Quy Tắc Đặt Tên Class Và Constructor (PascalCase)](#5-quy-tắc-đặt-tên-class-và-constructor-pascalcase)
+- [6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)](#6-hằng-số-bất-biến-uppersnakecase-vs-const-thông-thường)
+- [7. Thuộc Tính & Phương Thức Nội Bộ / Riêng Tư (`_` và `#`)](#7-thuộc-tính-phương-thức-nội-bộ-riêng-tư-và)
+- [8. Cạm Bẫy Thường Gặp Khi Đặt Tên (Common Pitfalls)](#8-cạm-bẫy-thường-gặp-khi-đặt-tên-common-pitfalls)
+- [9. Bảng Tổng Kết Quy Ước Đặt Tên Toàn Diện](#9-bảng-tổng-kết-quy-ước-đặt-tên-toàn-diện)
+- [10. Lời Khuyên Thực Chiến Từ Google & Airbnb Style Guides](#10-lời-khuyên-thực-chiến-từ-google-airbnb-style-guides)
+
+---
+
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng mã nguồn của bạn giống như một **siêu thị bách hóa quốc tế**:
@@ -20,24 +36,8 @@
 > Để hiểu và áp dụng chuẩn xác quy ước đặt tên trong bài này, bạn bắt buộc phải nắm vững:
 > 1. **Tính nhạy chữ hoa - chữ thường (Case-sensitive)** tại [01 - Tổng Quan Về JavaScript (Mục 2.4)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#24-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity):
 >    - *Vì sao bắt buộc?* Quy ước `camelCase` (`isLoggedIn`), `PascalCase` (`BankAccount`), và `UPPER_SNAKE_CASE` (`MAX_RETRIES`) hoàn toàn dựa trên sự phân biệt chữ hoa/thường. Nếu không hiểu tính chất case-sensitive của JS Engine, bạn sẽ gọi sai tên biến và sinh lỗi `ReferenceError`.
-> * **Đích đến tiếp theo:** Kiến thức bài này là hành trang bắt buộc để bạn đặt tên biến, mảng, hàm sạch đẹp trong [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md) và [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md).
+> * **Đích đến tiếp theo:** Kiến thức bài này là hành trang bắt buộc để bạn đặt tên biến, mảng, hàm sạch đẹp trong [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md) và [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [1. Các Phong Cách Viết Chữ (Casing Styles) Trong JavaScript](#1-các-phong-cách-viết-chữ-casing-styles-trong-javascript)
-- [2. Quy Tắc Đặt Tên Biến Boolean (Dạng Câu Hỏi Yes/No)](#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yes-no)
-- [3. Quy Tắc Đặt Tên Biến Thông Thường (Danh Từ Số Ít & Số Nhiều)](#3-quy-tắc-đặt-tên-biến-thông-thường-danh-từ-số-ít-số-nhiều)
-- [4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)](#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ-tân-ngữ)
-- [5. Quy Tắc Đặt Tên Class Và Constructor (PascalCase)](#5-quy-tắc-đặt-tên-class-và-constructor-pascalcase)
-- [6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)](#6-hằng-số-bất-biến-uppersnakecase-vs-const-thông-thường)
-- [7. Thuộc Tính & Phương Thức Nội Bộ / Riêng Tư (`_` và `#`)](#7-thuộc-tính-phương-thức-nội-bộ-riêng-tư-và)
-- [8. Cạm Bẫy Thường Gặp Khi Đặt Tên (Common Pitfalls)](#8-cạm-bẫy-thường-gặp-khi-đặt-tên-common-pitfalls)
-- [9. Bảng Tổng Kết Quy Ước Đặt Tên Toàn Diện](#9-bảng-tổng-kết-quy-ước-đặt-tên-toàn-diện)
-- [10. Lời Khuyên Thực Chiến Từ Google & Airbnb Style Guides](#10-lời-khuyên-thực-chiến-từ-google-airbnb-style-guides)
 
 ---
 

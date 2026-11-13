@@ -1,4 +1,16 @@
-# Bài Tập 13: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
+# Bài Tập 14: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
+
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [Phần 1: Thao tác giao diện cơ bản (Cơ bản)](#phần-1-thao-tác-giao-diện-cơ-bản-cơ-bản)
+  - [Bài 1.1: Bật / Tắt chế độ tối (Dark Mode Toggle)](#bài-1-1-bật-tắt-chế-độ-tối-dark-mode-toggle)
+  - [Bài 1.2: Bộ đếm ký tự trực tiếp (Live Character Counter)](#bài-1-2-bộ-đếm-ký-tự-trực-tiếp-live-character-counter)
+- [Phần 2: Xây dựng Todo List động (Trung bình & Thực chiến)](#phần-2-xây-dựng-todo-list-động-trung-bình-thực-chiến)
+  - [Bài 2.1: Thêm công việc mới vào danh sách](#bài-2-1-thêm-công-việc-mới-vào-danh-sách)
+  - [Bài 2.2: Đánh dấu hoàn thành & Xóa công việc (Event Delegation)](#bài-2-2-đánh-dấu-hoàn-thành-xóa-công-việc-event-delegation)
+
+---
 
 > **Mục tiêu thực hành:**
 > - Sử dụng `document.querySelector` để tìm kiếm phần tử trên trang.
@@ -10,27 +22,15 @@
 
 > [!IMPORTANT]
 > ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [13 - Thao Tác DOM & Sự Kiện](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * **Lý thuyết bài này:** Đọc kỹ [14 - Thao Tác DOM & Sự Kiện](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
 > * **Kiến thức bài trước bắt buộc:**
->   1. **Callback & Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+>   1. **Callback & Arrow Function** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
 >      - *Vì sao bắt buộc?* Dùng để viết hàm callback cho `addEventListener('click', (e) => {})`.
->   2. **Thao tác thuộc tính Object** tại [11 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+>   2. **Thao tác thuộc tính Object** tại [12 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
 >      - *Vì sao bắt buộc?* Đọc và ghi các thuộc tính trên phần tử DOM (`el.textContent`, `input.value`, `el.style`).
 >   3. **Ngăn chặn hành vi mặc định** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 8.4)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế):
 >      - *Vì sao bắt buộc?* Sử dụng `event.preventDefault()` khi submit form Todo để trang không bị tải lại.
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [Phần 1: Thao tác giao diện cơ bản (Cơ bản)](#phần-1-thao-tác-giao-diện-cơ-bản-cơ-bản)
-  - [Bài 1.1: Bật / Tắt chế độ tối (Dark Mode Toggle)](#bài-1-1-bật-tắt-chế-độ-tối-dark-mode-toggle)
-  - [Bài 1.2: Bộ đếm ký tự trực tiếp (Live Character Counter)](#bài-1-2-bộ-đếm-ký-tự-trực-tiếp-live-character-counter)
-- [Phần 2: Xây dựng Todo List động (Trung bình & Thực chiến)](#phần-2-xây-dựng-todo-list-động-trung-bình-thực-chiến)
-  - [Bài 2.1: Thêm công việc mới vào danh sách](#bài-2-1-thêm-công-việc-mới-vào-danh-sách)
-  - [Bài 2.2: Đánh dấu hoàn thành & Xóa công việc (Event Delegation)](#bài-2-2-đánh-dấu-hoàn-thành-xóa-công-việc-event-delegation)
 
 ---
 

@@ -1,30 +1,7 @@
 # 06 - Toán Tử Logical Trong JavaScript (Bản Chất, Kết Hợp & Cạm Bẫy)
 
-> [!NOTE]
-> **Câu chuyện ẩn dụ:**
-> Hãy tưởng tượng một buổi chiều bạn cùng mẹ chuẩn bị cho bữa tối gia đình:
-> - **Toán tử AND (`&&`) - Bữa cơm cá kho:** Mẹ quyết định: *"Nếu hôm nay mua được **cá tươi** VÀ có **rau xanh**, nhà mình sẽ làm món cá kho ăn kèm canh rau"*. Bữa cơm chuẩn chỉ diễn ra khi **CẢ HAI** điều kiện (cá VÀ rau) đều được đáp ứng đầy đủ. Thiếu bất kỳ thứ nào $\rightarrow$ Kế hoạch thất bại!
-> - **Toán tử OR (`||`) - Món canh giải nhiệt:** Mẹ nói thêm: *"Chỉ cần có **bí đỏ** HOẶC có **rau muống**, mẹ sẽ nấu được một nồi canh ngon"*. Bữa ăn vẫn trọn vẹn chỉ cần **ÍT NHẤT MỘT TRONG HAI** nguyên liệu sẵn sàng!
-> - **Toán tử NOT (`!`) - Người kén ăn:** Em bạn không ăn được cay (`!isSpicyLover`). Mẹ phải kiểm tra để loại bỏ ớt ra khỏi đĩa thức ăn.
-
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
-> Để hiểu sâu bản chất toán tử logic, cơ chế đoản mạch và các cạm bẫy trong bài này, bạn bắt buộc phải nắm vững:
-> 1. **Khái niệm cơ bản về Short-Circuit (Ngắn mạch)** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 7)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit):
->    - *Vì sao bắt buộc?* Bài 06 đào sâu cơ chế `&&` và `||` không chỉ trả về boolean mà trả về **chính giá trị của toán hạng dừng lại**. Nếu chưa nắm khái niệm cơ bản ở Bài 05, bạn sẽ bị bất ngờ khi thấy `1 && "hello"` trả về `"hello"`.
-> 2. **Toán tử `??` vs `||`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 8.2)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#82-nullish-coalescing-operator-):
->    - *Vì sao bắt buộc?* Bài 06 phân tích cạm bẫy cú pháp: Bắt buộc dùng dấu ngoặc đơn `()` khi kết hợp `??` với `&&`/`||` để tránh lỗi cú pháp `SyntaxError`.
-> 3. **Độ ưu tiên toán tử (Operator Precedence)** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 9)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#9-bảng-độ-ưu-tiên-toán-tử-operator-precedence):
->    - *Vì sao bắt buộc?* Giúp xác định thứ tự chạy của biểu thức phức tạp kết hợp giữa `!`, `&&`, `||` và toán tử so sánh.
-> * **Đích đến tiếp theo:** Khái niệm toán tử `!` và `!!` ở bài này là chìa khóa mở ra [07 - Truthy & Falsy Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md).
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Toán Tử Logical Là Gì?](#1-toán-tử-logical-là-gì)
 2. [Toán Tử AND (&&) — Tất Cả Phải Cùng Đúng](#2-toán-tử-and-tất-cả-phải-cùng-đúng)
@@ -52,6 +29,29 @@
    - [Bẫy 2: Bỏ quên dấu ngoặc tròn khi kết hợp && và ||](#bẫy-2-bỏ-quên-dấu-ngoặc-tròn-khi-kết-hợp-và)
    - [Bẫy 3: Phép gán giá trị mặc định của || bị lỗi với số 0 và chuỗi rỗng](#bẫy-3-phép-gán-giá-trị-mặc-định-của-bị-lỗi-với-số-0-và-chuỗi-rỗng)
 10. [Bảng So Sánh Tổng Kết Cốt Lõi](#10-bảng-so-sánh-tổng-kết-cốt-lõi)
+
+---
+
+> [!NOTE]
+> **Câu chuyện ẩn dụ:**
+> Hãy tưởng tượng một buổi chiều bạn cùng mẹ chuẩn bị cho bữa tối gia đình:
+> - **Toán tử AND (`&&`) - Bữa cơm cá kho:** Mẹ quyết định: *"Nếu hôm nay mua được **cá tươi** VÀ có **rau xanh**, nhà mình sẽ làm món cá kho ăn kèm canh rau"*. Bữa cơm chuẩn chỉ diễn ra khi **CẢ HAI** điều kiện (cá VÀ rau) đều được đáp ứng đầy đủ. Thiếu bất kỳ thứ nào $\rightarrow$ Kế hoạch thất bại!
+> - **Toán tử OR (`||`) - Món canh giải nhiệt:** Mẹ nói thêm: *"Chỉ cần có **bí đỏ** HOẶC có **rau muống**, mẹ sẽ nấu được một nồi canh ngon"*. Bữa ăn vẫn trọn vẹn chỉ cần **ÍT NHẤT MỘT TRONG HAI** nguyên liệu sẵn sàng!
+> - **Toán tử NOT (`!`) - Người kén ăn:** Em bạn không ăn được cay (`!isSpicyLover`). Mẹ phải kiểm tra để loại bỏ ớt ra khỏi đĩa thức ăn.
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu bản chất toán tử logic, cơ chế đoản mạch và các cạm bẫy trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Khái niệm cơ bản về Short-Circuit (Ngắn mạch)** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 7)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit):
+>    - *Vì sao bắt buộc?* Bài 06 đào sâu cơ chế `&&` và `||` không chỉ trả về boolean mà trả về **chính giá trị của toán hạng dừng lại**. Nếu chưa nắm khái niệm cơ bản ở Bài 05, bạn sẽ bị bất ngờ khi thấy `1 && "hello"` trả về `"hello"`.
+> 2. **Toán tử `??` vs `||`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 8.2)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#82-nullish-coalescing-operator-):
+>    - *Vì sao bắt buộc?* Bài 06 phân tích cạm bẫy cú pháp: Bắt buộc dùng dấu ngoặc đơn `()` khi kết hợp `??` với `&&`/`||` để tránh lỗi cú pháp `SyntaxError`.
+> 3. **Độ ưu tiên toán tử (Operator Precedence)** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 9)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#9-bảng-độ-ưu-tiên-toán-tử-operator-precedence):
+>    - *Vì sao bắt buộc?* Giúp xác định thứ tự chạy của biểu thức phức tạp kết hợp giữa `!`, `&&`, `||` và toán tử so sánh.
+> * **Đích đến tiếp theo:** Khái niệm toán tử `!` và `!!` ở bài này là chìa khóa mở ra [07 - Truthy & Falsy Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

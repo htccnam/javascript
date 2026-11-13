@@ -1,21 +1,7 @@
 # Bài Tập 03: Từ Khóa Khai Báo (var, let, const), Phạm Vi (Scope) & Kiểu Dữ Liệu Trong JavaScript
 
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [03 - Từ Khóa Khai Báo, Scope & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Dynamic Typing** tại [01 - Tổng Quan Về JavaScript (Mục 2.3)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#23-ngôn-ngữ-định-kiểu-động-dynamic-typing):
->      - *Vì sao bắt buộc?* Hiểu tính biến đổi kiểu linh hoạt để làm Bài 1 và Bài 3.
->   2. **Quy tắc đặt tên Clean Code** tại [02 - Quy Ước Đặt Tên (Mục 2 & 3)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno):
->      - *Vì sao bắt buộc?* Bài 3 yêu cầu đặt tên biến boolean với `is/has`, danh từ số nhiều cho mảng.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Lý Thuyết Cốt Lõi Cần Nhớ](#lý-thuyết-cốt-lõi-cần-nhớ)
 2. [Cấp Độ 1 — Cơ Bản](#cấp-độ-1--cơ-bản)
@@ -29,6 +15,18 @@
 4. [Cấp Độ 3 — Thực Chiến / Nâng Cao](#cấp-độ-3--thực-chiến--nâng-cao)
    - [Bài 7: Phòng khám Dr. JavaScript — Bộ chẩn đoán kiểu dữ liệu toàn diện (4 Ca Bệnh Khó)](#bài-7-xây-dựng-hàm-kiểm-tra-kiểu-chuẩn-xác-100-getexacttype)
    - [Bài 8: Hàm xử lý dữ liệu phòng thủ có kiểm tra kiểu dữ liệu an toàn](#bài-8-hàm-xử-lý-dữ-liệu-phòng-thủ-có-kiểm-tra-kiểu-dữ-liệu-an-toàn)
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [03 - Từ Khóa Khai Báo, Scope & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Dynamic Typing** tại [01 - Tổng Quan Về JavaScript (Mục 2.3)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#23-ngôn-ngữ-định-kiểu-động-dynamic-typing):
+>      - *Vì sao bắt buộc?* Hiểu tính biến đổi kiểu linh hoạt để làm Bài 1 và Bài 3.
+>   2. **Quy tắc đặt tên Clean Code** tại [02 - Quy Ước Đặt Tên (Mục 2 & 3)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno):
+>      - *Vì sao bắt buộc?* Bài 3 yêu cầu đặt tên biến boolean với `is/has`, danh từ số nhiều cho mảng.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

@@ -1,30 +1,7 @@
 # 03 - Từ Khóa Khai Báo (var, let, const), Phạm Vi (Scope) & Kiểu Dữ Liệu Trong JavaScript
 
-> [!NOTE]
-> **Câu chuyện ẩn dụ:**
-> Hãy tưởng tượng việc lập trình giống như bạn đang **quản lý đồ đạc trong một tòa nhà chung cư thông minh**:
-> - **Sân chung tòa nhà (Global Scope):** Bất kỳ ai trong tòa nhà cũng thấy và dùng được đồ đạc đặt ở đây. Nhưng nếu ai cũng vứt đồ lung tung ra sân, sân sẽ bị ô nhiễm rác (Global Pollution) và đồ đạc dễ bị người khác cầm nhầm/ghi đè.
-> - **Chiếc nhãn dán lỏng lẻo (`var`):** Bạn dán nhãn trong phòng ngủ nhỏ (Block Scope `{}`), nhưng gió thổi làm nhãn bay vèo ra tận phòng khách căn hộ (không có Block Scope, chỉ có Function Scope). Người ngoài phòng ngủ vẫn nhìn thấy và sửa được!
-> - **Căn phòng riêng gắn thẻ (`let` & `const` - Block Scope):** Chiếc nhãn hiện đại chỉ có hiệu lực bên trong 4 bức tường của căn phòng nơi nó được dán. Bước chân ra khỏi cửa phòng (`}`), biến biến mất hoàn toàn!
-> - **Nguyên tắc kính một chiều (Lexical Scope):** Đứng ở phòng nhỏ bên trong nhìn ra phòng khách và nhìn ra sân tòa nhà: thấy hết tất cả. Nhưng người ở ngoài sân hay ngoài phòng khách **tuyệt đối không thể nhìn trộm** vào phòng ngủ của bạn!
-> - **`const` đóng đinh nhãn:** Chiếc nhãn dán được đóng đinh chết vào chiếc hộp (mảng/object). Bạn không được bóc nhãn sang hộp khác, nhưng vẫn thoải mái mở nắp hộp để thêm, bớt hoặc đổi đồ bên trong hộp!
-
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
-> Để hiểu sâu bản chất biến, phạm vi bộ nhớ và 8 kiểu dữ liệu trong bài này, bạn bắt buộc phải nắm vững:
-> 1. **Dynamic Typing (Kiểu dữ liệu động)** tại [01 - Tổng Quan Về JavaScript (Mục 2.3)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#23-ngôn-ngữ-định-kiểu-động-dynamic-typing):
->    - *Vì sao bắt buộc?* Để hiểu tại sao từ khóa `let` cho phép gán lại biến sang một kiểu dữ liệu hoàn toàn khác, trong khi `const` ngăn chặn việc gán lại nhãn biến.
-> 2. **Quy tắc đặt tên Clean Code** tại [02 - Quy Ước Đặt Tên (Mục 2 & 3)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno):
->    - *Vì sao bắt buộc?* Bài 03 yêu cầu bạn đặt tên chuẩn cho 8 kiểu dữ liệu khác nhau (`is` cho boolean, danh từ số nhiều cho mảng, số ít cho object).
-> * **Đích đến tiếp theo:** Bài 03 là nền móng của mọi cấu trúc dữ liệu! Bạn sẽ sử dụng trực tiếp các kiểu dữ liệu này trong [04 - Chuỗi](file:///d:/github/studyProgram/javascript/docs/04-strings.md), [05 - Rẽ Nhánh & Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md), [10 - Mảng](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) và [11 - Đối Tượng](file:///d:/github/studyProgram/javascript/docs/11-objects.md).
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Từ Khóa Khai Báo Là Gì?](#1-từ-khóa-khai-báo-là-gì)
 2. [Khác Biệt Cốt Lõi: Scope, Re-assign & Re-declaration (Bảng So Sánh var, let, const)](#2-khác-biệt-cốt-lõi-scope-re-assign-re-declaration-bảng-so-sánh-var-let-const)
@@ -61,6 +38,29 @@
     - [11.6. 3 Sai Lầm Thường Gặp (Common Pitfalls)](#11-6-3-sai-lầm-thường-gặp-common-pitfalls)
     - [11.7. Bảng Tra Cứu Toàn Diện 8 Kiểu Dữ Liệu](#11-7-bảng-tra-cứu-toàn-diện-8-kiểu-dữ-liệu)
     - [11.8. Phòng Khám Dr. JavaScript — Kỹ Thuật "Chẩn Đoán" Kiểu Dữ Liệu Chuẩn Xác (4 Ca Bệnh Khó)](#11-8-phòng-khám-dr-javascript--kỹ-thuật-chẩn-đoán-kiểu-dữ-liệu-chuẩn-xác-4-ca-bệnh-khó)
+
+---
+
+> [!NOTE]
+> **Câu chuyện ẩn dụ:**
+> Hãy tưởng tượng việc lập trình giống như bạn đang **quản lý đồ đạc trong một tòa nhà chung cư thông minh**:
+> - **Sân chung tòa nhà (Global Scope):** Bất kỳ ai trong tòa nhà cũng thấy và dùng được đồ đạc đặt ở đây. Nhưng nếu ai cũng vứt đồ lung tung ra sân, sân sẽ bị ô nhiễm rác (Global Pollution) và đồ đạc dễ bị người khác cầm nhầm/ghi đè.
+> - **Chiếc nhãn dán lỏng lẻo (`var`):** Bạn dán nhãn trong phòng ngủ nhỏ (Block Scope `{}`), nhưng gió thổi làm nhãn bay vèo ra tận phòng khách căn hộ (không có Block Scope, chỉ có Function Scope). Người ngoài phòng ngủ vẫn nhìn thấy và sửa được!
+> - **Căn phòng riêng gắn thẻ (`let` & `const` - Block Scope):** Chiếc nhãn hiện đại chỉ có hiệu lực bên trong 4 bức tường của căn phòng nơi nó được dán. Bước chân ra khỏi cửa phòng (`}`), biến biến mất hoàn toàn!
+> - **Nguyên tắc kính một chiều (Lexical Scope):** Đứng ở phòng nhỏ bên trong nhìn ra phòng khách và nhìn ra sân tòa nhà: thấy hết tất cả. Nhưng người ở ngoài sân hay ngoài phòng khách **tuyệt đối không thể nhìn trộm** vào phòng ngủ của bạn!
+> - **`const` đóng đinh nhãn:** Chiếc nhãn dán được đóng đinh chết vào chiếc hộp (mảng/object). Bạn không được bóc nhãn sang hộp khác, nhưng vẫn thoải mái mở nắp hộp để thêm, bớt hoặc đổi đồ bên trong hộp!
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
+> Để hiểu sâu bản chất biến, phạm vi bộ nhớ và 8 kiểu dữ liệu trong bài này, bạn bắt buộc phải nắm vững:
+> 1. **Dynamic Typing (Kiểu dữ liệu động)** tại [01 - Tổng Quan Về JavaScript (Mục 2.3)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#23-ngôn-ngữ-định-kiểu-động-dynamic-typing):
+>    - *Vì sao bắt buộc?* Để hiểu tại sao từ khóa `let` cho phép gán lại biến sang một kiểu dữ liệu hoàn toàn khác, trong khi `const` ngăn chặn việc gán lại nhãn biến.
+> 2. **Quy tắc đặt tên Clean Code** tại [02 - Quy Ước Đặt Tên (Mục 2 & 3)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#2-quy-tắc-đặt-tên-biến-boolean-dạng-câu-hỏi-yesno):
+>    - *Vì sao bắt buộc?* Bài 03 yêu cầu bạn đặt tên chuẩn cho 8 kiểu dữ liệu khác nhau (`is` cho boolean, danh từ số nhiều cho mảng, số ít cho object).
+> * **Đích đến tiếp theo:** Bài 03 là nền móng của mọi cấu trúc dữ liệu! Bạn sẽ sử dụng trực tiếp các kiểu dữ liệu này trong [04 - Chuỗi](file:///d:/github/studyProgram/javascript/docs/04-strings.md), [05 - Rẽ Nhánh & Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md), [11 - Mảng](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) và [12 - Đối Tượng](file:///d:/github/studyProgram/javascript/docs/12-objects.md).
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

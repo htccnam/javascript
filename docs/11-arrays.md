@@ -1,4 +1,16 @@
-# 10 - Mảng Trong JavaScript (Arrays: Bản Chất & Toàn Bộ Phương Thức Thực Chiến)
+# 11 - Mảng Trong JavaScript (Arrays: Bản Chất & Toàn Bộ Phương Thức Thực Chiến)
+
+<a id="mục-lục"></a>
+## Mục Lục
+
+1. [Khai Báo & Duyệt Mảng](#1-khai-báo-duyệt-mảng)
+2. [Thao Tác Thêm & Xóa: push, pop, shift, unshift](#2-thao-tác-thêm-xóa-push-pop-shift-unshift)
+3. [Phương Thức Đa Năng: splice](#3-phương-thức-đa-năng-splice)
+4. [Bộ Ba Bất Biến Lập Trình Hàm: filter, map, reduce](#4-bộ-ba-bất-biến-lập-trình-hàm-filter-map-reduce)
+5. [Kiểm Tra & Tìm Kiếm: some, every, includes, find](#5-kiểm-tra-tìm-kiếm-some-every-includes-find)
+6. [Làm Phẳng & Sắp Xếp: flat, sort](#6-làm-phẳng-sắp-xếp-flat-sort)
+
+---
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
@@ -14,26 +26,16 @@
 > [!IMPORTANT]
 > ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
 > Để hiểu và thành thạo các phương thức xử lý mảng từ cơ bản đến functional programming trong bài này, bạn bắt buộc phải nắm vững:
-> 1. **Arrow Function & Callback Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
->    - *Vì sao bắt buộc?* **ĐÂY LÀ ĐIỀU KIỆN TIÊN QUYẾT SỐ 1**. Toàn bộ các phương thức duyệt mảng cốt lõi (`map`, `filter`, `reduce`, `find`, `some`, `every`) đều nhận một **Callback Arrow Function** làm tham số: `products.filter(item => item.price > 100)`. Nếu chưa vững Bài 08, bạn sẽ hoàn toàn không hiểu biến `item` từ đâu ra và ký hiệu `=>` hoạt động thế nào.
-> 2. **Khái niệm Truthy & Falsy** tại [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
+> 1. **Vòng lặp For & While** tại [08 - Ép Kiểu & Các Cấu Trúc Vòng Lặp](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md):
+>    - *Vì sao bắt buộc?* Để hiểu thuật toán duyệt mảng truyền thống `for (let i = 0; i < arr.length; i++)`, cách biến đếm `i` hoạt động và cơ chế duyệt mảng tuần tự.
+> 2. **Arrow Function & Callback Function** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+>    - *Vì sao bắt buộc?* **ĐÂY LÀ ĐIỀU KIỆN TIÊN QUYẾT SỐ 1**. Toàn bộ các phương thức duyệt mảng cốt lõi (`map`, `filter`, `reduce`, `find`, `some`, `every`) đều nhận một **Callback Arrow Function** làm tham số: `products.filter(item => item.price > 100)`. Nếu chưa vững Bài 09, bạn sẽ hoàn toàn không hiểu biến `item` từ đâu ra và ký hiệu `=>` hoạt động thế nào.
+> 3. **Khái niệm Truthy & Falsy** tại [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
 >    - *Vì sao bắt buộc?* Hàm callback của phương thức `.filter()` và `.find()` giữ lại phần tử khi biểu thức bên trong trả về giá trị Truthy, và loại bỏ khi gặp Falsy.
-> 3. **Bản chất Mảng & phương thức `push/pop/splice`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1181-array-mảng):
+> 4. **Bản chất Mảng & phương thức `push/pop/splice`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1181-array-mảng):
 >    - *Vì sao bắt buộc?* Nắm vững các thao tác biến đổi mảng gốc (mutator) vs các hàm trả về mảng mới (immutable) và cách chẩn đoán mảng bằng `Array.isArray()`.
-> * **Đích đến tiếp theo:** Mảng là dữ liệu nền tảng cho [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md), [12 - Map & Set](file:///d:/github/studyProgram/javascript/docs/12-map-and-set.md) và hiển thị danh sách trong [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * **Đích đến tiếp theo:** Mảng là dữ liệu nền tảng cho [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), [13 - Map & Set](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md) và hiển thị danh sách trong [14 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
-<a id="mục-lục"></a>
-
-1. [Khai Báo & Duyệt Mảng](#1-khai-báo-duyệt-mảng)
-2. [Thao Tác Thêm & Xóa: push, pop, shift, unshift](#2-thao-tác-thêm-xóa-push-pop-shift-unshift)
-3. [Phương Thức Đa Năng: splice](#3-phương-thức-đa-năng-splice)
-4. [Bộ Ba Bất Biến Lập Trình Hàm: filter, map, reduce](#4-bộ-ba-bất-biến-lập-trình-hàm-filter-map-reduce)
-5. [Kiểm Tra & Tìm Kiếm: some, every, includes, find](#5-kiểm-tra-tìm-kiếm-some-every-includes-find)
-6. [Làm Phẳng & Sắp Xếp: flat, sort](#6-làm-phẳng-sắp-xếp-flat-sort)
 
 ---
 

@@ -1,26 +1,24 @@
-# Bài Tập 11: Đối Tượng (Object) trong JavaScript
+# Bài Tập 12: Đối Tượng (Object) trong JavaScript
 
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [11 - Đối Tượng Trong JavaScript (Object)](file:///d:/github/studyProgram/javascript/docs/11-objects.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Từ khóa `this` trong Regular Function vs Arrow Function** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
->      - *Vì sao bắt buộc?* Phần 2 yêu cầu viết phương thức cho Object dùng `this.brand`, nếu dùng Arrow function sẽ bị lỗi mất ngữ cảnh.
->   2. **Duyệt Mảng & Phương thức mảng** tại [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
->      - *Vì sao bắt buộc?* Phần 3 và Phần 4 sử dụng `Object.keys()`, `Object.entries()` kết hợp duyệt mảng.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Phần 1: Khai Báo, Truy Cập & Cập Nhật Object (Dot & Bracket Notation)](#phần-1-khai-báo-truy-cập-cập-nhật-object-dot-bracket-notation)
 2. [Phần 2: Phương Thức (Method) và Từ Khóa this](#phần-2-phương-thức-method-và-từ-khóa-this)
 3. [Phần 3: Duyệt và Thống Kê Dữ Liệu (Object.keys, values, entries)](#phần-3-duyệt-và-thống-kê-dữ-liệu-object-keys-values-entries)
 4. [Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)](#phần-4-chuyển-đổi-dữ-liệu-object-array-object-fromentries-object-hasown)
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [12 - Đối Tượng Trong JavaScript (Object)](file:///d:/github/studyProgram/javascript/docs/12-objects.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Từ khóa `this` trong Regular Function vs Arrow Function** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+>      - *Vì sao bắt buộc?* Phần 2 yêu cầu viết phương thức cho Object dùng `this.brand`, nếu dùng Arrow function sẽ bị lỗi mất ngữ cảnh.
+>   2. **Duyệt Mảng & Phương thức mảng** tại [11 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
+>      - *Vì sao bắt buộc?* Phần 3 và Phần 4 sử dụng `Object.keys()`, `Object.entries()` kết hợp duyệt mảng.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

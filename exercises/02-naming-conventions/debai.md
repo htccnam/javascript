@@ -1,5 +1,21 @@
 # Bài Tập 02: Thực Hành Chuẩn Hóa Quy Ước Đặt Tên (Naming Conventions)
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [Phần 1: Chuẩn Hóa Biến Boolean & Danh Từ Số Ít / Số Nhiều (Cơ Bản)](#phần-1-chuẩn-hóa-biến-boolean-danh-từ-số-ít-số-nhiều-cơ-bản)
+  - [Bài 1.1: Refactor biến Boolean sang dạng câu hỏi Yes/No](#bài-1-1-refactor-biến-boolean-sang-dạng-câu-hỏi-yes-no)
+  - [Bài 1.2: Chuẩn hóa danh từ số ít, số nhiều & Vòng lặp](#bài-1-2-chuẩn-hóa-danh-từ-số-ít-số-nhiều-vòng-lặp)
+- [Phần 2: Chuẩn Hóa Tên Hàm, Class & Hằng Số (Trung Bình)](#phần-2-chuẩn-hóa-tên-hàm-class-hằng-số-trung-bình)
+  - [Bài 2.1: Chuẩn hóa tên hàm theo cấu trúc Động từ + Tân ngữ](#bài-2-1-chuẩn-hóa-tên-hàm-theo-cấu-trúc-động-từ-tân-ngữ)
+  - [Bài 2.2: Phân loại hằng số UPPER_SNAKE_CASE vs camelCase](#bài-2-2-phân-loại-hằng-số-uppersnakecase-vs-camelcase)
+  - [Bài 2.3: Thiết kế Class và Thuộc tính Private](#bài-2-3-thiết-kế-class-và-thuộc-tính-private)
+- [Phần 3: Thử Thách Code Review & Refactoring Thực Chiến (Nâng Cao)](#phần-3-thử-thách-code-review-refactoring-thực-chiến-nâng-cao)
+  - [Bài 3.1: Dọn rác mã nguồn (Refactor Legacy Code)](#bài-3-1-dọn-rác-mã-nguồn-refactor-legacy-code)
+  - [Bài 3.2: Xây dựng Module BankAccount chuẩn Clean Code](#bài-3-2-xây-dựng-module-bankaccount-chuẩn-clean-code)
+
+---
+
 > **Mục tiêu thực hành:**
 > - Nắm vững và áp dụng chuẩn xác 4 phong cách viết: `camelCase`, `PascalCase`, `UPPER_SNAKE_CASE`, và `kebab-case`.
 > - Thành thạo cách đặt tên biến Boolean theo dạng câu hỏi Yes/No với các tiền tố `is`, `has`, `can`, `should` và loại bỏ bẫy logic phủ định.
@@ -16,22 +32,6 @@
 >   1. **Tính nhạy chữ hoa - chữ thường (Case-sensitive)** tại [01 - Tổng Quan Về JavaScript (Mục 2.4)](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md#24-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity):
 >      - *Vì sao bắt buộc?* Quy ước `camelCase` (`isLoggedIn`), `PascalCase` (`BankAccount`), và `UPPER_SNAKE_CASE` (`MAX_RETRIES`) hoàn toàn dựa trên sự phân biệt chữ hoa/thường.
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [Phần 1: Chuẩn Hóa Biến Boolean & Danh Từ Số Ít / Số Nhiều (Cơ Bản)](#phần-1-chuẩn-hóa-biến-boolean-danh-từ-số-ít-số-nhiều-cơ-bản)
-  - [Bài 1.1: Refactor biến Boolean sang dạng câu hỏi Yes/No](#bài-1-1-refactor-biến-boolean-sang-dạng-câu-hỏi-yes-no)
-  - [Bài 1.2: Chuẩn hóa danh từ số ít, số nhiều & Vòng lặp](#bài-1-2-chuẩn-hóa-danh-từ-số-ít-số-nhiều-vòng-lặp)
-- [Phần 2: Chuẩn Hóa Tên Hàm, Class & Hằng Số (Trung Bình)](#phần-2-chuẩn-hóa-tên-hàm-class-hằng-số-trung-bình)
-  - [Bài 2.1: Chuẩn hóa tên hàm theo cấu trúc Động từ + Tân ngữ](#bài-2-1-chuẩn-hóa-tên-hàm-theo-cấu-trúc-động-từ-tân-ngữ)
-  - [Bài 2.2: Phân loại hằng số UPPER_SNAKE_CASE vs camelCase](#bài-2-2-phân-loại-hằng-số-uppersnakecase-vs-camelcase)
-  - [Bài 2.3: Thiết kế Class và Thuộc tính Private](#bài-2-3-thiết-kế-class-và-thuộc-tính-private)
-- [Phần 3: Thử Thách Code Review & Refactoring Thực Chiến (Nâng Cao)](#phần-3-thử-thách-code-review-refactoring-thực-chiến-nâng-cao)
-  - [Bài 3.1: Dọn rác mã nguồn (Refactor Legacy Code)](#bài-3-1-dọn-rác-mã-nguồn-refactor-legacy-code)
-  - [Bài 3.2: Xây dựng Module BankAccount chuẩn Clean Code](#bài-3-2-xây-dựng-module-bankaccount-chuẩn-clean-code)
 
 ---
 

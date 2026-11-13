@@ -1,21 +1,7 @@
 # Bài Tập 05: Câu Lệnh Rẽ Nhánh & Toán Tử Logic Trong JavaScript
 
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [05 - Câu Lệnh Rẽ Nhánh & Hệ Thống Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Kiểu dữ liệu Boolean** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.4)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#114-boolean-đúng--sai):
->      - *Vì sao bắt buộc?* Mọi biểu thức `if...else`, `switch...case`, toán tử ba ngôi `? :` đều dựa trên điều kiện `true`/`false`.
->   2. **Phân biệt `null` vs `undefined`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-2-không-hiểu-rõ-sự-khác-biệt-giữa-null-và-undefined):
->      - *Vì sao bắt buộc?* Dùng cho Bài 2.4 về toán tử `void 0` bảo vệ undefined an toàn và toán tử `??`.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Phần 1: Cấp Độ Cơ Bản (if...else, switch...case, so sánh nghiêm ngặt)](#phần-1-cấp-độ-cơ-bản-if-else-switch-case-so-sánh-nghiêm-ngặt)
    - [Bài 1.1: Chào hỏi theo khung giờ trong ngày](#bài-1-1-chào-hỏi-theo-khung-giờ-trong-ngày)
@@ -29,6 +15,18 @@
 3. [Phần 3: Cấp Độ Thực Chiến (Role Checker & Tính Cước Vận Chuyển)](#phần-3-cấp-độ-thực-chiến-role-checker-tính-cước-vận-chuyển)
    - [Bài 3.1: Hệ thống kiểm soát quyền truy cập đa tầng](#bài-3-1-hệ-thống-kiểm-soát-quyền-truy-cập-đa-tầng)
    - [Bài 3.2: Máy tính tính cước phí vận chuyển (Shipping Calculator)](#bài-3-2-máy-tính-tính-cước-phí-vận-chuyển-shipping-calculator)
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [05 - Câu Lệnh Rẽ Nhánh & Hệ Thống Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Kiểu dữ liệu Boolean** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.4)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#114-boolean-đúng--sai):
+>      - *Vì sao bắt buộc?* Mọi biểu thức `if...else`, `switch...case`, toán tử ba ngôi `? :` đều dựa trên điều kiện `true`/`false`.
+>   2. **Phân biệt `null` vs `undefined`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-2-không-hiểu-rõ-sự-khác-biệt-giữa-null-và-undefined):
+>      - *Vì sao bắt buộc?* Dùng cho Bài 2.4 về toán tử `void 0` bảo vệ undefined an toàn và toán tử `??`.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

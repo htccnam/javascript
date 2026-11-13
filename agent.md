@@ -6,9 +6,21 @@
 
 ---
 
+<a id="mục-lục"></a>
+## 📑 Mục Lục
+
+- [📌 Lời Nhắn Từ Senior Mentor](#-lời-nhắn-từ-senior-mentor)
+- [🗺️ Sơ Đồ Phụ Thuộc Tổng Quan (Mermaid Graph)](#️-sơ-đồ-phụ-thuộc-tổng-quan-mermaid-graph)
+- [🔍 Phân Tích Chi Tiết Điều Kiện Tiên Quyết Từng Bài Học](#-phân-tích-chi-tiết-điều-kiện-tiên-quyết-từng-bài-học)
+- [📊 Ma Trận Phụ Thuộc Kiến Thức (Dependency Matrix)](#-ma-trận-phụ-thuộc-kiến-thức-dependency-matrix)
+- [🎯 Lời Khuyên Dành Cho Bạn (How To Use This Map)](#-lời-khuyên-dành-cho-bạn-how-to-use-this-map)
+- [🏁 Kết Luận](#-kết-luận)
+
+---
+
 ## 📌 LỜI NHẮN TỪ SENIOR MENTOR
 
-> *"Học lập trình cũng giống như xây một tòa cao ốc: Bạn tuyệt đối không thể đổ bê tông sàn tầng 10 (Mảng & Đối tượng nâng cao) khi trụ tầng 3 (Kiểu dữ liệu & Tham chiếu) hay dầm tầng 8 (Hàm & Callback) vẫn còn đang lung lay.*
+> *"Học lập trình cũng giống như xây một tòa cao ốc: Bạn tuyệt đối không thể đổ bê tông sàn tầng 11 (Mảng & Đối tượng nâng cao) khi trụ tầng 3 (Kiểu dữ liệu & Tham chiếu), nhịp tầng 8 (Vòng lặp & Ép kiểu) hay dầm tầng 9 (Hàm & Callback) vẫn còn đang lung lay.*
 >
 > *Hầu hết người học cảm thấy JavaScript 'khó hiểu' hay 'kỳ quặc' không phải vì JavaScript phức tạp, mà vì họ đã **nhảy cóc qua một mắt xích kiến thức tiên quyết**. Bản đồ liên kết này được thiết kế để chỉ đích danh cho bạn biết: Trước khi mở bất kỳ file bài học nào, bạn BẮT BUỘC phải mang theo những hành trang gì từ các bài trước."*
 
@@ -23,51 +35,60 @@ flowchart TD
     L01 --> L03["03. Khai Báo Biến & Kiểu Dữ Liệu<br>(docs/03-variables-and-data-types.md)"]
     L02 --> L03
 
-    %% Tầng 2: Hệ thống dữ liệu nền tảng
+    %% Tầng 2: Hệ thống dữ liệu & Cấu trúc điều khiển căn bản
     L03 --> L04["04. Chuỗi & Template Literals<br>(docs/04-strings.md)"]
     L03 --> L05["05. Rẽ Nhánh & Hệ Thống Toán Tử<br>(docs/05-conditionals-and-operators.md)"]
     L04 --> L05
     L05 --> L06["06. Toán Tử Logical Chuyên Sâu<br>(docs/06-logical-operators.md)"]
-    L03 --> L07["07. Truthy & Falsy & Ép Kiểu<br>(docs/07-truthy-falsy.md)"]
+    L03 --> L07["07. Truthy & Falsy<br>(docs/07-truthy-falsy.md)"]
     L06 --> L07
 
-    %% Tầng 3: Khối xây dựng logic & Động cơ thực thi
-    L02 --> L08["08. 3 Loại Hàm Trong JS<br>(docs/08-function-types.md)"]
-    L03 --> L08
+    %% Tầng 3: Cấu trúc lặp & Ép kiểu sâu
+    L03 --> L08["08. Ép Kiểu & Vòng Lặp (For/While)<br>(docs/08-loops-and-type-coercion.md)"]
     L05 --> L08
-    L03 --> L09["09. Hoisting & Scope & TDZ<br>(docs/09-hoisting-and-scope.md)"]
+    L07 --> L08
+
+    %% Tầng 4: Hàm & Động cơ thực thi
+    L02 --> L09["09. 3 Loại Hàm Trong JS<br>(docs/09-function-types.md)"]
+    L03 --> L09
+    L05 --> L09
     L08 --> L09
+    L03 --> L10["10. Hoisting & Scope & TDZ<br>(docs/10-hoisting-and-scope.md)"]
+    L09 --> L10
 
-    %% Tầng 4: Cấu trúc dữ liệu chuyên sâu
-    L03 --> L10["10. Mảng (Array) & Phương Thức Duyệt<br>(docs/10-arrays.md)"]
-    L07 --> L10
-    L08 --> L10
-    L03 --> L11["11. Đối Tượng (Object) & this<br>(docs/11-objects.md)"]
+    %% Tầng 5: Cấu trúc dữ liệu chuyên sâu
+    L03 --> L11["11. Mảng (Array) & Phương Thức Duyệt<br>(docs/11-arrays.md)"]
+    L07 --> L11
     L08 --> L11
-    L10 --> L11
-    L10 --> L12["12. Cấu Trúc Map & Set<br>(docs/12-map-and-set.md)"]
+    L09 --> L11
+    L03 --> L12["12. Đối Tượng (Object) & this<br>(docs/12-objects.md)"]
+    L09 --> L12
     L11 --> L12
+    L11 --> L13["13. Cấu Trúc Map & Set<br>(docs/13-map-and-set.md)"]
+    L12 --> L13
 
-    %% Tầng 5: Ứng dụng tương tác & Xử lý ngoại lệ
-    L08 --> L13["13. Thao Tác DOM & Sự Kiện<br>(docs/13-dom-basics.md)"]
-    L10 --> L13
-    L11 --> L13
-    L03 --> L14["14. JSON & Xử Lý Lỗi (try/catch)<br>(docs/14-json-and-error-handling.md)"]
-    L10 --> L14
+    %% Tầng 6: Ứng dụng tương tác & Xử lý ngoại lệ
+    L09 --> L14["14. Thao Tác DOM & Sự Kiện<br>(docs/14-dom-basics.md)"]
     L11 --> L14
+    L12 --> L14
+    L03 --> L15["15. JSON & Xử Lý Lỗi (try/catch)<br>(docs/15-json-and-error-handling.md)"]
+    L11 --> L15
+    L12 --> L15
 
     %% Styling
     classDef foundation fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
     classDef data fill:#fef3c7,stroke:#d97706,stroke-width:2px;
+    classDef control fill:#fed7aa,stroke:#ea580c,stroke-width:2px;
     classDef logic fill:#dcfce7,stroke:#16a34a,stroke-width:2px;
     classDef datastruct fill:#f3e8ff,stroke:#9333ea,stroke-width:2px;
     classDef advanced fill:#ffe4e6,stroke:#e11d48,stroke-width:2px;
 
     class L01,L02 foundation;
     class L03,L04,L07 data;
-    class L05,L06,L08,L09 logic;
-    class L10,L11,L12 datastruct;
-    class L13,L14 advanced;
+    class L05,L06,L08 control;
+    class L09,L10 logic;
+    class L11,L12,L13 datastruct;
+    class L14,L15 advanced;
 ```
 
 ---
@@ -165,7 +186,7 @@ flowchart TD
 
 ---
 
-### 🟡 BÀI 07: Truthy, Falsy & Cơ Chế Ép Kiểu Ngầm Định (Type Coercion)
+### 🟡 BÀI 07: Truthy, Falsy & Cơ Chế Ép Kiểu Ngầm Định
 * **Tài liệu:** [`docs/07-truthy-falsy.md`](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md)
 * **Bài tập:** [`exercises/07-truthy-falsy/`](file:///d:/github/studyProgram/javascript/exercises/07-truthy-falsy/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
@@ -181,9 +202,28 @@ flowchart TD
 
 ---
 
-### 🔵 BÀI 08: 3 Loại Hàm Trong JavaScript (Function Types)
-* **Tài liệu:** [`docs/08-function-types.md`](file:///d:/github/studyProgram/javascript/docs/08-function-types.md)
-* **Bài tập:** [`exercises/08-function-types/`](file:///d:/github/studyProgram/javascript/exercises/08-function-types/)
+### 🟠 BÀI 08: Ép Kiểu & Các Cấu Trúc Vòng Lặp Trong JavaScript (Type Coercion & Loops)
+* **Tài liệu:** [`docs/08-loops-and-type-coercion.md`](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md)
+* **Bài tập:** [`exercises/08-loops-and-type-coercion/`](file:///d:/github/studyProgram/javascript/exercises/08-loops-and-type-coercion/)
+* **Kiến thức tiên quyết bắt buộc từ bài trước:**
+  1. **Block Scope của `let`** tại [`docs/03-variables-and-data-types.md` (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
+     - *Vì sao bắt buộc?* Biến đếm `let i` trong vòng `for` có Block Scope riêng biệt cho từng lượt lặp, không bị rò rỉ hay dính lỗi Closure như `var i`.
+  2. **Toán tử so sánh & Rẽ nhánh điều kiện** tại [`docs/05-conditionals-and-operators.md`](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md):
+     - *Vì sao bắt buộc?* Điều kiện dừng của `for`, `while`, `do...while` sử dụng toán tử so sánh (`<`, `<=`, `===`).
+  3. **Cơ chế Truthy & Falsy** tại [`docs/07-truthy-falsy.md`](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
+     - *Vì sao bắt buộc?* Mọi biểu thức điều kiện trong vòng lặp đều tự động ép kiểu ngầm định sang boolean để quyết định lặp tiếp hay dừng lại.
+* **Mục tiêu cốt lõi cần đạt được:**
+  - Nắm vững ép kiểu tường minh (`String`, `Number`, `Boolean`, `parseInt`, `+`) vs ngầm định (`+` ghép chuỗi vs `-`, `*`, `/`).
+  - Phân biệt bản chất tiền tố `++a` (tăng trước, lấy giá trị sau) vs hậu tố `a++` (lấy giá trị trước, tăng sau).
+  - Làm chủ 3 dạng Statement của vòng `for` (Single, Block, Empty Statement).
+  - Vận dụng `while` và `do...while` (chạy ít nhất 1 lần).
+  - Điều khiển ngắt luồng đa tầng với `break`, `continue` và Nhãn lặp lồng nhau (Labelled Loops `outer`/`inner`).
+
+---
+
+### 🔵 BÀI 09: 3 Loại Hàm Trong JavaScript (Function Types)
+* **Tài liệu:** [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md)
+* **Bài tập:** [`exercises/09-function-types/`](file:///d:/github/studyProgram/javascript/exercises/09-function-types/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Quy tắc đặt tên hàm: Động từ + Tân ngữ** tại [`docs/02-naming-conventions.md` (Mục 4)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ):
      - *Vì sao bắt buộc?* Để viết hàm sạch chuẩn Clean Code (`calculateTotal`, `getUserById`), tránh đặt tên danh từ gây nhầm với biến.
@@ -191,6 +231,8 @@ flowchart TD
      - *Vì sao bắt buộc?* Giúp bạn hiểu vì sao có thể gán một hàm vào một biến (`const myFunc = function() {}` - Function Expression) và truyền hàm như một tham số (First-class Citizens).
   3. **Lệnh `return` và rẽ nhánh `if...else`** tại [`docs/05-conditionals-and-operators.md` (Mục 1)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#1-câu-lệnh-điều-kiện-if-else-if-else-if-else):
      - *Vì sao bắt buộc?* Bên trong hàm cần xử lý rẽ nhánh điều kiện và trả về giá trị qua từ khóa `return`.
+  4. **Vòng lặp & Cấu trúc điều khiển** tại [`docs/08-loops-and-type-coercion.md`](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md):
+     - *Vì sao bắt buộc?* Giúp bạn viết các hàm thuật toán lặp qua dữ liệu, tính tổng tích lũy bên trong thân hàm.
 * **Mục tiêu cốt lõi cần đạt được:**
   - Phân biệt cú pháp: Function Declaration, Function Expression, Arrow Function.
   - Thuộc lòng các cấp độ rút gọn Arrow Function (bỏ ngoặc đơn tham số, bỏ ngoặc nhọn `{}` và `return` ngầm).
@@ -198,12 +240,12 @@ flowchart TD
 
 ---
 
-### 🔵 BÀI 09: Cơ Chế Hoisting, Scope & Vùng Chết Tạm Thời (TDZ)
-* **Tài liệu:** [`docs/09-hoisting-and-scope.md`](file:///d:/github/studyProgram/javascript/docs/09-hoisting-and-scope.md)
-* **Bài tập:** [`exercises/09-hoisting-and-scope/`](file:///d:/github/studyProgram/javascript/exercises/09-hoisting-and-scope/)
+### 🔵 BÀI 10: Cơ Chế Hoisting, Scope & Vùng Chết Tạm Thời (TDZ)
+* **Tài liệu:** [`docs/10-hoisting-and-scope.md`](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md)
+* **Bài tập:** [`exercises/10-hoisting-and-scope/`](file:///d:/github/studyProgram/javascript/exercises/10-hoisting-and-scope/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Phân biệt Declaration vs Expression** tại [`docs/08-function-types.md`](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
-     - *Vì sao bắt buộc?* Trọng tâm bài 09 là giải thích tại sao Function Declaration được hoisted lên đầu và gọi trước khi khai báo được, trong khi Function Expression gọi trước sẽ bị bắn lỗi `ReferenceError` hoặc `TypeError`.
+  1. **Phân biệt Declaration vs Expression** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+     - *Vì sao bắt buộc?* Trọng tâm bài 10 là giải thích tại sao Function Declaration được hoisted lên đầu và gọi trước khi khai báo được, trong khi Function Expression gọi trước sẽ bị bắn lỗi `ReferenceError` hoặc `TypeError`.
   2. **Bản chất Scope (Block vs Function Scope)** tại [`docs/03-variables-and-data-types.md` (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
      - *Vì sao bắt buộc?* Hoisting diễn ra trong từng Scope cụ thể. Nếu không nắm Lexical Scope và Scope Chain ở Bài 03, bạn sẽ không giải thích được hiện tượng Variable Shadowing (che khuất biến).
 * **Mục tiêu cốt lõi cần đạt được:**
@@ -212,16 +254,18 @@ flowchart TD
 
 ---
 
-### 🟣 BÀI 10: Mảng (Arrays) & Các Phương Thức Duyệt Xử Lý
-* **Tài liệu:** [`docs/10-arrays.md`](file:///d:/github/studyProgram/javascript/docs/10-arrays.md)
-* **Bài tập:** [`exercises/10-arrays/`](file:///d:/github/studyProgram/javascript/exercises/10-arrays/)
+### 🟣 BÀI 11: Mảng (Arrays) & Các Phương Thức Duyệt Xử Lý
+* **Tài liệu:** [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md)
+* **Bài tập:** [`exercises/11-arrays/`](file:///d:/github/studyProgram/javascript/exercises/11-arrays/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Arrow Function & Callback** tại [`docs/08-function-types.md`](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+  1. **Vòng lặp For & While** tại [`docs/08-loops-and-type-coercion.md`](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md):
+     - *Vì sao bắt buộc?* Duyệt mảng bằng vòng lặp `for (let i = 0; i < arr.length; i++)` truyền thống và hiểu cơ chế chỉ số index.
+  2. **Arrow Function & Callback** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
      - *Vì sao bắt buộc?* **ĐÂY LÀ ĐIỀU KIỆN TIÊN QUYẾT SỐ 1**. Toàn bộ các phương thức cốt lõi của Mảng gồm `map`, `filter`, `reduce`, `find`, `some`, `every` đều yêu cầu truyền vào một **Arrow Function Callback**:
-       `products.filter(item => item.price > 100)`. Nếu chưa vững Bài 08, bạn sẽ hoàn toàn không hiểu `item` từ đâu sinh ra và `=>` hoạt động thế nào.
-  2. **Truthy & Falsy** tại [`docs/07-truthy-falsy.md`](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
+       `products.filter(item => item.price > 100)`. Nếu chưa vững Bài 09, bạn sẽ hoàn toàn không hiểu `item` từ đâu sinh ra và `=>` hoạt động thế nào.
+  3. **Truthy & Falsy** tại [`docs/07-truthy-falsy.md`](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
      - *Vì sao bắt buộc?* Hàm callback của phương thức `.filter()` và `.find()` giữ lại phần tử khi biểu thức bên trong trả về giá trị Truthy.
-  3. **Bản chất mảng là Object tham chiếu & phương thức `push/pop/splice`** tại [`docs/03-variables-and-data-types.md` (Mục 11.8.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1181-array-mảng):
+  4. **Bản chất mảng là Object tham chiếu & phương thức `push/pop/splice`** tại [`docs/03-variables-and-data-types.md` (Mục 11.8.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1181-array-mảng):
      - *Vì sao bắt buộc?* Nắm vững các thao tác biến đổi mảng gốc (mutate) vs các hàm trả về mảng mới (immutable).
 * **Mục tiêu cốt lõi cần đạt được:**
   - Thành thạo bộ ba Functional Programming: `map()` (biến đổi), `filter()` (lọc dữ liệu), `reduce()` (tích lũy/tính tổng).
@@ -229,16 +273,16 @@ flowchart TD
 
 ---
 
-### 🟣 BÀI 11: Đối Tượng Trong JavaScript (Objects) & Từ Khóa this
-* **Tài liệu:** [`docs/11-objects.md`](file:///d:/github/studyProgram/javascript/docs/11-objects.md)
-* **Bài tập:** [`exercises/11-objects/`](file:///d:/github/studyProgram/javascript/exercises/11-objects/)
+### 🟣 BÀI 12: Đối Tượng Trong JavaScript (Objects) & Từ Khóa this
+* **Tài liệu:** [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md)
+* **Bài tập:** [`exercises/12-objects/`](file:///d:/github/studyProgram/javascript/exercises/12-objects/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Sự khác biệt về `this` giữa Regular Function và Arrow Function** tại [`docs/08-function-types.md`](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
-     - *Vì sao bắt buộc?* Khi viết phương thức (Method) cho Object, dùng Function thường thì `this` trỏ đúng vào đối tượng gọi nó; nếu dùng Arrow Function thì `this` bị mất ngữ cảnh (trỏ ra ngoài Window/Global). Không học Bài 08 trước sẽ dẫn đến bug tai hại này.
+  1. **Sự khác biệt về `this` giữa Regular Function và Arrow Function** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+     - *Vì sao bắt buộc?* Khi viết phương thức (Method) cho Object, dùng Function thường thì `this` trỏ đúng vào đối tượng gọi nó; nếu dùng Arrow Function thì `this` bị mất ngữ cảnh (trỏ ra ngoài Window/Global). Không học Bài 09 trước sẽ dẫn đến bug tai hại này.
   2. **Bản chất Object lưu theo tham chiếu Heap** tại [`docs/03-variables-and-data-types.md` (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
      - *Vì sao bắt buộc?* Để hiểu vì sao copy object bằng dấu `=` (`obj2 = obj1`) sẽ làm thay đổi cả object gốc, từ đó hiểu tại sao cần dùng Spread Operator `{...obj}` hoặc `Object.assign()`.
-  3. **Thao tác duyệt Mảng** tại [`docs/10-arrays.md`](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
-     - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 10 để biến đổi dữ liệu.
+  3. **Thao tác duyệt Mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
+     - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 11 để biến đổi dữ liệu.
 * **Mục tiêu cốt lõi cần đạt được:**
   - Phân biệt Dot notation (`obj.key`) vs Bracket notation (`obj[dynamicKey]`).
   - Viết Method chuẩn mực với từ khóa `this`.
@@ -246,13 +290,13 @@ flowchart TD
 
 ---
 
-### 🟣 BÀI 12: Cấu Trúc Dữ Liệu Map & Set
-* **Tài liệu:** [`docs/12-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/12-map-and-set.md)
-* **Bài tập:** [`exercises/12-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/12-map-and-set/)
+### 🟣 BÀI 13: Cấu Trúc Dữ Liệu Map & Set
+* **Tài liệu:** [`docs/13-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md)
+* **Bài tập:** [`exercises/13-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/13-map-and-set/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Hạn chế của Object thông thường** tại [`docs/11-objects.md`](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
-     - *Vì sao bắt buộc?* Trong Object thông thường, key luôn bị ép kiểu thành `String`, không thể lấy một Object khác làm key. Bạn phải hiểu hạn chế này ở Bài 11 thì mới thấy được sức mạnh vượt trội của `Map`.
-  2. **Spread Operator `...` và phương thức mảng** tại [`docs/10-arrays.md`](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+  1. **Hạn chế của Object thông thường** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
+     - *Vì sao bắt buộc?* Trong Object thông thường, key luôn bị ép kiểu thành `String`, không thể lấy một Object khác làm key. Bạn phải hiểu hạn chế này ở Bài 12 thì mới thấy được sức mạnh vượt trội của `Map`.
+  2. **Spread Operator `...` và phương thức mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
      - *Vì sao bắt buộc?* Ứng dụng phổ biến nhất của `Set` là lọc trùng lặp mảng: `[...new Set(array)]`. Cú pháp này sử dụng Spread Operator của Mảng.
   3. **So sánh tham chiếu đối tượng** tại [`docs/03-variables-and-data-types.md` (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
      - *Vì sao bắt buộc?* Để hiểu vì sao 2 object rỗng `map.set({}, "A")` và `map.get({})` trả về `undefined` (do 2 object là 2 địa chỉ ô nhớ hoàn toàn khác nhau).
@@ -262,15 +306,15 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 13: Thao Tác DOM & Sự Kiện (Web Interactive UI)
-* **Tài liệu:** [`docs/13-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md)
-* **Bài tập:** [`exercises/13-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/13-dom-basics/)
+### 🔴 BÀI 14: Thao Tác DOM & Sự Kiện (Web Interactive UI)
+* **Tài liệu:** [`docs/14-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md)
+* **Bài tập:** [`exercises/14-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/14-dom-basics/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Callback Function & Arrow Function** tại [`docs/08-function-types.md`](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
+  1. **Callback Function & Arrow Function** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
      - *Vì sao bắt buộc?* Lắng nghe sự kiện người dùng (`click`, `submit`, `input`) trong DOM 100% sử dụng Callback Function: `btn.addEventListener("click", (event) => {})`.
-  2. **Thao tác Đối tượng (Object Properties)** tại [`docs/11-objects.md`](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+  2. **Thao tác Đối tượng (Object Properties)** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* Mỗi phần tử HTML trên trang khi được JavaScript chọn (`querySelector`) đều là một **DOM Element Object**. Việc đổi nội dung (`el.textContent = "..."`), đổi màu (`el.style.color = "..."`), hay đọc `event.target.value` thực chất là truy cập và gán lại thuộc tính của Object.
-  3. **Duyệt mảng danh sách phần tử** tại [`docs/10-arrays.md`](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+  3. **Duyệt mảng danh sách phần tử** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
      - *Vì sao bắt buộc?* Lệnh `querySelectorAll` trả về một tập hợp `NodeList`; bạn cần kỹ năng duyệt mảng để gán sự kiện đồng loạt cho nhiều nút bấm hoặc danh sách Todo.
   4. **Toán tử `event.preventDefault()`** tại [`docs/05-conditionals-and-operators.md` (Mục 8.4)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế):
      - *Vì sao bắt buộc?* Ngăn chặn hành vi mặc định của form reload trang hoặc thẻ `<a>` nhảy trang khi người dùng submit.
@@ -281,11 +325,11 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 14: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
-* **Tài liệu:** [`docs/14-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/14-json-and-error-handling.md)
-* **Bài tập:** [`exercises/14-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/14-json-and-error-handling/)
+### 🔴 BÀI 15: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
+* **Tài liệu:** [`docs/15-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/15-json-and-error-handling.md)
+* **Bài tập:** [`exercises/15-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/15-json-and-error-handling/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
-  1. **Cấu trúc Mảng & Đối Tượng (Array & Object)** tại [`docs/10-arrays.md`](file:///d:/github/studyProgram/javascript/docs/10-arrays.md) & [`docs/11-objects.md`](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
+  1. **Cấu trúc Mảng & Đối Tượng (Array & Object)** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) & [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* JSON (JavaScript Object Notation) là chuỗi đại diện tuần tự hóa của Mảng và Đối tượng. Bạn không thể hiểu cú pháp JSON nếu chưa thành thạo Object key-value và mảng lồng nhau.
   2. **Các kiểu dữ liệu đặc biệt bị JSON bỏ qua** tại [`docs/03-variables-and-data-types.md` (Mục 11)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#11-toàn-diện-về-kiểu-dữ-liệu-trong-javascript-data-types):
      - *Vì sao bắt buộc?* Khi chạy `JSON.stringify()`, các trường có giá trị là `undefined`, `Function`, `Symbol` sẽ bị xóa sổ; còn `NaN` và `Infinity` bị ép thành `null`. Bạn cần nắm các kiểu này ở Bài 03 để không bị bất ngờ khi dữ liệu biến mất sau khi parse.
@@ -308,21 +352,23 @@ flowchart TD
 | **05. Rẽ nhánh & Toán tử** | 03, 04 | Boolean, `null` vs `undefined`, Template Literals |
 | **06. Toán tử Logical** | 03, 05 | Short-Circuit cơ bản, so sánh `??` vs `\|\|`, độ ưu tiên toán tử |
 | **07. Truthy & Falsy** | 03, 05, 06 | 8 giá trị Falsy, ép kiểu lỏng lẻo `==`, toán tử `!!` |
-| **08. 3 Loại hàm** | 02, 03, 05 | Tên hàm Động từ + Tân ngữ, kiểu Function, câu lệnh `return` |
-| **09. Hoisting & Scope** | 03, 08 | Function Declaration vs Expression, Block Scope vs TDZ |
-| **10. Mảng (Arrays)** | 03, 07, 08 | **Arrow Function Callback**, điều kiện Truthy lọc mảng, `Array.isArray` |
-| **11. Đối tượng (Object)** | 03, 08, 10 | Từ khóa `this` trong hàm vs Arrow function, tham chiếu Heap, duyệt mảng |
-| **12. Map & Set** | 03, 10, 11 | Hạn chế key của Object, lọc trùng mảng với `...`, so sánh tham chiếu |
-| **13. Thao tác DOM** | 05, 08, 10, 11 | Event Listener Callback, DOM Object properties, `event.preventDefault` |
-| **14. JSON & Xử lý lỗi** | 03, 10, 11 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
+| **08. Ép kiểu & Vòng lặp** | 03, 05, 07 | Block Scope `let i`, toán tử so sánh `condition`, ép kiểu Truthy/Falsy |
+| **09. 3 Loại hàm** | 02, 03, 05, 08 | Tên hàm Động từ + Tân ngữ, kiểu Function, câu lệnh `return`, vòng lặp thuật toán |
+| **10. Hoisting & Scope** | 03, 09 | Function Declaration vs Expression, Block Scope vs TDZ |
+| **11. Mảng (Arrays)** | 03, 07, 08, 09 | Duyệt mảng For (Bài 08), **Arrow Function Callback** (Bài 09), Truthy lọc mảng |
+| **12. Đối tượng (Object)** | 03, 09, 11 | Từ khóa `this` trong hàm vs Arrow function, tham chiếu Heap, duyệt mảng |
+| **13. Map & Set** | 03, 11, 12 | Hạn chế key của Object, lọc trùng mảng với `...`, so sánh tham chiếu |
+| **14. Thao tác DOM** | 05, 09, 11, 12 | Event Listener Callback, DOM Object properties, `event.preventDefault` |
+| **15. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
 
 ---
 
 ## 💡 LỜI KHUYÊN DÀNH CHO BẠN KHI TỰ HỌC
 
-1. **Nếu bạn gặp khó khăn ở Bài 10 (Mảng):** Đừng vội đọc lại bài Mảng! 90% nguyên nhân là bạn chưa thành thạo **Arrow Function (Bài 08)**. Hãy quay lại làm bài tập rút gọn hàm mũi tên trước.
-2. **Nếu bạn thấy từ khóa `this` trong Bài 11 (Object) quá khó hiểu:** Hãy mở lại **Bài 08** để xem lại điểm khác biệt sinh tử giữa Regular Function và Arrow Function.
-3. **Nếu bạn không hiểu tại sao `find()` hay `filter()` trả về kết quả lạ:** Hãy kiểm tra lại bảng 8 giá trị Falsy tại **Bài 07**.
+1. **Nếu bạn gặp khó khăn ở Bài 11 (Mảng):** Đừng vội đọc lại bài Mảng! 90% nguyên nhân là bạn chưa nắm vững **Vòng lặp For (Bài 08)** hoặc **Arrow Function Callback (Bài 09)**. Hãy quay lại làm bài tập rút gọn hàm mũi tên và vòng lặp trước.
+2. **Nếu bạn thấy từ khóa `this` trong Bài 12 (Object) quá khó hiểu:** Hãy mở lại **Bài 09** để xem lại điểm khác biệt sinh tử giữa Regular Function và Arrow Function.
+3. **Nếu bạn không hiểu tại sao `find()` hay `filter()` trả về kết quả lạ ở Bài 11:** Hãy kiểm tra lại bảng 8 giá trị Falsy tại **Bài 07**.
+4. **Nếu vòng lặp bị chạy vô tận ở Bài 08:** Hãy kiểm tra lại bước nhảy (`i++`, `i--`) và điều kiện dừng (`condition`) của vòng lặp `while`/`for`.
 
 ---
 *Tài liệu hướng dẫn được biên soạn độc quyền cho hệ thống JavaScript Study Program.*

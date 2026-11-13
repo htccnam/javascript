@@ -1,5 +1,26 @@
 # 04 - Tìm Hiểu Về Chuỗi Trong JavaScript (Strings)
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [1. Tìm hiểu về chuỗi](#1-tìm-hiểu-về-chuỗi)
+  - [1.1. Chuỗi là gì?](#1-1-chuỗi-là-gì)
+  - [1.2. Tạo chuỗi với nháy đơn (`' '`)](#1-2-tạo-chuỗi-với-nháy-đơn)
+  - [1.3. Tạo chuỗi với nháy kép (`" "`)](#1-3-tạo-chuỗi-với-nháy-kép)
+  - [1.4. Tạo chuỗi với backticks (`` ` ` ``)](#1-4-tạo-chuỗi-với-backticks)
+- [2. Nối chuỗi](#2-nối-chuỗi)
+  - [2.1. Toán tử nối chuỗi (`+`)](#2-1-toán-tử-nối-chuỗi)
+  - [2.2. Ví dụ nối chuỗi](#2-2-ví-dụ-nối-chuỗi)
+  - [2.3. Lưu ý quan trọng khi sử dụng toán tử `+`](#2-3-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử)
+- [3. Template Literals](#3-template-literals)
+  - [3.1. Template Literals là gì?](#3-1-template-literals-là-gì)
+  - [3.2. Nội suy chuỗi (String Interpolation)](#3-2-nội-suy-chuỗi-string-interpolation)
+  - [3.3. Các ví dụ về nội suy chuỗi](#3-3-các-ví-dụ-về-nội-suy-chuỗi)
+- [4. Các lỗi thường gặp khi làm việc với chuỗi](#4-các-lỗi-thường-gặp-khi-làm-việc-với-chuỗi)
+- [5. Tóm tắt kiến thức cốt lõi](#5-tóm-tắt-kiến-thức-cốt-lõi)
+
+---
+
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng bạn có hai người bạn: **Huy** và **Linh**.
@@ -21,27 +42,6 @@
 >    - *Vì sao bắt buộc?* Bài 04 đi sâu vào bẫy ép kiểu chuỗi `'2' + 2 = '22'`. Bạn phải hiểu cơ chế này để biết khi nào nên dùng Template Literals `` `${expression}` `` thay vì phép `+`.
 > * **Đích đến tiếp theo:** Kết quả chuỗi được sử dụng trực tiếp trong câu lệnh rẽ nhánh tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [1. Tìm hiểu về chuỗi](#1-tìm-hiểu-về-chuỗi)
-  - [1.1. Chuỗi là gì?](#1-1-chuỗi-là-gì)
-  - [1.2. Tạo chuỗi với nháy đơn (`' '`)](#1-2-tạo-chuỗi-với-nháy-đơn)
-  - [1.3. Tạo chuỗi với nháy kép (`" "`)](#1-3-tạo-chuỗi-với-nháy-kép)
-  - [1.4. Tạo chuỗi với backticks (`` ` ` ``)](#1-4-tạo-chuỗi-với-backticks)
-- [2. Nối chuỗi](#2-nối-chuỗi)
-  - [2.1. Toán tử nối chuỗi (`+`)](#2-1-toán-tử-nối-chuỗi)
-  - [2.2. Ví dụ nối chuỗi](#2-2-ví-dụ-nối-chuỗi)
-  - [2.3. Lưu ý quan trọng khi sử dụng toán tử `+`](#2-3-lưu-ý-quan-trọng-khi-sử-dụng-toán-tử)
-- [3. Template Literals](#3-template-literals)
-  - [3.1. Template Literals là gì?](#3-1-template-literals-là-gì)
-  - [3.2. Nội suy chuỗi (String Interpolation)](#3-2-nội-suy-chuỗi-string-interpolation)
-  - [3.3. Các ví dụ về nội suy chuỗi](#3-3-các-ví-dụ-về-nội-suy-chuỗi)
-- [4. Các lỗi thường gặp khi làm việc với chuỗi](#4-các-lỗi-thường-gặp-khi-làm-việc-với-chuỗi)
-- [5. Tóm tắt kiến thức cốt lõi](#5-tóm-tắt-kiến-thức-cốt-lõi)
 
 ---
 

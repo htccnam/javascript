@@ -1,21 +1,7 @@
-# Bài Tập 10: Mảng trong JavaScript (Khai Báo, Duyệt & Phương Thức Xử Lý)
+# Bài Tập 11: Mảng trong JavaScript (Khai Báo, Duyệt & Phương Thức Xử Lý)
 
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Arrow Function & Callback** tại [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md):
->      - *Vì sao bắt buộc?* 100% các bài tập về `map`, `filter`, `reduce`, `some`, `every` đều yêu cầu viết hàm callback mũi tên.
->   2. **Truthy & Falsy** tại [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
->      - *Vì sao bắt buộc?* Hiểu điều kiện trả về của hàm filter để lọc phần tử hợp lệ.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Phần 1: Khai Báo Bằng Array Literal & Duyệt Mảng](#phần-1-khai-báo-bằng-array-literal-duyệt-mảng)
 2. [Phần 2: Khai Báo Bằng new Array() Constructor](#phần-2-khai-báo-bằng-new-array-constructor)
@@ -24,6 +10,20 @@
 5. [Phần 5: Lọc & Biến Đổi Dữ Liệu (filter, map)](#phần-5-lọc-biến-đổi-dữ-liệu-filter-map)
 6. [Phần 6: Tính Toán & Gom Nhóm Dữ Liệu (reduce)](#phần-6-tính-toán-gom-nhóm-dữ-liệu-reduce)
 7. [Phần 7: Kiểm Tra Điều Kiện & Tiện Ích Mảng (some, every, includes, flat, sort)](#phần-7-kiểm-tra-điều-kiện-tiện-ích-mảng-some-every-includes-flat-sort)
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [11 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-arrays.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Vòng lặp For & While** tại [08 - Ép Kiểu & Các Cấu Trúc Vòng Lặp](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md):
+>      - *Vì sao bắt buộc?* Duyệt mảng bằng vòng lặp `for` truyền thống và hiểu cơ chế chỉ số (index).
+>   2. **Arrow Function & Callback** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
+>      - *Vì sao bắt buộc?* 100% các bài tập về `map`, `filter`, `reduce`, `some`, `every` đều yêu cầu viết hàm callback mũi tên.
+>   3. **Truthy & Falsy** tại [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md):
+>      - *Vì sao bắt buộc?* Hiểu điều kiện trả về của hàm filter để lọc phần tử hợp lệ.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

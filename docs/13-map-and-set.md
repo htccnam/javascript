@@ -1,4 +1,16 @@
-# 12 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
+# 13 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
+
+<a id="mục-lục"></a>
+## Mục Lục
+
+1. [Cấu Trúc Dữ Liệu Map: Bản Chất & Điểm Khác Biệt Với Object](#1-cấu-trúc-dữ-liệu-map-bản-chất-điểm-khác-biệt-với-object)
+2. [Các Thao Tác CRUD Cơ Bản Với Map](#2-các-thao-tác-crud-cơ-bản-với-map)
+3. [Sức Mạnh Khi Dùng Object Làm Key](#3-sức-mạnh-khi-dùng-object-làm-key)
+4. [Duyệt Map & Chuyển Đổi Map <-> Object / Array](#4-duyệt-map-chuyển-đổi-map-object-array)
+5. [Cấu Trúc Dữ Liệu Set: Tính Duy Nhất (Uniqueness)](#5-cấu-trúc-dữ-liệu-set-tính-duy-nhất-uniqueness)
+6. [Thực Chiến Set: Lọc Trùng Mảng & Phép Toán Tập Hợp](#6-thực-chiến-set-lọc-trùng-mảng-phép-toán-tập-hợp)
+
+---
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
@@ -12,26 +24,14 @@
 > [!IMPORTANT]
 > ### 🔗 Kiến Thức Tiên Quyết (Prerequisites)
 > Để hiểu sức mạnh của hai cấu trúc dữ liệu hiện đại Map và Set trong bài này, bạn bắt buộc phải nắm vững:
-> 1. **Hạn chế của Object thông thường (Key luôn là chuỗi)** tại [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
->    - *Vì sao bắt buộc?* Trong Object thông thường, mọi key đều bị ép thành String, không thể dùng một Object khác làm key. Bạn cần hiểu hạn chế này ở Bài 11 để nhận thấy giá trị vượt trội của `Map`.
-> 2. **Spread Operator `...` và các thao tác trên Mảng** tại [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
+> 1. **Hạn chế của Object thông thường (Key luôn là chuỗi)** tại [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
+>    - *Vì sao bắt buộc?* Trong Object thông thường, mọi key đều bị ép thành String, không thể dùng một Object khác làm key. Bạn cần hiểu hạn chế này ở Bài 12 để nhận thấy giá trị vượt trội của `Map`.
+> 2. **Spread Operator `...` và các thao tác trên Mảng** tại [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
 >    - *Vì sao bắt buộc?* Kỹ thuật kinh điển nhất khi dùng `Set` là khử trùng lặp mảng một dòng: `[...new Set(array)]`. Cú pháp này sử dụng Spread Operator của Mảng.
 > 3. **So sánh địa chỉ ô nhớ của Đối tượng trong Heap** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
 >    - *Vì sao bắt buộc?* Để hiểu vì sao 2 object có cùng nội dung rỗng `map.set({}, "A")` và `map.get({})` trả về `undefined` (do 2 object là 2 địa chỉ ô nhớ khác nhau hoàn toàn trong bộ nhớ Heap).
-> * **Đích đến tiếp theo:** Thành thạo các cấu trúc dữ liệu giúp bạn tổ chức state linh hoạt trong [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * **Đích đến tiếp theo:** Thành thạo các cấu trúc dữ liệu giúp bạn tổ chức state linh hoạt trong [14 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
-<a id="mục-lục"></a>
-
-1. [Cấu Trúc Dữ Liệu Map: Bản Chất & Điểm Khác Biệt Với Object](#1-cấu-trúc-dữ-liệu-map-bản-chất-điểm-khác-biệt-với-object)
-2. [Các Thao Tác CRUD Cơ Bản Với Map](#2-các-thao-tác-crud-cơ-bản-với-map)
-3. [Sức Mạnh Khi Dùng Object Làm Key](#3-sức-mạnh-khi-dùng-object-làm-key)
-4. [Duyệt Map & Chuyển Đổi Map <-> Object / Array](#4-duyệt-map-chuyển-đổi-map-object-array)
-5. [Cấu Trúc Dữ Liệu Set: Tính Duy Nhất (Uniqueness)](#5-cấu-trúc-dữ-liệu-set-tính-duy-nhất-uniqueness)
-6. [Thực Chiến Set: Lọc Trùng Mảng & Phép Toán Tập Hợp](#6-thực-chiến-set-lọc-trùng-mảng-phép-toán-tập-hợp)
 
 ---
 

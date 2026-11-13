@@ -1,24 +1,7 @@
-# Bài Tập 12: Cấu Trúc Dữ Liệu Map & Set trong JavaScript
-
----
-
-> [!IMPORTANT]
->
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
->
-> - **Lý thuyết bài này:** Đọc kỹ [12 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-map-and-set.md).
-> - **Kiến thức bài trước bắt buộc:**
->   1. **Hạn chế của Object** tại [11 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-objects.md):
->      - _Vì sao bắt buộc?_ Hiểu vì sao Map ra đời để cho phép Object làm key.
->   2. **Spread Operator `...` và Mảng** tại [10 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/10-arrays.md):
->      - _Vì sao bắt buộc?_ Để giải quyết Phần 5 lọc trùng mảng `[...new Set(arr)]` và các phép toán tập hợp ở Phần 6.
-> - 🗺️ _Xem bản đồ lộ trình tổng thể:_ [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
+# Bài Tập 13: Cấu Trúc Dữ Liệu Map & Set trong JavaScript
 
 <a id="mục-lục"></a>
+## Mục Lục
 
 1. [Phần 1: Cấu Trúc Dữ Liệu Map (CRUD Cơ Bản)](#phần-1-cấu-trúc-dữ-liệu-map-crud-cơ-bản)
 2. [Phần 2: Sử Dụng Object & Function Làm Key Trong Map](#phần-2-sử-dụng-object-function-làm-key-trong-map)
@@ -26,6 +9,20 @@
 4. [Phần 4: Cấu Trúc Dữ Liệu Set (CRUD & Tính Duy Nhất)](#phần-4-cấu-trúc-dữ-liệu-set-crud-tính-duy-nhất)
 5. [Phần 5: Lọc Trùng Mảng Bằng Set Trong Thực Tế](#phần-5-lọc-trùng-mảng-bằng-set-trong-thực-tế)
 6. [Phần 6: Các Phép Toán Tập Hợp (Union, Intersection, Difference)](#phần-6-các-phép-toán-tập-hợp-union-intersection-difference)
+
+---
+
+> [!IMPORTANT]
+>
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+>
+> - **Lý thuyết bài này:** Đọc kỹ [13 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md).
+> - **Kiến thức bài trước bắt buộc:**
+>   1. **Hạn chế của Object** tại [12 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
+>      - _Vì sao bắt buộc?_ Hiểu vì sao Map ra đời để cho phép Object làm key.
+>   2. **Spread Operator `...` và Mảng** tại [11 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
+>      - _Vì sao bắt buộc?_ Để giải quyết Phần 5 lọc trùng mảng `[...new Set(arr)]` và các phép toán tập hợp ở Phần 6.
+> - 🗺️ _Xem bản đồ lộ trình tổng thể:_ [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

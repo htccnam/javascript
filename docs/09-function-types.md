@@ -1,4 +1,24 @@
-# 08 - 3 Loại Hàm Trong JavaScript (Declaration, Expression & Arrow Function)
+# 09 - 3 Loại Hàm Trong JavaScript (Declaration, Expression & Arrow Function)
+
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [1. Hàm Khai Báo (Function Declaration)](#1-hàm-khai-báo-function-declaration)
+  - [1.1. Khái niệm & Cú pháp](#1-1-khái-niệm-cú-pháp)
+  - [1.2. Ví dụ thực tế](#1-2-ví-dụ-thực-tế)
+  - [1.3. Đặc điểm cốt lõi: Cơ chế Hoisting](#1-3-đặc-điểm-cốt-lõi-cơ-chế-hoisting)
+- [2. Hàm Biểu Thức (Function Expression)](#2-hàm-biểu-thức-function-expression)
+  - [2.1. Khái niệm & Cú pháp](#2-1-khái-niệm-cú-pháp)
+  - [2.2. Ví dụ thực tế](#2-2-ví-dụ-thực-tế)
+  - [2.3. Đặc điểm cốt lõi: Không thể gọi trước khi định nghĩa](#2-3-đặc-điểm-cốt-lõi-không-thể-gọi-trước-khi-định-nghĩa)
+- [3. Hàm Mũi Tên (Arrow Function - ES6)](#3-hàm-mũi-tên-arrow-function---es6)
+  - [3.1. Khái niệm & Cú pháp](#3-1-khái-niệm-cú-pháp)
+  - [3.2. Các cấp độ rút gọn đỉnh cao của Arrow Function](#3-2-các-cấp-độ-rút-gọn-đỉnh-cao-của-arrow-function)
+- [4. Khi Nào Thì Sử Dụng Loại Hàm Nào?](#4-khi-nào-thì-sử-dụng-loại-hàm-nào)
+- [5. Những Khác Biệt Sâu & Cạm Bẫy Cần Nhớ](#5-những-khác-biệt-sâu-cạm-bẫy-cần-nhớ)
+- [6. Bảng Tổng Kết So Sánh 3 Loại Hàm](#6-bảng-tổng-kết-so-sánh-3-loại-hàm)
+
+---
 
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
@@ -18,28 +38,8 @@
 >    - *Vì sao bắt buộc?* Giúp bạn hiểu vì sao có thể gán một hàm vào một biến (`const myFunc = function() {}` - Function Expression) và truyền hàm như một tham số đối số (First-class Citizens).
 > 3. **Lệnh `return` và rẽ nhánh `if...else`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 1)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#1-câu-lệnh-điều-kiện-if-else-if-else-if-else):
 >    - *Vì sao bắt buộc?* Bên trong thân hàm cần xử lý logic rẽ nhánh điều kiện và trả về giá trị qua từ khóa `return`.
-> * **Đích đến tiếp theo:** Hàm là động cơ của mọi cấu trúc dữ liệu! Cú pháp Arrow Function và Callback ở bài này là **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC** cho [10 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/10-arrays.md), [11 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/11-objects.md), và [13 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/13-dom-basics.md).
+> * **Đích đến tiếp theo:** Hàm là động cơ của mọi cấu trúc dữ liệu! Cú pháp Arrow Function và Callback ở bài này là **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC** cho [10 - Cơ Chế Hoisting & Scope](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md), [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md), [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), và [14 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [1. Hàm Khai Báo (Function Declaration)](#1-hàm-khai-báo-function-declaration)
-  - [1.1. Khái niệm & Cú pháp](#1-1-khái-niệm-cú-pháp)
-  - [1.2. Ví dụ thực tế](#1-2-ví-dụ-thực-tế)
-  - [1.3. Đặc điểm cốt lõi: Cơ chế Hoisting](#1-3-đặc-điểm-cốt-lõi-cơ-chế-hoisting)
-- [2. Hàm Biểu Thức (Function Expression)](#2-hàm-biểu-thức-function-expression)
-  - [2.1. Khái niệm & Cú pháp](#2-1-khái-niệm-cú-pháp)
-  - [2.2. Ví dụ thực tế](#2-2-ví-dụ-thực-tế)
-  - [2.3. Đặc điểm cốt lõi: Không thể gọi trước khi định nghĩa](#2-3-đặc-điểm-cốt-lõi-không-thể-gọi-trước-khi-định-nghĩa)
-- [3. Hàm Mũi Tên (Arrow Function - ES6)](#3-hàm-mũi-tên-arrow-function---es6)
-  - [3.1. Khái niệm & Cú pháp](#3-1-khái-niệm-cú-pháp)
-  - [3.2. Các cấp độ rút gọn đỉnh cao của Arrow Function](#3-2-các-cấp-độ-rút-gọn-đỉnh-cao-của-arrow-function)
-- [4. Khi Nào Thì Sử Dụng Loại Hàm Nào?](#4-khi-nào-thì-sử-dụng-loại-hàm-nào)
-- [5. Những Khác Biệt Sâu & Cạm Bẫy Cần Nhớ](#5-những-khác-biệt-sâu-cạm-bẫy-cần-nhớ)
-- [6. Bảng Tổng Kết So Sánh 3 Loại Hàm](#6-bảng-tổng-kết-so-sánh-3-loại-hàm)
 
 ---
 

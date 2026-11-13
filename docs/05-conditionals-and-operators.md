@@ -1,5 +1,26 @@
 # 05 - Câu Lệnh Rẽ Nhánh & Toàn Bộ Hệ Thống Toán Tử Trong JavaScript (Operators)
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-if-else-if-else-if-else)
+2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switch-case-kỹ-thuật-fall-through)
+3. [Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x](#3-toán-tử-số-học-arithmetic-operators-khác-biệt-x-vs-x)
+4. [Toán Tử Gán (Assignment Operators)](#4-toán-tử-gán-assignment-operators)
+5. [Toán Tử So Sánh (Comparison Operators)](#5-toán-tử-so-sánh-comparison-operators)
+6. [Toán Tử Ba Ngôi (Ternary Operator)](#6-toán-tử-ba-ngôi-ternary-operator)
+7. [Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)](#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit)
+8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, void, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof)
+   - [8.1. Optional Chaining (?.)](#81-optional-chaining-)
+   - [8.2. Nullish Coalescing Operator (??)](#82-nullish-coalescing-operator-)
+   - [8.3. Các toán tử đặc biệt khác (typeof, instanceof, ...)](#83-các-toán-tử-đặc-biệt-khác)
+   - [8.4. Toán tử void — Khái Niệm, Cơ Chế & 3 Ứng Dụng Thực Tế](#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế)
+9. [Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)](#9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence)
+10. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#10-các-cạm-bẫy-phổ-biến-common-pitfalls)
+11. [Bảng So Sánh Tổng Kết Cốt Lõi](#11-bảng-so-sánh-tổng-kết-cốt-lõi)
+
+---
+
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng luồng chạy của mã nguồn JavaScript giống như một **đoàn tàu hỏa trên mạng lưới đường ray**:
@@ -22,27 +43,6 @@
 >    - *Vì sao bắt buộc?* Kết quả rẽ nhánh thường in ra các chuỗi thông báo động ghép biến (`"Chào bạn " + name` hoặc `` `Chào bạn ${name}` ``).
 > * **Đích đến tiếp theo:** Toán tử logic cơ bản tại bài này sẽ được đào sâu cơ chế ngắn mạch tại [06 - Toán Tử Logical Chuyên Sâu](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md) và [07 - Truthy & Falsy](file:///d:/github/studyProgram/javascript/docs/07-truthy-falsy.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-## Mục Lục
-<a id="mục-lục"></a>
-
-1. [Câu Lệnh Điều Kiện if...else & if...else if...else](#1-câu-lệnh-điều-kiện-if-else-if-else-if-else)
-2. [Cấu Trúc Rẽ Nhánh switch...case & Kỹ Thuật Fall-Through](#2-cấu-trúc-rẽ-nhánh-switch-case-kỹ-thuật-fall-through)
-3. [Toán Tử Số Học (Arithmetic Operators) & Khác Biệt x++ vs ++x](#3-toán-tử-số-học-arithmetic-operators-khác-biệt-x-vs-x)
-4. [Toán Tử Gán (Assignment Operators)](#4-toán-tử-gán-assignment-operators)
-5. [Toán Tử So Sánh (Comparison Operators)](#5-toán-tử-so-sánh-comparison-operators)
-6. [Toán Tử Ba Ngôi (Ternary Operator)](#6-toán-tử-ba-ngôi-ternary-operator)
-7. [Toán Tử Logic Cơ Bản & Đoản Mạch (Short-Circuit)](#7-toán-tử-logic-cơ-bản-đoản-mạch-short-circuit)
-8. [Các Toán Tử Hiện Đại & Đặc Biệt (?. , ?? , typeof, instanceof, void, ...)](#8-các-toán-tử-hiện-đại-đặc-biệt-typeof-instanceof)
-   - [8.1. Optional Chaining (?.)](#81-optional-chaining-)
-   - [8.2. Nullish Coalescing Operator (??)](#82-nullish-coalescing-operator-)
-   - [8.3. Các toán tử đặc biệt khác (typeof, instanceof, ...)](#83-các-toán-tử-đặc-biệt-khác)
-   - [8.4. Toán tử void — Khái Niệm, Cơ Chế & 3 Ứng Dụng Thực Tế](#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế)
-9. [Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)](#9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence)
-10. [Các Cạm Bẫy Phổ Biến (Common Pitfalls)](#10-các-cạm-bẫy-phổ-biến-common-pitfalls)
-11. [Bảng So Sánh Tổng Kết Cốt Lõi](#11-bảng-so-sánh-tổng-kết-cốt-lõi)
 
 ---
 

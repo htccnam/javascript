@@ -1,5 +1,20 @@
 # Bài Tập 01: Tổng Quan Về JavaScript & Các Cách Viết Code
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [Phần 1: Đặc Tính Động (Dynamic Typing) & Phân Biệt Hoa Thường (Cơ Bản)](#phần-1-đặc-tính-động-dynamic-typing-phân-biệt-hoa-thường-cơ-bản)
+  - [Bài 1.1: Trải nghiệm biến đổi kiểu dữ liệu động (Dynamic Typing)](#bài-1-1-trải-nghiệm-biến-đổi-kiểu-dữ-liệu-động-dynamic-typing)
+  - [Bài 1.2: Bẫy phân biệt chữ hoa - chữ thường (Case Sensitivity)](#bài-1-2-bẫy-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
+- [Phần 2: Cạm Bẫy Ép Kiểu & Phân Tích 5 Cách Viết JS (Trung Bình)](#phần-2-cạm-bẫy-ép-kiểu-phân-tích-5-cách-viết-js-trung-bình)
+  - [Bài 2.1: Phép tính toán lai và ép kiểu ngầm định (Type Coercion)](#bài-2-1-phép-tính-toán-lai-và-ép-kiểu-ngầm-định-type-coercion)
+  - [Bài 2.2: Phân tích ưu / nhược điểm của 5 cách viết JavaScript](#bài-2-2-phân-tích-ưu-nhược-điểm-của-5-cách-viết-javascript)
+- [Phần 3: Thử Thách Thực Chiến & Chẩn Đoán Môi Trường (Nâng Cao)](#phần-3-thử-thách-thực-chiến-chẩn-đoán-môi-trường-nâng-cao)
+  - [Bài 3.1: Xây dựng hàm chẩn đoán môi trường thực thi (Environment Detector)](#bài-3-1-xây-dựng-hàm-chẩn-đoán-môi-trường-thực-thi-environment-detector)
+  - [Bài 3.2: Refactor từ Inline Event sang External Event Listener chuẩn mực](#bài-3-2-refactor-từ-inline-event-sang-external-event-listener-chuẩn-mực)
+
+---
+
 > **Mục tiêu thực hành:**
 > - Nắm vững bản chất ngôn ngữ thông dịch (Interpreted) và định kiểu động (Dynamic Typing) trong JavaScript.
 > - Tránh bẫy ngầm định về phân biệt chữ hoa - chữ thường (Case Sensitivity) và ép kiểu tự động (Type Coercion).
@@ -14,21 +29,6 @@
 > * **Lý thuyết bài này:** Đọc kỹ [01 - Tổng Quan Về JavaScript & Các Cách Viết](file:///d:/github/studyProgram/javascript/docs/01-javascript-overview.md).
 > * **Kiến thức tiên quyết:** Không có. Đây là bài tập mở đầu cho toàn bộ lộ trình.
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [Phần 1: Đặc Tính Động (Dynamic Typing) & Phân Biệt Hoa Thường (Cơ Bản)](#phần-1-đặc-tính-động-dynamic-typing-phân-biệt-hoa-thường-cơ-bản)
-  - [Bài 1.1: Trải nghiệm biến đổi kiểu dữ liệu động (Dynamic Typing)](#bài-1-1-trải-nghiệm-biến-đổi-kiểu-dữ-liệu-động-dynamic-typing)
-  - [Bài 1.2: Bẫy phân biệt chữ hoa - chữ thường (Case Sensitivity)](#bài-1-2-bẫy-phân-biệt-chữ-hoa---chữ-thường-case-sensitivity)
-- [Phần 2: Cạm Bẫy Ép Kiểu & Phân Tích 5 Cách Viết JS (Trung Bình)](#phần-2-cạm-bẫy-ép-kiểu-phân-tích-5-cách-viết-js-trung-bình)
-  - [Bài 2.1: Phép tính toán lai và ép kiểu ngầm định (Type Coercion)](#bài-2-1-phép-tính-toán-lai-và-ép-kiểu-ngầm-định-type-coercion)
-  - [Bài 2.2: Phân tích ưu / nhược điểm của 5 cách viết JavaScript](#bài-2-2-phân-tích-ưu-nhược-điểm-của-5-cách-viết-javascript)
-- [Phần 3: Thử Thách Thực Chiến & Chẩn Đoán Môi Trường (Nâng Cao)](#phần-3-thử-thách-thực-chiến-chẩn-đoán-môi-trường-nâng-cao)
-  - [Bài 3.1: Xây dựng hàm chẩn đoán môi trường thực thi (Environment Detector)](#bài-3-1-xây-dựng-hàm-chẩn-đoán-môi-trường-thực-thi-environment-detector)
-  - [Bài 3.2: Refactor từ Inline Event sang External Event Listener chuẩn mực](#bài-3-2-refactor-từ-inline-event-sang-external-event-listener-chuẩn-mực)
 
 ---
 

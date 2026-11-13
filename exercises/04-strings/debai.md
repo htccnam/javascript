@@ -1,5 +1,21 @@
 # Bài Tập 04: Chuỗi, Nối Chuỗi & Template Literals trong JavaScript
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+- [Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)](#phần-1-khai-báo-chuỗi-ký-tự-thoát-cơ-bản)
+  - [Bài 1.1: Trích dẫn lồng nhau](#bài-1-1-trích-dẫn-lồng-nhau)
+  - [Bài 1.2: In đường dẫn Windows](#bài-1-2-in-đường-dẫn-windows)
+  - [Bài 1.3: Định dạng văn bản với Escape Character](#bài-1-3-định-dạng-văn-bản-với-escape-character)
+- [Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)](#phần-2-toán-tử-nối-chuỗi-cạm-bẫy-cộng-số-trung-bình)
+  - [Bài 2.1: Dự đoán kết quả (Type Coercion)](#bài-2-1-dự-đoán-kết-quả-type-coercion)
+  - [Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)](#bài-2-2-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix)
+- [Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)](#phần-3-template-literals-nội-suy-chuỗi-thực-chiến)
+  - [Bài 3.1: Thẻ thông tin người dùng (User Card)](#bài-3-1-thẻ-thông-tin-người-dùng-user-card)
+  - [Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp](#bài-3-2-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp)
+
+---
+
 > **Mục tiêu:**
 > - Nắm vững cách khai báo chuỗi bằng nháy đơn, nháy kép và backticks.
 > - Thành thạo sử dụng ký tự thoát (Escape characters).
@@ -17,22 +33,6 @@
 >   2. **Cạm bẫy toán tử `+` khi cộng chuỗi với số** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.9.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#cạm-bẫy-1-nhầm-lẫn-giữa-string-và-number):
 >      - *Vì sao bắt buộc?* Để giải quyết bài tập phân biệt `'2' + 2` vs `2 + 2` và chuyển sang dùng Template Literals.
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
-
-<a id="mục-lục"></a>
-## Mục Lục
-
-- [Phần 1: Khai báo chuỗi & Ký tự thoát (Cơ bản)](#phần-1-khai-báo-chuỗi-ký-tự-thoát-cơ-bản)
-  - [Bài 1.1: Trích dẫn lồng nhau](#bài-1-1-trích-dẫn-lồng-nhau)
-  - [Bài 1.2: In đường dẫn Windows](#bài-1-2-in-đường-dẫn-windows)
-  - [Bài 1.3: Định dạng văn bản với Escape Character](#bài-1-3-định-dạng-văn-bản-với-escape-character)
-- [Phần 2: Toán tử nối chuỗi & Cạm bẫy cộng số (Trung bình)](#phần-2-toán-tử-nối-chuỗi-cạm-bẫy-cộng-số-trung-bình)
-  - [Bài 2.1: Dự đoán kết quả (Type Coercion)](#bài-2-1-dự-đoán-kết-quả-type-coercion)
-  - [Bài 2.2: Sửa lỗi tính tiền giỏ hàng (Bug Fix)](#bài-2-2-sửa-lỗi-tính-tiền-giỏ-hàng-bug-fix)
-- [Phần 3: Template Literals & Nội suy chuỗi (Thực chiến)](#phần-3-template-literals-nội-suy-chuỗi-thực-chiến)
-  - [Bài 3.1: Thẻ thông tin người dùng (User Card)](#bài-3-1-thẻ-thông-tin-người-dùng-user-card)
-  - [Bài 3.2: Tạo hóa đơn thanh toán chuyên nghiệp](#bài-3-2-tạo-hóa-đơn-thanh-toán-chuyên-nghiệp)
 
 ---
 

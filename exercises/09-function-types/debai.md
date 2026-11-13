@@ -1,24 +1,4 @@
-# Bài Tập 08: 3 Loại Hàm Trong JavaScript (Declaration, Expression, Arrow)
-
-> **Mục tiêu thực hành:**
-> - Nắm vững cú pháp và sự khác biệt giữa Function Declaration, Function Expression và Arrow Function.
-> - Thành thạo kỹ thuật rút gọn Arrow Function (bỏ `{}`, bỏ `return`, bỏ `()`, trả về object `({ })`).
-> - Hiểu sâu cơ chế Hoisting và phân biệt lỗi `ReferenceError` (TDZ) vs `TypeError`.
-> - Ứng dụng Arrow Function làm Callback trong các bài toán xử lý dữ liệu thực tế.
-
----
-
-> [!IMPORTANT]
-> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [08 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/08-function-types.md).
-> * **Kiến thức bài trước bắt buộc:**
->   1. **Quy tắc đặt tên hàm: Động từ + Tân ngữ** tại [02 - Quy Ước Đặt Tên (Mục 4)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ):
->      - *Vì sao bắt buộc?* Đặt tên hàm chuẩn `calculateTotal`, `filterValidUsers`.
->   2. **Kiểu dữ liệu Function** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1182-function-hàm):
->      - *Vì sao bắt buộc?* Hiểu hàm như một biến để gán vào `const` và truyền làm callback.
-> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
-
----
+# Bài Tập 09: 3 Loại Hàm Trong JavaScript (Declaration, Expression, Arrow)
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -30,6 +10,26 @@
   - [Bài 2.1: Dự đoán lỗi khi gọi trước định nghĩa](#bài-2-1-dự-đoán-lỗi-khi-gọi-trước-định-nghĩa)
 - [Phần 3: Ứng dụng thực chiến làm Callback (Nâng cao)](#phần-3-ứng-dụng-thực-chiến-làm-callback-nâng-cao)
   - [Bài 3.1: Xử lý dữ liệu sinh viên với Arrow Function](#bài-3-1-xử-lý-dữ-liệu-sinh-viên-với-arrow-function)
+
+---
+
+> **Mục tiêu thực hành:**
+> - Nắm vững cú pháp và sự khác biệt giữa Function Declaration, Function Expression và Arrow Function.
+> - Thành thạo kỹ thuật rút gọn Arrow Function (bỏ `{}`, bỏ `return`, bỏ `()`, trả về object `({ })`).
+> - Hiểu sâu cơ chế Hoisting và phân biệt lỗi `ReferenceError` (TDZ) vs `TypeError`.
+> - Ứng dụng Arrow Function làm Callback trong các bài toán xử lý dữ liệu thực tế.
+
+---
+
+> [!IMPORTANT]
+> ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
+> * **Lý thuyết bài này:** Đọc kỹ [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md).
+> * **Kiến thức bài trước bắt buộc:**
+>   1. **Quy tắc đặt tên hàm: Động từ + Tân ngữ** tại [02 - Quy Ước Đặt Tên (Mục 4)](file:///d:/github/studyProgram/javascript/docs/02-naming-conventions.md#4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ):
+>      - *Vì sao bắt buộc?* Đặt tên hàm chuẩn `calculateTotal`, `filterValidUsers`.
+>   2. **Kiểu dữ liệu Function** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.2)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1182-function-hàm):
+>      - *Vì sao bắt buộc?* Hiểu hàm như một biến để gán vào `const` và truyền làm callback.
+> * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
 

@@ -1,5 +1,16 @@
 # Bài Tập 07: Truthy & Falsy trong JavaScript
 
+<a id="mục-lục"></a>
+## Mục Lục
+
+1. [Phần 1: Xác định Truthy / Falsy](#phần-1-xác-định-truthy-falsy)
+2. [Phần 2: Ép kiểu ngầm (Implicit Coercion) trong điều kiện](#phần-2-ép-kiểu-ngầm-implicit-coercion-trong-điều-kiện)
+3. [Phần 3: Toán tử logic &&, ||, !!](#phần-3-toán-tử-logic)
+4. [Phần 4: Ứng dụng thực tế - Validation & Default Values](#phần-4-ứng-dụng-thực-tế---validation-default-values)
+5. [Phần 5: So sánh == vs === (Type Coercion)](#phần-5-so-sánh-vs-type-coercion)
+6. [Phần 6: Edge Cases & Best Practices](#phần-6-edge-cases-best-practices)
+7. [Phần 7: Thử thách - Viết hàm tiện ích](#phần-7-thử-thách---viết-hàm-tiện-ích)
+
 ---
 
 > [!IMPORTANT]
@@ -14,18 +25,6 @@
 
 ---
 
-## Mục Lục
-<a id="mục-lục"></a>
-
-1. [Phần 1: Xác định Truthy / Falsy](#phần-1-xác-định-truthy-falsy)
-2. [Phần 2: Ép kiểu ngầm (Implicit Coercion) trong điều kiện](#phần-2-ép-kiểu-ngầm-implicit-coercion-trong-điều-kiện)
-3. [Phần 3: Toán tử logic &&, ||, !!](#phần-3-toán-tử-logic)
-4. [Phần 4: Ứng dụng thực tế - Validation & Default Values](#phần-4-ứng-dụng-thực-tế---validation-default-values)
-5. [Phần 5: So sánh == vs === (Type Coercion)](#phần-5-so-sánh-vs-type-coercion)
-6. [Phần 6: Edge Cases & Best Practices](#phần-6-edge-cases-best-practices)
-7. [Phần 7: Thử thách - Viết hàm tiện ích](#phần-7-thử-thách---viết-hàm-tiện-ích)
-
----
 <a id="phần-1-xác-định-truthy-falsy"></a>
 ## Phần 1: Xác định Truthy / Falsy
 
