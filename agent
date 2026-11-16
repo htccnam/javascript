@@ -292,9 +292,10 @@ flowchart TD
   3. **Thao tác duyệt Mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
      - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 11 để biến đổi dữ liệu.
 * **Mục tiêu cốt lõi cần đạt được:**
-  - Phân biệt Dot notation (`obj.key`) vs Bracket notation (`obj[dynamicKey]`).
-  - Viết Method chuẩn mực với từ khóa `this`.
-  - Thành thạo các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
+  - Nắm vững khái niệm Object Literals, CRUD thuộc tính (thêm, sửa, `delete`) bằng Dot và Bracket notation.
+  - Làm chủ kỹ thuật Object Destructuring (alias, default values) và duyệt `for...in` trên Object.
+  - Phòng tránh các cạm bẫy: Kiểm tra key bằng toán tử `in` / `Object.hasOwn()`, tránh dùng từ khóa dành riêng làm key.
+  - Viết Method chuẩn mực với từ khóa `this` và thành thạo các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
 
 ---
 
@@ -400,7 +401,7 @@ flowchart TD
 | **09. 3 Loại hàm** | 02, 03, 05, 08 | Tên hàm Động từ + Tân ngữ, kiểu Function, câu lệnh `return`, vòng lặp thuật toán |
 | **10. Hoisting & Scope** | 03, 09 | Function Declaration vs Expression, Block Scope vs TDZ |
 | **11. Mảng (Arrays)** | 03, 07, 08, 09 | Duyệt mảng For (Bài 08), **Arrow Function Callback** (Bài 09), Truthy lọc mảng |
-| **12. Đối tượng (Object)** | 03, 09, 11 | Từ khóa `this` trong hàm vs Arrow function, tham chiếu Heap, duyệt mảng |
+| **12. Đối tượng (Object)** | 03, 09, 11 | Object Literals, Destructuring, for...in, từ khóa `this`, tham chiếu Heap, duyệt mảng |
 | **13. For-In & For-Of** | 03, 04, 11, 12 | Duyệt Object keys với `for...in`, duyệt Iterable values với `for...of`, toán tử `in` |
 | **14. Ứng dụng ++ Tiền tố & Hậu tố** | 05, 08, 11, 13 | Cơ chế ++i vs i++, đánh số thứ tự trong for...of, bẫy tăng biến 2 lần, V8 engine |
 | **15. Map & Set** | 03, 11, 12, 13 | Hạn chế key của Object, duyệt `for...of` trên Map/Set, lọc trùng mảng với `...` |

@@ -72,3 +72,39 @@ const configArr = [
 // 4.3. Thay đổi "theme" thành "light", sau đó chuyển config ngược lại thành Mảng (dùng Object.entries):
 
 console.groupEnd();
+
+// TODO 5: BÀI BOOK (Object Destructuring)
+console.group("\n=== BÀI 5: OBJECT DESTRUCTURING ===");
+const book = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+};
+
+// 5.1. Dùng Destructuring trích xuất title và author từ book:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 5.2. Trích xuất với giá trị mặc định cho publisher:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();
+
+// TODO 6: BÀI PERSON (Duyệt for...in & Kiểm tra key với toán tử in)
+console.group("\n=== BÀI 6: DUYỆT FOR...IN & KIỂM TRA KEY ===");
+const person = {
+    name: "Alice",
+    age: 25,
+    isEmployed: true,
+};
+
+// 6.1. Dùng vòng lặp for...in duyệt và in ra từng cặp key-value:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 6.2. Dùng toán tử 'in' kiểm tra nếu có 'age' thì cập nhật lên 26:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();

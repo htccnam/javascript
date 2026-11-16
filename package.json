@@ -65,7 +65,9 @@
     "solution:map": "node exercises/15-map-and-set/loigiai.js",
     "solution:set": "node exercises/15-map-and-set/loigiai.js",
     "solution:dom": "node exercises/16-dom-basics/loigiai.js",
-    "solution:json": "node exercises/17-json-and-error-handling/loigiai.js"
+    "solution:json": "node exercises/17-json-and-error-handling/loigiai.js",
+    "dev": "npx --yes http-server -c-1 -p 5173",
+    "test:verify": "node scripts/verify-tests.mjs"
   },
   "keywords": [
     "javascript",
