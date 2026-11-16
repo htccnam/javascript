@@ -1,4 +1,4 @@
-# Bài Tập 15: JSON & Xử Lý Lỗi (Error Handling với try...catch) trong JavaScript
+# Bài Tập 16: JSON & Xử Lý Lỗi (Error Handling với try...catch) trong JavaScript
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -13,7 +13,7 @@
 
 > [!IMPORTANT]
 > ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [15 - JSON & Xử Lý Lỗi Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/15-json-and-error-handling.md).
+> * **Lý thuyết bài này:** Đọc kỹ [16 - JSON & Xử Lý Lỗi Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/16-json-and-error-handling.md).
 > * **Kiến thức bài trước bắt buộc:**
 >   1. **Mảng & Đối tượng** tại [11 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) và [12 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
 >      - *Vì sao bắt buộc?* Dữ liệu JSON tuần tự hóa từ Object và Array.

@@ -1,4 +1,4 @@
-# Bài Tập 13: Cấu Trúc Dữ Liệu Map & Set trong JavaScript
+# Bài Tập 14: Cấu Trúc Dữ Liệu Map & Set trong JavaScript
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -16,12 +16,14 @@
 >
 > ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
 >
-> - **Lý thuyết bài này:** Đọc kỹ [13 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md).
+> - **Lý thuyết bài này:** Đọc kỹ [14 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md).
 > - **Kiến thức bài trước bắt buộc:**
 >   1. **Hạn chế của Object** tại [12 - Đối Tượng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
 >      - _Vì sao bắt buộc?_ Hiểu vì sao Map ra đời để cho phép Object làm key.
 >   2. **Spread Operator `...` và Mảng** tại [11 - Mảng Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
 >      - _Vì sao bắt buộc?_ Để giải quyết Phần 5 lọc trùng mảng `[...new Set(arr)]` và các phép toán tập hợp ở Phần 6.
+>   3. **Vòng lặp `for...of`** tại [13 - Vòng Lặp For-In & For-Of](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md):
+>      - _Vì sao bắt buộc?_ Dùng để duyệt qua các cặp `[key, value]` của Map ở Phần 3.
 > - 🗺️ _Xem bản đồ lộ trình tổng thể:_ [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

@@ -1,4 +1,4 @@
-# Bài Tập 14: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
+# Bài Tập 15: Thao Tác DOM & Xử Lý Sự Kiện (DOM Manipulation & Events)
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -22,7 +22,7 @@
 
 > [!IMPORTANT]
 > ### 🔗 Kiến Thức Tiên Quyết Trước Khi Làm Bài Tập
-> * **Lý thuyết bài này:** Đọc kỹ [14 - Thao Tác DOM & Sự Kiện](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
+> * **Lý thuyết bài này:** Đọc kỹ [15 - Thao Tác DOM & Sự Kiện](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
 > * **Kiến thức bài trước bắt buộc:**
 >   1. **Callback & Arrow Function** tại [09 - 3 Loại Hàm Trong JavaScript](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
 >      - *Vì sao bắt buộc?* Dùng để viết hàm callback cho `addEventListener('click', (e) => {})`.

@@ -56,7 +56,7 @@ flowchart TD
     L03 --> L10["10. Hoisting & Scope & TDZ<br>(docs/10-hoisting-and-scope.md)"]
     L09 --> L10
 
-    %% Tầng 5: Cấu trúc dữ liệu chuyên sâu
+    %% Tầng 5: Cấu trúc dữ liệu & Vòng lặp chuyên sâu
     L03 --> L11["11. Mảng (Array) & Phương Thức Duyệt<br>(docs/11-arrays.md)"]
     L07 --> L11
     L08 --> L11
@@ -64,16 +64,20 @@ flowchart TD
     L03 --> L12["12. Đối Tượng (Object) & this<br>(docs/12-objects.md)"]
     L09 --> L12
     L11 --> L12
-    L11 --> L13["13. Cấu Trúc Map & Set<br>(docs/13-map-and-set.md)"]
+    L11 --> L13["13. Vòng Lặp For-In & For-Of<br>(docs/13-for-in-and-for-of.md)"]
     L12 --> L13
+    L11 --> L14["14. Cấu Trúc Map & Set<br>(docs/14-map-and-set.md)"]
+    L12 --> L14
+    L13 --> L14
 
     %% Tầng 6: Ứng dụng tương tác & Xử lý ngoại lệ
-    L09 --> L14["14. Thao Tác DOM & Sự Kiện<br>(docs/14-dom-basics.md)"]
-    L11 --> L14
-    L12 --> L14
-    L03 --> L15["15. JSON & Xử Lý Lỗi (try/catch)<br>(docs/15-json-and-error-handling.md)"]
+    L09 --> L15["15. Thao Tác DOM & Sự Kiện<br>(docs/15-dom-basics.md)"]
     L11 --> L15
     L12 --> L15
+    L13 --> L15
+    L03 --> L16["16. JSON & Xử Lý Lỗi (try/catch)<br>(docs/16-json-and-error-handling.md)"]
+    L11 --> L16
+    L12 --> L16
 
     %% Styling
     classDef foundation fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
@@ -87,8 +91,8 @@ flowchart TD
     class L03,L04,L07 data;
     class L05,L06,L08 control;
     class L09,L10 logic;
-    class L11,L12,L13 datastruct;
-    class L14,L15 advanced;
+    class L11,L12,L13,L14 datastruct;
+    class L15,L16 advanced;
 ```
 
 ---
@@ -290,15 +294,34 @@ flowchart TD
 
 ---
 
-### 🟣 BÀI 13: Cấu Trúc Dữ Liệu Map & Set
-* **Tài liệu:** [`docs/13-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md)
-* **Bài tập:** [`exercises/13-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/13-map-and-set/)
+### 🟣 BÀI 13: Vòng Lặp For-In & For-Of (Iterating Objects & Iterables)
+* **Tài liệu:** [`docs/13-for-in-and-for-of.md`](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md)
+* **Bài tập:** [`exercises/13-for-in-and-for-of/`](file:///d:/github/studyProgram/javascript/exercises/13-for-in-and-for-of/)
+* **Kiến thức tiên quyết bắt buộc từ bài trước:**
+  1. **Cấu trúc Mảng & Chuỗi** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) & [`docs/04-strings.md`](file:///d:/github/studyProgram/javascript/docs/04-strings.md):
+     - *Vì sao bắt buộc?* `for...of` vận hành trên các cấu trúc dữ liệu có tính chất duyệt được (Iterable) mà Mảng và Chuỗi là đại diện cơ bản nhất.
+  2. **Truy cập Bracket Notation `obj[key]`** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
+     - *Vì sao bắt buộc?* `for...in` trả về tên thuộc tính (Key) dưới dạng chuỗi; bạn bắt buộc phải dùng cú pháp ngoặc vuông `obj[key]` để đọc giá trị tương ứng (nếu dùng `obj.key` sẽ tìm thuộc tính cố định tên `"key"` và ra `undefined`).
+  3. **Block Scope của `const`** tại [`docs/03-variables-and-data-types.md`](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md):
+     - *Vì sao bắt buộc?* Hiểu lý do vì sao trong `for (const key in obj)` ta dùng được `const` mà không sinh lỗi gán lại giá trị (mỗi lần lặp tạo ra một phạm vi khối Block Scope độc lập).
+* **Mục tiêu cốt lõi cần đạt được:**
+  - Thành thạo `for...in` duyệt keys của Object và `for...of` duyệt values của Iterable.
+  - Phân biệt toán tử `in` kiểm tra sự tồn tại của key vs vòng lặp `for...in`.
+  - Nhận biết và phòng tránh 2 cạm bẫy kinh điển: Dính prototype khi duyệt mảng bằng `for...in` và lỗi `TypeError: not iterable` khi dùng `for...of` cho Object.
+
+---
+
+### 🟣 BÀI 14: Cấu Trúc Dữ Liệu Map & Set
+* **Tài liệu:** [`docs/14-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md)
+* **Bài tập:** [`exercises/14-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/14-map-and-set/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Hạn chế của Object thông thường** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* Trong Object thông thường, key luôn bị ép kiểu thành `String`, không thể lấy một Object khác làm key. Bạn phải hiểu hạn chế này ở Bài 12 thì mới thấy được sức mạnh vượt trội của `Map`.
-  2. **Spread Operator `...` và phương thức mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
+  2. **Vòng lặp `for...of`** tại [`docs/13-for-in-and-for-of.md`](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md):
+     - *Vì sao bắt buộc?* Map và Set là cấu trúc Iterable; bạn dùng trực tiếp vòng lặp `for...of` để duyệt các entry `[key, value]` của Map và các phần tử của Set.
+  3. **Spread Operator `...` và phương thức mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
      - *Vì sao bắt buộc?* Ứng dụng phổ biến nhất của `Set` là lọc trùng lặp mảng: `[...new Set(array)]`. Cú pháp này sử dụng Spread Operator của Mảng.
-  3. **So sánh tham chiếu đối tượng** tại [`docs/03-variables-and-data-types.md` (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
+  4. **So sánh tham chiếu đối tượng** tại [`docs/03-variables-and-data-types.md` (Mục 11.7)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#117-object-đối-tượng-dạng-tổng-quát-key-value):
      - *Vì sao bắt buộc?* Để hiểu vì sao 2 object rỗng `map.set({}, "A")` và `map.get({})` trả về `undefined` (do 2 object là 2 địa chỉ ô nhớ hoàn toàn khác nhau).
 * **Mục tiêu cốt lõi cần đạt được:**
   - Thành thạo CRUD trên `Map`: `set`, `get`, `has`, `delete`, thuộc tính `.size`.
@@ -306,16 +329,16 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 14: Thao Tác DOM & Sự Kiện (Web Interactive UI)
-* **Tài liệu:** [`docs/14-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md)
-* **Bài tập:** [`exercises/14-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/14-dom-basics/)
+### 🔴 BÀI 15: Thao Tác DOM & Sự Kiện (Web Interactive UI)
+* **Tài liệu:** [`docs/15-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md)
+* **Bài tập:** [`exercises/15-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/15-dom-basics/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Callback Function & Arrow Function** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
      - *Vì sao bắt buộc?* Lắng nghe sự kiện người dùng (`click`, `submit`, `input`) trong DOM 100% sử dụng Callback Function: `btn.addEventListener("click", (event) => {})`.
   2. **Thao tác Đối tượng (Object Properties)** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* Mỗi phần tử HTML trên trang khi được JavaScript chọn (`querySelector`) đều là một **DOM Element Object**. Việc đổi nội dung (`el.textContent = "..."`), đổi màu (`el.style.color = "..."`), hay đọc `event.target.value` thực chất là truy cập và gán lại thuộc tính của Object.
-  3. **Duyệt mảng danh sách phần tử** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
-     - *Vì sao bắt buộc?* Lệnh `querySelectorAll` trả về một tập hợp `NodeList`; bạn cần kỹ năng duyệt mảng để gán sự kiện đồng loạt cho nhiều nút bấm hoặc danh sách Todo.
+  3. **Duyệt mảng danh sách phần tử** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) & [`docs/13-for-in-and-for-of.md`](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md):
+     - *Vì sao bắt buộc?* Lệnh `querySelectorAll` trả về một tập hợp `NodeList`; bạn cần kỹ năng duyệt `for...of` để gán sự kiện đồng loạt cho nhiều nút bấm hoặc danh sách Todo.
   4. **Toán tử `event.preventDefault()`** tại [`docs/05-conditionals-and-operators.md` (Mục 8.4)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#84-toán-tử-void--khái-niệm-cơ-chế--3-ứng-dụng-thực-tế):
      - *Vì sao bắt buộc?* Ngăn chặn hành vi mặc định của form reload trang hoặc thẻ `<a>` nhảy trang khi người dùng submit.
 * **Mục tiêu cốt lõi cần đạt được:**
@@ -325,9 +348,9 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 15: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
-* **Tài liệu:** [`docs/15-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/15-json-and-error-handling.md)
-* **Bài tập:** [`exercises/15-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/15-json-and-error-handling/)
+### 🔴 BÀI 16: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
+* **Tài liệu:** [`docs/16-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/16-json-and-error-handling.md)
+* **Bài tập:** [`exercises/16-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/16-json-and-error-handling/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Cấu trúc Mảng & Đối Tượng (Array & Object)** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) & [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* JSON (JavaScript Object Notation) là chuỗi đại diện tuần tự hóa của Mảng và Đối tượng. Bạn không thể hiểu cú pháp JSON nếu chưa thành thạo Object key-value và mảng lồng nhau.
@@ -357,9 +380,10 @@ flowchart TD
 | **10. Hoisting & Scope** | 03, 09 | Function Declaration vs Expression, Block Scope vs TDZ |
 | **11. Mảng (Arrays)** | 03, 07, 08, 09 | Duyệt mảng For (Bài 08), **Arrow Function Callback** (Bài 09), Truthy lọc mảng |
 | **12. Đối tượng (Object)** | 03, 09, 11 | Từ khóa `this` trong hàm vs Arrow function, tham chiếu Heap, duyệt mảng |
-| **13. Map & Set** | 03, 11, 12 | Hạn chế key của Object, lọc trùng mảng với `...`, so sánh tham chiếu |
-| **14. Thao tác DOM** | 05, 09, 11, 12 | Event Listener Callback, DOM Object properties, `event.preventDefault` |
-| **15. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
+| **13. For-In & For-Of** | 03, 04, 11, 12 | Duyệt Object keys với `for...in`, duyệt Iterable values với `for...of`, toán tử `in` |
+| **14. Map & Set** | 03, 11, 12, 13 | Hạn chế key của Object, duyệt `for...of` trên Map/Set, lọc trùng mảng với `...` |
+| **15. Thao tác DOM** | 05, 09, 11, 12, 13 | Event Listener Callback, DOM Object properties, `for...of` trên NodeList, `event.preventDefault` |
+| **16. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
 
 ---
 

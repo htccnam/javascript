@@ -1,4 +1,4 @@
-# 15 - JSON & Xử Lý Lỗi Trong JavaScript (JSON & Exception Handling)
+# 16 - JSON & Xử Lý Lỗi Trong JavaScript (JSON & Exception Handling)
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -30,7 +30,7 @@
 >    - *Vì sao bắt buộc?* Khi chạy `JSON.stringify()`, các trường có giá trị là `undefined`, `Function`, `Symbol` sẽ bị xóa sổ; còn `NaN` và `Infinity` bị ép thành `null`. Bạn cần nắm các kiểu này ở Bài 03 để không bị bất ngờ khi dữ liệu biến mất sau khi parse.
 > 3. **Khối lệnh Block Scope `{}`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 3)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#3-bản-chất-toàn-diện-về-phạm-vi-scope-trong-javascript-xóa-bỏ-hoàn-toàn-nhầm-lẫn):
 >    - *Vì sao bắt buộc?* Khối `try {} catch (error) {} finally {}` tạo ra các Block Scope độc lập; biến khai báo bằng `let`/`const` bên trong khối `try` sẽ không thể truy cập từ khối `catch` hay bên ngoài.
-> * **Chúc mừng bạn:** Hoàn thành bài này là bạn đã nắm trọn vẹn toàn bộ 15 bài học nền tảng vững chắc của JavaScript Study Program!
+> * **Chúc mừng bạn:** Hoàn thành bài này là bạn đã nắm trọn vẹn toàn bộ 16 bài học nền tảng vững chắc của JavaScript Study Program!
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

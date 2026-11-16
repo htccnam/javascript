@@ -34,7 +34,7 @@
 >    - *Vì sao bắt buộc?* Hàm callback của phương thức `.filter()` và `.find()` giữ lại phần tử khi biểu thức bên trong trả về giá trị Truthy, và loại bỏ khi gặp Falsy.
 > 4. **Bản chất Mảng & phương thức `push/pop/splice`** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu (Mục 11.8.1)](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md#1181-array-mảng):
 >    - *Vì sao bắt buộc?* Nắm vững các thao tác biến đổi mảng gốc (mutator) vs các hàm trả về mảng mới (immutable) và cách chẩn đoán mảng bằng `Array.isArray()`.
-> * **Đích đến tiếp theo:** Mảng là dữ liệu nền tảng cho [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), [13 - Map & Set](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md) và hiển thị danh sách trong [14 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
+> * **Đích đến tiếp theo:** Mảng là dữ liệu nền tảng cho [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), [13 - Vòng Lặp For-In & For-Of](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md), [14 - Map & Set](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md) và hiển thị danh sách trong [15 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

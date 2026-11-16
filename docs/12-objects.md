@@ -30,7 +30,7 @@
 >    - *Vì sao bắt buộc?* Để hiểu vì sao copy object bằng dấu `=` (`obj2 = obj1`) sẽ làm thay đổi cả object gốc, từ đó hiểu tại sao cần dùng Spread Operator `{...obj}` hoặc `Object.assign()`.
 > 3. **Thao tác duyệt Mảng** tại [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
 >    - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 11 để biến đổi dữ liệu.
-> * **Đích đến tiếp theo:** Object là viên gạch nền móng để bạn tiến sang [13 - Cấu Trúc Map & Set](file:///d:/github/studyProgram/javascript/docs/13-map-and-set.md) và quản lý phần tử DOM tại [14 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/14-dom-basics.md).
+> * **Đích đến tiếp theo:** Object là viên gạch nền móng để bạn tiến sang [13 - Vòng Lặp For-In & For-Of](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md), [14 - Cấu Trúc Map & Set](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md) và quản lý phần tử DOM tại [15 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

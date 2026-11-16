@@ -1,5 +1,5 @@
 // =================================================================
-// BÀI TẬP 12: THAO TÁC DOM & SỰ KIỆN - BÀI LÀM CỦA BẠN
+// BÀI TẬP 15: THAO TÁC DOM & SỰ KIỆN - BÀI LÀM CỦA BẠN
 // =================================================================
 
 if (typeof document !== "undefined") {
@@ -48,6 +48,6 @@ if (typeof document !== "undefined") {
 
 
 } else {
-    console.log("ℹ️ Bài tập 12 (Thao tác DOM & Sự kiện) là ứng dụng tương tác giao diện.");
-    console.log("👉 Hãy mở file 'exercises/12-dom-basics/loigiai.html' trên trình duyệt web để kiểm tra mã của bạn!");
+    console.log("ℹ️ Bài tập 15 (Thao tác DOM & Sự kiện) là ứng dụng tương tác giao diện.");
+    console.log("👉 Hãy mở file 'exercises/15-dom-basics/loigiai.html' trên trình duyệt web để kiểm tra mã của bạn!");
 }
