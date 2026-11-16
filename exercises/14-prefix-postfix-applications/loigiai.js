@@ -8,6 +8,7 @@
 console.group("=== PHẦN 1: CƠ CHẾ TRẢ VỀ TIỀN TỐ VS HẬU TỐ ===");
 
 // 1.1. Phân tích kết quả biến a, b, c, d
+const answer_1_1 = { a: 11, b: 11, c: 11, d: 10 };
 let a = 10;
 let b = ++a; // ++a tăng a lên 11 trước, sau đó trả về 11 gán cho b
 
@@ -25,6 +26,7 @@ console.log("Giá trị d nhận được:", d); // 10 (nhận giá trị cũ tr
 //   còn biến d nhận giá trị 10 (do hậu tố c++ trả về giá trị cũ trước rồi mới tăng).
 
 // 1.2. Phân tích biểu thức phức tạp nhiều bước:
+const answer_1_2 = { result: 20, x: 8 };
 let x = 5;
 let result = ++x + x++ + ++x;
 

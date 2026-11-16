@@ -714,5 +714,59 @@
             <p>JavaScript Study Program &copy; 2026 - Kho tài liệu & bài tập thực hành JavaScript chuẩn Clean Code</p>
         </footer>
     </div>
+    <script>
+    // Tích hợp JS Practice Lab: nút "Làm bài trực tuyến", huy hiệu trạng thái và thanh tiến độ.
+    // Đọc tiến độ từ localStorage (khoá jslab:v1:<id>:status). Mọi truy cập bọc try/catch.
+    (function () {
+        var PREFIX = 'jslab:v1';
+        function statusOf(id) {
+            try {
+                var raw = localStorage.getItem(PREFIX + ':' + id + ':status');
+                return raw ? JSON.parse(raw).status : 'not-started';
+            } catch (e) { return 'not-started'; }
+        }
+        var LABELS = { 'passed': '✅ Đã đạt', 'in-progress': '✏️ Đang làm', 'not-started': '⬜ Chưa làm' };
+        var COLORS = { 'passed': '#dcfce7', 'in-progress': '#fef9c3', 'not-started': '#f1f5f9' };
+        var total = 0, done = 0;
+        document.querySelectorAll('.card-links').forEach(function (links) {
+            var debai = links.querySelector('a[href$="/debai.md"]');
+            if (!debai) return;
+            var m = /exercises\/(\d+)-/.exec(debai.getAttribute('href'));
+            if (!m) return;
+            var id = Number(m[1]);
+            var st = statusOf(id);
+            total++;
+            if (st === 'passed') done++;
+
+            var lab = document.createElement('a');
+            lab.href = 'lab/lab.html?lesson=' + id;
+            lab.className = 'btn btn-primary';
+            lab.textContent = '💻 Làm bài trực tuyến';
+            links.insertBefore(lab, links.firstChild);
+
+            var card = links.closest('.card');
+            var h3 = card && card.querySelector('h3');
+            if (h3) {
+                var badge = document.createElement('span');
+                badge.textContent = LABELS[st] || LABELS['not-started'];
+                badge.style.cssText = 'display:inline-block;margin-left:8px;font-size:.75rem;font-weight:600;padding:2px 8px;border-radius:999px;vertical-align:middle;background:' + (COLORS[st] || COLORS['not-started']) + ';color:#0f172a';
+                h3.appendChild(badge);
+            }
+        });
+
+        var heading = Array.prototype.find.call(document.querySelectorAll('.section-title'), function (h) {
+            return h.textContent.indexOf('Bài Tập Thực Hành') >= 0;
+        });
+        if (heading && total) {
+            var pct = Math.round((done / total) * 100);
+            var box = document.createElement('div');
+            box.style.cssText = 'margin:-8px 0 20px;font-size:.95rem;color:#334155';
+            box.innerHTML = '<div>🏁 Tiến độ làm bài trực tuyến: <strong>' + done + '/' + total + '</strong> bài đã đạt</div>' +
+                '<div style="height:8px;background:#e2e8f0;border-radius:999px;margin-top:6px;overflow:hidden">' +
+                '<div style="height:100%;width:' + pct + '%;background:#15803d"></div></div>';
+            heading.insertAdjacentElement('afterend', box);
+        }
+    })();
+    </script>
 </body>
 </html>

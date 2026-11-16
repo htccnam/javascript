@@ -9,6 +9,8 @@
 console.group("=== PHẦN 1: CƠ CHẾ TRẢ VỀ TIỀN TỐ VS HẬU TỐ ===");
 
 // TODO 1.1: Dự đoán kết quả của các biến a, b, c, d
+// Ghi đáp án dự đoán của bạn (thay null) TRƯỚC khi chạy code:
+const answer_1_1 = { a: null, b: null, c: null, d: null };
 let a = 10;
 let b = ++a;
 
@@ -21,6 +23,8 @@ console.log("Giá trị c:", c); // TODO: Dự đoán giá trị c
 console.log("Giá trị d:", d); // TODO: Dự đoán giá trị d
 
 // TODO 1.2: Phân tích biểu thức phức tạp
+// Ghi đáp án dự đoán: result = ?, x cuối cùng = ? (thay null)
+const answer_1_2 = { result: null, x: null };
 let x = 5;
 let result = ++x + x++ + ++x;
 console.log("Giá trị x cuối cùng:", x);

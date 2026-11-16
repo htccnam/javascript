@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Practice Lab</title>
+  <link rel="stylesheet" href="lab.css">
+  <!-- CDN (pin version). Monaco nạp động trong js/editor.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="home" href="../index.html" title="Về trang chủ">←</a>
+    <div class="title-block">
+      <h1 id="lesson-title">Đang tải…</h1>
+      <span id="lesson-tags" class="muted"></span>
+    </div>
+    <span id="status-badge" class="badge badge-not-started">⬜ Chưa làm</span>
+    <div class="nav">
+      <button id="btn-prev" class="btn" title="Bài trước">‹</button>
+      <select id="lesson-select" aria-label="Chọn bài"></select>
+      <button id="btn-next" class="btn" title="Bài sau">›</button>
+    </div>
+    <span id="progress-text" class="muted"></span>
+    <button id="btn-export" class="btn" title="Tải file JSON tiến độ">⤓ Xuất tiến độ</button>
+    <label class="btn" title="Nạp file JSON tiến độ">⤒ Nhập<input id="file-import" type="file" accept="application/json" hidden></label>
+  </header>
+
+  <div id="fatal" class="fatal" hidden></div>
+  <div id="prereq" class="prereq" hidden></div>
+  <div id="dom-notice" class="notice" hidden>
+    Bài này dùng DOM (cần khung Preview). Phần chạy/chấm bài DOM sẽ có ở giai đoạn 4 của kế hoạch.
+    Tạm thời mở <code>exercises/16-dom-basics/loigiai.html</code> để xem demo.
+  </div>
+
+  <nav class="mobile-tabs" aria-label="Chuyển khung trên điện thoại">
+    <button data-mobile-pane="pane-left" class="active">📖 Đề bài</button>
+    <button data-mobile-pane="pane-center">⌨️ Code</button>
+    <button data-mobile-pane="pane-right">🖥️ Console</button>
+  </nav>
+
+  <main class="workspace">
+    <section id="pane-left" class="pane pane-left mobile-active">
+      <div class="tabs">
+        <button data-left-tab="debai" class="tab active">Đề bài</button>
+        <button data-left-tab="theory" class="tab">Lý thuyết</button>
+        <button data-left-tab="solution" class="tab">Lời giải</button>
+      </div>
+      <div id="left-content" class="scroll"></div>
+    </section>
+
+    <section id="pane-center" class="pane pane-center">
+      <div class="toolbar">
+        <button id="btn-run" class="btn primary" title="Ctrl+Enter">▶ Chạy</button>
+        <button id="btn-grade" class="btn success" title="Chạy và kiểm tra từng TODO">✅ Chấm bài</button>
+        <button id="btn-reset" class="btn">↺ Reset</button>
+        <button id="btn-diff" class="btn">⇄ So sánh lời giải</button>
+        <span id="run-status" class="muted"></span>
+      </div>
+      <div id="editor" class="editor"></div>
+    </section>
+
+    <section id="pane-right" class="pane pane-right">
+      <div class="tabs">
+        <button data-right-tab="console" class="tab active">Console</button>
+        <button data-right-tab="results" class="tab">Kết quả chấm</button>
+      </div>
+      <div id="console" class="console scroll"></div>
+      <div id="results" class="results scroll" hidden></div>
+    </section>
+  </main>
+
+  <dialog id="diff-dialog" class="diff-dialog">
+    <div class="diff-head">
+      <strong>Của bạn (trái) so với lời giải (phải)</strong>
+      <button id="diff-close" class="btn">Đóng</button>
+    </div>
+    <div id="diff-view" class="diff-view"></div>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
