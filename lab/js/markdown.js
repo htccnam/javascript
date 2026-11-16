@@ -72,7 +72,16 @@ export function renderMarkdown(markdown, { onTheoryLink } = {}) {
     if (href.startsWith("#")) {
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        const target = container.querySelector(`[id="${CSS.escape(href.slice(1))}"]`);
+        // marked mã hoá href (ví dụ #mục-lục -> #m%E1%BB%A5c-l%E1%BB%A5c), phải giải mã trước khi tìm id
+        let id = href.slice(1);
+        try {
+          id = decodeURIComponent(id);
+        } catch {
+          // giữ nguyên nếu chuỗi không hợp lệ
+        }
+        const target =
+          container.querySelector(`[id="${CSS.escape(id)}"]`) ||
+          container.querySelector(`[name="${CSS.escape(id)}"]`);
         if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       return;
