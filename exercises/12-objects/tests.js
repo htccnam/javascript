@@ -30,4 +30,16 @@ defineTests(({ test, get, logs, expect }) => {
     expect(logs()).toContainText("[ 'theme', 'light' ]");
     expect(logs()).toContainText("[ 'language', 'vi' ]");
   });
+
+  test("5", "book: destructuring trích xuất title, author; in tiêu đề và tác giả", () => {
+    expect(logs()).toContainText("Tiêu đề sách: The Great Gatsby");
+    expect(logs()).toContainText("Tác giả: F. Scott Fitzgerald");
+  });
+
+  test("6", "person: duyệt for...in và cập nhật tuổi lên 26 nếu 'age' in person", () => {
+    const p = get("person");
+    expect(p.age).toBe(26);
+    expect(logs()).toContainText("Tuổi sau sinh nhật: 26");
+    expect(logs()).toContainText("isEmployed: true");
+  });
 });

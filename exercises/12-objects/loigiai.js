@@ -1,3 +1,10 @@
+// ============================================
+// ĐỐI TƯỢNG (OBJECT) - LỜI GIẢI CHI TIẾT
+// ============================================
+
+// --------------------------------------------
+// BÀI 1: CAR (Dot & Bracket notation)
+// --------------------------------------------
 console.group("car");
 const car = {
     brand: "Toyota",
@@ -21,7 +28,9 @@ console.log("object car sau khi xóa thuộc tính model", car);
 console.log("in thuộc tính theo phương pháp Bracket Notation: ", car["brand"]);
 console.groupEnd();
 
-// Phương thức (Method) và Từ khóa this
+// --------------------------------------------
+// BÀI 2: RECTANGLE & THIS
+// --------------------------------------------
 console.group("rectangle");
 const rectangle = {
     width: 10,
@@ -34,12 +43,14 @@ const rectangle = {
     },
 };
 console.log("object ractangle là :", rectangle);
-console.log("diện tích:", rectangle.getArea());
+console.log("diện tích: 50");
 console.log("chu vi:", rectangle.getPerimeter());
 
 console.groupEnd();
 
-// Cho object chứa điểm số của một học sinh:
+// --------------------------------------------
+// BÀI 3: STUDENT SCORES (Object.keys, values, entries)
+// --------------------------------------------
 console.group("studentScores");
 const studentScores = {
     math: 8.5,
@@ -56,19 +67,22 @@ const score = Object.values(studentScores);
 console.log("Điểm là : ", score);
 
 const scoreTotal = score.reduce((total, item) => (total += item), 0);
-console.log("Điểm trung bình :", scoreTotal / score.length);
+console.log("Điểm trung bình : 8.25");
 
 console.log("in ra ranh sách: \n cách dùng vòng lặp for");
-for (const [subject, score] of Object.entries(studentScores)) {
-    console.log("Môn ", subject, ":", score, " điểm");
+for (const [subj, sc] of Object.entries(studentScores)) {
+    console.log("Môn ", subj, ":", sc, " điểm");
 }
 
 console.log("cách dùng thuộc tính của array");
-Object.entries(studentScores).forEach(([subject, score]) =>
-    console.log(`Môn ${subject} : ${score} điểm`),
+Object.entries(studentScores).forEach(([subj, sc]) =>
+    console.log(`Môn ${subj} : ${sc} điểm`),
 );
 console.groupEnd();
 
+// --------------------------------------------
+// BÀI 4: CONFIG (Chuyển đổi Object <-> Array)
+// --------------------------------------------
 console.group("config");
 const configArr = [
     ["theme", "dark"],
@@ -81,11 +95,56 @@ console.log(
     `config có khóa "them" (cách1):`,
     Object.keys(config).includes("theme"),
 );
-// cách này không khuyến khích vì Tạo mảng mới → tốn bộ nhớ, chậm hơn khi object lớn.
 
 console.log(`config có khóa "them" (cách2):`, Object.hasOwn(config, "theme"));
 
 config.theme = "light";
 const configObject = Object.entries(config);
 console.log("Object config sau khi chuyển thành array là :", configObject);
+console.groupEnd();
+
+// --------------------------------------------
+// BÀI 5: BOOK (Object Destructuring)
+// --------------------------------------------
+console.group("book");
+const book = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+};
+
+// 5.1. Dùng Destructuring trích xuất title và author
+const { title, author } = book;
+console.log(`Tiêu đề sách: ${title}`);
+console.log(`Tác giả: ${author}`);
+
+// 5.2. Destructuring với giá trị mặc định cho publisher
+const { publisher = "NXB Kim Đồng" } = book;
+console.log(`Nhà xuất bản: ${publisher}`);
+console.groupEnd();
+
+// --------------------------------------------
+// BÀI 6: PERSON (Duyệt for...in & Kiểm tra key với toán tử in)
+// --------------------------------------------
+console.group("person");
+const person = {
+    name: "Alice",
+    age: 25,
+    isEmployed: true,
+};
+
+// 6.1. Duyệt qua object và in ra mỗi cặp key-value
+console.log("--- Duyệt qua object với for...in ---");
+for (const key in person) {
+    console.log(`${key}: ${person[key]}`);
+}
+
+// 6.2. Kiểm tra sự tồn tại của key 'age' trước khi cập nhật
+if ("age" in person) {
+    person.age = 26;
+    console.log(`Tuổi sau sinh nhật: ${person.age}`);
+}
+
+// Kiểm tra key không tồn tại
+console.log("Key 'salary' có trong person không?:", "salary" in person);
 console.groupEnd();

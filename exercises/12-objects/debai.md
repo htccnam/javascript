@@ -7,6 +7,8 @@
 2. [Phần 2: Phương Thức (Method) và Từ Khóa this](#phần-2-phương-thức-method-và-từ-khóa-this)
 3. [Phần 3: Duyệt và Thống Kê Dữ Liệu (Object.keys, values, entries)](#phần-3-duyệt-và-thống-kê-dữ-liệu-object-keys-values-entries)
 4. [Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)](#phần-4-chuyển-đổi-dữ-liệu-object-array-object-fromentries-object-hasown)
+5. [Phần 5: Kỹ Thuật Object Destructuring (Phân Rã Thuộc Tính)](#phần-5-kỹ-thuật-object-destructuring-phân-rã-thuộc-tính)
+6. [Phần 6: Duyệt for...in & Phòng Tránh Cạm Bẫy Kiểm Tra Key](#phần-6-duyệt-forin--phòng-tránh-cạm-bẫy-kiểm-tra-key)
 
 ---
 
@@ -79,5 +81,44 @@ const configArr = [
 ```
 1. Chuyển mảng `configArr` thành một Object tên `config` bằng `Object.fromEntries()`.
 2. Dùng `Object.hasOwn(config, "theme")` để kiểm tra sự tồn tại của khóa `"theme"`.
+3. Cập nhật `theme` thành `"light"` và chuyển `config` ngược lại thành mảng bằng `Object.entries()`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-5-kỹ-thuật-object-destructuring-phân-rã-thuộc-tính"></a>
+## Phần 5: Kỹ Thuật Object Destructuring (Phân Rã Thuộc Tính)
+Cho thông tin một cuốn sách:
+```javascript
+const book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  year: 1925
+};
+```
+1. Sử dụng cú pháp **Object Destructuring** để trích xuất trực tiếp 2 biến `title` và `author` từ object `book`.
+2. In ra console: `Tiêu đề sách: [title]` và `Tác giả: [author]`.
+3. Thử trích xuất với giá trị mặc định: Lấy thuộc tính `publisher` với giá trị mặc định `"NXB Kim Đồng"`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-6-duyệt-forin--phòng-tránh-cạm-bẫy-kiểm-tra-key"></a>
+## Phần 6: Duyệt for...in & Phòng Tránh Cạm Bẫy Kiểm Tra Key
+Cho thông tin một nhân sự:
+```javascript
+const person = {
+  name: "Alice",
+  age: 25,
+  isEmployed: true
+};
+```
+1. Sử dụng vòng lặp `for...in` để duyệt qua từng key của `person` và in ra dạng `${key}: ${person[key]}`.
+2. Kiểm tra an toàn trước khi cập nhật:
+   - Dùng toán tử `in` để kiểm tra nếu `'age'` tồn tại trong `person` thì tăng `age` lên `26`.
+   - In ra thông báo: `Tuổi sau sinh nhật: ${person.age}`.
+3. Thử kiểm tra thuộc tính không tồn tại `'salary' in person` và in ra kết quả boolean (`false`).
 
 [⬆️ Quay lại Mục lục](#mục-lục)

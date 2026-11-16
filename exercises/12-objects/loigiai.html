@@ -5,42 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài tập 12: Đối tượng (Object) trong JavaScript</title>
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success: #16a34a;
+            --success-hover: #15803d;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            max-width: 820px;
             margin: 40px auto;
             padding: 20px;
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: var(--bg);
+            color: var(--text-main);
         }
         .card {
-            background: white;
-            padding: 30px;
+            background: var(--card-bg);
+            padding: 32px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border: 1px solid var(--border);
         }
-        h1 { color: #2563eb; margin-top: 0; }
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .mode-switcher {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .btn-mode {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            color: #475569;
+        }
+        .btn-mode:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .btn-mode.active-practice {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+        .btn-mode.active-solution {
+            background: var(--success);
+            color: white;
+            box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+        }
         .instructions {
             background-color: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 15px;
-            border-radius: 4px;
-            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .badge-practice {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .badge-solution {
+            background: #dcfce7;
+            color: #166534;
         }
         code {
             background: #e2e8f0;
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 0.9em;
+            color: #0f172a;
         }
         .nav-links {
-            margin-top: 25px;
+            margin-top: 28px;
             display: flex;
-            gap: 15px;
+            gap: 16px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
         }
         .nav-links a {
-            color: #2563eb;
+            color: var(--primary);
             text-decoration: none;
             font-weight: 600;
         }
@@ -51,20 +128,73 @@
 </head>
 <body>
     <div class="card">
-        <h1>Bài tập 12: Đối tượng (Object) trong JavaScript</h1>
+        <div id="statusBadgeContainer"></div>
+        <h1>Bài tập 12: Đối Tượng (Object) trong JavaScript</h1>
+        <p class="subtitle">Thực hành Object Literals, Dot/Bracket notation, từ khóa this, Object.keys/values/entries, Object Destructuring và duyệt for...in</p>
+
+        <!-- BỘ CHUYỂN ĐỔI CHẾ ĐỘ CHẠY CODE ĐỘNG -->
+        <div class="mode-switcher">
+            <a href="?mode=practice" id="btnPractice" class="btn-mode">
+                📝 Chạy bài làm (practice.js)
+            </a>
+            <a href="?mode=solution" id="btnSolution" class="btn-mode">
+                💡 Lời giải mẫu (loigiai.js)
+            </a>
+        </div>
+
         <div class="instructions">
-            <p><strong>Hướng dẫn:</strong></p>
+            <p><strong>Hướng dẫn xem kết quả trực tiếp:</strong></p>
             <ol>
-                <li>Nhấn phím <code>F12</code> (hoặc chuột phải $ightarrow$ chọn <strong>Inspect</strong> / <strong>Kiểm tra</strong>).</li>
-                <li>Chuyển qua tab <strong>Console</strong> để xem toàn bộ kết quả minh họa Dot/Bracket notation, từ khóa <code>this</code>, và các phương thức tĩnh <code>Object.keys</code>, <code>Object.values</code>, <code>Object.fromEntries</code>.</li>
+                <li>Nhấn phím <code>F12</code> (hoặc chuột phải &rarr; chọn <strong>Inspect / Kiểm tra</strong>).</li>
+                <li>Chuyển sang tab <strong>Console</strong> để quan sát dữ liệu in ra của từng bài.</li>
+                <li>Bấm vào 2 nút ở trên để chuyển đổi nhanh giữa <strong>bài tự code</strong> và <strong>lời giải mẫu</strong> mà không cần reload sửa file!</li>
             </ol>
         </div>
-        <p>Tệp mã nguồn giải thích: <code>loigiai.js</code></p>
+
+        <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; font-size: 0.88rem;">
+            💡 <strong>Điểm nhấn kiến thức cốt lõi:</strong>
+            <ul style="margin: 6px 0 0 20px; padding: 0;">
+                <li><strong>Dot notation:</strong> Dùng khi key là định danh chuẩn (<code>car.brand</code>). <strong>Bracket notation:</strong> Dùng khi key có ký tự đặc biệt hoặc là biến động (<code>car[prop]</code>).</li>
+                <li><strong>delete:</strong> Dùng để xóa hoàn toàn một cặp key-value khỏi bộ nhớ object.</li>
+                <li><strong>Object Destructuring:</strong> Trích xuất nhanh thuộc tính vào biến độc lập (<code>const { title, author } = book;</code>).</li>
+                <li><strong>Toán tử in:</strong> Luôn kiểm tra <code>'key' in obj</code> trước khi đọc thuộc tính sâu để tránh crash ứng dụng.</li>
+            </ul>
+        </div>
+
+        <p id="loadedScriptText">Đang nạp file script...</p>
+
         <div class="nav-links">
             <a href="../../index.html">&larr; Quay lại Trang chủ Dashboard</a>
-            <a href="./debai.md">Xem Đề bài</a>
+            <a href="./debai.md">📖 Xem Đề bài chi tiết</a>
+            <a href="../../docs/12-objects.md">📚 Đọc Lý thuyết bài 12</a>
         </div>
     </div>
-    <script src="./loigiai.js"></script>
+
+    <!-- SCRIPT ĐỘNG NẠP FILE THEO THAM SỐ URL (?mode=practice vs ?mode=solution) -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode') || 'practice';
+
+        const btnPractice = document.getElementById('btnPractice');
+        const btnSolution = document.getElementById('btnSolution');
+        const loadedScriptText = document.getElementById('loadedScriptText');
+        const badgeContainer = document.getElementById('statusBadgeContainer');
+
+        const scriptElement = document.createElement('script');
+
+        if (mode === 'solution') {
+            btnSolution.classList.add('active-solution');
+            badgeContainer.innerHTML = '<span class="status-badge badge-solution">💡 Đang chạy Lời Giải Mẫu (loigiai.js)</span>';
+            loadedScriptText.innerHTML = '✅ File đang thực thi: <code>exercises/12-objects/loigiai.js</code>';
+            scriptElement.src = './loigiai.js';
+        } else {
+            btnPractice.classList.add('active-practice');
+            badgeContainer.innerHTML = '<span class="status-badge badge-practice">📝 Đang chạy Bài Tự Làm (practice.js)</span>';
+            loadedScriptText.innerHTML = '✏️ File đang thực thi: <code>exercises/12-objects/practice.js</code> (Hãy hoàn thiện các TODO để xem kết quả của bạn)';
+            scriptElement.src = './practice.js';
+        }
+
+        document.body.appendChild(scriptElement);
+    </script>
 </body>
 </html>
