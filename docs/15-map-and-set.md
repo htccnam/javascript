@@ -1,4 +1,4 @@
-# 14 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
+# 15 - Cấu Trúc Dữ Liệu Map & Set Trong JavaScript (ES6 Modern Data Structures)
 
 <a id="mục-lục"></a>
 ## Mục Lục
@@ -32,7 +32,7 @@
 >    - *Vì sao bắt buộc?* Để hiểu vì sao 2 object có cùng nội dung rỗng `map.set({}, "A")` và `map.get({})` trả về `undefined` (do 2 object là 2 địa chỉ ô nhớ khác nhau hoàn toàn trong bộ nhớ Heap).
 > 4. **Vòng lặp `for...of` trên cấu trúc Iterable** tại [13 - Vòng Lặp For-In & For-Of](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md):
 >    - *Vì sao bắt buộc?* `Map` và `Set` là các Iterable object chuẩn; bạn sẽ dùng trực tiếp vòng lặp `for...of` để duyệt các entry `[key, value]` của Map và các phần tử của Set.
-> * **Đích đến tiếp theo:** Thành thạo các cấu trúc dữ liệu giúp bạn tổ chức state linh hoạt trong [15 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
+> * **Đích đến tiếp theo:** Thành thạo các cấu trúc dữ liệu giúp bạn tổ chức state linh hoạt trong [16 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/16-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

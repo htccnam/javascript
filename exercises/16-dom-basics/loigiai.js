@@ -1,5 +1,5 @@
 // =================================================================
-// BÀI TẬP 15: THAO TÁC DOM & SỰ KIỆN - LỜI GIẢI CHI TIẾT
+// BÀI TẬP 16: THAO TÁC DOM & SỰ KIỆN - LỜI GIẢI CHI TIẾT
 // =================================================================
 
 if (typeof document !== "undefined") {
@@ -121,6 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 } else {
-    console.log("ℹ️ Bài tập 15 (Thao tác DOM & Sự kiện) là ứng dụng tương tác giao diện (Todo List & Dark Mode).");
-    console.log("👉 Hãy mở file 'exercises/15-dom-basics/loigiai.html' trên trình duyệt web để trực tiếp trải nghiệm và tương tác giao diện!");
+    console.log("ℹ️ Bài tập 16 (Thao tác DOM & Sự kiện) là ứng dụng tương tác giao diện (Todo List & Dark Mode).");
+    console.log("👉 Hãy mở file 'exercises/16-dom-basics/loigiai.html' trên trình duyệt web để trực tiếp trải nghiệm và tương tác giao diện!");
 }

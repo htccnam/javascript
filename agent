@@ -66,18 +66,22 @@ flowchart TD
     L11 --> L12
     L11 --> L13["13. Vòng Lặp For-In & For-Of<br>(docs/13-for-in-and-for-of.md)"]
     L12 --> L13
-    L11 --> L14["14. Cấu Trúc Map & Set<br>(docs/14-map-and-set.md)"]
-    L12 --> L14
+    L05 --> L14["14. Ứng Dụng ++ Tiền Tố & Hậu Tố<br>(docs/14-prefix-postfix-applications.md)"]
+    L08 --> L14
+    L11 --> L14
     L13 --> L14
-
-    %% Tầng 6: Ứng dụng tương tác & Xử lý ngoại lệ
-    L09 --> L15["15. Thao Tác DOM & Sự Kiện<br>(docs/15-dom-basics.md)"]
-    L11 --> L15
+    L11 --> L15["15. Cấu Trúc Map & Set<br>(docs/15-map-and-set.md)"]
     L12 --> L15
     L13 --> L15
-    L03 --> L16["16. JSON & Xử Lý Lỗi (try/catch)<br>(docs/16-json-and-error-handling.md)"]
+
+    %% Tầng 6: Ứng dụng tương tác & Xử lý ngoại lệ
+    L09 --> L16["16. Thao Tác DOM & Sự Kiện<br>(docs/16-dom-basics.md)"]
     L11 --> L16
     L12 --> L16
+    L13 --> L16
+    L03 --> L17["17. JSON & Xử Lý Lỗi (try/catch)<br>(docs/17-json-and-error-handling.md)"]
+    L11 --> L17
+    L12 --> L17
 
     %% Styling
     classDef foundation fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
@@ -91,8 +95,8 @@ flowchart TD
     class L03,L04,L07 data;
     class L05,L06,L08 control;
     class L09,L10 logic;
-    class L11,L12,L13,L14 datastruct;
-    class L15,L16 advanced;
+    class L11,L12,L13,L14,L15 datastruct;
+    class L16,L17 advanced;
 ```
 
 ---
@@ -311,9 +315,26 @@ flowchart TD
 
 ---
 
-### 🟣 BÀI 14: Cấu Trúc Dữ Liệu Map & Set
-* **Tài liệu:** [`docs/14-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md)
-* **Bài tập:** [`exercises/14-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/14-map-and-set/)
+### 🟣 BÀI 14: Ứng Dụng Toán Tử ++ Dạng Tiền Tố (Prefix) & Hậu Tố (Postfix)
+* **Tài liệu:** [`docs/14-prefix-postfix-applications.md`](file:///d:/github/studyProgram/javascript/docs/14-prefix-postfix-applications.md)
+* **Bài tập:** [`exercises/14-prefix-postfix-applications/`](file:///d:/github/studyProgram/javascript/exercises/14-prefix-postfix-applications/)
+* **Kiến thức tiên quyết bắt buộc từ bài trước:**
+  1. **Cơ chế lý thuyết của `++` và `--`** tại [`docs/05-conditionals-and-operators.md`](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md) & [`docs/08-loops-and-type-coercion.md`](file:///d:/github/studyProgram/javascript/docs/08-loops-and-type-coercion.md):
+     - *Vì sao bắt buộc?* Hiểu rõ cơ chế thay đổi giá trị của biến và giá trị trả về của cả biểu thức (`++x` tăng trước lấy giá trị mới, `x++` lấy giá trị cũ trước rồi mới tăng).
+  2. **Cấu trúc Mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
+     - *Vì sao bắt buộc?* Ứng dụng đánh số thứ tự danh sách và kiểm soát con trỏ index hai đầu (`Two Pointers`) vận hành trên Mảng.
+  3. **Vòng lặp `for...of`** tại [`docs/13-for-in-and-for-of.md`](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md):
+     - *Vì sao bắt buộc?* Vòng lặp `for...of` không cung cấp biến đếm chỉ mục `i` sẵn có, nên việc phối hợp biến đếm ngoài với `++counter` là kỹ thuật chuẩn mực để đánh số 1-based index.
+* **Mục tiêu cốt lõi cần đạt được:**
+  - Thành thạo việc lựa chọn `++i` vs `i++` theo 3 yếu tố: Quy ước cộng đồng, bối cảnh sử dụng và hiệu năng V8 Engine.
+  - Nhận diện và gỡ bỏ triệt để cạm bẫy chí mạng: Tăng biến 2 lần trong vòng lặp `for`.
+  - Ứng dụng tiền tố trong hàm sinh ID tự tăng (Auto-increment generator) và kỹ thuật Two Pointers.
+
+---
+
+### 🟣 BÀI 15: Cấu Trúc Dữ Liệu Map & Set
+* **Tài liệu:** [`docs/15-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/15-map-and-set.md)
+* **Bài tập:** [`exercises/15-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/15-map-and-set/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Hạn chế của Object thông thường** tại [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* Trong Object thông thường, key luôn bị ép kiểu thành `String`, không thể lấy một Object khác làm key. Bạn phải hiểu hạn chế này ở Bài 12 thì mới thấy được sức mạnh vượt trội của `Map`.
@@ -329,9 +350,9 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 15: Thao Tác DOM & Sự Kiện (Web Interactive UI)
-* **Tài liệu:** [`docs/15-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md)
-* **Bài tập:** [`exercises/15-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/15-dom-basics/)
+### 🔴 BÀI 16: Thao Tác DOM & Sự Kiện (Web Interactive UI)
+* **Tài liệu:** [`docs/16-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/16-dom-basics.md)
+* **Bài tập:** [`exercises/16-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/16-dom-basics/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Callback Function & Arrow Function** tại [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md):
      - *Vì sao bắt buộc?* Lắng nghe sự kiện người dùng (`click`, `submit`, `input`) trong DOM 100% sử dụng Callback Function: `btn.addEventListener("click", (event) => {})`.
@@ -348,9 +369,9 @@ flowchart TD
 
 ---
 
-### 🔴 BÀI 16: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
-* **Tài liệu:** [`docs/16-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/16-json-and-error-handling.md)
-* **Bài tập:** [`exercises/16-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/16-json-and-error-handling/)
+### 🔴 BÀI 17: Định Dạng JSON & Xử Lý Lỗi (try...catch...finally)
+* **Tài liệu:** [`docs/17-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/17-json-and-error-handling.md)
+* **Bài tập:** [`exercises/17-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/17-json-and-error-handling/)
 * **Kiến thức tiên quyết bắt buộc từ bài trước:**
   1. **Cấu trúc Mảng & Đối Tượng (Array & Object)** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md) & [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md):
      - *Vì sao bắt buộc?* JSON (JavaScript Object Notation) là chuỗi đại diện tuần tự hóa của Mảng và Đối tượng. Bạn không thể hiểu cú pháp JSON nếu chưa thành thạo Object key-value và mảng lồng nhau.
@@ -381,9 +402,10 @@ flowchart TD
 | **11. Mảng (Arrays)** | 03, 07, 08, 09 | Duyệt mảng For (Bài 08), **Arrow Function Callback** (Bài 09), Truthy lọc mảng |
 | **12. Đối tượng (Object)** | 03, 09, 11 | Từ khóa `this` trong hàm vs Arrow function, tham chiếu Heap, duyệt mảng |
 | **13. For-In & For-Of** | 03, 04, 11, 12 | Duyệt Object keys với `for...in`, duyệt Iterable values với `for...of`, toán tử `in` |
-| **14. Map & Set** | 03, 11, 12, 13 | Hạn chế key của Object, duyệt `for...of` trên Map/Set, lọc trùng mảng với `...` |
-| **15. Thao tác DOM** | 05, 09, 11, 12, 13 | Event Listener Callback, DOM Object properties, `for...of` trên NodeList, `event.preventDefault` |
-| **16. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
+| **14. Ứng dụng ++ Tiền tố & Hậu tố** | 05, 08, 11, 13 | Cơ chế ++i vs i++, đánh số thứ tự trong for...of, bẫy tăng biến 2 lần, V8 engine |
+| **15. Map & Set** | 03, 11, 12, 13 | Hạn chế key của Object, duyệt `for...of` trên Map/Set, lọc trùng mảng với `...` |
+| **16. Thao tác DOM** | 05, 09, 11, 12, 13 | Event Listener Callback, DOM Object properties, `for...of` trên NodeList, `event.preventDefault` |
+| **17. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
 
 ---
 

@@ -49,7 +49,7 @@
 >    - *Vì sao bắt buộc?* `for...in` trả về tên thuộc tính (Key) dưới dạng chuỗi; bạn bắt buộc phải dùng cú pháp ngoặc vuông `obj[key]` để đọc giá trị tương ứng (nếu dùng `obj.key` sẽ tìm thuộc tính cố định tên `"key"` và ra `undefined`).
 > 3. **Từ khóa khai báo biến (`const`, `let`) & Block Scope** tại [03 - Khai Báo Biến & Kiểu Dữ Liệu](file:///d:/github/studyProgram/javascript/docs/03-variables-and-data-types.md):
 >    - *Vì sao bắt buộc?* Để hiểu lý do vì sao trong `for (const key in obj)` ta dùng được `const` mà không sinh lỗi gán lại giá trị (mỗi lần lặp tạo ra một phạm vi khối Block Scope độc lập).
-> * **Đích đến tiếp theo:** Hai vòng lặp này là công cụ duyệt dữ liệu trực tiếp trong [14 - Cấu Trúc Map & Set](file:///d:/github/studyProgram/javascript/docs/14-map-and-set.md) (`for (const [k, v] of map)`) và duyệt danh sách phần tử giao diện trong [15 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
+> * **Đích đến tiếp theo:** Vòng lặp `for...of` kết hợp cùng biến đếm tiền tố được thực chiến tại [14 - Ứng Dụng Toán Tử ++ Tiền Tố](file:///d:/github/studyProgram/javascript/docs/14-prefix-postfix-applications.md), sau đó là công cụ duyệt cấu trúc dữ liệu trong [15 - Cấu Trúc Map & Set](file:///d:/github/studyProgram/javascript/docs/15-map-and-set.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---
