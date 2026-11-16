@@ -65,6 +65,25 @@ export const storage = {
     return write(keyOf(id, "ack"), "1");
   },
 
+  /** Nhận xét AI người học dán vào (markdown). */
+  getAiNote(id) {
+    return read(keyOf(id, "ai"));
+  },
+  setAiNote(id, text) {
+    return write(keyOf(id, "ai"), text);
+  },
+  clearAiNote(id) {
+    remove(keyOf(id, "ai"));
+  },
+
+  /** Lựa chọn chung cho hộp thoại AI (chatbot, chế độ). */
+  getPref(name) {
+    return read(`${PREFIX}:pref:${name}`);
+  },
+  setPref(name, value) {
+    return write(`${PREFIX}:pref:${name}`, value);
+  },
+
   /** Xuất toàn bộ tiến độ của lab thành object (để lưu thành file JSON). */
   exportAll() {
     const data = {};

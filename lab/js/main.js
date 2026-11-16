@@ -6,6 +6,7 @@ import { loadMonaco, createEditor, createDiff } from "./editor.js";
 import { execute } from "./runner.js";
 import { ConsoleView } from "./console-view.js";
 import { grade, renderResults } from "./grader.js";
+import { CHATBOTS, MODES, buildPrompt, openChatbot } from "./ai-review.js";
 
 const $ = (sel) => document.querySelector(sel);
 const params = new URLSearchParams(location.search);
@@ -22,6 +23,9 @@ const state = {
   leftTab: "debai",
   consoleView: null,
   busy: false,
+  debai: undefined, // nội dung debai.md (cache cho prompt AI)
+  lastSummary: null, // kết quả chấm gần nhất (đưa vào prompt AI)
+  aiEditing: false,
 };
 
 // ---------------------------------------------------------------------
@@ -104,6 +108,8 @@ async function init() {
     $("#btn-run").disabled = true;
     $("#btn-grade").disabled = true;
   }
+
+  renderAiPanel();
 
   const requested = params.get("tab");
   showLeftTab(["debai", "theory", "solution"].includes(requested) ? requested : "debai");
@@ -224,6 +230,7 @@ async function showLeftTab(tab) {
     content.replaceChildren(textOf("Đang tải…"));
     const path = tab === "debai" ? `${l.dir}/debai.md` : l.doc;
     const md = await fetchText(path);
+    if (tab === "debai") state.debai = md;
     if (state.leftTab !== tab) return; // người dùng đã chuyển tab khác
     if (md === null) {
       content.replaceChildren(textOf(`Không tìm thấy ${path}`));
@@ -340,6 +347,7 @@ async function gradeCode() {
 
   const summary = await grade({ code: state.editor.getValue(), testsSrc: state.testsSrc, onLog: (e) => view.append(e) });
   setBusy(false);
+  state.lastSummary = summary;
 
   renderResults($("#results"), summary);
   if (summary.codeError) state.editor.highlight(summary.codeError.line);
@@ -362,6 +370,119 @@ function showRightTab(tab) {
   document.querySelectorAll("[data-right-tab]").forEach((b) => b.classList.toggle("active", b.dataset.rightTab === tab));
   $("#console").hidden = tab !== "console";
   $("#results").hidden = tab !== "results";
+  $("#ai-panel").hidden = tab !== "ai";
+}
+
+// ---------------------------------------------------------------------
+// AI nhận xét (không API key): soạn prompt → copy + mở chatbot → dán câu trả lời về
+// ---------------------------------------------------------------------
+function fillSelect(select, items, current) {
+  select.replaceChildren(
+    ...items.map((it) => {
+      const o = document.createElement("option");
+      o.value = it.id;
+      o.textContent = it.label;
+      o.selected = it.id === current;
+      return o;
+    })
+  );
+}
+
+function currentPrompt() {
+  return buildPrompt({
+    lesson: state.lesson,
+    debai: state.debai,
+    code: state.editor.getValue(),
+    summary: state.lastSummary,
+    mode: $("#ai-mode").value,
+  });
+}
+
+async function openAiDialog() {
+  if (!state.lesson || !state.editor) return;
+  const l = state.lesson;
+  if (state.debai === undefined) state.debai = await fetchText(`${l.dir}/debai.md`);
+  // Chưa chấm thì chấm trước để prompt có kết quả test (bỏ qua bài DOM)
+  if (!state.lastSummary && l.runtime !== "dom") await gradeCode();
+
+  const failed = state.lastSummary && state.lastSummary.passed < state.lastSummary.total;
+  fillSelect($("#ai-mode"), MODES, storage.getPref("aiMode") || (failed ? "debug" : "grade"));
+  fillSelect($("#ai-bot"), CHATBOTS, storage.getPref("aiBot") || "chatgpt");
+  $("#ai-prompt").value = currentPrompt();
+  $("#ai-status").textContent = "";
+  $("#ai-dialog").showModal();
+}
+
+async function sendToChatbot() {
+  const botId = $("#ai-bot").value;
+  storage.setPref("aiBot", botId);
+  storage.setPref("aiMode", $("#ai-mode").value);
+  const res = await openChatbot(botId, $("#ai-prompt").value);
+  const parts = [];
+  parts.push(res.copied ? "✔ Đã copy prompt." : "✖ Không copy được — hãy bôi đen ô trên và Ctrl+C.");
+  if (res.prefilled) parts.push(`Đã mở ${res.bot.label} với prompt điền sẵn.`);
+  else if (res.opened) parts.push(`Đã mở ${res.bot.label} — dán (Ctrl+V) vào khung chat.`);
+  else parts.push("Hãy dán (Ctrl+V) vào chatbot bạn dùng.");
+  parts.push("Xong thì dán câu trả lời vào tab 🤖 AI.");
+  $("#ai-status").textContent = parts.join(" ");
+  state.aiEditing = !storage.getAiNote(state.lesson.id);
+  renderAiPanel();
+  showRightTab("ai");
+}
+
+function renderAiPanel() {
+  const panel = $("#ai-panel");
+  const l = state.lesson;
+  if (!l) return;
+  const note = storage.getAiNote(l.id);
+  const head = document.createElement("div");
+  head.className = "ai-head";
+
+  const mkBtn = (label, cls, onClick) => {
+    const b = document.createElement("button");
+    b.className = `btn ${cls}`;
+    b.textContent = label;
+    b.addEventListener("click", onClick);
+    return b;
+  };
+
+  if (!note || state.aiEditing) {
+    const intro = document.createElement("p");
+    intro.className = "muted";
+    intro.textContent =
+      "Bấm “🤖 Nhờ AI nhận xét” để gửi bài cho chatbot bạn đang dùng, rồi dán câu trả lời vào đây để lưu lại.";
+    const ta = document.createElement("textarea");
+    ta.className = "ai-input";
+    ta.placeholder = "Dán nhận xét của AI vào đây (markdown)…";
+    ta.value = note ?? "";
+    head.append(
+      mkBtn("💾 Lưu nhận xét", "primary", () => {
+        const text = ta.value.trim();
+        if (!text) return;
+        storage.setAiNote(l.id, text);
+        state.aiEditing = false;
+        renderAiPanel();
+      }),
+      mkBtn("🤖 Nhờ AI nhận xét", "", openAiDialog)
+    );
+    if (note) head.append(mkBtn("Huỷ", "", () => ((state.aiEditing = false), renderAiPanel())));
+    panel.replaceChildren(intro, ta, head);
+    return;
+  }
+
+  head.append(
+    mkBtn("✏️ Sửa", "", () => ((state.aiEditing = true), renderAiPanel())),
+    mkBtn("🗑 Xoá", "", () => {
+      if (!confirm("Xoá nhận xét AI của bài này?")) return;
+      storage.clearAiNote(l.id);
+      renderAiPanel();
+    }),
+    mkBtn("🤖 Nhận xét lại", "", openAiDialog)
+  );
+  const body = document.createElement("div");
+  panel.replaceChildren(head, body);
+  if (window.marked && window.DOMPurify) renderInto(body, note);
+  else body.append(Object.assign(document.createElement("pre"), { textContent: note }));
 }
 
 function wireToolbar() {
@@ -373,6 +494,11 @@ function wireToolbar() {
     state.editor.setValue(state.practice);
     storage.resetCode(state.lesson.id);
   });
+
+  $("#btn-ai").addEventListener("click", openAiDialog);
+  $("#ai-mode").addEventListener("change", () => ($("#ai-prompt").value = currentPrompt()));
+  $("#ai-send").addEventListener("click", sendToChatbot);
+  $("#ai-close").addEventListener("click", () => $("#ai-dialog").close());
 
   $("#btn-diff").addEventListener("click", openDiff);
   $("#diff-close").addEventListener("click", () => $("#diff-dialog").close());

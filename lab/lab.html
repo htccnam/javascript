@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS Practice Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="lab.css">
   <!-- CDN (pin version). Monaco nạp động trong js/editor.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
@@ -54,6 +57,7 @@
       <div class="toolbar">
         <button id="btn-run" class="btn primary" title="Ctrl+Enter">▶ Chạy</button>
         <button id="btn-grade" class="btn success" title="Chạy và kiểm tra từng TODO">✅ Chấm bài</button>
+        <button id="btn-ai" class="btn ai" title="Gửi bài cho ChatGPT / Claude / Gemini… nhận xét (không cần API key)">🤖 Nhờ AI nhận xét</button>
         <button id="btn-reset" class="btn">↺ Reset</button>
         <button id="btn-diff" class="btn">⇄ So sánh lời giải</button>
         <span id="run-status" class="muted"></span>
@@ -65,9 +69,11 @@
       <div class="tabs">
         <button data-right-tab="console" class="tab active">Console</button>
         <button data-right-tab="results" class="tab">Kết quả chấm</button>
+        <button data-right-tab="ai" class="tab">🤖 AI</button>
       </div>
       <div id="console" class="console scroll"></div>
       <div id="results" class="results scroll" hidden></div>
+      <div id="ai-panel" class="results ai-panel scroll" hidden></div>
     </section>
   </main>
 
@@ -77,6 +83,25 @@
       <button id="diff-close" class="btn">Đóng</button>
     </div>
     <div id="diff-view" class="diff-view"></div>
+  </dialog>
+
+  <dialog id="ai-dialog" class="ai-dialog">
+    <div class="diff-head">
+      <strong>🤖 Nhờ AI nhận xét bài làm</strong>
+      <button id="ai-close" class="btn">Đóng</button>
+    </div>
+    <div class="ai-body">
+      <div class="ai-row">
+        <label>Chế độ <select id="ai-mode"></select></label>
+        <label>Chatbot <select id="ai-bot"></select></label>
+      </div>
+      <p class="muted">Không cần API key: lab sẽ copy prompt và mở chatbot bạn đang đăng nhập. Lời giải không được gửi kèm.</p>
+      <textarea id="ai-prompt" class="ai-prompt" spellcheck="false" aria-label="Prompt gửi cho AI"></textarea>
+      <div class="ai-row">
+        <button id="ai-send" class="btn primary">📋 Copy &amp; mở chatbot</button>
+        <span id="ai-status" class="ai-status"></span>
+      </div>
+    </div>
   </dialog>
 
   <script type="module" src="js/main.js"></script>
