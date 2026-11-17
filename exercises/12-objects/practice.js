@@ -108,3 +108,119 @@ const person = {
 
 
 console.groupEnd();
+
+// TODO 7: BÀI MEMBER (Bản chất const với Object & Object.freeze)
+console.group("\n=== BÀI 7: CONST VỚI OBJECT & OBJECT.FREEZE ===");
+const member = {
+    name: "John",
+    role: "member",
+};
+console.log("Member ban đầu:", member);
+
+// 7.1. Đổi name thành "Jane" và thêm thuộc tính level: 1:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 7.2. Thử gán lại member = { name: "Mike" } bọc trong khối try...catch và in ra lỗi:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 7.3. Đóng băng đối tượng member bằng Object.freeze() và in ra kết quả Object.isFrozen():
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 7.4. Thử gán member.name = "Bob" sau khi freeze và in ra member.name để kiểm chứng:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();
+
+// TODO 8: BÀI DOG (Thuộc tính, Phương thức & Quy ước đặt tên)
+console.group("\n=== BÀI 8: THUỘC TÍNH & PHƯƠNG THỨC (DOG) ===");
+// 8.1. Khai báo đối tượng dog gồm:
+// - Thuộc tính (Danh từ): name: "Scooby Doo", age: 5, isActive: true
+// - Phương thức (Động từ): speak() in ra "Go go...", calculateHumanAge() trả về this.age * 7
+const dog = {
+    // VIẾT CODE KHAI BÁO CỦA BẠN DƯỚI ĐÂY:
+
+};
+
+// 8.2. In ra dog.name, dog.age, dog.isActive và gọi dog.speak(), dog.calculateHumanAge():
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 8.3. Thêm dog.Name = "Scrappy Doo" và in cả dog.name lẫn dog.Name để kiểm chứng phân biệt HOA-thường:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 8.4. Thêm phương thức updateAge(newAge) cập nhật this.age = newAge và gọi dog.updateAge(6):
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();
+
+// TODO 9: BÀI PERSON & TỪ KHÓA THIS (Bản chất this & Lý do không hardcode tên biến)
+console.group("\n=== BÀI 9: TỪ KHÓA THIS & BẢN CHẤT NGỮ CẢNH ===");
+// 9.1. Khởi tạo personWithThis có:
+// - Thuộc tính: firstName: "John", lastName: "Smith", age: 30
+// - Phương thức:
+//   + getFullName(): trả về `${this.firstName} ${this.lastName}`
+//   + greet(): in ra "Hello, " + this.firstName
+const personWithThis = {
+    // VIẾT CODE KHAI BÁO CỦA BẠN DƯỚI ĐÂY:
+
+};
+
+// 9.2. In kết quả personWithThis.getFullName() và gọi personWithThis.greet():
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 9.3. Gán userRef = personWithThis, gọi userRef.getFullName() để kiểm chứng tính linh hoạt của this:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();
+
+// TODO 10: BÀI ENHANCED OBJECT LITERALS & NESTED DESTRUCTURING
+console.group("\n=== BÀI 10: ENHANCED OBJECT LITERALS & NESTED DESTRUCTURING ===");
+const name = "John Doe";
+const age = 30;
+const property = "lastName";
+
+// 10.1. Khởi tạo object enhancedPerson kết hợp:
+// - Property shorthand cho name và age
+// - Computed property name cho [property]: "Smith"
+// - Thuộc tính firstName: "John"
+// - Method shorthand speak() in ra "Go go..."
+const enhancedPerson = {
+    // VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+};
+
+// 10.2. In ra enhancedPerson.lastName và gọi enhancedPerson.speak():
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+// 10.3. Cho object course:
+const course = {
+    title: "JavaScript Pro",
+    info: {
+        url: "https://fullstack.edu.vn",
+        description: "JavaScript Basic, Advanced.",
+        keywords: "js basic, js advanced",
+    },
+};
+
+// 10.4. Sử dụng Nested Destructuring để trích xuất title (đặt bí danh courseTitle để tránh trùng biến ở Bài 5) và đổi tên keywords thành topics:
+// VIẾT CODE DESTRUCTURING CỦA BẠN DƯỚI ĐÂY:
+
+
+// 10.5. In ra courseTitle và topics:
+// VIẾT CODE CỦA BẠN DƯỚI ĐÂY:
+
+
+console.groupEnd();
+
+
+
+

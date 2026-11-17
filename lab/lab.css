@@ -250,13 +250,28 @@ code, pre, .console, .editor, .fallback-editor, .t-id { font-family: var(--font-
   padding: 2px 6px; border-radius: 5px; font-size: .88em; font-weight: 500;
 }
 .md pre {
-  background: #0f172a; color: #e2e8f0;
-  padding: 14px 16px; border-radius: var(--radius); border: 1px solid #1e293b;
+  background: #f8f8f8; color: #000000;
+  background: light-dark(#f8f8f8, #1e1e1e); color: light-dark(#000000, #d4d4d4);
+  padding: 14px 16px; border-radius: var(--radius); border: 1px solid #e5e5e5;
+  border-color: light-dark(#e5e5e5, #333333);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
   overflow: auto; font-size: 13px; line-height: 1.6; margin: 14px 0 18px;
 }
 .md pre code { color: inherit; background: none; }
 .md pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+/* Tô màu cú pháp giống VS Code (Light+ / Dark+), chọn theo color-scheme của trang */
+.md .hljs-keyword, .md .hljs-selector-tag, .md .hljs-literal, .md .hljs-doctag { color: light-dark(#0000ff, #569cd6); }
+.md .hljs-built_in, .md .hljs-type, .md .hljs-class .hljs-title, .md .hljs-title.class_ { color: light-dark(#267f99, #4ec9b0); }
+.md .hljs-string, .md .hljs-template-string, .md .hljs-meta .hljs-string { color: light-dark(#a31515, #ce9178); }
+.md .hljs-number, .md .hljs-symbol, .md .hljs-bullet { color: light-dark(#098658, #b5cea8); }
+.md .hljs-comment, .md .hljs-quote { color: light-dark(#008000, #6a9955); }
+.md .hljs-function .hljs-title, .md .hljs-title.function_ { color: light-dark(#795e26, #dcdcaa); }
+.md .hljs-params, .md .hljs-variable, .md .hljs-property, .md .hljs-attr { color: light-dark(#001080, #9cdcfe); }
+.md .hljs-tag, .md .hljs-name { color: light-dark(#800000, #569cd6); }
+.md .hljs-attribute { color: light-dark(#e50000, #9cdcfe); }
+.md .hljs-regexp, .md .hljs-link { color: light-dark(#811f3f, #d16969); }
+.md .hljs-meta, .md .hljs-meta .hljs-keyword { color: light-dark(#0000ff, #569cd6); }
 
 .md table {
   border-collapse: separate; border-spacing: 0; display: block; overflow-x: auto;

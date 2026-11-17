@@ -42,4 +42,46 @@ defineTests(({ test, get, logs, expect }) => {
     expect(logs()).toContainText("Tuổi sau sinh nhật: 26");
     expect(logs()).toContainText("isEmployed: true");
   });
+
+  test("7", "member: sửa thuộc tính thành công, bắt lỗi gán lại bằng try/catch, đóng băng với Object.freeze", () => {
+    const m = get("member");
+    expect(m.name).toBe("Jane");
+    expect(m.level).toBe(1);
+    expect(Object.isFrozen(m)).toBe(true);
+    expect(logs()).toContainText("Assignment to constant variable.");
+  });
+
+  test("8", "dog: khai báo đúng thuộc tính (danh từ), phương thức (động từ), gọi speak 'Go go...' và phân biệt hoa-thường dog.name !== dog.Name", () => {
+    const d = get("dog");
+    expect(d.name).toBe("Scooby Doo");
+    expect(d.age).toBe(6);
+    expect(d.isActive).toBe(true);
+    expect(typeof d.speak).toBe("function");
+    expect(typeof d.calculateHumanAge).toBe("function");
+    expect(logs()).toContainText("Go go...");
+    expect(d.Name).toBe("Scrappy Doo");
+    expect(d.name !== d.Name).toBe(true);
+  });
+
+  test("9", "personWithThis: getFullName và greet dùng this, trả về 'John Smith' và in 'Hello, John'", () => {
+    const p = get("personWithThis");
+    expect(p.firstName).toBe("John");
+    expect(p.lastName).toBe("Smith");
+    expect(p.getFullName()).toBe("John Smith");
+    expect(logs()).toContainText("John Smith");
+    expect(logs()).toContainText("Hello, John");
+  });
+
+  test("10", "enhancedPerson & course: property shorthand, computed property name, method shorthand và nested destructuring keywords -> topics", () => {
+    const ep = get("enhancedPerson");
+    expect(ep.name).toBe("John Doe");
+    expect(ep.age).toBe(30);
+    expect(ep.firstName).toBe("John");
+    expect(ep.lastName).toBe("Smith");
+    expect(typeof ep.speak).toBe("function");
+    const c = get("course");
+    expect(c.title).toBe("JavaScript Pro");
+    expect(logs()).toContainText("JavaScript Pro");
+    expect(logs()).toContainText("js basic, js advanced");
+  });
 });

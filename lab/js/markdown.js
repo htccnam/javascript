@@ -104,9 +104,24 @@ export function renderMarkdown(markdown, { onTheoryLink } = {}) {
   return container;
 }
 
+// Tô màu cú pháp cho khối code có khai báo ngôn ngữ (```javascript, ```html...).
+// Khối không ghi ngôn ngữ giữ nguyên, tránh đoán sai màu cho sơ đồ/text.
+function highlightCode(root) {
+  if (!window.hljs) return;
+  root.querySelectorAll('pre code[class*="language-"]').forEach((block) => {
+    if (block.classList.contains("language-mermaid")) return;
+    try {
+      window.hljs.highlightElement(block);
+    } catch {
+      // giữ nguyên text nếu lỗi
+    }
+  });
+}
+
 export async function renderInto(el, markdown, opts) {
   const node = renderMarkdown(markdown, opts);
   el.replaceChildren(node);
+  highlightCode(node);
   try {
     await renderMermaid(node);
   } catch (err) {

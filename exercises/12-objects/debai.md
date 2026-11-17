@@ -9,6 +9,10 @@
 4. [Phần 4: Chuyển Đổi Dữ Liệu Object <-> Array (Object.fromEntries, Object.hasOwn)](#phần-4-chuyển-đổi-dữ-liệu-object-array-object-fromentries-object-hasown)
 5. [Phần 5: Kỹ Thuật Object Destructuring (Phân Rã Thuộc Tính)](#phần-5-kỹ-thuật-object-destructuring-phân-rã-thuộc-tính)
 6. [Phần 6: Duyệt for...in & Phòng Tránh Cạm Bẫy Kiểm Tra Key](#phần-6-duyệt-forin--phòng-tránh-cạm-bẫy-kiểm-tra-key)
+7. [Phần 7: Bản Chất Của const Với Object & Kỹ Thuật Đóng Băng Object.freeze](#phần-7-bản-chất-của-const-với-object--kỹ-thuật-đóng-băng-objectfreeze)
+8. [Phần 8: Thuộc Tính, Phương Thức & Quy Ước Đặt Tên (Đối Tượng Dog)](#phần-8-thuộc-tính-phương-thức--quy-ước-đặt-tên-đối-tượng-dog)
+9. [Phần 9: Bản Chất Từ Khóa this & Vì Sao Cần Dùng this (Đối Tượng Person)](#phần-9-bản-chất-từ-khóa-this--vì-sao-cần-dùng-this-đối-tượng-person)
+10. [Phần 10: Enhanced Object Literals & Phân Rã Lồng Nhau (Nested Destructuring)](#phần-10-enhanced-object-literals--phân-rã-lồng-nhau-nested-destructuring)
 
 ---
 
@@ -122,3 +126,114 @@ const person = {
 3. Thử kiểm tra thuộc tính không tồn tại `'salary' in person` và in ra kết quả boolean (`false`).
 
 [⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-7-bản-chất-của-const-với-object--kỹ-thuật-đóng-băng-objectfreeze"></a>
+## Phần 7: Bản Chất Của const Với Object & Kỹ Thuật Đóng Băng Object.freeze
+Cho một đối tượng thành viên được khai báo bằng `const`:
+```javascript
+const member = {
+  name: "John",
+  role: "member"
+};
+```
+1. **Sửa thuộc tính:** Đổi `name` thành `"Jane"` và thêm thuộc tính `level: 1`. In ra `member` để xác nhận thao tác thành công.
+2. **Thử gán lại tham chiếu:** Bọc trong khối `try...catch` lệnh `member = { name: "Mike" }`. Trong khối `catch`, in ra tên lỗi `error.name` và `error.message` để quan sát lỗi `TypeError: Assignment to constant variable`.
+3. **Đóng băng đối tượng:** Dùng `Object.freeze(member)` để đóng băng `member`. In ra kết quả kiểm tra `Object.isFrozen(member)`.
+4. **Kiểm chứng tính bất biến:** Thử gán `member.name = "Bob"` sau khi đã freeze, rồi in ra `member.name` để chứng minh giá trị vẫn được bảo toàn là `"Jane"`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-8-thuộc-tính-phương-thức--quy-ước-đặt-tên-đối-tượng-dog"></a>
+## Phần 8: Thuộc Tính, Phương Thức & Quy Ước Đặt Tên (Đối Tượng Dog)
+
+Mô phỏng một đối tượng cún cưng `dog` tuân thủ nghiêm ngặt quy ước đặt tên chuẩn Clean Code trong JavaScript (Thuộc tính dùng Danh từ / Cụm danh từ; Phương thức bắt đầu bằng Động từ / Cụm động từ):
+
+1. **Khai báo đối tượng `dog` gồm:**
+   - **Thuộc tính (Danh từ):**
+     - `name`: chuỗi `"Scooby Doo"` (Tên của chú cún).
+     - `age`: số `5` (Số tuổi).
+     - `isActive`: boolean `true` (Trạng thái hoạt động, quy ước tiền tố `is...` cho kiểu Boolean).
+   - **Phương thức (Động từ):**
+     - `speak()`: hàm in ra màn hình console chuỗi `"Go go..."`.
+     - `calculateHumanAge()`: phương thức tính toán và trả về tuổi người tương ứng của cún (`this.age * 7`).
+2. **Truy cập & Gọi thực thi:**
+   - In ra console các thuộc tính: `dog.name`, `dog.age`, và `dog.isActive`.
+   - Gọi phương thức `dog.speak()` để thực thi hành động sủa.
+   - Gọi phương thức `dog.calculateHumanAge()` và in ra kết quả tuổi quy đổi.
+3. **Kiểm chứng tính phân biệt HOA - thường (Case-sensitivity):**
+   - Thêm một thuộc tính mới `dog.Name = "Scrappy Doo"` (chữ `N` viết hoa).
+   - In ra cả `dog.name` và `dog.Name` để chứng minh JavaScript phân biệt chữ hoa - thường giữa hai thuộc tính hoàn toàn khác nhau.
+4. **Phương thức cập nhật trạng thái:**
+   - Bổ sung phương thức `updateAge(newAge)` cho `dog`: nhận tham số `newAge`, cập nhật thuộc tính `this.age = newAge` và in ra `Tuổi mới của cún: [newAge]`.
+   - Gọi `dog.updateAge(6)`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-9-bản-chất-từ-khóa-this--vì-sao-cần-dùng-this-đối-tượng-person"></a>
+## Phần 9: Bản Chất Từ Khóa this & Vì Sao Cần Dùng this (Đối Tượng Person)
+
+Thực hành nắm vững bản chất ngữ cảnh của từ khóa `this` và hiểu sâu lý do tại sao dùng `this.prop` lại vượt trội, an toàn hơn việc hardcode tên biến (`person.prop`):
+
+1. **Khởi tạo đối tượng `personWithThis`:**
+   - Thuộc tính: `firstName: "John"`, `lastName: "Smith"`, `age: 30`.
+   - Phương thức:
+     - `getFullName()`: phương thức trả về chuỗi họ và tên đầy đủ dạng `${this.firstName} ${this.lastName}`.
+     - `greet()`: phương thức in ra console dòng chữ `"Hello, " + this.firstName` (dùng `this.firstName` thay vì hardcode `personWithThis.firstName`).
+2. **Gọi thực thi phương thức:**
+   - In ra console kết quả `personWithThis.getFullName()` (kết quả mong đợi: `"John Smith"`).
+   - Gọi `personWithThis.greet()` để in ra lời chào `"Hello, John"`.
+3. **Kiểm chứng tính linh hoạt và an toàn của `this` khi chuyển giao tham chiếu:**
+   - Khởi tạo biến `userRef = personWithThis`.
+   - Gọi `userRef.getFullName()` qua biến mới `userRef` và in kết quả.
+   - Giải thích trong chú thích (comment): Vì sao việc dùng `this` giúp phương thức luôn trỏ vào đúng đối tượng đang gọi nó, ngay cả khi tên biến bị đổi hoặc gán sang một biến khác.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+---
+
+<a id="phần-10-enhanced-object-literals--phân-rã-lồng-nhau-nested-destructuring"></a>
+## Phần 10: Enhanced Object Literals & Phân Rã Lồng Nhau (Nested Destructuring)
+
+Thực hành ứng dụng toàn bộ các cú pháp hiện đại của ES6 để tối ưu hóa code khi làm việc với Object:
+
+1. **Enhanced Object Literals:**
+   - Cho các biến có sẵn:
+     ```javascript
+     const name = "John Doe";
+     const age = 30;
+     const property = "lastName";
+     ```
+   - Khởi tạo object `enhancedPerson` kết hợp cả 3 kỹ thuật:
+     - **Property shorthand:** Khai báo thuộc tính `name` và `age` (không viết lặp `name: name`).
+     - **Computed property name:** Dùng cú pháp `[property]` để gán giá trị `"Smith"`.
+     - Thêm thuộc tính thông thường: `firstName: "John"`.
+     - **Method shorthand:** Định nghĩa phương thức `speak()` in ra `"Go go..."` (không dùng từ khóa `: function`).
+   - In ra `enhancedPerson`, kiểm tra giá trị `enhancedPerson.lastName` và gọi `enhancedPerson.speak()`.
+
+2. **Nested Destructuring (Phân rã lồng nhau):**
+   - Cho đối tượng khóa học `course`:
+     ```javascript
+     const course = {
+       title: "JavaScript Pro",
+       info: {
+         url: "https://fullstack.edu.vn",
+         description: "JavaScript Basic, Advanced.",
+         keywords: "js basic, js advanced"
+       }
+     };
+     ```
+   - Sử dụng **Object Destructuring** trong một câu lệnh duy nhất để:
+     - Trích xuất thuộc tính `title` ở tầng ngoài cùng, đặt bí danh là `courseTitle` (để tránh xung đột với biến `title` ở Phần 5).
+     - Đi sâu vào thuộc tính con `info` để trích xuất `keywords`, đồng thời đổi tên biến thành `topics`.
+   - In ra giá trị của hai biến vừa trích xuất: `console.log(courseTitle)` và `console.log(topics)`.
+
+[⬆️ Quay lại Mục lục](#mục-lục)
+
+
+

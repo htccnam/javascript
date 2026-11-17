@@ -148,3 +148,150 @@ if ("age" in person) {
 // Kiểm tra key không tồn tại
 console.log("Key 'salary' có trong person không?:", "salary" in person);
 console.groupEnd();
+
+// --------------------------------------------
+// BÀI 7: CONST VỚI OBJECT & OBJECT.FREEZE
+// --------------------------------------------
+console.group("member");
+const member = {
+    name: "John",
+    role: "member",
+};
+console.log("member ban đầu:", member);
+
+// 7.1. Sửa thuộc tính và thêm thuộc tính mới (Hợp lệ)
+member.name = "Jane";
+member.level = 1;
+console.log("member sau khi sửa thuộc tính:", member);
+
+// 7.2. Thử gán lại toàn bộ object (Bắt lỗi bằng try...catch)
+try {
+    member = { name: "Mike" };
+} catch (error) {
+    console.log("Bắt lỗi khi gán lại const:", error.name, "-", error.message);
+}
+
+// 7.3. Đóng băng đối tượng với Object.freeze()
+Object.freeze(member);
+console.log("Đã đóng băng member?:", Object.isFrozen(member));
+
+// 7.4. Thử sửa thuộc tính sau khi đã đóng băng
+member.name = "Bob";
+console.log("Tên member sau khi cố sửa lúc đã freeze:", member.name); // Vẫn giữ nguyên là "Jane"
+console.groupEnd();
+
+// --------------------------------------------
+// BÀI 8: THUỘC TÍNH & PHƯƠNG THỨC (DOG)
+// --------------------------------------------
+console.group("dog");
+const dog = {
+    // Thuộc tính (Danh từ)
+    name: "Scooby Doo",
+    age: 5,
+    isActive: true,
+
+    // Phương thức (Động từ)
+    speak: function () {
+        console.log("Go go...");
+    },
+    calculateHumanAge() {
+        return this.age * 7;
+    },
+};
+
+// 8.1. Truy cập thuộc tính
+console.log("Tên cún:", dog.name);
+console.log("Tuổi cún:", dog.age);
+console.log("Trạng thái hoạt động (isActive):", dog.isActive);
+
+// 8.2. Gọi phương thức
+dog.speak();
+console.log("Tuổi người tương ứng:", dog.calculateHumanAge());
+
+// 8.3. Kiểm chứng phân biệt chữ HOA - thường (Case-sensitivity)
+dog.Name = "Scrappy Doo";
+console.log("dog.name (chữ thường):", dog.name);
+console.log("dog.Name (chữ hoa):", dog.Name);
+console.log("dog.name và dog.Name là 2 thuộc tính độc lập?:", dog.name !== dog.Name);
+
+// 8.4. Phương thức cập nhật trạng thái
+dog.updateAge = function (newAge) {
+    this.age = newAge;
+    console.log(`Tuổi mới của cún: ${this.age}`);
+};
+dog.updateAge(6);
+console.groupEnd();
+
+// --------------------------------------------
+// BÀI 9: TỪ KHÓA THIS & BẢN CHẤT NGỮ CẢNH
+// --------------------------------------------
+console.group("personWithThis");
+const personWithThis = {
+    firstName: "John",
+    lastName: "Smith",
+    age: 30,
+
+    // 9.1. Định nghĩa phương thức sử dụng this
+    getFullName: function () {
+        return `${this.firstName} ${this.lastName}`;
+    },
+    greet() {
+        console.log("Hello, " + this.firstName);
+    },
+};
+
+// 9.2. Gọi phương thức
+console.log("Họ và tên đầy đủ:", personWithThis.getFullName());
+personWithThis.greet();
+
+// 9.3. Kiểm chứng tính an toàn của this khi chuyển giao tham chiếu
+const userRef = personWithThis;
+console.log("Gọi qua biến userRef:", userRef.getFullName());
+console.log("Đúng đối tượng hiện hành qua this?:", userRef.getFullName() === "John Smith");
+console.groupEnd();
+
+// --------------------------------------------
+// BÀI 10: ENHANCED OBJECT LITERALS & NESTED DESTRUCTURING
+// --------------------------------------------
+console.group("enhancedPerson & course");
+const name = "John Doe";
+const age = 30;
+const property = "lastName";
+
+// 10.1. Enhanced Object Literals (Property shorthand, Method shorthand, Computed property)
+const enhancedPerson = {
+    name,
+    age,
+    firstName: "John",
+    [property]: "Smith",
+    speak() {
+        console.log("Go go...");
+    },
+};
+
+console.log("enhancedPerson:", enhancedPerson);
+console.log("Họ (computed property):", enhancedPerson.lastName);
+enhancedPerson.speak();
+
+// 10.2. Nested Destructuring kết hợp đổi tên biến (Alias)
+const course = {
+    title: "JavaScript Pro",
+    info: {
+        url: "https://fullstack.edu.vn",
+        description: "JavaScript Basic, Advanced.",
+        keywords: "js basic, js advanced",
+    },
+};
+
+const {
+    title: courseTitle,
+    info: { keywords: topics },
+} = course;
+
+console.log("Tiêu đề khóa học:", courseTitle);
+console.log("Chủ đề (topics trích xuất từ keywords):", topics);
+console.groupEnd();
+
+
+
+

@@ -292,10 +292,15 @@ flowchart TD
   3. **Thao tác duyệt Mảng** tại [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
      - *Vì sao bắt buộc?* Các hàm tĩnh của Object gồm `Object.keys()`, `Object.values()`, `Object.entries()` đều trả về một **Mảng**; bạn cần kỹ năng duyệt mảng từ Bài 11 để biến đổi dữ liệu.
 * **Mục tiêu cốt lõi cần đạt được:**
-  - Nắm vững khái niệm Object Literals, CRUD thuộc tính (thêm, sửa, `delete`) bằng Dot và Bracket notation.
-  - Làm chủ kỹ thuật Object Destructuring (alias, default values) và duyệt `for...in` trên Object.
+  - Nắm vững khái niệm Object Literals; phân biệt rành mạch giữa Thuộc tính (Properties - lưu dữ liệu, đặt tên bằng Danh từ) và Phương thức (Methods - hàm thực thi hành động, bắt đầu bằng Động từ).
+  - Áp dụng chuẩn mực quy ước đặt tên (Naming Conventions): cú pháp camelCase, tiền tố `is...` cho boolean, phân biệt chữ HOA - thường (case-sensitivity), tránh từ khóa riêng để viết Clean Code tự giải thích (Self-documenting code).
+  - Thành thạo CRUD thuộc tính (thêm, sửa, `delete`) bằng Dot và Bracket notation.
+  - Hiểu sâu bản chất `const` với Object (Stack lưu địa chỉ tham chiếu vs Heap chứa dữ liệu thực tế), giải mã lý do sửa được thuộc tính nhưng cấm gán lại, và kỹ thuật đóng băng bằng `Object.freeze()`.
+  - Làm chủ bộ tính năng Enhanced Object Literals (Property shorthand, Method shorthand, Computed property names) và kỹ thuật Object Destructuring từ cơ bản đến nâng cao (Nested Destructuring, Alias, Default values).
+  - Duyệt Object bằng `for...in` và các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
   - Phòng tránh các cạm bẫy: Kiểm tra key bằng toán tử `in` / `Object.hasOwn()`, tránh dùng từ khóa dành riêng làm key.
-  - Viết Method chuẩn mực với từ khóa `this` và thành thạo các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
+  - Hiểu thấu đáo bản chất từ khóa `this`: cơ chế tham chiếu đối tượng hiện hành tại thời điểm gọi hàm (Call-time binding), lý do sống còn khi dùng `this.prop` thay vì hardcode tên biến (`person.prop`), kỹ thuật chia sẻ method (Method Sharing), và phòng chống triệt để cạm bẫy Arrow Function & mất ngữ cảnh (Detached Method).
+  - Thành thạo các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
 
 ---
 
