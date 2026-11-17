@@ -218,8 +218,21 @@ function goTo(id, extra = "") {
 // ---------------------------------------------------------------------
 // Panel trái: Đề bài / Lý thuyết / Lời giải
 // ---------------------------------------------------------------------
+// Phóng to / thu nhỏ khung lý thuyết (chỉ dùng khi đang ở tab Lý thuyết)
+function setLeftFullscreen(on) {
+  const pane = $("#pane-left");
+  const btn = $("#btn-fullscreen");
+  pane.classList.toggle("fullscreen", on);
+  btn.textContent = on ? "✕ Thu nhỏ" : "⛶ Toàn màn hình";
+  btn.title = on ? "Thu nhỏ (Esc)" : "Phóng to lý thuyết (Esc để thoát)";
+  btn.setAttribute("aria-pressed", String(on));
+}
+
 async function showLeftTab(tab) {
   state.leftTab = tab;
+  const fsBtn = $("#btn-fullscreen");
+  fsBtn.hidden = tab !== "theory";
+  if (tab !== "theory") setLeftFullscreen(false);
   document.querySelectorAll("[data-left-tab]").forEach((b) => {
     b.classList.toggle("active", b.dataset.leftTab === tab);
   });
@@ -506,6 +519,12 @@ function wireToolbar() {
   document.querySelectorAll("[data-left-tab]").forEach((b) =>
     b.addEventListener("click", () => showLeftTab(b.dataset.leftTab))
   );
+  $("#btn-fullscreen").addEventListener("click", () =>
+    setLeftFullscreen(!$("#pane-left").classList.contains("fullscreen"))
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && $("#pane-left").classList.contains("fullscreen")) setLeftFullscreen(false);
+  });
   document.querySelectorAll("[data-right-tab]").forEach((b) =>
     b.addEventListener("click", () => showRightTab(b.dataset.rightTab))
   );
