@@ -277,7 +277,7 @@ function testScope() {
 
 testScope(); // 👉 Kết quả in ra là "Hà Nội", KHÔNG PHẢI "Đà Nẵng"!
 ```
-*Giải thích:* Khi thực thi `inThanhPho()`, JS tìm biến `thanhPho` theo chuỗi scope nơi hàm `inThanhPho` được **khai báo** (tức là Global Scope $\rightarrow$ `"Hà Nội"`). Nó hoàn toàn không quan tâm hàm được gọi bên trong `testScope`!
+*Giải thích:* Khi thực thi `inThanhPho()`, JS tìm biến `thanhPho` theo chuỗi scope nơi hàm `inThanhPho` được **khai báo** (tức là Global Scope → `"Hà Nội"`). Nó hoàn toàn không quan tâm hàm được gọi bên trong `testScope`!
 
 ---
 
@@ -311,7 +311,7 @@ function cap1() {
 cap1(); // In ra: 100
 ```
 
-- **Quy tắc leo thang:** Tìm từ tầng trệt $\rightarrow$ tầng 1 $\rightarrow$ tầng 2 $\rightarrow$ sân thượng (Global).
+- **Quy tắc leo thang:** Tìm từ tầng trệt → tầng 1 → tầng 2 → sân thượng (Global).
 - **Dừng lại ngay khi tìm thấy:** Nếu ở tầng 1 đã có biến `diem`, JS dùng luôn biến đó và **dừng tìm kiếm**, không leo lên tầng 2 nữa.
 - **Không bao giờ đi ngược lại:** Tầng trên không thể tìm xuống tầng dưới. Hai hàm ngang hàng không thể nhìn sang phòng nhau.
 
@@ -385,12 +385,12 @@ for (var i = 0; i < 3; i++) {
    - Trong ví dụ trên, biến `i` giống như **"đồ vật để ở ngoài sân"**. Hàm bên trong `setTimeout` không hề sở hữu biến `i`, nó chỉ là kẻ **đứng trong nhà nhìn qua cửa sổ ra ngoài sân** để đọc giá trị của `i`.
 
 3. **Trục thời gian (Timeline): Tại sao lại là số 3?**
-   - Vòng lặp `for` chạy trong tích tắc ($0.0001\text{ ms}$):
+   - Vòng lặp `for` chạy trong tích tắc (0.0001 ms):
      - Lần lặp 1: Hẹn giờ hàm #1 (100ms nữa chạy).
      - Lần lặp 2: Hẹn giờ hàm #2 (100ms nữa chạy).
      - Lần lặp 3: Hẹn giờ hàm #3 (100ms nữa chạy).
-     - `i++` làm $i = 3$, điều kiện $3 < 3$ sai $\rightarrow$ **Vòng lặp `for` KẾT THÚC ngay lập tức, ô nhớ duy nhất của `i` đang giữ giá trị `3`!**
-   - **100ms sau:** 3 hàm hẹn giờ mới lần lượt được lôi ra chạy. Cả 3 hàm cùng nhìn ra ngoài ô nhớ chung duy nhất $\rightarrow$ thấy số `3` $\rightarrow$ in ra: **`3, 3, 3`**!
+     - `i++` làm `i = 3`, điều kiện `3 < 3` sai → **Vòng lặp `for` KẾT THÚC ngay lập tức, ô nhớ duy nhất của `i` đang giữ giá trị `3`!**
+   - **100ms sau:** 3 hàm hẹn giờ mới lần lượt được lôi ra chạy. Cả 3 hàm cùng nhìn ra ngoài ô nhớ chung duy nhất → thấy số `3` → in ra: **`3, 3, 3`**!
 
 ---
 
@@ -711,6 +711,8 @@ console.log(typeof function() {});  // "function"
 ### 11.3. Chi Tiết Từng Kiểu Dữ Liệu & Quy Ước Đặt Tên
 
 <a id="string-chuỗi"></a>
+<a id="111-string-chuỗi"></a>
+<a id="1-string-chuỗi"></a>
 #### 1. String (Chuỗi)
 - **Mục đích sử dụng:** Biểu diễn văn bản, ký tự (tên, email, địa chỉ, thông điệp).
 - **Cú pháp:** Dùng nháy đơn `''`, nháy kép `""` hoặc backticks `` ` `` (Template Literals).
@@ -737,14 +739,14 @@ console.log(typeof birthYear); // "number"
 ```
 
 - **Bản chất kỹ thuật:** JavaScript chỉ dùng **một kiểu Number duy nhất** (chuẩn IEEE 754 64-bit float) cho cả số nguyên và số thập phân.
-- **Giới hạn số nguyên an toàn:** `Number.MAX_SAFE_INTEGER` là $2^{53} - 1$ (tương đương `9,007,199,254,740,991`). Vượt quá ngưỡng này, kiểu Number vẫn chứa được số cực lớn (lên tới $\approx 1.8 \times 10^{308}$) nhưng sẽ bị **làm tròn sai lệch**.
+- **Giới hạn số nguyên an toàn:** `Number.MAX_SAFE_INTEGER` là 2⁵³ - 1 (tương đương `9,007,199,254,740,991`). Vượt quá ngưỡng này, kiểu Number vẫn chứa được số cực lớn (lên tới ≈ 1.8 × 10³⁰⁸) nhưng sẽ bị **làm tròn sai lệch**.
 - **Quy ước đặt tên:** Đặt tên rõ nghĩa số lượng hoặc giá trị (ví dụ: `birthYear`, `itemCount`, `totalPrice`).
 
 ---
 
 <a id="bigint-số-nguyên-khổng-lồ"></a>
 #### 3. BigInt (Số nguyên khổng lồ)
-- **Mục đích sử dụng:** Khi cần tính toán số nguyên cực lớn với độ chính xác tuyệt đối (lĩnh vực tài chính ngân hàng, mật mã học, khoa học kỹ thuật) vượt quá ngưỡng an toàn $2^{53} - 1$.
+- **Mục đích sử dụng:** Khi cần tính toán số nguyên cực lớn với độ chính xác tuyệt đối (lĩnh vực tài chính ngân hàng, mật mã học, khoa học kỹ thuật) vượt quá ngưỡng an toàn 2⁵³ - 1.
 - **Cú pháp:** Thêm hậu tố `n` vào cuối số nguyên hoặc gọi hàm `BigInt()`.
 
 ```javascript
@@ -764,6 +766,8 @@ console.log(typeof bigNumber);   // "bigint"
 ---
 
 <a id="boolean-đúng--sai"></a>
+<a id="114-boolean-đúng--sai"></a>
+<a id="4-boolean-đúng--sai"></a>
 #### 4. Boolean (Đúng / Sai)
 - **Mục đích sử dụng:** Biểu diễn trạng thái nhị phân chỉ gồm 2 giá trị: `true` (đúng) hoặc `false` (sai). Thường xuất hiện qua các phép so sánh điều kiện.
 
@@ -822,11 +826,13 @@ console.log(typeof id1);   // "symbol"
 ```
 
 > [!NOTE]
-> Trong thực tế lập trình hàng ngày, `BigInt` và `Symbol` là hai kiểu ít được sử dụng nhất so với 6 kiểu còn lại vì các bài toán thông thường hiếm khi cần vượt giới hạn $2^{53} - 1$ hoặc tạo key độc bản bí mật.
+> Trong thực tế lập trình hàng ngày, `BigInt` và `Symbol` là hai kiểu ít được sử dụng nhất so với 6 kiểu còn lại vì các bài toán thông thường hiếm khi cần vượt giới hạn 2⁵³ - 1 hoặc tạo key độc bản bí mật.
 
 ---
 
 <a id="object-đối-tượng-key-value"></a>
+<a id="117-object-đối-tượng-dạng-tổng-quát-key-value"></a>
+<a id="8-object-đối-tượng-key-value"></a>
 #### 8. Object (Đối tượng key-value)
 - **Mục đích sử dụng:** Lưu trữ và quản lý tập hợp dữ liệu phức tạp theo cấu trúc cặp khóa - giá trị (`key: value`).
 
@@ -848,6 +854,8 @@ console.log(typeof user); // "object"
 
 Trong JavaScript, hầu hết mọi cấu trúc phức tạp đều là biến thể của Object:
 
+<a id="1181-array-mảng"></a>
+<a id="1-array-mảng"></a>
 #### 1. Array (Mảng)
 - **Mục đích:** Lưu trữ một danh sách có thứ tự các phần tử.
 - **`typeof` trả về:** `"object"` (Muốn kiểm tra mảng chuẩn xác, dùng `Array.isArray()`).
@@ -860,6 +868,8 @@ console.log(typeof products);          // "object"
 console.log(Array.isArray(products));  // true ✅
 ```
 
+<a id="1182-function-hàm"></a>
+<a id="2-function-hàm"></a>
 #### 2. Function (Hàm)
 - **Mục đích:** Đóng gói một khối lệnh có thể tái sử dụng nhiều lần để thực thi tác vụ.
 - **`typeof` trả về:** `"function"` (đây là ngoại lệ hữu ích của typeof).
@@ -983,7 +993,7 @@ console.log(calculateAge(2024, "ABC")); // "Lỗi: Dữ liệu đầu vào phả
 | :--- | :--- | :--- | :--- | :--- |
 | **String** | Primitive | `"string"` | Lưu trữ văn bản | Danh từ số ít |
 | **Number** | Primitive | `"number"` | Toán học, số học (có `NaN`, `Infinity`) | Danh từ số ít |
-| **BigInt** | Primitive | `"bigint"` | Số nguyên lớn > $2^{53} - 1$ | Thêm tiền tố `big`, `large` |
+| **BigInt** | Primitive | `"bigint"` | Số nguyên lớn > 2⁵³ - 1 | Thêm tiền tố `big`, `large` |
 | **Boolean** | Primitive | `"boolean"` | Trạng thái đúng/sai nhị phân | Bắt đầu: `is`, `has`, `can`, `should` |
 | **Undefined** | Primitive | `"undefined"` | Biến chưa được gán giá trị | Thường do JS gán tự động |
 | **Null** | Primitive | `"object"` ⚠️ | Đánh dấu rỗng có chủ đích | Danh từ số ít |
@@ -1031,7 +1041,7 @@ console.log(typeof value === "number" && !isNaN(value)); // true
 > ```javascript
 > Number.isFinite(value); // true nếu là số thực sự và hữu hạn (loại cả NaN, Infinity, -Infinity)
 > ```
-> *Lý do ra đời của BigInt:* Do Number dùng chuẩn IEEE 754 64-bit float, nó chỉ biểu diễn chính xác số nguyên trong khoảng $\pm(2^{53} - 1)$ (`Number.MAX_SAFE_INTEGER`). Vượt ngưỡng này, số sẽ bị làm tròn sai lệch (ví dụ `9007199254740993` sẽ bị ép thành `9007199254740992`).
+> *Lý do ra đời của BigInt:* Do Number dùng chuẩn IEEE 754 64-bit float, nó chỉ biểu diễn chính xác số nguyên trong khoảng ±(2⁵³ - 1) (`Number.MAX_SAFE_INTEGER`). Vượt ngưỡng này, số sẽ bị làm tròn sai lệch (ví dụ `9007199254740993` sẽ bị ép thành `9007199254740992`).
 
 ##### 3. BigInt (Số nguyên lớn)
 Dành cho số nguyên khổng lồ vượt ngưỡng an toàn của Number:

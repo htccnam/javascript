@@ -148,21 +148,21 @@ switch (true) {
 
 Toán tử số học thực hiện các phép tính toán số học căn bản trong JavaScript:
 
-| Toán tử | Tên toán tử | Ví dụ | Kết quả ($x = 10, y = 3$) |
+| Toán tử | Tên toán tử | Ví dụ | Kết quả (x = 10, y = 3) |
 | :---: | :--- | :--- | :--- |
 | **`+`** | Cộng / Nối chuỗi | `x + y` | `13` (hoặc `"103"` nếu một bên là chuỗi) |
 | **`-`** | Trừ | `x - y` | `7` |
 | **`*`** | Nhân | `x * y` | `30` |
 | **`/`** | Chia | `x / y` | `3.3333333333333335` |
-| **`%`** | Chia lấy dư (Modulus) | `x % y` | `1` (vì $10 = 3 \times 3 + 1$) |
-| **`**`** | Lũy thừa (ES6) | `x ** y` | `1000` (tương đương $10^3$) |
+| **`%`** | Chia lấy dư (Modulus) | `x % y` | `1` (vì 10 = 3 × 3 + 1) |
+| **`**`** | Lũy thừa (ES6) | `x ** y` | `1000` (tương đương 10³) |
 | **`++`** | Tăng 1 đơn vị | `x++` hoặc `++x` | `11` |
 | **`--`** | Giảm 1 đơn vị | `x--` hoặc `--x` | `9` |
 
 ### Phân biệt sống còn giữa `x++` (Post-increment) và `++x` (Pre-increment):
 Đây là bẫy kinh điển trong bài tập trắc nghiệm và phỏng vấn:
-- **`x++` (Hậu tố - Post-increment):** **Trả về giá trị HIỆN TẠI** của $x$ trước để tham gia vào biểu thức tính toán, **rồi sau đó mới tăng** $x$ lên 1 đơn vị.
-- **`++x` (Tiền tố - Pre-increment):** **Tăng $x$ lên 1 đơn vị TRƯỚC**, rồi mới trả về giá trị mới đó để tính toán.
+- **`x++` (Hậu tố - Post-increment):** **Trả về giá trị HIỆN TẠI** của x trước để tham gia vào biểu thức tính toán, **rồi sau đó mới tăng** x lên 1 đơn vị.
+- **`++x` (Tiền tố - Pre-increment):** **Tăng x lên 1 đơn vị TRƯỚC**, rồi mới trả về giá trị mới đó để tính toán.
 
 ```javascript
 let a = 5;
@@ -186,13 +186,13 @@ Dùng để gán hoặc vừa tính toán vừa gán giá trị cho một biến
 | Toán tử | Cách viết ngắn gọn | Tương đương với | Giải thích ý nghĩa |
 | :---: | :--- | :--- | :--- |
 | **`=`** | `x = y` | `x = y` | Gán giá trị vế phải cho biến vế trái |
-| **`+=`** | `x += y` | `x = x + y` | Cộng thêm $y$ vào $x$ |
-| **`-=`** | `x -= y` | `x = x - y` | Trừ bớt $y$ khỏi $x$ |
-| **`*=`** | `x *= y` | `x = x * y` | Nhân $x$ với $y$ |
-| **`/=`** | `x /= y` | `x = x / y` | Chia $x$ cho $y$ |
-| **`%=`** | `x %= y` | `x = x % y` | Lấy phần dư của $x$ chia $y$ |
-| **`**=`** | `x **= y` | `x = x ** y` | Nâng $x$ lên lũy thừa $y$ |
-| **`??=`** | `x ??= y` | `x = x ?? y` | **Gán logic:** Chỉ gán $y$ nếu $x$ đang là `null` hoặc `undefined` (ES2021) |
+| **`+=`** | `x += y` | `x = x + y` | Cộng thêm y vào x |
+| **`-=`** | `x -= y` | `x = x - y` | Trừ bớt y khỏi x |
+| **`*=`** | `x *= y` | `x = x * y` | Nhân x với y |
+| **`/=`** | `x /= y` | `x = x / y` | Chia x cho y |
+| **`%=`** | `x %= y` | `x = x % y` | Lấy phần dư của x chia y |
+| **`**=`** | `x **= y` | `x = x ** y` | Nâng x lên lũy thừa y |
+| **`??=`** | `x ??= y` | `x = x ?? y` | **Gán logic:** Chỉ gán y nếu x đang là `null` hoặc `undefined` (ES2021) |
 
 ```javascript
 let score = 100;
@@ -240,7 +240,7 @@ console.log(0 === false);// false (number !== boolean)
 
 Toán tử ba ngôi là cú pháp rút gọn cho câu lệnh `if...else` đơn giản, trả về giá trị trực tiếp để gán cho biến hoặc return trong hàm:
 
-$$\text{điều\_kiện} \mathbin{?} \text{biểu\_thức\_khi\_true} \mathbin{:} \text{biểu\_thức\_khi\_false}$$
+`điều_kiện ? biểu_thức_khi_true : biểu_thức_khi_false`
 
 ```javascript
 const age = 20;
@@ -267,13 +267,13 @@ Dùng để kết hợp hoặc đảo ngược các biểu thức điều kiện
 
 | Toán tử | Tên gọi | Mô tả | Ví dụ |
 | :---: | :--- | :--- | :--- |
-| **`&&`** | AND (Và) | Trả về `true` khi **tất cả** các vế đều đúng. | `(5 > 2) && (10 > 3)` $\rightarrow$ `true` |
-| **`||`** | OR (Hoặc) | Trả về `true` khi **ít nhất một** vế đúng. | `(5 < 2) || (10 > 3)` $\rightarrow$ `true` |
-| **`!`** | NOT (Phủ định) | Đảo ngược giá trị Boolean. | `!(5 > 2)` $\rightarrow$ `false` |
+| **`&&`** | AND (Và) | Trả về `true` khi **tất cả** các vế đều đúng. | `(5 > 2) && (10 > 3)` → `true` |
+| **`||`** | OR (Hoặc) | Trả về `true` khi **ít nhất một** vế đúng. | `(5 < 2) || (10 > 3)` → `true` |
+| **`!`** | NOT (Phủ định) | Đảo ngược giá trị Boolean. | `!(5 > 2)` → `false` |
 
 ### Cơ chế Đoản mạch (Short-circuit):
-- **`A && B`:** Nếu $A$ sai (`false` / Falsy), JavaScript **dừng lại ngay lập tức** và trả về $A$, không thèm kiểm tra $B$.
-- **`A || B`:** Nếu $A$ đúng (`true` / Truthy), JavaScript **dừng lại ngay lập tức** và trả về $A$, không thèm kiểm tra $B$.
+- **`A && B`:** Nếu A sai (`false` / Falsy), JavaScript **dừng lại ngay lập tức** và trả về A, không thèm kiểm tra B.
+- **`A || B`:** Nếu A đúng (`true` / Truthy), JavaScript **dừng lại ngay lập tức** và trả về A, không thèm kiểm tra B.
 
 > [!TIP]
 > Để tìm hiểu chuyên sâu về bài toán bữa ăn, dã ngoại, phân quyền VIP streaming, bẫy bitwise `&`/`|` và độ ưu tiên kết hợp nhiều toán tử logic, mời bạn xem tiếp bài học chuyên biệt: [`docs/06-logical-operators.md`](file:///d:/github/studyProgram/javascript/docs/06-logical-operators.md).
@@ -314,8 +314,8 @@ const b = count ?? 10; // 0  (CHÍNH XÁC: vì 0 không phải là null/undefine
 ```
 
 ### 8.3. Các toán tử đặc biệt khác
-- **`typeof`:** Kiểm tra kiểu dữ liệu của một giá trị (`typeof "Nam"` $\rightarrow$ `"string"`, `typeof 123` $\rightarrow$ `"number"`).
-- **`instanceof`:** Kiểm tra xem một đối tượng có thuộc về một Constructor/Class nào đó hay không (`[1, 2] instanceof Array` $\rightarrow$ `true`).
+- **`typeof`:** Kiểm tra kiểu dữ liệu của một giá trị (`typeof "Nam"` → `"string"`, `typeof 123` → `"number"`).
+- **`instanceof`:** Kiểm tra xem một đối tượng có thuộc về một Constructor/Class nào đó hay không (`[1, 2] instanceof Array` → `true`).
 - **Spread / Rest Operator (`...`):** Trải các phần tử của mảng/object (`const clone = [...arr]`) hoặc gom nhóm các tham số của hàm (`function sum(...nums)`).
 - **Toán tử Bitwise (`&`, `|`, `^`, `~`, `<<`, `>>`):** Thao tác trên từng bit nhị phân của số nguyên. Thường dùng trong mã hóa, đồ họa, xử lý nhị phân cấp thấp (ít dùng trong logic ứng dụng web).
 
@@ -363,8 +363,8 @@ Trong các trang web cổ điển, `void` rất hay xuất hiện trong thuộc 
 
 > [!IMPORTANT]
 > **Góc nhìn hiện đại:** Cú pháp `javascript:void(0)` hiện nay chủ yếu bắt gặp trong các dự án cũ (legacy code). Trong lập trình web hiện đại:
-> - Nếu là nút bấm thực hiện hành động $\rightarrow$ **Hãy dùng thẻ `<button type="button">`**.
-> - Nếu bắt buộc phải dùng thẻ `<a>` $\rightarrow$ Hãy chặn chuyển trang chuẩn mực bằng phương thức `event.preventDefault()` trong hàm xử lý sự kiện (bạn sẽ học chi tiết ở Bài 13: DOM).
+> - Nếu là nút bấm thực hiện hành động → **Hãy dùng thẻ `<button type="button">`**.
+> - Nếu bắt buộc phải dùng thẻ `<a>` → Hãy chặn chuyển trang chuẩn mực bằng phương thức `event.preventDefault()` trong hàm xử lý sự kiện (bạn sẽ học chi tiết ở Bài 13: DOM).
 
 ##### Ứng dụng 3: An toàn tuyệt đối khi so sánh với undefined (`void 0`)
 Trong JavaScript, `undefined` **không phải là một từ khóa bất biến được bảo vệ (reserved keyword)** như `null`, `true`, hay `false`!
@@ -408,6 +408,7 @@ Về mặt kỹ thuật, `void 1`, `void true`, `void null` đều trả về `u
 ---
 
 <a id="9-bảng-xếp-hạng-độ-ưu-tiên-toàn-diện-của-toán-tử-operator-precedence"></a>
+<a id="9-bảng-độ-ưu-tiên-toán-tử-operator-precedence"></a>
 ## 9. Bảng Xếp Hạng Độ Ưu Tiên Toàn Diện Của Toán Tử (Operator Precedence)
 
 Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript xử lý tuần tự theo thứ tự ưu tiên nghiêm ngặt từ cao xuống thấp:
@@ -417,7 +418,7 @@ Khi một biểu thức chứa nhiều loại toán tử đan xen, JavaScript x�
 | **1 (Cao nhất)** | **Dấu ngoặc đơn** | `( ... )` | Từ trong ra ngoài |
 | **2** | **Truy cập thuộc tính & Gọi hàm** | `.` , `?.` , `[ ]` , `( )` | Trái sang phải |
 | **3** | **Toán tử một ngôi (Unary)** | `++` , `--` , `!` , `typeof` , `void` , `delete` , `+` (dương) , `-` (âm) | Phải sang trái |
-| **4** | **Lũy thừa** | `**` | **Phải sang trái** ($2^{3^2} = 2^9$) |
+| **4** | **Lũy thừa** | `**` | **Phải sang trái** (2^(3²) = 2⁹ = 512) |
 | **5** | **Nhân, Chia, Lấy dư** | `*` , `/` , `%` | Trái sang phải |
 | **6** | **Cộng, Trừ** | `+` , `-` | Trái sang phải |
 | **7** | **So sánh thứ tự** | `<` , `<=` , `>` , `>=` , `instanceof` | Trái sang phải |

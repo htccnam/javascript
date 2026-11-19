@@ -7,10 +7,11 @@ import { execute } from "./runner.js";
 import { ConsoleView } from "./console-view.js";
 import { grade, renderResults } from "./grader.js";
 import { CHATBOTS, MODES, buildPrompt, openChatbot } from "./ai-review.js";
+import { loadSearchIndex, search, resultUrl } from "./search.js";
 
 const $ = (sel) => document.querySelector(sel);
 const params = new URLSearchParams(location.search);
-const TOTAL_LESSONS_HINT = 17;
+const TOTAL_LESSONS_HINT = 18;
 
 const state = {
   lessons: [],
@@ -228,6 +229,53 @@ function setLeftFullscreen(on) {
   btn.setAttribute("aria-pressed", String(on));
 }
 
+function scrollToHash(hashId) {
+  if (!hashId) return;
+  let decoded = hashId;
+  try {
+    decoded = decodeURIComponent(hashId);
+  } catch {}
+
+  const content = $("#left-content");
+  if (!content) return;
+
+  function slugify(text) {
+    return (text || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase()
+      .trim()
+      .replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "")
+      .replace(/\s+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  let target =
+    content.querySelector(`[id="${CSS.escape(decoded)}"]`) ||
+    content.querySelector(`[name="${CSS.escape(decoded)}"]`);
+  if (!target) {
+    const slug = slugify(decoded);
+    target =
+      content.querySelector(`[id="${CSS.escape(slug)}"]`) ||
+      content.querySelector(`[name="${CSS.escape(slug)}"]`);
+  }
+
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const headingEl =
+      target.nextElementSibling && /^H[1-6]$/.test(target.nextElementSibling.tagName)
+        ? target.nextElementSibling
+        : target;
+    headingEl.style.transition = "background-color 0.4s ease";
+    headingEl.style.backgroundColor = "var(--warn-bg, #fef9c3)";
+    setTimeout(() => {
+      headingEl.style.backgroundColor = "";
+    }, 2000);
+  }
+}
+
 async function showLeftTab(tab) {
   state.leftTab = tab;
   const fsBtn = $("#btn-fullscreen");
@@ -250,15 +298,41 @@ async function showLeftTab(tab) {
       return;
     }
     const opts = {
+      onLessonNavigate: (id, targetTab = "theory", anchor = "") => {
+        const hash = anchor ? "#" + anchor : "";
+        if (id === l.id) {
+          if (state.leftTab !== targetTab) {
+            showLeftTab(targetTab);
+            if (anchor) setTimeout(() => scrollToHash(anchor), 150);
+          } else if (anchor) {
+            scrollToHash(anchor);
+          }
+        } else {
+          goTo(id, `&tab=${targetTab}${hash}`);
+        }
+      },
       onTheoryLink: (id, anchor) => {
-        if (id === l.id) showLeftTab("theory");
-        else goTo(id, `&tab=theory${anchor ? "#" + anchor : ""}`);
+        if (id === l.id) {
+          if (state.leftTab !== "theory") {
+            showLeftTab("theory");
+            if (anchor) setTimeout(() => scrollToHash(anchor), 150);
+          } else if (anchor) {
+            scrollToHash(anchor);
+          }
+        } else {
+          goTo(id, `&tab=theory${anchor ? "#" + anchor : ""}`);
+        }
       },
     };
     if (window.marked && window.DOMPurify) {
       await renderInto(content, md, opts);
     } else {
       content.replaceChildren(Object.assign(document.createElement("pre"), { textContent: md }));
+    }
+
+    // Tự động cuộn và làm nổi bật mục tương ứng với hash URL
+    if (location.hash) {
+      setTimeout(() => scrollToHash(location.hash.slice(1)), 150);
     }
     return;
   }
@@ -534,6 +608,206 @@ function wireToolbar() {
       document.querySelectorAll(".pane").forEach((p) => p.classList.toggle("mobile-active", p.id === b.dataset.mobilePane));
     })
   );
+
+  // Search Dialog (Command Palette Ctrl+K)
+  const searchDialog = $("#search-dialog");
+  const searchInput = $("#search-input");
+  const searchResultsEl = $("#search-results");
+  let searchActiveIdx = -1;
+  let searchCurrentItems = [];
+
+  const POPULAR_SUGGESTIONS = [
+    'parseInt',
+    'vòng lặp for',
+    'Object.freeze',
+    'Arrow function',
+    'Destructuring',
+    'Truthy Falsy',
+    'Map và Set',
+    'Hoisting',
+  ];
+
+  function escH(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function renderInitialSuggestions() {
+    searchResultsEl.innerHTML = `
+      <div class="sr-empty">
+        <p style="margin-bottom: 8px;">Nhập 1 hoặc vài cụm từ để tìm vị trí bài học chính xác...</p>
+        <div style="font-size: 0.8rem; color: var(--muted); margin-bottom: 8px;">Gợi ý tìm nhanh:</div>
+        <div class="search-suggestions">
+          ${POPULAR_SUGGESTIONS.map((s) => `<button type="button" class="search-sug-tag" data-q="${escH(s)}">${escH(s)}</button>`).join('')}
+        </div>
+      </div>
+    `;
+    searchResultsEl.querySelectorAll('.search-sug-tag').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        searchInput.value = btn.dataset.q;
+        triggerSearch(btn.dataset.q);
+      });
+    });
+  }
+
+  function openSearchDialog() {
+    loadSearchIndex().catch(() => {});
+    searchInput.value = '';
+    renderInitialSuggestions();
+    searchActiveIdx = -1;
+    searchCurrentItems = [];
+    searchDialog.showModal();
+    searchInput.focus();
+  }
+
+  function closeSearchDialog() {
+    searchDialog.close();
+    searchActiveIdx = -1;
+    searchCurrentItems = [];
+  }
+
+  function renderSearchResults(results) {
+    searchCurrentItems = results;
+    searchActiveIdx = -1;
+    if (!results.length) {
+      searchResultsEl.innerHTML = `
+        <div class="sr-empty">
+          <p>Không tìm thấy nội dung phù hợp với từ khóa này.</p>
+          <div style="font-size: 0.8rem; color: var(--muted); margin-top: 10px;">Thử tìm với các từ khóa phổ biến:</div>
+          <div class="search-suggestions">
+            ${POPULAR_SUGGESTIONS.slice(0, 5).map((s) => `<button type="button" class="search-sug-tag" data-q="${escH(s)}">${escH(s)}</button>`).join('')}
+          </div>
+        </div>
+      `;
+      searchResultsEl.querySelectorAll('.search-sug-tag').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          searchInput.value = btn.dataset.q;
+          triggerSearch(btn.dataset.q);
+        });
+      });
+      return;
+    }
+
+    const itemsHtml = results.map((r, i) => {
+      const isTheory = r.type === 'theory';
+      const badgeLabel = isTheory ? '📖 Lý thuyết' : '📝 Bài tập';
+      const badgeClass = isTheory ? 'sr-badge' : 'sr-badge exercise';
+      const titleHtml = r.headingHighlight || escH(r.heading);
+
+      return `
+        <a class="sr-item" href="${resultUrl(r, true)}" data-idx="${i}">
+          <div class="sr-bc">
+            <span class="${badgeClass}">${badgeLabel}</span>
+            <span>${escH(r.breadcrumb)}</span>
+          </div>
+          <div class="sr-heading">${titleHtml}</div>
+          <div class="sr-sn">${r.snippet || escH(r.body.slice(0, 110))}</div>
+        </a>
+      `;
+    }).join('');
+
+    const countHeader = `<div class="search-count-header">Tìm thấy ${results.length} mục phù hợp</div>`;
+    searchResultsEl.innerHTML = countHeader + itemsHtml + '<div class="sr-footer">↑↓ duyệt · Enter mở · Esc đóng</div>';
+  }
+
+  function setSearchActive(idx) {
+    const items = searchResultsEl.querySelectorAll('.sr-item');
+    items.forEach((item, i) => item.classList.toggle('active', i === idx));
+    searchActiveIdx = idx;
+    if (items[idx]) {
+      items[idx].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  async function handleSelectResult(r) {
+    closeSearchDialog();
+    if (r.lessonId === state.lesson.id) {
+      const targetTab = r.type === 'theory' ? 'theory' : 'debai';
+      await showLeftTab(targetTab);
+      if (r.anchor) {
+        setTimeout(() => {
+          const content = $("#left-content");
+          const targetEl = content.querySelector(`[id="${CSS.escape(r.anchor)}"]`) ||
+                           content.querySelector(`[name="${CSS.escape(r.anchor)}"]`);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headingEl = targetEl.nextElementSibling && /^H[1-6]$/.test(targetEl.nextElementSibling.tagName)
+              ? targetEl.nextElementSibling
+              : targetEl;
+            headingEl.style.transition = 'background-color 0.4s ease';
+            headingEl.style.backgroundColor = 'var(--warn-bg, #fef9c3)';
+            setTimeout(() => {
+              headingEl.style.backgroundColor = '';
+            }, 2000);
+          }
+        }, 120);
+      }
+    } else {
+      window.location.href = resultUrl(r, true);
+    }
+  }
+
+  async function triggerSearch(q) {
+    const query = q.trim();
+    if (!query) {
+      renderInitialSuggestions();
+      searchCurrentItems = [];
+      return;
+    }
+    await loadSearchIndex();
+    renderSearchResults(search(query));
+  }
+
+  let searchDebounce;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchDebounce);
+    const q = searchInput.value;
+    searchDebounce = setTimeout(() => {
+      triggerSearch(q);
+    }, 120);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSearchDialog();
+      return;
+    }
+    if (!searchCurrentItems.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSearchActive(Math.min(searchActiveIdx + 1, searchCurrentItems.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSearchActive(Math.max(searchActiveIdx - 1, 0));
+    } else if (e.key === 'Enter' && searchActiveIdx >= 0) {
+      e.preventDefault();
+      const r = searchCurrentItems[searchActiveIdx];
+      if (r) handleSelectResult(r);
+    }
+  });
+
+  searchResultsEl.addEventListener('click', (e) => {
+    const item = e.target.closest('.sr-item');
+    if (!item) return;
+    e.preventDefault();
+    const idx = Number(item.dataset.idx);
+    const r = searchCurrentItems[idx];
+    if (r) handleSelectResult(r);
+  });
+
+  searchDialog.addEventListener('click', (e) => {
+    if (e.target === searchDialog) closeSearchDialog();
+  });
+
+  $("#search-dialog-close").addEventListener("click", closeSearchDialog);
+  $("#btn-search").addEventListener("click", openSearchDialog);
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openSearchDialog();
+    }
+  });
 
   $("#lesson-select").addEventListener("change", (e) => goTo(Number(e.target.value)));
   $("#btn-export").addEventListener("click", exportProgress);

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Study Program - Lộ Trình Học JS Thực Chiến</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate icon" href="./favicon.ico">
     <style>
         :root {
             --primary: #2563eb;
@@ -155,6 +157,185 @@
             border-top: 1px solid var(--border);
             padding-top: 24px;
         }
+
+        /* ===== Global Search Styles ===== */
+        .search-container {
+            position: relative;
+            max-width: 680px;
+            margin: 0 auto 32px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 18px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+        .search-icon {
+            font-size: 1.15rem;
+            margin-right: 12px;
+            user-select: none;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.05rem;
+            background: transparent;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-kbd {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: system-ui;
+            border: 1px solid var(--border);
+            user-select: none;
+            white-space: nowrap;
+        }
+        .search-results {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+            max-height: 480px;
+            overflow-y: auto;
+            z-index: 200;
+        }
+        .sr-item {
+            display: block;
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.1s;
+        }
+        .sr-item:last-child {
+            border-bottom: none;
+        }
+        .sr-item:hover,
+        .sr-item.active {
+            background: #eff6ff;
+        }
+        .sr-item .sr-bc {
+            font-size: 0.78rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sr-item .sr-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #dbeafe;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        .sr-item .sr-badge.exercise {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .sr-item .sr-heading {
+            font-size: 0.98rem;
+            font-weight: 650;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        .sr-item .sr-sn {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+        .sr-item mark {
+            background: #fef08a;
+            color: #854d0e;
+            border-radius: 2px;
+            padding: 1px 2px;
+            font-weight: 600;
+        }
+        .sr-empty {
+            padding: 28px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .search-clear-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 15px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-right: 6px;
+            transition: all 0.15s;
+        }
+        .search-clear-btn:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+        .search-count-header {
+            padding: 8px 18px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            border-radius: 12px 12px 0 0;
+        }
+        .search-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .search-sug-tag {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 550;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .search-sug-tag:hover {
+            background: #eff6ff;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .sr-footer {
+            padding: 8px 18px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            background: #f8fafc;
+            border-radius: 0 0 12px 12px;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +352,19 @@
 
         <div class="guide-box" style="background: #fdf4ff; border-left-color: #a855f7; margin-bottom: 28px;">
             🧭 <strong>Bản đồ liên kết kiến thức:</strong> Trước khi học một bài mới, hãy kiểm tra <a href="./agent.md" target="_blank" style="color: #9333ea; font-weight: 700; text-decoration: underline;">Bản đồ điều kiện tiên quyết (Knowledge Dependency Graph)</a> để biết chính xác bạn cần chuẩn bị nền tảng gì từ các bài cũ!
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input"
+                       placeholder="Tìm kiếm nội dung... (VD: parseInt, vòng lặp, Object.freeze)"
+                       autocomplete="off" spellcheck="false">
+                <button type="button" id="search-clear-btn" class="search-clear-btn" title="Xóa" hidden>✕</button>
+                <kbd class="search-kbd">Ctrl+K</kbd>
+            </div>
+            <div id="search-results" class="search-results" hidden></div>
         </div>
 
         <!-- PHẦN 2: BÀI TẬP THỰC HÀNH -->
@@ -358,11 +552,12 @@
                     <div class="card-tags">
                         <span class="tag">Properties & Methods</span>
                         <span class="tag">Object & this</span>
+                        <span class="tag">keys/values/entries</span>
                         <span class="tag">Enhanced Literals</span>
                         <span class="tag">Destructuring</span>
                     </div>
                     <h3>12. Đối tượng (Object) & this</h3>
-                    <p>Object Literals, Enhanced Object Literals (Property/Method/Computed), Nested Destructuring, Quy ước đặt tên (Noun vs Verb), Dot vs Bracket, const & Object.freeze, for...in, chuyên sâu this.</p>
+                    <p>Object Literals, Bộ ba Object.keys/values/entries (kiểm tra rỗng, tính max/TB), Enhanced Object Literals, Nested Destructuring, Quy ước đặt tên (Noun vs Verb), Dot vs Bracket, const & freeze, for...in, chuyên sâu this.</p>
                 </div>
                 <div class="card-links">
                     <a href="./exercises/12-objects/loigiai.html" class="btn btn-primary">Chạy Console</a>
@@ -449,6 +644,23 @@
                     <a href="./exercises/17-json-and-error-handling/debai.md" class="btn btn-secondary">Đề bài</a>
                 </div>
             </div>
+
+            <!-- 18 -->
+            <div class="card" style="border: 2px solid #c7d2fe; background: #faf5ff;">
+                <div>
+                    <div class="card-tags">
+                        <span class="tag" style="background: #e0e7ff; color: #4338ca;">Cheat Sheet</span>
+                        <span class="tag" style="background: #ede9fe; color: #6b21a8;">API Reference</span>
+                        <span class="tag" style="background: #fce7f3; color: #9d174d;">Tra cứu toàn bộ</span>
+                    </div>
+                    <h3>18. Sổ Tay Tra Cứu Toàn Diện: Thuộc Tính & Phương Thức</h3>
+                    <p>Bảng tổng hợp bách khoa toàn thư toàn bộ thuộc tính, phương thức, hàm tích hợp sẵn (Object, Array, String, Number, Math, Map, Set, JSON, DOM) với 2 yếu tố cốt lõi: Tham số nhận vào (Input) và Giá trị trả về (Output).</p>
+                </div>
+                <div class="card-links">
+                    <a href="./exercises/18-javascript-methods-and-properties-reference/loigiai.html" class="btn btn-primary">Mở Tra Cứu</a>
+                    <a href="./exercises/18-javascript-methods-and-properties-reference/debai.md" class="btn btn-secondary">Hướng dẫn</a>
+                </div>
+            </div>
         </div>
 
         <footer>
@@ -508,6 +720,201 @@
             heading.insertAdjacentElement('afterend', box);
         }
     })();
+    </script>
+    <script type="module">
+        import { loadSearchIndex, search, resultUrl } from './lab/js/search.js';
+
+        const searchInput = document.getElementById('search-input');
+        const searchClearBtn = document.getElementById('search-clear-btn');
+        const resultsBox = document.getElementById('search-results');
+        let activeIndex = -1;
+        let currentResults = [];
+
+        const POPULAR_SUGGESTIONS = [
+            'parseInt',
+            'vòng lặp for',
+            'Object.freeze',
+            'Arrow function',
+            'Destructuring',
+            'Truthy Falsy',
+            'Map và Set',
+            'Hoisting',
+        ];
+
+        // Nạp trước dữ liệu index
+        loadSearchIndex().catch(() => {});
+
+        function escHtml(s) {
+            return String(s || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function closeResults() {
+            resultsBox.hidden = true;
+            currentResults = [];
+            activeIndex = -1;
+        }
+
+        function renderInitialSuggestions() {
+            resultsBox.innerHTML = `
+                <div class="sr-empty">
+                    <p style="margin-bottom: 8px;">Nhập từ khóa bất kỳ để tìm vị trí bài học chính xác...</p>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Gợi ý tìm nhanh:</div>
+                    <div class="search-suggestions">
+                        ${POPULAR_SUGGESTIONS.map((s) => `<button type="button" class="search-sug-tag" data-q="${escHtml(s)}">${escHtml(s)}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+            resultsBox.querySelectorAll('.search-sug-tag').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    searchInput.value = btn.dataset.q;
+                    searchClearBtn.hidden = false;
+                    triggerSearch(btn.dataset.q);
+                });
+            });
+            resultsBox.hidden = false;
+        }
+
+        function renderResults(results) {
+            currentResults = results;
+            activeIndex = -1;
+            if (!results.length) {
+                resultsBox.innerHTML = `
+                    <div class="sr-empty">
+                        <p>Không tìm thấy nội dung phù hợp với từ khóa này.</p>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">Thử tìm với các từ khóa phổ biến:</div>
+                        <div class="search-suggestions">
+                            ${POPULAR_SUGGESTIONS.slice(0, 5).map((s) => `<button type="button" class="search-sug-tag" data-q="${escHtml(s)}">${escHtml(s)}</button>`).join('')}
+                        </div>
+                    </div>
+                `;
+                resultsBox.querySelectorAll('.search-sug-tag').forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        searchInput.value = btn.dataset.q;
+                        searchClearBtn.hidden = false;
+                        triggerSearch(btn.dataset.q);
+                    });
+                });
+                resultsBox.hidden = false;
+                return;
+            }
+
+            const itemsHtml = results.map((r, i) => {
+                const isTheory = r.type === 'theory';
+                const badgeLabel = isTheory ? '📖 Lý thuyết' : '📝 Bài tập';
+                const badgeClass = isTheory ? 'sr-badge' : 'sr-badge exercise';
+                const url = resultUrl(r, false);
+                const titleHtml = r.headingHighlight || escHtml(r.heading);
+
+                return `
+                    <a class="sr-item" href="${url}" data-idx="${i}">
+                        <div class="sr-bc">
+                            <span class="${badgeClass}">${badgeLabel}</span>
+                            <span>${escHtml(r.breadcrumb)}</span>
+                        </div>
+                        <div class="sr-heading">${titleHtml}</div>
+                        <div class="sr-sn">${r.snippet || escHtml(r.body.slice(0, 120))}</div>
+                    </a>
+                `;
+            }).join('');
+
+            const countHeader = `<div class="search-count-header">Tìm thấy ${results.length} mục phù hợp</div>`;
+            resultsBox.innerHTML = countHeader + itemsHtml + '<div class="sr-footer">↑↓ để chọn · Enter để mở · Esc để đóng</div>';
+            resultsBox.hidden = false;
+        }
+
+        function setActiveItem(idx) {
+            const items = resultsBox.querySelectorAll('.sr-item');
+            items.forEach((item, i) => item.classList.toggle('active', i === idx));
+            activeIndex = idx;
+            if (items[idx]) {
+                items[idx].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        async function triggerSearch(query) {
+            const q = query.trim();
+            if (!q) {
+                renderInitialSuggestions();
+                return;
+            }
+            await loadSearchIndex();
+            renderResults(search(q));
+        }
+
+        let debounceTimer;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            const query = searchInput.value;
+            searchClearBtn.hidden = !query;
+            if (!query.trim()) {
+                renderInitialSuggestions();
+                return;
+            }
+            debounceTimer = setTimeout(() => {
+                triggerSearch(query);
+            }, 120);
+        });
+
+        searchInput.addEventListener('focus', () => {
+            if (!searchInput.value.trim()) {
+                renderInitialSuggestions();
+            } else if (currentResults.length) {
+                resultsBox.hidden = false;
+            }
+        });
+
+        searchClearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchClearBtn.hidden = true;
+            searchInput.focus();
+            renderInitialSuggestions();
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeResults();
+                searchInput.blur();
+                return;
+            }
+            if (!currentResults.length) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                setActiveItem(Math.min(activeIndex + 1, currentResults.length - 1));
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                setActiveItem(Math.max(activeIndex - 1, 0));
+            } else if (e.key === 'Enter' && activeIndex >= 0) {
+                e.preventDefault();
+                const selected = resultsBox.querySelectorAll('.sr-item')[activeIndex];
+                if (selected) {
+                    window.location.href = selected.href;
+                }
+            }
+        });
+
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                closeResults();
+            }
+        });
+
+        // Phím tắt toàn cục Ctrl+K hoặc Cmd+K
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+                if (!searchInput.value.trim()) {
+                    renderInitialSuggestions();
+                }
+            }
+        });
     </script>
 </body>
 </html>

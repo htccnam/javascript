@@ -36,6 +36,9 @@
 6. [Duyệt Qua Các Cặp Key-Value Của Object](#6-duyệt-qua-các-cặp-key-value-của-object)
    - [6.1. Vòng lặp for...in duyệt qua các Keys](#61-vòng-lặp-forin-duyệt-qua-các-keys)
    - [6.2. Duyệt qua bộ ba phương thức tĩnh: Object.keys, Object.values, Object.entries](#62-duyệt-qua-bộ-ba-phương-thức-tĩnh-objectkeys-objectvalues-objectentries)
+     - [6.2.1. Object.keys(obj): Trích xuất danh sách khóa & Kiểm tra đối tượng rỗng](#621-objectkeysobj-trích-xuất-danh-sách-khóa--kiểm-tra-đối-tượng-rỗng)
+     - [6.2.2. Object.values(obj): Trích xuất danh sách giá trị & Tính toán thống kê](#622-objectvaluesobj-trích-xuất-danh-sách-giá-trị--tính-toán-thống-kê)
+     - [6.2.3. Object.entries(obj): Trích xuất cặp [key, value] & Biến đổi dữ liệu](#623-objectentriesobj-trích-xuất-cặp-key-value--biến-đổi-dữ-liệu)
 7. [Phương Thức (Method) Nâng Cao và Bản Chất Từ Khóa this](#7-phương-thức-method-nâng-cao-và-bản-chất-từ-khóa-this)
    - [7.1. Từ khóa this là gì? Ngữ cảnh gọi phương thức](#71-từ-khóa-this-là-gì-ngữ-cảnh-gọi-phương-thức)
    - [7.2. Tại sao cần sử dụng this? (So sánh this.name vs person.name)](#72-tại-sao-cần-sử-dụng-this-so-sánh-thisname-vs-personname)
@@ -56,7 +59,7 @@
 > - Hồ sơ chứa các thông tin định danh (Thuộc tính / Properties): Tên, tuổi, chức vụ, mức lương — được tổ chức theo cặp nhãn tên và giá trị (`key: value`).
 > - Hồ sơ cũng quy định các hành động nhân viên đó có thể thực hiện (Phương thức / Methods): Điểm danh, tính lương thưởng, ký báo cáo.
 > - Từ khóa **`this`** chính là đại từ xưng hô **"Tôi"** của nhân viên đó: Khi nhân viên An nói "Lương của tôi (`this.salary`)", nó trỏ chính xác vào mức lương trong hồ sơ của An, chứ không nhầm sang hồ sơ của đồng nghiệp bên cạnh!
-> - Chiếc nhãn **`const`** đóng đinh trên cửa tủ hồ sơ: Bạn không được phép nhổ chiếc nhãn đó sang dán lên chiếc tủ khác (`person = { ... }` $\rightarrow$ lỗi), nhưng bạn hoàn toàn có thể mở ngăn kéo tủ ra để cập nhật năm sinh hay đổi chức vụ cho nhân viên (`person.age = 26`). Nếu muốn niêm phong tuyệt đối cả ruột lẫn vỏ, bạn cần ổ khóa bảo mật **`Object.freeze()`**!
+> - Chiếc nhãn **`const`** đóng đinh trên cửa tủ hồ sơ: Bạn không được phép nhổ chiếc nhãn đó sang dán lên chiếc tủ khác (`person = { ... }` → lỗi), nhưng bạn hoàn toàn có thể mở ngăn kéo tủ ra để cập nhật năm sinh hay đổi chức vụ cho nhân viên (`person.age = 26`). Nếu muốn niêm phong tuyệt đối cả ruột lẫn vỏ, bạn cần ổ khóa bảo mật **`Object.freeze()`**!
 > - Kỹ thuật **Object Destructuring** giống như chiếc máy quét tự động: Chỉ cần bạn yêu cầu "Hãy trích xuất cho tôi Tên và Email", máy sẽ tự động rút trích 2 thông tin đó ra thành 2 biến riêng biệt để dùng ngay mà không cần bạn phải mở từng trang hồ sơ xem thủ công.
 
 ---
@@ -433,7 +436,7 @@ graph LR
 ```
 
 - Khi bạn sửa thuộc tính `person.name = "Jane"`: Biến `person` trên Stack vẫn giữ nguyên địa chỉ `#0x101`, chỉ có nội dung bên trong Heap tại ô nhớ `#0x101` là thay đổi. Do địa chỉ không bị gán lại nên **hoàn toàn hợp lệ!**
-- Khi bạn gán `person = { name: "Mike" }`: Một Object mới được sinh ra tại ô nhớ khác (ví dụ `#0x202`), và lệnh này cố gắng ghi đè địa chỉ mới `#0x202` vào biến `person` trên Stack $\rightarrow$ Vi phạm quy tắc của `const` $\rightarrow$ Ném lỗi `TypeError` ngay lập tức!
+- Khi bạn gán `person = { name: "Mike" }`: Một Object mới được sinh ra tại ô nhớ khác (ví dụ `#0x202`), và lệnh này cố gắng ghi đè địa chỉ mới `#0x202` vào biến `person` trên Stack → Vi phạm quy tắc của `const` → Ném lỗi `TypeError` ngay lập tức!
 
 <a id="43-sửa-thuộc-tính-vs-gán-lại-toàn-bộ-object-typeerror"></a>
 ### 4.3. Sửa thuộc tính vs Gán lại toàn bộ Object (TypeError)
@@ -620,28 +623,190 @@ for (const key in person) {
 <a id="62-duyệt-qua-bộ-ba-phương-thức-tĩnh-objectkeys-objectvalues-objectentries"></a>
 ### 6.2. Duyệt qua bộ ba phương thức tĩnh: Object.keys, Object.values, Object.entries
 
-Constructor `Object` cung cấp 3 phương thức tĩnh cực kỳ mạnh mẽ giúp chuyển đổi các thành phần của Object thành Mảng để dễ dàng kết hợp cùng `for...of` hoặc các hàm xử lý mảng (`map`, `filter`, `forEach`):
+Trong thực tế lập trình JavaScript, `Object` không chỉ là một kiểu dữ liệu mà còn là một **Standard Built-in Constructor** cung cấp bộ ba phương thức tĩnh (*static methods*) cực kỳ quan trọng và phổ biến nhất: `Object.keys()`, `Object.values()`, và `Object.entries()`.
+
+Cả 3 phương thức này đều nhận vào một đối tượng mục tiêu và "bóc tách" các thành phần bên trong thành một **Array (Mảng)**, giúp chúng ta tận dụng toàn bộ sức mạnh của các phương thức xử lý mảng hiện đại (`for...of`, `forEach`, `map`, `filter`, `reduce`).
+
+```mermaid
+flowchart TD
+    O["Object: { a: 1, b: 2, c: 3 }"]
+    O -->|"Object.keys(obj)"| K["['a', 'b', 'c'] (Mảng chứa danh sách Keys)"]
+    O -->|"Object.values(obj)"| V["[1, 2, 3] (Mảng chứa danh sách Values)"]
+    O -->|"Object.entries(obj)"| E["[['a', 1], ['b', 2], ['c', 3]] (Mảng 2 chiều cặp [key, value])"]
+```
+
+<a id="621-objectkeysobj-trích-xuất-danh-sách-khóa--kiểm-tra-đối-tượng-rỗng"></a>
+#### 6.2.1. Object.keys(obj): Trích xuất danh sách khóa & Kiểm tra đối tượng rỗng
+
+**Định nghĩa:**
+Phương thức `Object.keys(obj)` nhận vào một object và trả về một mảng chứa tất cả các **keys** (tức là tên của các thuộc tính tự thân có thể liệt kê - *enumerable own property names*) từ đối tượng đó.
+
+Điều này rất hữu ích khi bạn cần duyệt qua tất cả các thuộc tính của một đối tượng, hoặc khi bạn muốn kiểm tra xem đối tượng hiện có những thuộc tính nào.
 
 ```javascript
-const scores = { math: 9, english: 8, physics: 8.5 };
+// Định nghĩa một đối tượng với ba thuộc tính
+const obj = { a: 1, b: 2, c: 3 };
 
-// 1. Object.keys(obj) -> Mảng chứa tất cả các keys
-const subjectList = Object.keys(scores);
-console.log(subjectList); // ["math", "english", "physics"]
+// Sử dụng Object.keys để lấy ra tất cả keys của đối tượng
+console.log(Object.keys(obj));
+// (3) ["a", "b", "c"]
+```
 
-// 2. Object.values(obj) -> Mảng chứa tất cả các values
-const scoreList = Object.values(scores);
-console.log(scoreList);   // [9, 8, 8.5]
+Trong ví dụ trên, `Object.keys(obj)` trả về một mảng chứa các keys `"a"`, `"b"`, và `"c"`.
 
-// 3. Object.entries(obj) -> Mảng 2 chiều chứa các cặp [key, value]
-const entries = Object.entries(scores);
-console.log(entries);     // [["math", 9], ["english", 8], ["physics", 8.5]]
+**Ứng dụng thực tế 1: Duyệt qua các keys của đối tượng**
+Bạn có thể kết hợp `Object.keys()` với vòng lặp `for...of` hoặc `forEach()` để duyệt qua danh sách key và truy xuất giá trị tương ứng thông qua Bracket notation:
 
-// Duyệt bằng for...of kết hợp Destructuring cặp [key, value]:
-for (const [subject, score] of Object.entries(scores)) {
+```javascript
+const user = { username: "alex99", role: "admin", status: "active" };
+
+// Duyệt qua từng key của user bằng for...of
+for (const key of Object.keys(user)) {
+  console.log(`${key}: ${user[key]}`);
+}
+// username: alex99
+// role: admin
+// status: active
+```
+
+**Ứng dụng thực tế 2: Kỹ thuật kinh điển kiểm tra Đối tượng rỗng (Empty Object Check)**
+Trong JavaScript, bạn **tuyệt đối không được** so sánh `obj === {}` để kiểm tra đối tượng rỗng. Trong cơ chế quản lý bộ nhớ, hai object literals `{}` là hai con trỏ trỏ đến hai vùng nhớ Heap hoàn toàn độc lập, nên phép so sánh luôn cho ra `false`:
+
+```javascript
+console.log({} === {}); // false (hai địa chỉ ô nhớ khác nhau!)
+```
+
+Thay vào đó, giải pháp chuẩn mực công nghiệp và an toàn 100% là kiểm tra độ dài của mảng trả về từ `Object.keys()`:
+
+```javascript
+const emptyObj = {};
+const activeUser = { id: 101, name: "Alice" };
+
+// Kiểm tra độ dài mảng keys:
+const isEmpty = (target) => Object.keys(target).length === 0;
+
+console.log(isEmpty(emptyObj));   // true (Mảng keys [] có độ dài là 0)
+console.log(isEmpty(activeUser)); // false (Mảng keys ['id', 'name'] có độ dài là 2)
+```
+
+<a id="622-objectvaluesobj-trích-xuất-danh-sách-giá-trị--tính-toán-thống-kê"></a>
+#### 6.2.2. Object.values(obj): Trích xuất danh sách giá trị & Tính toán thống kê
+
+**Định nghĩa:**
+Phương thức `Object.values(obj)` trả về một mảng chứa tất cả các **values** (giá trị của các thuộc tính tự thân có thể liệt kê) từ một đối tượng, theo đúng thứ tự xuất hiện của chúng.
+
+Điều này rất hữu ích khi bạn chỉ quan tâm đến các giá trị mà không cần biết chúng thuộc về key nào.
+
+```javascript
+// Định nghĩa một đối tượng với ba thuộc tính
+const obj = { a: 1, b: 2, c: 3 };
+
+// Sử dụng Object.values để lấy ra tất cả values của đối tượng
+console.log(Object.values(obj));
+// (3) [1, 2, 3]
+```
+
+Trong ví dụ trên, `Object.values(obj)` trả về một mảng chứa các giá trị `1`, `2`, và `3`.
+
+**Ứng dụng thực tế 1: Tính toán thống kê (Tổng, Trung bình, Min, Max)**
+Khi lưu trữ bảng điểm số học tập hoặc số liệu thống kê trong một object, ta có thể dùng `Object.values()` để chuyển toàn bộ giá trị thành mảng rồi áp dụng `reduce()` hoặc `Math.max()`:
+
+```javascript
+const studentScores = {
+  math: 8.5,
+  english: 7.5,
+  physics: 9.0,
+  chemistry: 8.0
+};
+
+// 1. Trích xuất toàn bộ điểm số thành mảng
+const scoreList = Object.values(studentScores);
+console.log(scoreList); // [8.5, 7.5, 9.0, 8.0]
+
+// 2. Tính tổng và điểm trung bình bằng reduce:
+const totalScore = scoreList.reduce((acc, curr) => acc + curr, 0);
+const averageScore = totalScore / scoreList.length;
+console.log(`Điểm trung bình : ${averageScore}`); // 8.25
+
+// 3. Tìm điểm số cao nhất bằng Math.max kết hợp toán tử Spread (...):
+const maxScore = Math.max(...scoreList);
+console.log(`Điểm cao nhất: ${maxScore}`); // 9
+```
+
+**Ứng dụng thực tế 2: Kiểm tra xem đối tượng có chứa một giá trị cụ thể không**
+Dễ dàng kết hợp với phương thức `.includes()` của mảng:
+
+```javascript
+const permissions = { editor: "READ_WRITE", viewer: "READ_ONLY", guest: "NONE" };
+
+const hasAdminRole = Object.values(permissions).includes("ADMIN");
+console.log(hasAdminRole); // false
+```
+
+<a id="623-objectentriesobj-trích-xuất-cặp-key-value--biến-đổi-dữ-liệu"></a>
+#### 6.2.3. Object.entries(obj): Trích xuất cặp [key, value] & Biến đổi dữ liệu
+
+**Định nghĩa:**
+Phương thức `Object.entries(obj)` trả về một mảng chứa các cặp `[key, value]` từ một đối tượng, mỗi cặp được biểu diễn dưới dạng một mảng hai phần tử: `[keyName, propertyValue]`.
+
+Điều này rất hữu ích khi bạn muốn duyệt qua cả keys và values của một đối tượng cùng một lúc một cách tiện lợi.
+
+```javascript
+// Định nghĩa một đối tượng với ba thuộc tính
+const obj = { a: 1, b: 2, c: 3 };
+
+// Sử dụng Object.entries để lấy ra tất cả các cặp [key, value] của đối tượng
+console.log(Object.entries(obj));
+// (3) [["a", 1], ["b", 2], ["c", 3]]
+```
+
+Trong ví dụ trên, `Object.entries(obj)` trả về một mảng chứa ba mảng con, mỗi mảng con là một cặp `[key, value]`.
+
+**Ứng dụng thực tế 1: Duyệt qua các cặp key-value bằng for...of kết hợp Destructuring**
+Cú pháp này gọn gàng và trực quan hơn rất nhiều so với vòng lặp `for...in`:
+
+```javascript
+const studentScores = {
+  math: 8.5,
+  english: 7.5,
+  physics: 9.0,
+  chemistry: 8.0
+};
+
+// Duyệt qua cả môn và điểm cực kỳ thanh lịch:
+for (const [subject, score] of Object.entries(studentScores)) {
   console.log(`Môn ${subject}: ${score} điểm`);
 }
+// Môn math: 8.5 điểm
+// Môn english: 7.5 điểm
+// Môn physics: 9 điểm
+// Môn chemistry: 8 điểm
 ```
+
+**Ứng dụng thực tế 2: Đường ống lọc & Biến đổi dữ liệu (Object.entries -> filter/map -> Object.fromEntries)**
+Do bản thân Object không sở hữu trực tiếp các phương thức mảng như `.filter()` hay `.map()`, ta có thể kết hợp `Object.entries()` để biến đổi và sau đó gom lại thành Object mới bằng `Object.fromEntries()`:
+
+```javascript
+const prices = { apple: 15, banana: 8, orange: 25, mango: 30 };
+
+// Lọc các mặt hàng có giá > 10 và tăng giá thêm 20%:
+const updatedPrices = Object.fromEntries(
+  Object.entries(prices)
+    .filter(([fruit, price]) => price > 10)
+    .map(([fruit, price]) => [fruit, price * 1.2])
+);
+
+console.log(updatedPrices);
+// { apple: 18, orange: 30, mango: 36 }
+```
+
+**Bảng so sánh tổng kết bộ ba phương thức tĩnh của Object:**
+
+| Phương thức | Tham số | Giá trị trả về (Array) | Ứng dụng phổ biến nhất |
+| :--- | :--- | :--- | :--- |
+| `Object.keys(obj)` | Object | `['key1', 'key2', ...]` | Lấy danh sách tên thuộc tính; Kiểm tra object rỗng (`length === 0`). |
+| `Object.values(obj)` | Object | `[val1, val2, ...]` | Lấy danh sách giá trị để tính toán (`reduce`, `Math.max`, `Math.min`). |
+| `Object.entries(obj)` | Object | `[['k1', 'v1'], ['k2', 'v2']]` | Duyệt `for...of` với `[key, val]`; Lọc/map dữ liệu kết hợp `Object.fromEntries`. |
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
@@ -894,7 +1059,7 @@ console.log(person?.address?.street); // An toàn, trả về undefined nếu ad
 ### 9.2. Sử dụng từ khóa dành riêng (Reserved Keywords) làm key
 
 Trong JavaScript, có những từ khóa dành riêng của ngôn ngữ như `function`, `var`, `class`, `delete`, `return`, `default`, `new`.
-- Đặt tên key trùng từ khóa dành riêng gây xung đột khi dùng Destructuring (`const { function } = obj;` $\rightarrow$ `SyntaxError`).
+- Đặt tên key trùng từ khóa dành riêng gây xung đột khi dùng Destructuring (`const { function } = obj;` → `SyntaxError`).
 - **Giải pháp:** Luôn sử dụng danh từ mô tả rõ nghĩa thay thế: `fn`, `action`, `variable`, `isDeleted`.
 
 <a id="93-nhầm-lẫn-giữa-dot-notation-và-bracket-notation-với-biến-động"></a>

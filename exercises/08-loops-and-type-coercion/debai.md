@@ -84,8 +84,8 @@ let y = 10;
 
 **Yêu cầu:**
 1. Thực hiện:
-   - `let res1 = ++x;` $\rightarrow$ In ra giá trị của `res1` và `x`. Giải thích cơ chế tiền tố.
-   - `let res2 = y++;` $\rightarrow$ In ra giá trị của `res2` và `y`. Giải thích cơ chế hậu tố.
+   - `let res1 = ++x;` → In ra giá trị của `res1` và `x`. Giải thích cơ chế tiền tố.
+   - `let res2 = y++;` → In ra giá trị của `res2` và `y`. Giải thích cơ chế hậu tố.
 2. Cho biểu thức sau, hãy tính toán từng bước và kiểm chứng bằng code:
    ```javascript
    let n = 4;
@@ -105,7 +105,7 @@ let y = 10;
 
 **Yêu cầu:**
 1. Viết một vòng lặp `for` (dạng Block Statement) in ra dãy số chẵn từ 2 đến 10.
-2. Viết một vòng lặp `for` (dạng Single Statement không dùng `{}`) in ra bảng cửu chương 5 từ $5 \times 1$ đến $5 \times 5$.
+2. Viết một vòng lặp `for` (dạng Single Statement không dùng `{}`) in ra bảng cửu chương 5 từ 5 × 1 đến 5 × 5.
 3. Sử dụng kỹ thuật **Empty Statement** (toàn bộ logic nằm ở `initialization` và `afterthought`, phần thân chỉ là dấu chấm phẩy `;`) để tính tổng các số từ 1 đến 100:
    - Kết quả mong đợi: `5050`.
 
@@ -161,7 +161,7 @@ Giả sử tài khoản của một khách hàng có số dư ban đầu là `50
 <a id="bài-31-quét-tọa-độ-ma-trận-với-nhãn-điều-khiển-labelled-loops"></a>
 ### Bài 3.1: Quét tọa độ ma trận với Nhãn điều khiển (Labelled Loops)
 
-Cho một bản đồ ma trận $3 \times 3$ biểu diễn lưới tọa độ trò chơi:
+Cho một bản đồ ma trận 3 × 3 biểu diễn lưới tọa độ trò chơi:
 ```javascript
 const mapGrid = [
     ["Đất", "Đất", "Rừng"],

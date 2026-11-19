@@ -16,10 +16,18 @@ defineTests(({ test, get, logs, expect }) => {
     expect(logs()).toContainText("diện tích: 50");
   });
 
-  test("3", "studentScores: Object.keys/values/entries, điểm trung bình 8.25", () => {
+  test("3", "studentScores: Object.keys/values/entries, điểm TB 8.25, điểm cao nhất 9, hàm isEmpty(obj)", () => {
     expect(logs()).toContainText("Điểm trung bình : 8.25");
+    expect(logs()).toContainText("Điểm cao nhất: 9");
+    expect(logs()).toContainText("isEmpty({}): true");
+    expect(logs()).toContainText("isEmpty(studentScores): false");
     expect(logs()).toContainText("math");
     expect(logs()).toContainTextsInOrder(["math", "english", "physics", "chemistry"]);
+    const isEmpty = get("isEmpty");
+    expect(typeof isEmpty).toBe("function");
+    expect(isEmpty({})).toBe(true);
+    expect(isEmpty({ a: 1 })).toBe(false);
+    expect(isEmpty(get("studentScores"))).toBe(false);
   });
 
   test("4", "config: chuyển array [key, value] → object { theme: 'dark', language: 'vi', notifications: true }", () => {

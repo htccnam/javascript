@@ -101,8 +101,8 @@ const api_timeout = 5000; // 5 giây - timeout mạng cố định
 const user_input_tags = ["javascript", "coding"]; // mảng tags người dùng vừa nhập
 ```
 - **Yêu cầu:**
-  1. Xác định biến nào là **Hằng số bất biến toàn cục** $\rightarrow$ đổi tên thành `UPPER_SNAKE_CASE`.
-  2. Xác định biến nào là **Biến runtime thông thường** $\rightarrow$ đổi tên thành `lowerCamelCase`.
+  1. Xác định biến nào là **Hằng số bất biến toàn cục** → đổi tên thành `UPPER_SNAKE_CASE`.
+  2. Xác định biến nào là **Biến runtime thông thường** → đổi tên thành `lowerCamelCase`.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 

@@ -126,7 +126,7 @@ Cho một mảng các phần tử bất kỳ. Hãy viết hàm `isSymmetricArray
 - Dùng vòng lặp `while (left < right)` kết hợp đồng thời `arr[left++]` và `arr[right--]` trong biểu thức so sánh.
 - Trả về `true` nếu mảng đối xứng, `false` nếu không đối xứng.
 - **Thử nghiệm:**
-  - `isSymmetricArray([1, 2, 3, 2, 1])` $\rightarrow$ `true`
-  - `isSymmetricArray(["a", "b", "c", "d"])` $\rightarrow$ `false`
+  - `isSymmetricArray([1, 2, 3, 2, 1])` → `true`
+  - `isSymmetricArray(["a", "b", "c", "d"])` → `false`
 
 [⬆️ Quay lại Mục lục](#mục-lục)

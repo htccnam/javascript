@@ -64,10 +64,14 @@ const studentScores = {
 };
 ```
 1. In ra mảng danh sách tất cả các môn học (`Object.keys`) và tất cả điểm (`Object.values`).
-2. Tính điểm trung bình tất cả các môn của học sinh đó (kết quả: 8.25).
-3. In ra danh sách theo định dạng: `Môn [Tên môn]: [Điểm] điểm` bằng 2 cách:
-   - Vòng lặp `for...of` kết hợp `Object.entries()`
-   - Phương thức `forEach()` của mảng
+2. Tính điểm trung bình tất cả các môn của học sinh đó bằng phương thức `reduce()` (kết quả: `Điểm trung bình : 8.25`).
+3. Tìm điểm số cao nhất của học sinh bằng `Math.max(...Object.values(studentScores))` và in ra màn hình: `Điểm cao nhất: 9`.
+4. Viết hàm `isEmpty(obj)` kiểm tra xem một đối tượng có rỗng hay không sử dụng kỹ thuật kiểm tra độ dài mảng khóa: `Object.keys(obj).length === 0`.
+   - Kiểm tra với đối tượng rỗng `{}` và in ra: `isEmpty({}): true`
+   - Kiểm tra với `studentScores` và in ra: `isEmpty(studentScores): false`
+5. In ra danh sách theo định dạng: `Môn [Tên môn]: [Điểm] điểm` bằng 2 cách:
+   - Cách 1: Vòng lặp `for...of` kết hợp `Object.entries()`
+   - Cách 2: Phương thức `forEach()` của mảng kết hợp `Object.entries()`
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 

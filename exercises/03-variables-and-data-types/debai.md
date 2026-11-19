@@ -211,10 +211,10 @@ Phân tích hiện tượng Type Coercion giữa phép cộng `+` (ghép chuỗi
 
 **Mô tả:**
 Tại phòng khám của **Dr. JavaScript**, mỗi giá trị là một "bệnh nhân" cần được xác định danh tính. Bạn hãy viết bộ công cụ chẩn đoán giúp giải quyết triệt để **"4 Ca Bệnh Khó Lường"** mà `typeof` không thể phân biệt:
-1. **Ca 1 (Number):** `typeof NaN === "number"` $\rightarrow$ Cần loại trừ `NaN`.
-2. **Ca 2 (Null):** `typeof null === "object"` $\rightarrow$ Cần so sánh trực tiếp `=== null`.
-3. **Ca 3 (Array):** `typeof [] === "object"` $\rightarrow$ Cần dùng `Array.isArray()`.
-4. **Ca 4 (Plain Object):** Trùng cả `null` lẫn `Array` $\rightarrow$ Cần loại trừ cả hai.
+1. **Ca 1 (Number):** `typeof NaN === "number"` → Cần loại trừ `NaN`.
+2. **Ca 2 (Null):** `typeof null === "object"` → Cần so sánh trực tiếp `=== null`.
+3. **Ca 3 (Array):** `typeof [] === "object"` → Cần dùng `Array.isArray()`.
+4. **Ca 4 (Plain Object):** Trùng cả `null` lẫn `Array` → Cần loại trừ cả hai.
 
 **Yêu cầu 1: Viết 4 hàm chẩn đoán chuyên dụng (Type Predicates):**
 - `isRealNumber(val)`: Trả về `true` nếu là số hợp lệ (loại trừ `NaN` và `Infinity` bằng `Number.isFinite`).

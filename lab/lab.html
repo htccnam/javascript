@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS Practice Lab</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="alternate icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -27,6 +29,11 @@
       <button id="btn-next" class="btn" title="Bài sau">›</button>
     </div>
     <span id="progress-text" class="muted"></span>
+    <button id="btn-search" class="btn btn-search" title="Tìm kiếm nội dung (Ctrl+K)">
+      <span class="btn-search-icon">🔍</span>
+      <span class="btn-search-label">Tìm kiếm</span>
+      <kbd class="btn-search-kbd">Ctrl+K</kbd>
+    </button>
     <button id="btn-export" class="btn" title="Tải file JSON tiến độ">⤓ Xuất tiến độ</button>
     <label class="btn" title="Nạp file JSON tiến độ">⤒ Nhập<input id="file-import" type="file" accept="application/json" hidden></label>
   </header>
@@ -104,6 +111,15 @@
         <span id="ai-status" class="ai-status"></span>
       </div>
     </div>
+  </dialog>
+
+  <dialog id="search-dialog" class="search-dialog">
+    <div class="search-dialog-box">
+      <span class="search-dialog-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Tìm kiếm giáo trình... (VD: parseInt, vòng lặp, Object.freeze)" autocomplete="off" spellcheck="false">
+      <button id="search-dialog-close" class="search-close-btn" title="Đóng (Esc)" aria-label="Đóng">✕</button>
+    </div>
+    <div id="search-results" class="search-dialog-results"></div>
   </dialog>
 
   <script type="module" src="js/main.js"></script>

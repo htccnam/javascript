@@ -176,7 +176,7 @@ console.log("Xin chào từ file JavaScript độc lập!");
 
 - **Ưu điểm (Chuẩn mực thực tế):**
   - Tách biệt hoàn toàn giữa Tầng hiển thị (Markup) và Tầng hành vi (Logic).
-  - **Tận dụng tối đa Browser Cache:** Trình duyệt tải file `.js` về và lưu lại, các lần mở trang sau không cần tải lại file này nữa $\rightarrow$ Tăng tốc tải trang vượt trội.
+  - **Tận dụng tối đa Browser Cache:** Trình duyệt tải file `.js` về và lưu lại, các lần mở trang sau không cần tải lại file này nữa → Tăng tốc tải trang vượt trội.
   - Tái sử dụng cùng một file `.js` trên hàng trăm trang HTML khác nhau.
 - **Nhược điểm:** Tốn thêm 1 request HTTP tải file (tuy nhiên trong thực tế được giải quyết triệt để nhờ HTTP/2 và các công cụ đóng gói Vite / Webpack).
 

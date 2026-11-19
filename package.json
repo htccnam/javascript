@@ -67,6 +67,7 @@
     "solution:dom": "node exercises/16-dom-basics/loigiai.js",
     "solution:json": "node exercises/17-json-and-error-handling/loigiai.js",
     "dev": "npx --yes http-server -c-1 -p 5173",
+    "build:search": "node scripts/build-search-index.js",
     "test:verify": "node scripts/verify-tests.mjs"
   },
   "keywords": [

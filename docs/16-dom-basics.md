@@ -192,7 +192,7 @@ newItem.remove();
    - Nếu thẻ `<script>` đặt ở thẻ `<head>` mà không có thuộc tính `defer`, `document.querySelector` sẽ trả về `null` vì lúc đó thẻ HTML chưa được vẽ ra!
    - **Cách khắc phục:** Đặt thẻ `<script>` ở cuối thẻ `<body>`, hoặc thêm thuộc tính `defer` vào thẻ script trong `<head>`.
 2. **Quên dấu `#` hoặc `.` trong `querySelector`:**
-   - `document.querySelector("my-btn")` $\rightarrow$ Trình duyệt tìm thẻ `<my-btn>` (sai!).
+   - `document.querySelector("my-btn")` → Trình duyệt tìm thẻ `<my-btn>` (sai!).
    - Đúng: Dùng `#my-btn` cho ID hoặc `.my-btn` cho Class.
 3. **Dùng `.textContent` thay vì `.value` cho thẻ `<input>`:**
    - Để lấy nội dung người dùng gõ trong ô input/textarea, bạn phải dùng **`element.value`**, không dùng `element.textContent`.

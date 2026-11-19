@@ -48,12 +48,17 @@ const studentScores = {
 
 // 3.2. In ra mảng danh sách tất cả điểm số (Object.values):
 
-// 3.3. Dùng reduce tính điểm trung bình (kết quả: 8.25):
+// 3.3. Dùng reduce tính điểm trung bình (in ra: "Điểm trung bình : 8.25"):
 
-// 3.4. In danh sách theo định dạng "Môn [Tên môn]: [Điểm] điểm" bằng 2 cách:
+// 3.4. Tìm điểm số cao nhất bằng Math.max kết hợp Object.values (in ra: "Điểm cao nhất: 9"):
+
+// 3.5. Viết hàm isEmpty(obj) kiểm tra object rỗng dùng Object.keys(obj).length === 0
+// In ra: "isEmpty({}): [kết quả]" và "isEmpty(studentScores): [kết quả]"
+
+// 3.6. In danh sách theo định dạng "Môn [Tên môn]: [Điểm] điểm" bằng 2 cách:
 // - Cách 1: Vòng lặp for...of với Object.entries()
 
-// - Cách 2: Phương thức forEach() của mảng
+// - Cách 2: Phương thức forEach() của mảng kết hợp Object.entries()
 
 console.groupEnd();
 

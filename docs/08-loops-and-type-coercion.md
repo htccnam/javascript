@@ -7,6 +7,11 @@
   - [1.1. Ép kiểu tường minh (Explicit Coercion)](#11-ép-kiểu-tường-minh-explicit-coercion)
   - [1.2. Ép kiểu ngầm định (Implicit Coercion)](#12-ép-kiểu-ngầm-định-implicit-coercion)
   - [1.3. So sánh chuyên sâu: `Number()` vs `parseInt()` vs `parseFloat()`](#13-so-sánh-chuyên-sâu-number-vs-parseint-vs-parsefloat)
+    - [1.3.1. Bảng so sánh đặc tính & cơ chế hoạt động](#131-bảng-so-sánh-đặc-tính--cơ-chế-hoạt-động)
+    - [1.3.2. Mẹo ghi nhớ siêu tốc (Memory Tricks)](#132-mẹo-ghi-nhớ-siêu-tốc-memory-tricks)
+    - [1.3.3. Khi nào nên dùng hàm nào? (Hướng dẫn thực chiến)](#133-khi-nào-nên-dùng-hàm-nào-hướng-dẫn-thực-chiến)
+    - [1.3.4. Sơ đồ cây quyết định (Decision Tree)](#134-sơ-đồ-cây-quyết-định-decision-tree)
+    - [1.3.5. Bảng ma trận tổng hợp tình huống thực tế](#135-bảng-ma-trận-tổng-hợp-tình-huống-thực-tế)
 - [2. Toán Tử Tăng Giảm (++, --) — Giải Mã Prefix vs Postfix](#2-toán-tử-tăng-giảm----giải-mã-prefix-vs-postfix)
   - [2.1. Tiền tố (Prefix: `++a`, `--a`)](#21-tiền-tố-prefix-a--a)
   - [2.2. Hậu tố (Postfix: `a++`, `a--`)](#22-hậu-tố-postfix-a-a-)
@@ -149,21 +154,149 @@ console.log(null == undefined); // true (quy ước đặc biệt của JS)
 <a id="13-so-sánh-chuyên-sâu-number-vs-parseint-vs-parsefloat"></a>
 ### 1.3. So sánh chuyên sâu: `Number()` vs `parseInt()` vs `parseFloat()`
 
-Đây là một trong những câu hỏi phỏng vấn kinh điển về JavaScript. Cả 3 hàm đều dùng để chuyển chuỗi sang số nhưng có cách hoạt động rất khác nhau:
+Đây là một trong những chủ đề nền tảng và là câu hỏi phỏng vấn kinh điển về JavaScript. Cả 3 hàm đều dùng để chuyển đổi dữ liệu dạng chuỗi sang số, nhưng chúng có **triết lý thiết kế, cơ chế quét ký tự và cách xử lý ngoại lệ hoàn toàn khác nhau**.
 
-| Đặc điểm | `Number(str)` | `parseInt(str, radix)` | `parseFloat(str)` |
+<a id="131-bảng-so-sánh-đặc-tính--cơ-chế-hoạt-động"></a>
+#### 1.3.1. Bảng so sánh đặc tính & cơ chế hoạt động
+
+| Đặc điểm / Dữ liệu đầu vào | `Number(str)` (hoặc `+str`) | `parseInt(str, radix)` | `parseFloat(str)` |
 | :--- | :--- | :--- | :--- |
-| **Cơ chế** | Ép kiểu toàn bộ chuỗi | Quét từ trái sang phải, lấy phần nguyên đến khi gặp ký tự lạ | Quét từ trái sang phải, lấy cả phần số thực |
+| **Bản chất kỹ thuật** | Hàm chuyển kiểu (Type Conversion) | Hàm bóc tách số nguyên (Parsing Integer) | Hàm bóc tách số thực (Parsing Floating-point) |
+| **Cơ chế quét ký tự** | Quét **toàn bộ chuỗi** từ đầu đến cuối (All-or-Nothing). Dính 1 ký tự không hợp lệ là thất bại. | Quét từ trái sang phải, **dừng ngay khi gặp ký tự lạ** (kể cả dấu chấm thập phân `.`). | Quét từ trái sang phải, **dừng khi gặp ký tự lạ hoặc dấu chấm `.` thứ hai**. |
+| **Hệ cơ số (Radix)** | Tự động nhận diện thập phân, Hex (`0x`), Nhị phân (`0b`), Bát phân (`0o`). | Nhận tham số `radix` từ 2 đến 36 (Best practice: luôn truyền `10`). | **Luôn luôn là cơ số 10** (không nhận tham số `radix`). |
 | `'123'` | `123` | `123` | `123` |
-| `'123px'` | `NaN` (lỗi vì dính chữ) | `123` (bỏ qua 'px') | `123` |
-| `'12.34em'` | `NaN` | `12` (chỉ lấy phần nguyên) | `12.34` |
-| `'px123'` | `NaN` | `NaN` (ký tự đầu tiên không phải số) | `NaN` |
-| `''` (rỗng) | `0` | `NaN` | `NaN` |
-| `true` / `false` | `1` / `0` | `NaN` | `NaN` |
-| `null` | `0` | `NaN` | `NaN` |
+| `'123px'` | `NaN` (lỗi vì dính chữ 'px') | `123` (bỏ qua 'px') | `123` (bỏ qua 'px') |
+| `'12.34em'` | `NaN` (lỗi vì dính chữ) | `12` (chỉ lấy phần nguyên trước dấu `.`) | `12.34` (lấy đủ phần thập phân, bỏ 'em') |
+| `'12.34.56'` | `NaN` | `12` | `12.34` (dừng tại dấu chấm thứ 2) |
+| `'px123'` | `NaN` | `NaN` (ký tự đầu tiên không phải số) | `NaN` (ký tự đầu tiên không phải số) |
+| `''` (chuỗi rỗng) | `0` ⚠️ *(Cạm bẫy form rỗng!)* | `NaN` | `NaN` |
+| `'   '` (chỉ khoảng trắng) | `0` ⚠️ | `NaN` | `NaN` |
+| `true` / `false` | `1` / `0` | `NaN` *(vì ép thành chuỗi 'true'/'false')* | `NaN` |
+| `null` | `0` ⚠️ | `NaN` *(vì ép thành 'null')* | `NaN` *(vì ép thành 'null')* |
+| `undefined` | `NaN` | `NaN` *(vì ép thành 'undefined')* | `NaN` *(vì ép thành 'undefined')* |
+| `'08'` | `8` | `8` (với radix 10) | `8` |
+| `'0x10'` (Hệ Hex) | `16` | `16` | `0` ⚠️ *(dừng tại ký tự 'x')* |
 
 > [!TIP]
 > **Best Practice:** Luôn truyền tham số cơ số (radix) khi dùng `parseInt` (ví dụ: `parseInt('123', 10)`) để tránh việc các chuỗi bắt đầu bằng `0` bị hiểu nhầm thành hệ cơ số 8 (Octal) trên các trình duyệt cũ.
+
+<a id="132-mẹo-ghi-nhớ-siêu-tốc-memory-tricks"></a>
+#### 1.3.2. Mẹo ghi nhớ siêu tốc (Memory Tricks)
+
+Để không bao giờ nhầm lẫn trong phỏng vấn và công việc thực tế, hãy ghi nhớ 3 hình tượng nhân vật sau:
+
+1. 🧐 **`Number(x)` — "Vị Giám Khảo Cầu Toàn (All-or-Nothing)":**
+   - **Tôn chỉ:** *"Phải sạch sẽ 100%, một hạt bụi cũng không chấp nhận!"*
+   - Chuỗi phải là số nguyên chất từ đầu đến đuôi. Chỉ cần dính một chữ cái (`'100px'`, `'50k'`) là lập tức gạt phăng và trả về `NaN`.
+   - **Gót chân Achilles:** Lại cực kỳ "dễ dãi" với các giá trị rỗng hoặc boolean (`""` → 0, `null` → 0, `false` → 0, `true` → 1).
+2. 🔨 **`parseInt(str, radix)` — "Thợ Đục Đá Lấy Số Nguyên":**
+   - **Tôn chỉ:** *"Đục từ trái qua phải, gặp đá cứng (chữ cái, ký hiệu, dấu chấm) là buông búa dừng lại ngay!"*
+   - Cứ thấy số là đục, chạm phải `'px'`, `'rem'`, hoặc thậm chí là dấu chấm thập phân `.` là dừng ngay tại chỗ và nộp lại phần số nguyên trước đó (`'12.9px'` → 12).
+   - Nhưng nếu nhát búa đầu tiên đã đập vào chữ (`'px123'`) → bó tay trả về `NaN`.
+3. 📐 **`parseFloat(str)` — "Thợ May Đo Số Thực":**
+   - **Tôn chỉ:** *"Quét từ trái sang phải như thợ đục, nhưng nuốt trọn được một dấu chấm thập phân `.`"*
+   - Giữ lại trọn vẹn cả phần nguyên lẫn phần thập phân (`'12.75rem'` → 12.75). Chỉ dừng lại khi gặp chữ cái hay dấu chấm thứ hai.
+
+> [!NOTE]
+> **Câu thần chú 1 dòng:**
+> *"Ép sạch tuyệt đối dùng `Number` — Bóc tách đơn vị nguyên dùng `parseInt` — Bóc tách đơn vị thực dùng `parseFloat`."*
+
+<a id="133-khi-nào-nên-dùng-hàm-nào-hướng-dẫn-thực-chiến"></a>
+#### 1.3.3. Khi nào nên dùng hàm nào? (Hướng dẫn thực chiến)
+
+Trong phát triển dự án thực tế, việc chọn sai hàm ép kiểu có thể dẫn đến lỗi logic tiềm ẩn (Silent Bugs) hoặc tính toán sai lệch:
+
+##### Trường Hợp 1: Nên dùng `Number()` (hoặc toán tử Unary `+`) khi nào?
+- **Khi dữ liệu đầu vào là dạng số thuần túy:** Nhận dữ liệu từ API JSON, form query string (`?page=2&limit=20`), hoặc thẻ `<input type="number">`.
+- **Khi cần kiểm tra (Validation) tính hợp lệ khắt khe:** Nếu người dùng nhập `"50k"` hay `"120k"` vào ô nhập số tiền chuyển khoản, bạn **bắt buộc muốn nó biến thành `NaN`** để hiển thị thông báo lỗi *"Vui lòng chỉ nhập số!"*. Nếu dùng `parseInt`, nó sẽ âm thầm biến `"50k"` thành `50` làm thất thoát tiền tệ của khách hàng!
+- ⚠️ **Cạm bẫy chí mạng:** `Number('')` và `Number(null)` đều trả về `0`. Do đó, khi kiểm tra dữ liệu form rỗng, luôn kiểm tra `str.trim() === ''` trước khi ép kiểu.
+
+```javascript
+// ✅ Ví dụ thực tế: Validate dữ liệu nhập tiền chuyển khoản ngân hàng
+function validateTransferAmount(inputStr) {
+  // 1. Chống bẫy chuỗi rỗng biến thành 0
+  if (!inputStr || inputStr.trim() === '') {
+    return { valid: false, message: 'Số tiền không được để trống!' };
+  }
+
+  // 2. Ép kiểu nghiêm ngặt bằng Number()
+  const amount = Number(inputStr);
+
+  // 3. Nếu dính chữ cái như '50k', '100vnd' -> Number trả về NaN
+  if (Number.isNaN(amount) || amount <= 0) {
+    return { valid: false, message: 'Số tiền không hợp lệ! Vui lòng chỉ nhập chữ số thuần túy.' };
+  }
+
+  return { valid: true, amount };
+}
+
+console.log(validateTransferAmount('50000'));   // { valid: true, amount: 50000 }
+console.log(validateTransferAmount('50k'));     // { valid: false, message: '...' } -> Chặn thành công!
+console.log(validateTransferAmount(''));        // { valid: false, message: '...' } -> Chặn chuỗi rỗng!
+```
+
+##### Trường Hợp 2: Nên dùng `parseInt(str, radix)` khi nào?
+- **Khi bóc tách giá trị số nguyên từ chuỗi có chứa đơn vị đo lường:** Thường gặp khi lấy giá trị kích thước từ CSS Computed Styles hoặc DOM attributes (`'120px'`, `'480w'`, `'100vh'`).
+- **Khi làm việc với các hệ đếm khác cơ số 10:** Chuyển đổi mã màu Hexadecimal sang RGB (`parseInt('FF', 16) === 255`), chuyển chuỗi nhị phân Binary (`parseInt('1010', 2) === 10`).
+- **Khi cần cắt bỏ phần thập phân để lấy số nguyên:** (Ví dụ: tính số trang phân trang, tọa độ pixel).
+- ⚠️ **Quy tắc bất di bất dịch:** **Luôn luôn truyền tham số cơ số 10 (`radix = 10`)**: `parseInt(value, 10)` để tương thích an toàn trên mọi runtime.
+
+```javascript
+// ✅ Ví dụ thực tế: Lấy chiều rộng phần tử từ CSS và chuyển đổi mã màu Hex
+const boxWidthCSS = '350px';
+const widthNumber = parseInt(boxWidthCSS, 10); // 350 (bỏ chữ 'px' an toàn)
+
+// Chuyển mã màu Hex 'ff5733' sang các thành phần RGB
+const hexColor = 'ff5733';
+const red = parseInt(hexColor.slice(0, 2), 16);   // 255
+const green = parseInt(hexColor.slice(2, 4), 16); // 87
+const blue = parseInt(hexColor.slice(4, 6), 16);  // 51
+console.log(`rgb(${red}, ${green}, ${blue})`);    // "rgb(255, 87, 51)"
+```
+
+##### Trường Hợp 3: Nên dùng `parseFloat(str)` khi nào?
+- **Khi bóc tách số thực có dính đơn vị đo lường CSS:** Khi bạn làm việc với CSS responsive sử dụng các đơn vị như `rem`, `em`, `%`, `vw` (ví dụ: `'1.75rem'`, `'2.5em'`, `'99.5%'`).
+- **Khi đọc dữ liệu đo lường từ cảm biến / thiết bị / GPS:** Tọa độ GPS (`'10.762622N'`), nhiệt độ (`'36.5°C'`), dung lượng (`'15.8GB'`).
+- ⚠️ **Lưu ý quan trọng:** `parseFloat()` không nhận tham số `radix`. Nó luôn mặc định phân tích theo hệ cơ số 10.
+
+```javascript
+// ✅ Ví dụ thực tế: Tính toán kích thước font động dựa trên rem
+const userFontSize = '1.75rem';
+const remValue = parseFloat(userFontSize); // 1.75 (giữ nguyên phần thập phân)
+const basePixel = 16;
+const computedPixel = remValue * basePixel; // 28px
+console.log(`Kích thước font: ${computedPixel}px`); // "Kích thước font: 28px"
+```
+
+<a id="134-sơ-đồ-cây-quyết-định-decision-tree"></a>
+#### 1.3.4. Sơ đồ cây quyết định (Decision Tree)
+
+Mỗi khi phân vân không biết nên dùng hàm nào, hãy đi theo sơ đồ câu hỏi dưới đây:
+
+```mermaid
+graph TD
+    Start["Bắt đầu: Cần chuyển đổi chuỗi sang số"] --> Q1{"Chuỗi có dính ký tự đơn vị?<br>(VD: '32px', '1.5rem')"}
+    
+    Q1 -- "Có (Dính đơn vị CSS/Chữ)" --> Q2{"Cần số nguyên hay số thực?"}
+    Q2 -- "Số nguyên" --> ActParseInt["Dùng: parseInt(str, 10)<br>Bỏ đơn vị 'px', chỉ lấy số nguyên"]
+    Q2 -- "Số thực (thập phân)" --> ActParseFloat["Dùng: parseFloat(str)<br>Bỏ đơn vị 'rem', giữ đủ phần lẻ"]
+    
+    Q1 -- "Không (Dữ liệu thuần túy)" --> Q3{"Có cần chuyển từ hệ đếm khác<br>(Hex cơ số 16, Binary cơ số 2)?"}
+    Q3 -- "Có" --> ActRadix["Dùng: parseInt(str, radix)<br>VD: parseInt('FF', 16) -> 255"]
+    Q3 -- "Không (Hệ thập phân chuẩn)" --> ActNumber["Dùng: Number(str) hoặc +str<br>Khắt khe, dính chữ báo NaN ngay<br>(Validate Form/API an toàn)"]
+```
+
+<a id="135-bảng-ma-trận-tổng-hợp-tình-huống-thực-tế"></a>
+#### 1.3.5. Bảng ma trận tổng hợp tình huống thực tế
+
+| Tình huống thực tế | Dữ liệu mẫu | Hàm nên dùng | Kết quả | Lý do lựa chọn |
+| :--- | :--- | :--- | :--- | :--- |
+| Nhận query param từ URL | `"?page=3"` | `Number(str)` hoặc `+str` | `3` | Dữ liệu sạch, cần ép số nhanh gọn |
+| Nhập tiền thanh toán từ Form | `"500000"` hoặc `"500k"` | `Number(str)` | `500000` hoặc `NaN` | Cần bắt lỗi `NaN` nếu nhập nhầm chữ `"k"` |
+| Bóc tách chiều rộng CSS pixel | `"1280px"` | `parseInt(str, 10)` | `1280` | Cần bỏ đuôi `'px'` và lấy số nguyên |
+| Bóc tách tỷ lệ Responsive | `"2.25rem"` | `parseFloat(str)` | `2.25` | Cần bỏ đuôi `'rem'` và giữ số thập phân |
+| Chuyển mã màu Hex sang RGB | `"FF"` | `parseInt(str, 16)` | `255` | Cần cơ số 16 (Hexadecimal) |
+| Đọc tọa độ vĩ độ GPS | `"10.762622N"` | `parseFloat(str)` | `10.762622` | Bỏ chữ cái phương hướng, giữ tọa độ thực |
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
@@ -247,7 +380,7 @@ for (initialization; condition; afterthought) {
 
 Trong đó:
 1. **`initialization` (Khởi tạo):** Thực thi duy nhất **1 lần** trước khi vòng lặp bắt đầu. Dùng để khai báo và khởi tạo biến đếm.
-2. **`condition` (Điều kiện kiểm tra):** Biểu thức được đánh giá **trước mỗi lượt lặp**. Nếu `true` $\rightarrow$ chạy thân vòng lặp; nếu `false` $\rightarrow$ kết thúc vòng lặp.
+2. **`condition` (Điều kiện kiểm tra):** Biểu thức được đánh giá **trước mỗi lượt lặp**. Nếu `true` → chạy thân vòng lặp; nếu `false` → kết thúc vòng lặp.
 3. **`afterthought` (Cập nhật / Bước nhảy):** Thực thi **sau mỗi lượt lặp**. Thường dùng để tăng hoặc giảm biến đếm (`i++`, `i += 2`, v.v.).
 
 <a id="32-quy-trình-4-bước-vận-hành-của-javascript-engine"></a>
@@ -475,8 +608,8 @@ outerWhile: while (i < 3) {
 ### 5.1. Định nghĩa & Điểm khác biệt chí mạng với While
 
 Vòng lặp `do...while` là biến thể đặc biệt của `while`. Điểm khác biệt duy nhất nhưng mang tính quyết định:
-- Vòng lặp `while`: **Kiểm tra trước $\rightarrow$ Thực thi sau**.
-- Vòng lặp `do...while`: **Thực thi trước $\rightarrow$ Kiểm tra sau**.
+- Vòng lặp `while`: **Kiểm tra trước → Thực thi sau**.
+- Vòng lặp `do...while`: **Thực thi trước → Kiểm tra sau**.
 
 > [!IMPORTANT]
 > Vòng lặp `do...while` **luôn luôn thực thi thân vòng lặp ít nhất 1 lần**, bất kể điều kiện ban đầu là `true` hay `false`!
@@ -549,7 +682,7 @@ for (let i = 0; i < 5; i++); // Vòng for chạy rỗng 5 lần xong kết thúc
 Trong vòng `for`, bước nhảy nằm trong cú pháp `afterthought`. Nhưng trong `while`, bạn phải tự tay viết cập nhật trong thân vòng lặp. Nếu quên, biến điều kiện không bao giờ đổi và gây tràn tài nguyên trình duyệt/Node.js.
 
 ### 🛑 Cạm bẫy 3: Sử dụng `continue` trong `while` nhưng đặt sau bước nhảy
-Nếu bạn đặt `continue` trước dòng tăng biến đếm, lượt lặp sẽ bị bỏ qua và không bao giờ chạm đến dòng tăng biến đếm $\rightarrow$ biến thành vòng lặp vô hạn!
+Nếu bạn đặt `continue` trước dòng tăng biến đếm, lượt lặp sẽ bị bỏ qua và không bao giờ chạm đến dòng tăng biến đếm → biến thành vòng lặp vô hạn!
 
 ```javascript
 let count = 0;
@@ -575,10 +708,10 @@ while (count < 5) {
 | :--- | :--- | :--- | :--- |
 | **Số lần lặp** | Biết trước số lần lặp cụ thể | Chưa biết trước số lần lặp | Chưa biết trước số lần lặp |
 | **Thời điểm kiểm tra điều kiện** | Trước mỗi lượt lặp | Trước mỗi lượt lặp | **Sau mỗi lượt lặp** |
-| **Số lần chạy tối thiểu** | $0$ lần (nếu điều kiện sai ngay) | $0$ lần (nếu điều kiện sai ngay) | **Luôn luôn ít nhất 1 lần** |
+| **Số lần chạy tối thiểu** | 0 lần (nếu điều kiện sai ngay) | 0 lần (nếu điều kiện sai ngay) | **Luôn luôn ít nhất 1 lần** |
 | **Vị trí biến đếm** | Nằm gọn trong phần `initialization` | Khai báo trước vòng lặp | Khai báo trước vòng lặp |
 | **Phạm vi biến đếm** | Thu gọn trong Block Scope (với `let`) | Tồn tại ở Scope bên ngoài | Tồn tại ở Scope bên ngoài |
-| **Trường hợp sử dụng lý tưởng** | Duyệt mảng theo index, chạy $N$ bước | Lặp theo trạng thái mạng, cờ hiệu boolean | Nhập liệu kiểm tra (Validation), Game loop, Menu |
+| **Trường hợp sử dụng lý tưởng** | Duyệt mảng theo index, chạy N bước | Lặp theo trạng thái mạng, cờ hiệu boolean | Nhập liệu kiểm tra (Validation), Game loop, Menu |
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 

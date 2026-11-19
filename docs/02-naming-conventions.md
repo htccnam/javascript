@@ -90,8 +90,8 @@ if (isLoggedIn && hasPermission) {
 
 ### ⚠️ Hai cạm bẫy boolean kinh điển:
 1. **Không dùng tên phủ định gây rối rắm logic:**
-   - ❌ Tránh viết: `let isNotValid = false;` $\rightarrow$ Khi kiểm tra `if (!isNotValid)` sẽ tạo ra phủ định kép cực kỳ hại não.
-   - ✅ Hãy viết: `let isValid = true;` $\rightarrow$ Khi kiểm tra chỉ cần `if (isValid)` hoặc `if (!isValid)`.
+   - ❌ Tránh viết: `let isNotValid = false;` → Khi kiểm tra `if (!isNotValid)` sẽ tạo ra phủ định kép cực kỳ hại não.
+   - ✅ Hãy viết: `let isValid = true;` → Khi kiểm tra chỉ cần `if (isValid)` hoặc `if (!isValid)`.
 2. **Không ghép sai ngữ pháp:**
    - ❌ `isProductsExist` (Sai ngữ pháp).
    - ✅ `hasProducts` (Chuẩn: Có sản phẩm hay không?).
@@ -133,10 +133,11 @@ Khi tên biến chứa từ viết tắt (như URL, HTTP, HTML, ID, API):
 ---
 
 <a id="4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ-tân-ngữ"></a>
+<a id="4-quy-tắc-đặt-tên-hàm-và-phương-thức-động-từ--tân-ngữ"></a>
 ## 4. Quy Tắc Đặt Tên Hàm Và Phương Thức (Động Từ + Tân Ngữ)
 
 Hàm đại diện cho một **hành động**, do đó tên hàm luôn bắt đầu bằng một **Động từ**, theo cấu trúc:  
-$$\text{Tên hàm} = \text{Động từ (Verb)} + \text{Tân ngữ (Noun/Target)}$$
+**Tên hàm** = **Động từ (Verb)** + **Tân ngữ (Noun/Target)**
 
 ### 4.1. Bảng động từ kinh điển và ngữ cảnh sử dụng:
 
@@ -206,7 +207,7 @@ class BankAccount { ... }
 ## 6. Hằng Số Bất Biến (UPPER_SNAKE_CASE vs const Thông Thường)
 
 > [!CAUTION]
-> **Hiểu lầm tai hại:** *"Mọi biến khai báo bằng `const` đều phải viết hoa toàn bộ `UPPER_SNAKE_CASE`."* $\rightarrow$ **SAI!**
+> **Hiểu lầm tai hại:** *"Mọi biến khai báo bằng `const` đều phải viết hoa toàn bộ `UPPER_SNAKE_CASE`."* → **SAI!**
 
 Trong JavaScript:
 - `const` chỉ có nghĩa là: **Không thể gán lại biến sang một địa chỉ ô nhớ khác** (immutable binding), chứ bản thân giá trị đó chưa chắc là một hằng số bất biến của cả hệ thống.

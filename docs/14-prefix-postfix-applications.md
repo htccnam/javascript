@@ -21,8 +21,8 @@
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng bạn đang đứng trước **máy bấm số thứ tự tự động tại sảnh giao dịch ngân hàng**:
 > - Biến đếm nội bộ của máy ban đầu đang ở mốc `0`.
-> - **Tiền tố (`++i` - Prefix):** Khách hàng chạm tay vào màn hình cảm ứng, máy lập tức **nhảy số đếm lên trước** ($0 \rightarrow 1$), rồi in ngay tấm vé mang con số $1$ trao cho khách. Khách cầm tấm vé đúng số thứ tự đầu tiên cần phục vụ (Tăng trước, trả về giá trị mới sau).
-> - **Hậu tố (`i++` - Postfix):** Khách hàng chạm tay vào màn hình, máy **lấy con số đang hiển thị trên mặt đồng hồ hiện tại** ($0$) in luôn ra vé đưa cho khách, rồi sau khi khách cầm vé đi thì máy mới âm thầm nhảy số đếm nội bộ lên $1$. Kết quả là vị khách đầu tiên nhận được tấm vé số $0$ kỳ lạ (Trả về giá trị cũ trước, tăng sau).
+> - **Tiền tố (`++i` - Prefix):** Khách hàng chạm tay vào màn hình cảm ứng, máy lập tức **nhảy số đếm lên trước** (0 → 1), rồi in ngay tấm vé mang con số 1 trao cho khách. Khách cầm tấm vé đúng số thứ tự đầu tiên cần phục vụ (Tăng trước, trả về giá trị mới sau).
+> - **Hậu tố (`i++` - Postfix):** Khách hàng chạm tay vào màn hình, máy **lấy con số đang hiển thị trên mặt đồng hồ hiện tại** (0) in luôn ra vé đưa cho khách, rồi sau khi khách cầm vé đi thì máy mới âm thầm nhảy số đếm nội bộ lên 1. Kết quả là vị khách đầu tiên nhận được tấm vé số 0 kỳ lạ (Trả về giá trị cũ trước, tăng sau).
 > 
 > Trong lập trình thực tế, đặc biệt khi kết hợp cùng vòng lặp duyệt mảng `for...of`, việc làm chủ thời điểm giá trị được trả về sẽ giúp code của bạn vừa tinh gọn, vừa tránh được những lỗi lệch vị trí (Off-by-one error) cực kỳ khó chịu!
 
@@ -35,7 +35,7 @@
 >    - *Vì sao bắt buộc?* Hiểu rõ cơ chế thay đổi giá trị của biến và giá trị trả về của cả biểu thức.
 > 2. **Cấu trúc Mảng (Arrays)** tại [11 - Mảng](file:///d:/github/studyProgram/javascript/docs/11-arrays.md):
 >    - *Vì sao bắt buộc?* Kỹ thuật đánh số thứ tự và kiểm soát con trỏ chủ yếu áp dụng trên danh sách phần tử của Mảng.
-> 3. **Vòng lặp `for...of` trên cấu trúc Iterable** tại [13 - Vòng Lặp For-In & For-Of (Mục 2)](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md#2-vòng-lặp-for-of-duyệt-giá-trị-mảng--chuỗi):
+> 3. **Vòng lặp `for...of` trên cấu trúc Iterable** tại [13 - Vòng Lặp For-In & For-Of (Mục 3)](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md#3-vòng-lặp-forof-duyệt-qua-giá-trị-của-cấu-trúc-lặp-iterable):
 >    - *Vì sao bắt buộc?* Vòng lặp `for...of` không cung cấp sẵn biến đếm chỉ mục `i` như `for` truyền thống, nên việc tạo biến đếm bên ngoài kết hợp `++i` là mẫu thiết kế (design pattern) kinh điển.
 > * **Đích đến tiếp theo:** Làm chủ toán tử và vòng lặp giúp bạn xử lý các cấu trúc dữ liệu hiện đại trong [15 - Map & Set](file:///d:/github/studyProgram/javascript/docs/15-map-and-set.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
@@ -45,11 +45,11 @@
 <a id="1-ôn-tập-bản-chất-tiền-tố-x-vs-hậu-tố-x"></a>
 ## 1. Ôn Tập Bản Chất: Tiền Tố (++x) vs Hậu Tố (x++)
 
-Cả `++x` (tiền tố - prefix) và `x++` (hậu tố - postfix) đều có chung một tác dụng phụ (side-effect): **Tăng giá trị của biến $x$ lên 1 đơn vị**.
+Cả `++x` (tiền tố - prefix) và `x++` (hậu tố - postfix) đều có chung một tác dụng phụ (side-effect): **Tăng giá trị của biến x lên 1 đơn vị**.
 
 Tuy nhiên, **điểm khác biệt sống còn nằm ở giá trị trả về của biểu thức**:
-- **`x++` (Hậu tố):** Tăng biến $x$ lên 1, nhưng trả về **giá trị cũ** của $x$ trước khi tăng.
-- **`++x` (Tiền tố):** Tăng biến $x$ lên 1 trước, sau đó trả về **giá trị mới** của $x$ sau khi tăng.
+- **`x++` (Hậu tố):** Tăng biến x lên 1, nhưng trả về **giá trị cũ** của x trước khi tăng.
+- **`++x` (Tiền tố):** Tăng biến x lên 1 trước, sau đó trả về **giá trị mới** của x sau khi tăng.
 
 ### 🎯 Kiểm tra nhanh bài cũ:
 Bạn hãy dự đoán kết quả in ra của đoạn mã sau:
@@ -79,17 +79,17 @@ sequenceDiagram
 
 **Giải thích chi tiết:**
 1. `console.log(y++)`:
-   - `y++` đánh giá ra giá trị hiện tại của $y$ (là `0`), chuyển số `0` cho hàm `console.log` in ra màn hình.
-   - Ngay sau đó trong RAM, biến $y$ được tăng lên `1`.
+   - `y++` đánh giá ra giá trị hiện tại của y (là `0`), chuyển số `0` cho hàm `console.log` in ra màn hình.
+   - Ngay sau đó trong RAM, biến y được tăng lên `1`.
 2. `console.log(++y)`:
-   - Lúc này $y$ đang có giá trị là `1`.
-   - Gặp `++y`, biến $y$ lập tức được tăng lên `2` trước.
+   - Lúc này y đang có giá trị là `1`.
+   - Gặp `++y`, biến y lập tức được tăng lên `2` trước.
    - Sau đó trả về giá trị mới là `2` cho `console.log` in ra màn hình.
 
 > [!TIP]
 > **Quy tắc vàng ghi nhớ:**
-> - Thấy dấu `++` đứng **trước** $\rightarrow$ **Tăng trước**, lấy giá trị mới.
-> - Thấy dấu `++` đứng **sau** $\rightarrow$ Lấy giá trị cũ trước, **tăng sau**.
+> - Thấy dấu `++` đứng **trước** → **Tăng trước**, lấy giá trị mới.
+> - Thấy dấu `++` đứng **sau** → Lấy giá trị cũ trước, **tăng sau**.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 
@@ -131,7 +131,7 @@ for (let i = 0; i < 10; i++) {
 
 Đây chính là tình huống mà **tiền tố (`++i`) tỏa sáng rực rỡ và phát huy tối đa sự tiện lợi**.
 
-Giả sử bạn có một danh sách màu sắc và cần in ra danh sách đánh số thứ tự bắt đầu từ $1$:
+Giả sử bạn có một danh sách màu sắc và cần in ra danh sách đánh số thứ tự bắt đầu từ 1:
 ```text
 1. red
 2. green
@@ -167,9 +167,9 @@ for (const color of colors) {
 
 **Tại sao ở đây dùng `++i` lại hoàn hảo?**
 - Ban đầu `i = 0`.
-- Ở lần lặp 1: `++i` tăng $i$ từ `0` lên `1` ngay lập tức, rồi trả về `1` để ghép vào chuỗi $\rightarrow$ In ra `"1. red"`.
-- Ở lần lặp 2: `++i` tăng $i$ từ `1` lên `2` ngay lập tức $\rightarrow$ In ra `"2. green"`.
-- Ở lần lặp 3: `++i` tăng $i$ từ `2` lên `3` ngay lập tức $\rightarrow$ In ra `"3. blue"`.
+- Ở lần lặp 1: `++i` tăng i từ `0` lên `1` ngay lập tức, rồi trả về `1` để ghép vào chuỗi → In ra `"1. red"`.
+- Ở lần lặp 2: `++i` tăng i từ `1` lên `2` ngay lập tức → In ra `"2. green"`.
+- Ở lần lặp 3: `++i` tăng i từ `2` lên `3` ngay lập tức → In ra `"3. blue"`.
 
 **Điều gì sẽ xảy ra nếu bạn dùng `i++` ở đây?**
 ```javascript
@@ -182,7 +182,7 @@ for (const color of colors) {
 // 1. green
 // 2. blue
 ```
-*Vì `i++` trả về giá trị cũ trước khi tăng, nên lần lặp đầu tiên nó trả về số `0`! Muốn dùng `i++` đúng, bạn buộc phải khởi tạo biến `let i = 1`, nhưng như vậy biến $i$ kết thúc sẽ vọt lên `4`, gây rối rắm khi muốn tái sử dụng biến đếm để lấy tổng số lượng phần tử đã duyệt.*
+*Vì `i++` trả về giá trị cũ trước khi tăng, nên lần lặp đầu tiên nó trả về số `0`! Muốn dùng `i++` đúng, bạn buộc phải khởi tạo biến `let i = 1`, nhưng như vậy biến i kết thúc sẽ vọt lên `4`, gây rối rắm khi muốn tái sử dụng biến đếm để lấy tổng số lượng phần tử đã duyệt.*
 
 <a id="23-góc-nhìn-hiệu-năng-performance--v8-engine-optimization"></a>
 ### 2.3. Góc nhìn hiệu năng (Performance & V8 Engine Optimization)
@@ -214,7 +214,7 @@ graph TD
 JavaScript chạy trên các máy ảo thông minh (như Google V8 trong Chrome & Node.js, SpiderMonkey trong Firefox):
 1. Khi một biểu thức tăng giảm đứng độc lập (như `i++;` hay `++i;` hay ở bước thứ 3 của vòng lặp `for`), trình tối ưu hóa Just-In-Time (JIT Compiler) phân tích Abstract Syntax Tree (AST) và nhận thấy kết quả trả về **không được sử dụng**.
 2. Máy ảo sẽ dịch cả `i++` và `++i` ra **cùng một mã Bytecode tối ưu duy nhất** (ví dụ: lệnh bytecode `Inc` và `Star`), hoàn toàn không tạo bất kỳ biến tạm nào.
-3. Độ chênh lệch thời gian thực thi giữa hai cách là $0.0000\%$.
+3. Độ chênh lệch thời gian thực thi giữa hai cách là 0%.
 
 > [!IMPORTANT]
 > **Kết luận về hiệu năng:**
@@ -262,12 +262,12 @@ flowchart TD
     Check3 -- No --> Finish([Kết thúc vòng lặp!])
 ```
 
-- **Hậu quả 1:** Phần tử đầu tiên `'red'` (ở index 0) bị bỏ qua hoàn toàn do biến $i$ bị đẩy lên $1$ trước khi truy xuất `colors[i]`.
-- **Hậu quả 2:** Vòng lặp bị nhảy cóc bước tiến (nhảy bước 2 đơn vị mỗi vòng), dẫn tới truy cập vượt quá biên mảng (`colors[3]` $\rightarrow$ `undefined`) và kết thúc vòng lặp sớm bất thường!
+- **Hậu quả 1:** Phần tử đầu tiên `'red'` (ở index 0) bị bỏ qua hoàn toàn do biến i bị đẩy lên 1 trước khi truy xuất `colors[i]`.
+- **Hậu quả 2:** Vòng lặp bị nhảy cóc bước tiến (nhảy bước 2 đơn vị mỗi vòng), dẫn tới truy cập vượt quá biên mảng (`colors[3]` → `undefined`) và kết thúc vòng lặp sớm bất thường!
 
 > [!CAUTION]
 > **Quy tắc an toàn bất biến:**
-> - Trong vòng lặp `for (let i = 0; ...; i++)`: Biến $i$ **đã được JavaScript Engine tự động quản lý cập nhật** ở bước cuối mỗi vòng lặp. **Tuyệt đối không được gọi `++i` hay `i++` bên trong thân vòng lặp lên chính biến $i$** (trừ phi bạn chủ động muốn nhảy cóc chỉ mục có chủ đích).
+> - Trong vòng lặp `for (let i = 0; ...; i++)`: Biến i **đã được JavaScript Engine tự động quản lý cập nhật** ở bước cuối mỗi vòng lặp. **Tuyệt đối không được gọi `++i` hay `i++` bên trong thân vòng lặp lên chính biến i** (trừ phi bạn chủ động muốn nhảy cóc chỉ mục có chủ đích).
 > - Nếu muốn in số thứ tự trong `for`, hãy dùng phép cộng không làm biến đổi biến gốc: ``${i + 1}. ${colors[i]}``.
 > - Chỉ dùng `++i` để sinh số thứ tự khi bạn **tự mình quản lý hoàn toàn vòng đời của biến đếm** (ví dụ: dùng kèm `for...of` hoặc `while`).
 
@@ -310,7 +310,7 @@ console.log(sysGen.nextPostfix());   // 1
 <a id="42-phân-trang-hiển-thị-pagination-1-based-index"></a>
 ### 4.2. Phân trang hiển thị (Pagination 1-based Index)
 
-Giao diện người dùng (UI) luôn hiển thị trang bắt đầu từ trang số $1$ (Trang 1, 2, 3), nhưng các thuật toán tính toán độ lệch dữ liệu (Offset) phía máy chủ lại dùng hệ đếm bắt đầu từ $0$:
+Giao diện người dùng (UI) luôn hiển thị trang bắt đầu từ trang số 1 (Trang 1, 2, 3), nhưng các thuật toán tính toán độ lệch dữ liệu (Offset) phía máy chủ lại dùng hệ đếm bắt đầu từ 0:
 
 ```javascript
 let internalPage = 0; // Backend lưu trữ: trang 0 là offset = 0
@@ -363,7 +363,7 @@ console.log(isPalindrome("hello")); // false
 | **Giá trị trả về biểu thức** | **Giá trị MỚI** (đã được tăng/giảm) | **Giá trị CŨ** (trước khi tăng/giảm) |
 | **Quy ước cộng đồng** | Ít phổ biến hơn khi đứng độc lập | Là quy ước tiêu chuẩn (`for (let i = 0; i < n; i++)`) |
 | **Bối cảnh sử dụng lý tưởng** | 1. Đánh số thứ tự 1-based trong `for...of`<br>2. Bộ đếm ID tự tăng bắt đầu từ 1<br>3. Cần dùng ngay giá trị mới mà không tốn dòng lệnh gán phụ | 1. Vòng lặp `for` truyền thống<br>2. Thuật toán Two Pointers (`arr[i++]`)<br>3. Bộ đếm truy xuất 0-based offset |
-| **Cạm bẫy cần tránh** | Lạm dụng gọi `++i` bên trong thân vòng lặp `for` $\rightarrow$ Nhảy cóc index, rớt phần tử! | Nhầm lẫn giá trị trả về trong biểu thức phức tạp (`y = x++` thì $y$ nhận giá trị cũ). |
-| **Hiệu năng (V8 Engine)** | Tương đương $100\%$ nhau trên JS hiện đại (được JIT compiler tối ưu hóa mã Bytecode giống nhau). |
+| **Cạm bẫy cần tránh** | Lạm dụng gọi `++i` bên trong thân vòng lặp `for` → Nhảy cóc index, rớt phần tử! | Nhầm lẫn giá trị trả về trong biểu thức phức tạp (`y = x++` thì y nhận giá trị cũ). |
+| **Hiệu năng (V8 Engine)** | Tương đương 100% nhau trên JS hiện đại (được JIT compiler tối ưu hóa mã Bytecode giống nhau). |
 
 [⬆️ Quay lại Mục lục](#mục-lục)

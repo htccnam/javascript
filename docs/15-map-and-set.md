@@ -44,7 +44,7 @@
 | :--- | :--- | :--- |
 | **Kiểu dữ liệu của Key** | Chỉ là `string` hoặc `symbol` | **Bất kỳ kiểu dữ liệu nào** (Object, Array, Function, Number...) |
 | **Thứ tự các phần tử** | Không đảm bảo 100% | Luôn bảo toàn chính xác thứ tự chèn |
-| **Đếm kích thước** | Phải thông qua `Object.keys(obj).length` | Có sẵn thuộc tính `.size` với độ phức tạp $O(1)$ |
+| **Đếm kích thước** | Phải thông qua `Object.keys(obj).length` | Có sẵn thuộc tính `.size` với độ phức tạp O(1) |
 | **Hiệu năng thêm/xóa** | Chưa tối ưu cho việc thêm xóa liên tục | Tối ưu hóa cao cho các thao tác CRUD liên tục |
 
 [⬆️ Quay lại Mục lục](#mục-lục)

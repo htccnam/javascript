@@ -69,6 +69,17 @@ console.log("Điểm là : ", score);
 const scoreTotal = score.reduce((total, item) => (total += item), 0);
 console.log("Điểm trung bình : 8.25");
 
+// Tìm điểm cao nhất bằng Math.max kết hợp toán tử Spread (...) trên Object.values:
+const maxScore = Math.max(...Object.values(studentScores));
+console.log("Điểm cao nhất:", maxScore);
+
+// Viết hàm kiểm tra object rỗng chuẩn mực (dựa trên độ dài mảng keys):
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+console.log("isEmpty({}):", isEmpty({}));
+console.log("isEmpty(studentScores):", isEmpty(studentScores));
+
 console.log("in ra ranh sách: \n cách dùng vòng lặp for");
 for (const [subj, sc] of Object.entries(studentScores)) {
     console.log("Môn ", subj, ":", sc, " điểm");

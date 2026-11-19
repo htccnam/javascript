@@ -35,7 +35,7 @@
 > [!NOTE]
 > **Câu chuyện ẩn dụ:**
 > Hãy tưởng tượng một buổi chiều bạn cùng mẹ chuẩn bị cho bữa tối gia đình:
-> - **Toán tử AND (`&&`) - Bữa cơm cá kho:** Mẹ quyết định: *"Nếu hôm nay mua được **cá tươi** VÀ có **rau xanh**, nhà mình sẽ làm món cá kho ăn kèm canh rau"*. Bữa cơm chuẩn chỉ diễn ra khi **CẢ HAI** điều kiện (cá VÀ rau) đều được đáp ứng đầy đủ. Thiếu bất kỳ thứ nào $\rightarrow$ Kế hoạch thất bại!
+> - **Toán tử AND (`&&`) - Bữa cơm cá kho:** Mẹ quyết định: *"Nếu hôm nay mua được **cá tươi** VÀ có **rau xanh**, nhà mình sẽ làm món cá kho ăn kèm canh rau"*. Bữa cơm chuẩn chỉ diễn ra khi **CẢ HAI** điều kiện (cá VÀ rau) đều được đáp ứng đầy đủ. Thiếu bất kỳ thứ nào → Kế hoạch thất bại!
 > - **Toán tử OR (`||`) - Món canh giải nhiệt:** Mẹ nói thêm: *"Chỉ cần có **bí đỏ** HOẶC có **rau muống**, mẹ sẽ nấu được một nồi canh ngon"*. Bữa ăn vẫn trọn vẹn chỉ cần **ÍT NHẤT MỘT TRONG HAI** nguyên liệu sẵn sàng!
 > - **Toán tử NOT (`!`) - Người kén ăn:** Em bạn không ăn được cay (`!isSpicyLover`). Mẹ phải kiểm tra để loại bỏ ớt ra khỏi đĩa thức ăn.
 
@@ -82,7 +82,7 @@ Biểu thức `expr1 && expr2` trả về `true` **khi và chỉ khi CẢ HAI v�
 | `false` | `false` | **`false`** |
 
 ### Ví dụ thực tế: Kế hoạch đi dã ngoại cuối tuần
-Để đi picnic, thời tiết phải ấm áp (trên $20^\circ\text{C}$) **VÀ** hôm nay phải là ngày nghỉ:
+Để đi picnic, thời tiết phải ấm áp (trên 20°C) **VÀ** hôm nay phải là ngày nghỉ:
 
 ```javascript
 let temperature = 25;  // Nhiệt độ 25 độ C
@@ -145,12 +145,13 @@ if (isComedyAvailable || isActionAvailable) {
 ---
 
 <a id="4-toán-tử-not-kỹ-thuật-double-not"></a>
+<a id="4-toán-tử-not--kỹ-thuật-double-not-"></a>
 ## 4. Toán Tử NOT (!) & Kỹ Thuật Double NOT (!!)
 
 ### 4.1. Phủ định giá trị với `!`
 Toán tử `!` đặt trước một biểu thức sẽ đảo ngược giá trị logic:
-- `!true` $\rightarrow$ `false`
-- `!false` $\rightarrow$ `true`
+- `!true` → `false`
+- `!false` → `true`
 
 ```javascript
 let isCatLover = false;
@@ -227,7 +228,7 @@ if (isVipMember || hasGiftCode || hasPaidSubscription) {
 <a id="5-3-kết-hợp-đan-xen-and-và-or"></a>
 ### 5.3. Kết hợp đan xen AND và OR
 **Tình huống:** Một sàn thương mại điện tử tặng quà đặc biệt cho khách hàng khi:
-- (Khách hàng mới **HOẶC** là thành viên VIP) **VÀ** đơn hàng phải trên $500.000\text{ VNĐ}$.
+- (Khách hàng mới **HOẶC** là thành viên VIP) **VÀ** đơn hàng phải trên 500.000 VNĐ.
 
 ```javascript
 let isNewUser = true;
@@ -252,12 +253,12 @@ if ((isNewUser || isVipMember) && purchaseAmount > 500000) {
 
 Khi một dòng lệnh chứa nhiều toán tử khác nhau mà không có dấu ngoặc tròn, JavaScript thực thi theo bảng xếp hạng độ ưu tiên nghiêm ngặt từ cao xuống thấp:
 
-$$\mathbf{!} \text{ (NOT - Cao nhất)} \quad \longrightarrow \quad \mathbf{\&\&} \text{ (AND - Thứ nhì)} \quad \longrightarrow \quad \mathbf{||} \text{ (OR - Thấp nhất)}$$
+> `!` (NOT - Cao nhất) → `&&` (AND - Thứ nhì) → `||` (OR - Thấp nhất)
 
 > [!IMPORTANT]
 > **Toán tử `&&` luôn có độ ưu tiên cao hơn toán tử `||`!**
-> Nó giống hệt như phép nhân ($\times$) có độ ưu tiên cao hơn phép cộng ($+$) trong toán học đại số:
-> $A + B \times C = A + (B \times C)$.
+> Nó giống hệt như phép nhân (×) có độ ưu tiên cao hơn phép cộng (+) trong toán học đại số:
+> A + B × C = A + (B × C).
 > Tương tự: `A || B && C` tương đương với `A || (B && C)`.
 
 ### Phân tích biểu thức minh họa:
@@ -290,8 +291,8 @@ console.log(result); // true
 
 JavaScript thực thi các biểu thức logic từ **trái sang phải** và sở hữu cơ chế tối ưu hóa hiệu năng gọi là **Đoản mạch (Short-circuit)**: Khi kết quả của toàn bộ biểu thức đã được ngã ngũ ngay từ vế đầu tiên, JavaScript **sẽ dừng lại ngay lập tức và không tính toán vế còn lại nữa**.
 
-- **Với toán tử `&&`:** Chỉ cần gặp một vế là **Falsy**, cả biểu thức chắc chắn không thể thỏa mãn $\rightarrow$ **Dừng ngay lập tức**.
-- **Với toán tử `||`:** Chỉ cần gặp một vế là **Truthy**, cả biểu thức chắc chắn đã thỏa mãn $\rightarrow$ **Dừng ngay lập tức**.
+- **Với toán tử `&&`:** Chỉ cần gặp một vế là **Falsy**, cả biểu thức chắc chắn không thể thỏa mãn → **Dừng ngay lập tức**.
+- **Với toán tử `||`:** Chỉ cần gặp một vế là **Truthy**, cả biểu thức chắc chắn đã thỏa mãn → **Dừng ngay lập tức**.
 
 ```javascript
 function sendEmailNotification() {
@@ -488,7 +489,7 @@ console.log(getElement(numbers, 1, "Empty")); // 5
 console.log(getElement(numbers, 2, "Empty")); // "Empty" (❌ SAI LOGIC!)
 ```
 > [!WARNING]
-> Tại vị trí `index = 2`, giá trị hợp lệ trong mảng là số `0`. Nhưng vì `0` là một giá trị **Falsy**, toán tử `||` coi đó là "không hợp lệ" và bỏ qua để lấy `defaultValue` $\rightarrow$ Kết quả in ra `"Empty"` thay vì `0`!
+> Tại vị trí `index = 2`, giá trị hợp lệ trong mảng là số `0`. Nhưng vì `0` là một giá trị **Falsy**, toán tử `||` coi đó là "không hợp lệ" và bỏ qua để lấy `defaultValue` → Kết quả in ra `"Empty"` thay vì `0`!
 
 #### Thử nghiệm 3: Lỗi phát sinh khi mảng chứa chuỗi rỗng `""` (Falsy)
 ```javascript
@@ -558,10 +559,10 @@ Code trở nên ngắn gọn, thanh thoát, dễ đọc và thể hiện đúng 
 | Tiêu chí | Toán tử OR (`\|\|`) | Toán tử Nullish Coalescing (`??`) |
 | :--- | :--- | :--- |
 | **Quy tắc kích hoạt Fallback** | Kích hoạt khi vế trái là **bất kỳ giá trị Falsy nào** | **Chỉ kích hoạt** khi vế trái là `null` hoặc `undefined` |
-| **Hành vi với số `0`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `0` |
-| **Hành vi với chuỗi rỗng `""`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `""` |
-| **Hành vi với `false`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `false` |
-| **Hành vi với `NaN`** | ❌ Bị coi là Falsy $\rightarrow$ Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ $\rightarrow$ Giữ nguyên `NaN` |
+| **Hành vi với số `0`** | ❌ Bị coi là Falsy → Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ → Giữ nguyên `0` |
+| **Hành vi với chuỗi rỗng `""`** | ❌ Bị coi là Falsy → Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ → Giữ nguyên `""` |
+| **Hành vi với `false`** | ❌ Bị coi là Falsy → Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ → Giữ nguyên `false` |
+| **Hành vi với `NaN`** | ❌ Bị coi là Falsy → Nhảy sang vế phải | ✅ Coi là giá trị hợp lệ → Giữ nguyên `NaN` |
 | **Khi nào nên sử dụng?** | Khi muốn giá trị hợp lệ **bắt buộc phải mang tính Truthy** | Khi xử lý dữ liệu cấu trúc (mảng, object, API) mà các giá trị `0`, `""`, `false` là dữ liệu thực tế |
 
 ---
@@ -700,10 +701,10 @@ console.log(fixedScore); // 0 (Chính xác! ?? chỉ bỏ qua null và undefined
 
 | Toán tử | Tên gọi | Điều kiện kích hoạt / Trả về `true` | Hành vi đoản mạch (Short-circuit) | Khi nào nên sử dụng? |
 | :---: | :--- | :--- | :--- | :--- |
-| **`&&`** | Logical AND (VÀ) | Khi **tất cả** các biểu thức đều đúng (`true`) | Gặp Falsy đầu tiên $\rightarrow$ Dừng ngay | Kiểm tra điều kiện bắt buộc đồng thời, guarding. |
-| **`||`** | Logical OR (HOẶC) | Khi **ít nhất một** biểu thức đúng (`true`) | Gặp Truthy đầu tiên $\rightarrow$ Dừng ngay | Kiểm tra điều kiện thỏa hiệp một trong nhiều, fallback đơn giản. |
+| **`&&`** | Logical AND (VÀ) | Khi **tất cả** các biểu thức đều đúng (`true`) | Gặp Falsy đầu tiên → Dừng ngay | Kiểm tra điều kiện bắt buộc đồng thời, guarding. |
+| **`||`** | Logical OR (HOẶC) | Khi **ít nhất một** biểu thức đúng (`true`) | Gặp Truthy đầu tiên → Dừng ngay | Kiểm tra điều kiện thỏa hiệp một trong nhiều, fallback đơn giản. |
 | **`!`** | Logical NOT (PHỦ ĐỊNH) | Đảo ngược giá trị logic (`!false === true`) | Không áp dụng (toán tử 1 ngôi) | Đảo cờ trạng thái, kiểm tra tính rỗng/phủ định. |
-| **`??`** | Nullish Coalescing | Trả về vế trái nếu khác `null`/`undefined` | Vế trái khác `null`/`undefined` $\rightarrow$ Dừng ngay | **Gán giá trị mặc định chuẩn xác**, bảo toàn số `0`, chuỗi rỗng `""`, `false`. |
+| **`??`** | Nullish Coalescing | Trả về vế trái nếu khác `null`/`undefined` | Vế trái khác `null`/`undefined` → Dừng ngay | **Gán giá trị mặc định chuẩn xác**, bảo toàn số `0`, chuỗi rỗng `""`, `false`. |
 | **`()`** | Dấu ngoặc tròn gom nhóm | Ép độ ưu tiên cao nhất trong biểu thức | Không áp dụng | **Bắt buộc dùng** khi kết hợp đan xen giữa `&&`, `||` và `??`. |
 
 [⬆️ Quay lại Mục lục](#mục-lục)

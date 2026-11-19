@@ -10,12 +10,12 @@ Chào mừng bạn đến với kho tài liệu và bài tập thực hành **Ja
 
 - [📂 Cấu Trúc Dự Án](#-cấu-trúc-dự-án)
 - [🧭 Bản Đồ Liên Kết Kiến Thức (Knowledge Dependency Graph)](#-bản-đồ-liên-kết-kiến-thức-knowledge-dependency-graph)
-- [🗺️ Lộ Trình Học Tập (Curriculum Roadmap)](#️-lộ-trình-học-tập-curriculum-roadmap)
-- [🛠️ Hướng Dẫn Cài Đặt & Sử Dụng](#-hướng-dẫn-cài-đặt--sử-dụng)
-- [👨‍💻 Tác giả & Đóng góp](#-tác-giả--đóng-góp)
+- [🎯 Quy Trình Tối Ưu Để Bạn Tự Học & Làm Lại Từ Đầu](#-quy-trình-tối-ưu-để-bạn-tự-học--làm-lại-từ-đầu)
+- [🗺️ Lộ Trình Học Tập (Roadmap Tuyến Tính Chuẩn Mực)](#️-lộ-trình-học-tập-roadmap-tuyến-tính-chuẩn-mực)
 
 ---
 
+<a id="-cấu-trúc-dự-án"></a>
 ## 📂 Cấu Trúc Dự Án
 
 Toàn bộ dự án được tổ chức theo cấu trúc chuẩn mực, khoa học và phân tách rõ ràng giữa Lý thuyết (`docs/`) và Thực hành (`exercises/`):
@@ -72,6 +72,7 @@ javascript/
 
 ---
 
+<a id="-bản-đồ-liên-kết-kiến-thức-knowledge-dependency-graph"></a>
 ## 🧭 Bản Đồ Liên Kết Kiến Thức (Knowledge Dependency Graph)
 
 > [!TIP]
@@ -81,6 +82,7 @@ javascript/
 
 ---
 
+<a id="-quy-trình-tối-ưu-để-bạn-tự-học--làm-lại-từ-đầu"></a>
 ## 🎯 Quy Trình Tối Ưu Để Bạn Tự Học & Làm Lại Từ Đầu
 
 Để việc học đạt hiệu quả cao nhất mà **không làm mất lời giải mẫu**, bạn nên tuân theo quy trình 4 bước sau:
@@ -101,6 +103,8 @@ flowchart LR
 
 ---
 
+<a id="️-lộ-trình-học-tập-roadmap-tuyến-tính-chuẩn-mực"></a>
+<a id="️-lộ-trình-học-tập-curriculum-roadmap"></a>
 ## 🗺️ Lộ Trình Học Tập (Roadmap Tuyến Tính Chuẩn Mực)
 
 |  STT   | Chủ đề                              | Thư mục bài tập                                                                                                                    | Tài liệu lý thuyết                                                                                                           | Kiến thức trọng tâm                                                                                               |
@@ -116,12 +120,13 @@ flowchart LR
 | **09** | **3 Loại Hàm trong JS**             | [`exercises/09-function-types/`](file:///d:/github/studyProgram/javascript/exercises/09-function-types/)                           | [`docs/09-function-types.md`](file:///d:/github/studyProgram/javascript/docs/09-function-types.md)                           | Declaration, Expression, Arrow function, Callback filter/map                                                      |
 | **10** | **Cơ Chế Hoisting & Scope**         | [`exercises/10-hoisting-and-scope/`](file:///d:/github/studyProgram/javascript/exercises/10-hoisting-and-scope/)                   | [`docs/10-hoisting-and-scope.md`](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md)                   | Creation vs Execution phase, TDZ let/const, Function vs Expression                                                |
 | **11** | **Mảng trong JavaScript**           | [`exercises/11-arrays/`](file:///d:/github/studyProgram/javascript/exercises/11-arrays/)                                           | [`docs/11-arrays.md`](file:///d:/github/studyProgram/javascript/docs/11-arrays.md)                                           | Array Literal, `new Array()`, `push`, `pop`, `splice`, `map`, `filter`, `reduce`                                  |
-| **12** | **Đối Tượng (Object) & this**       | [`exercises/12-objects/`](file:///d:/github/studyProgram/javascript/exercises/12-objects/)                                         | [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md)                                         | Enhanced Object Literals (Property/Method/Computed), Nested Destructuring, Quy ước Noun/Verb, `const` & `freeze`, `this` |
+| **12** | **Đối Tượng (Object) & this**       | [`exercises/12-objects/`](file:///d:/github/studyProgram/javascript/exercises/12-objects/)                                         | [`docs/12-objects.md`](file:///d:/github/studyProgram/javascript/docs/12-objects.md)                                         | Bộ ba Object.keys/values/entries, Enhanced Literals (Property/Method/Computed), Nested Destructuring, Noun/Verb, `const` & `freeze`, `this` |
 | **13** | **Vòng Lặp For-In & For-Of**        | [`exercises/13-for-in-and-for-of/`](file:///d:/github/studyProgram/javascript/exercises/13-for-in-and-for-of/)                     | [`docs/13-for-in-and-for-of.md`](file:///d:/github/studyProgram/javascript/docs/13-for-in-and-for-of.md)                     | Duyệt Object keys với `for...in`, duyệt Iterable với `for...of`, toán tử `in`, cạm bẫy Prototype & `not iterable` |
 | **14** | **Ứng Dụng ++ Tiền Tố & Hậu Tố**    | [`exercises/14-prefix-postfix-applications/`](file:///d:/github/studyProgram/javascript/exercises/14-prefix-postfix-applications/) | [`docs/14-prefix-postfix-applications.md`](file:///d:/github/studyProgram/javascript/docs/14-prefix-postfix-applications.md) | Phân biệt `++i` vs `i++`, đánh số thứ tự trong `for...of`, bẫy tăng biến 2 lần, V8 Engine bytecode                |
 | **15** | **Cấu Trúc Map & Set**              | [`exercises/15-map-and-set/`](file:///d:/github/studyProgram/javascript/exercises/15-map-and-set/)                                 | [`docs/15-map-and-set.md`](file:///d:/github/studyProgram/javascript/docs/15-map-and-set.md)                                 | Cặp key-value linh hoạt, Object làm key, lọc trùng mảng, toán tử tập hợp                                          |
 | **16** | **Thao Tác DOM & Sự Kiện**          | [`exercises/16-dom-basics/`](file:///d:/github/studyProgram/javascript/exercises/16-dom-basics/)                                   | [`docs/16-dom-basics.md`](file:///d:/github/studyProgram/javascript/docs/16-dom-basics.md)                                   | querySelector, addEventListener, Todo app thực chiến, Dark mode                                                   |
 | **17** | **JSON & Xử Lý Lỗi**                | [`exercises/17-json-and-error-handling/`](file:///d:/github/studyProgram/javascript/exercises/17-json-and-error-handling/)         | [`docs/17-json-and-error-handling.md`](file:///d:/github/studyProgram/javascript/docs/17-json-and-error-handling.md)         | `JSON.stringify`, `JSON.parse`, `try...catch...finally`, return override                                          |
+| **18** | **Sổ Tay Tra Cứu Thuộc Tính & Phương Thức** | [`exercises/18-javascript-methods-and-properties-reference/`](file:///d:/github/studyProgram/javascript/exercises/18-javascript-methods-and-properties-reference/) | [`docs/18-javascript-methods-and-properties-reference.md`](file:///d:/github/studyProgram/javascript/docs/18-javascript-methods-and-properties-reference.md) | Thống kê toàn bộ API JavaScript: Tham số nhận vào (Input) & Giá trị trả về (Output), Mutating vs Non-Mutating |
 
 ---
 

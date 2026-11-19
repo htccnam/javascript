@@ -11,13 +11,14 @@
 
 - [📌 Lời Nhắn Từ Senior Mentor](#-lời-nhắn-từ-senior-mentor)
 - [🗺️ Sơ Đồ Phụ Thuộc Tổng Quan (Mermaid Graph)](#️-sơ-đồ-phụ-thuộc-tổng-quan-mermaid-graph)
-- [🔍 Phân Tích Chi Tiết Điều Kiện Tiên Quyết Từng Bài Học](#-phân-tích-chi-tiết-điều-kiện-tiên-quyết-từng-bài-học)
-- [📊 Ma Trận Phụ Thuộc Kiến Thức (Dependency Matrix)](#-ma-trận-phụ-thuộc-kiến-thức-dependency-matrix)
-- [🎯 Lời Khuyên Dành Cho Bạn (How To Use This Map)](#-lời-khuyên-dành-cho-bạn-how-to-use-this-map)
-- [🏁 Kết Luận](#-kết-luận)
+- [🔍 Phân Tích Chi Tiết Kiến Thức Nền Tảng (Prerequisites) Theo Từng Bài](#-phân-tích-chi-tiết-kiến-thức-nền-tảng-prerequisites-theo-từng-bài)
+- [🎯 Bảng Tra Cứu Nhanh Ma Trận Phụ Thuộc (Dependency Matrix)](#-bảng-tra-cứu-nhanh-ma-trận-phụ-thuộc-dependency-matrix)
+- [🤖 Quy Tắc Bắt Buộc Dành Cho Agent Trong Mọi Phiên Làm Việc](#-quy-tắc-bắt-buộc-dành-cho-agent-trong-mọi-phiên-làm-việc-mandatory-agent-directives)
+- [💡 Lời Khuyên Dành Cho Bạn Khi Tự Học](#-lời-khuyên-dành-cho-bạn-khi-tự-học)
 
 ---
 
+<a id="-lời-nhắn-từ-senior-mentor"></a>
 ## 📌 LỜI NHẮN TỪ SENIOR MENTOR
 
 > *"Học lập trình cũng giống như xây một tòa cao ốc: Bạn tuyệt đối không thể đổ bê tông sàn tầng 11 (Mảng & Đối tượng nâng cao) khi trụ tầng 3 (Kiểu dữ liệu & Tham chiếu), nhịp tầng 8 (Vòng lặp & Ép kiểu) hay dầm tầng 9 (Hàm & Callback) vẫn còn đang lung lay.*
@@ -26,6 +27,8 @@
 
 ---
 
+<a id="️-sơ-đồ-phụ-thuộc-tổng-quan-mermaid-graph"></a>
+<a id="sơ-đồ-phụ-thuộc-tổng-quan-mermaid-graph"></a>
 ## 🗺️ SƠ ĐỒ PHỤ THUỘC TỔNG QUAN (MERMAID GRAPH)
 
 ```mermaid
@@ -83,6 +86,10 @@ flowchart TD
     L11 --> L17
     L12 --> L17
 
+    %% Tầng 7: Sổ tay tra cứu tổng hợp toàn diện
+    L16 --> L18["18. Sổ Tay Tra Cứu Thuộc Tính & Phương Thức<br>(docs/18-javascript-methods-and-properties-reference.md)"]
+    L17 --> L18
+
     %% Styling
     classDef foundation fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
     classDef data fill:#fef3c7,stroke:#d97706,stroke-width:2px;
@@ -90,6 +97,7 @@ flowchart TD
     classDef logic fill:#dcfce7,stroke:#16a34a,stroke-width:2px;
     classDef datastruct fill:#f3e8ff,stroke:#9333ea,stroke-width:2px;
     classDef advanced fill:#ffe4e6,stroke:#e11d48,stroke-width:2px;
+    classDef reference fill:#ecfdf5,stroke:#059669,stroke-width:2px;
 
     class L01,L02 foundation;
     class L03,L04,L07 data;
@@ -97,10 +105,13 @@ flowchart TD
     class L09,L10 logic;
     class L11,L12,L13,L14,L15 datastruct;
     class L16,L17 advanced;
+    class L18 reference;
 ```
 
 ---
 
+<a id="-phân-tích-chi-tiết-kiến-thức-nền-tảng-prerequisites-theo-từng-bài"></a>
+<a id="-phân-tích-chi-tiết-điều-kiện-tiên-quyết-từng-bài-học"></a>
 ## 🔍 PHÂN TÍCH CHI TIẾT KIẾN THỨC NỀN TẢNG (PREREQUISITES) THEO TỪNG BÀI
 
 ---
@@ -188,7 +199,7 @@ flowchart TD
   2. **Toán tử `??` vs `||`** tại [`docs/05-conditionals-and-operators.md` (Mục 8.2)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#82-nullish-coalescing-operator-):
      - *Vì sao bắt buộc?* Bài 06 phân tích cạm bẫy cú pháp: Bắt buộc dùng dấu ngoặc đơn `()` khi kết hợp `??` với `&&`/`||`.
 * **Mục tiêu cốt lõi cần đạt được:**
-  - Làm chủ thứ tự ưu tiên: `!` (cao nhất) $\rightarrow$ `&&` $\rightarrow$ `||` (thấp nhất).
+  - Làm chủ thứ tự ưu tiên: `!` (cao nhất) → `&&` → `||` (thấp nhất).
   - Phân biệt bẫy Bitwise `&`/`|` vs Logical `&&`/`||`.
   - Kỹ thuật Guarding (`user && user.profile`) và Fallback chuẩn xác.
 
@@ -296,11 +307,11 @@ flowchart TD
   - Áp dụng chuẩn mực quy ước đặt tên (Naming Conventions): cú pháp camelCase, tiền tố `is...` cho boolean, phân biệt chữ HOA - thường (case-sensitivity), tránh từ khóa riêng để viết Clean Code tự giải thích (Self-documenting code).
   - Thành thạo CRUD thuộc tính (thêm, sửa, `delete`) bằng Dot và Bracket notation.
   - Hiểu sâu bản chất `const` với Object (Stack lưu địa chỉ tham chiếu vs Heap chứa dữ liệu thực tế), giải mã lý do sửa được thuộc tính nhưng cấm gán lại, và kỹ thuật đóng băng bằng `Object.freeze()`.
+  - Làm chủ bộ ba phương thức tĩnh `Object.keys`, `Object.values`, `Object.entries`: trích xuất mảng keys, values, entries; kỹ thuật kiểm tra đối tượng rỗng chuẩn mực `Object.keys(obj).length === 0` (giải mã lý do `{}` so sánh tham chiếu luôn ra false); tính toán thống kê (`Math.max`, `reduce`) trên values; duyệt `for...of` phân rã `[key, value]` và đường ống biến đổi dữ liệu với `Object.fromEntries`.
   - Làm chủ bộ tính năng Enhanced Object Literals (Property shorthand, Method shorthand, Computed property names) và kỹ thuật Object Destructuring từ cơ bản đến nâng cao (Nested Destructuring, Alias, Default values).
   - Duyệt Object bằng `for...in` và các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
   - Phòng tránh các cạm bẫy: Kiểm tra key bằng toán tử `in` / `Object.hasOwn()`, tránh dùng từ khóa dành riêng làm key.
   - Hiểu thấu đáo bản chất từ khóa `this`: cơ chế tham chiếu đối tượng hiện hành tại thời điểm gọi hàm (Call-time binding), lý do sống còn khi dùng `this.prop` thay vì hardcode tên biến (`person.prop`), kỹ thuật chia sẻ method (Method Sharing), và phòng chống triệt để cạm bẫy Arrow Function & mất ngữ cảnh (Detached Method).
-  - Thành thạo các hàm tĩnh `Object.keys`, `Object.values`, `Object.entries`, `Object.fromEntries`.
 
 ---
 
@@ -392,6 +403,21 @@ flowchart TD
 
 ---
 
+### 🟢 BÀI 18: Sổ Tay Tra Cứu Toàn Diện: Thuộc Tính & Phương Thức Trong JavaScript (API Reference & Cheat Sheet)
+* **Tài liệu:** [`docs/18-javascript-methods-and-properties-reference.md`](file:///d:/github/studyProgram/javascript/docs/18-javascript-methods-and-properties-reference.md)
+* **Bài tập:** [`exercises/18-javascript-methods-and-properties-reference/`](file:///d:/github/studyProgram/javascript/exercises/18-javascript-methods-and-properties-reference/) (Tài liệu tham chiếu, không yêu cầu nộp bài tập code)
+* **Kiến thức tiên quyết:** Toàn bộ kiến thức nền tảng từ Bài 01 đến Bài 17.
+* **Mục tiêu cốt lõi cần đạt được:**
+  - Nắm vững **2 yếu tố cốt lõi** của mọi API trong JavaScript:
+    1. **Giá trị nhận vào (Input / Parameters):** Tên tham số, kiểu dữ liệu (`String`, `Number`, `Boolean`, `Object`, `Array`, `Callback`, `any`), có bắt buộc hay tùy chọn (`[optional]`), giá trị mặc định.
+    2. **Giá trị trả lại (Output / Return Value):** Kiểu dữ liệu trả về, ý nghĩa logic của kết quả.
+  - Phân biệt triệt để **Mutating Methods (làm thay đổi dữ liệu gốc)** vs **Non-Mutating / Pure Methods (bảo toàn dữ liệu gốc, trả về bản sao mới)** trên Mảng và Đối tượng.
+  - Tra cứu nhanh chóng các phương thức của `Object`, `Array`, `String`, `Number`, `Math`, `Map`, `Set`, `JSON`, `Console`, `DOM`.
+
+---
+
+<a id="-bảng-tra-cứu-nhanh-ma-trận-phụ-thuộc-dependency-matrix"></a>
+<a id="-ma-trận-phụ-thuộc-kiến-thức-dependency-matrix"></a>
 ## 🎯 BẢNG TRA CỨU NHANH MA TRẬN PHỤ THUỘC (DEPENDENCY MATRIX)
 
 | Bài học hiện tại | Phụ thuộc TRỰC TIẾP vào các bài | Mảnh ghép kiến thức mấu chốt cần xem lại |
@@ -412,9 +438,41 @@ flowchart TD
 | **15. Map & Set** | 03, 11, 12, 13 | Hạn chế key của Object, duyệt `for...of` trên Map/Set, lọc trùng mảng với `...` |
 | **16. Thao tác DOM** | 05, 09, 11, 12, 13 | Event Listener Callback, DOM Object properties, `for...of` trên NodeList, `event.preventDefault` |
 | **17. JSON & Xử lý lỗi** | 03, 11, 12 | Cấu trúc Object/Array, các kiểu bị loại bỏ (`undefined`, `Symbol`), `try...catch` |
+| **18. Sổ Tay Tra Cứu Toàn Diện** | 01 đến 17 | Thống kê toàn bộ API JavaScript: Tham số nhận vào (Input) & Giá trị trả về (Output), Mutating vs Non-Mutating |
 
 ---
 
+<a id="-quy-tắc-bắt-buộc-dành-cho-agent-trong-mọi-phiên-làm-việc-mandatory-agent-directives"></a>
+## 🤖 QUY TẮC BẮT BUỘC DÀNH CHO AGENT TRONG MỌI PHIÊN LÀM VIỆC (MANDATORY AGENT DIRECTIVES)
+
+> [!IMPORTANT]
+> **ĐÂY LÀ CHỈ LỆNH BẮT BUỘC (SYSTEM DIRECTIVES) CHO MỌI AGENT KHI THỰC HIỆN YÊU CẦU CỦA NGƯỜI DÙNG TRONG WORKSPACE NÀY:**
+>
+> 1. **QUY TẮC ĐỒNG BỘ SỔ TAY TRA CỨU (BÀI 18 - API REFERENCE):**
+>    - Bất cứ khi nào Agent tạo mới hoặc bổ sung một bài học lý thuyết (`docs/*.md`) hoặc bài tập (`exercises/*/debai.md`) mà trong đó có xuất hiện thuộc tính (Properties), phương thức (Methods) hoặc hàm (Functions) mới của JavaScript:
+>    - **BẮT BUỘC** phải cập nhật ngay vào bảng tra cứu tại [`docs/18-javascript-methods-and-properties-reference.md`](file:///d:/github/studyProgram/javascript/docs/18-javascript-methods-and-properties-reference.md).
+>    - Mỗi mục bổ sung phải nêu rõ **2 yếu tố cốt lõi**:
+>      - **Giá trị nhận vào (Input / Parameters):** Tên tham số, kiểu dữ liệu, bắt buộc hay tùy chọn (`[optional]`), giá trị mặc định.
+>      - **Giá trị trả lại (Output / Return Value):** Kiểu dữ liệu trả về, ý nghĩa logic của kết quả, và có biến đổi dữ liệu gốc hay không (`Mutates: Có / Không`).
+>      - Có ví dụ code ngắn gọn 1 dòng minh họa.
+>
+> 2. **QUY TẮC ĐỒNG BỘ SEARCH INDEX:**
+>    - Sau khi thêm/sửa bất kỳ bài học nào, luôn chạy `npm run build:search` để cập nhật `search-index.json`.
+>
+> 3. **QUY TẮC ĐỒNG NHẤT 100% GIỮA `agent` VÀ `agent.md`:**
+>    - File `agent` và `agent.md` tại thư mục gốc phải luôn luôn giống nhau 100% từng byte (bit-for-bit identical). Sau khi sửa `agent.md`, luôn chạy lệnh:
+>      `Copy-Item agent.md agent -Force` và kiểm tra lại bằng `fc.exe agent agent.md`.
+>
+> 4. **QUY TẮC MỤC LỤC (TOP TOC):**
+>    - Tất cả các file Markdown (`docs/*.md` và `exercises/*/debai.md`) phải có `<a id="mục-lục"></a>\n## Mục Lục` ngay dưới dòng tiêu đề `# Title` ở dòng 3-4, và link `[⬆️ Quay lại Mục lục](#mục-lục)` ở cuối mỗi section.
+>
+> 5. **QUY TẮC KIỂM THỬ AN TOÀN:**
+>    - Luôn chạy `npm run test:verify` để đảm bảo toàn bộ bộ test của dự án đều đạt `PASS 100%`.
+
+---
+
+<a id="-lời-khuyên-dành-cho-bạn-khi-tự-học"></a>
+<a id="-lời-khuyên-dành-cho-bạn-how-to-use-this-map"></a>
 ## 💡 LỜI KHUYÊN DÀNH CHO BẠN KHI TỰ HỌC
 
 1. **Nếu bạn gặp khó khăn ở Bài 11 (Mảng):** Đừng vội đọc lại bài Mảng! 90% nguyên nhân là bạn chưa nắm vững **Vòng lặp For (Bài 08)** hoặc **Arrow Function Callback (Bài 09)**. Hãy quay lại làm bài tập rút gọn hàm mũi tên và vòng lặp trước.

@@ -109,7 +109,7 @@ Nhiều người thắc mắc: *"Đã là rỗng sao không phải là Falsy?"* 
 
 1. **Ẩn dụ "Chiếc hộp rỗng":**
    - `null`: Không có chiếc hộp nào trên bàn.
-   - `[]` hay `{}`: **Có một chiếc hộp carton đặt ngay trên bàn**, chỉ là bên trong chưa có đồ. Bản thân chiếc hộp vẫn tồn tại $\rightarrow$ **Truthy**!
+   - `[]` hay `{}`: **Có một chiếc hộp carton đặt ngay trên bàn**, chỉ là bên trong chưa có đồ. Bản thân chiếc hộp vẫn tồn tại → **Truthy**!
 2. **Bản chất vùng nhớ (Reference Type):**
    - Biến `const arr = []` không chứa giá trị rỗng, mà giữ **địa chỉ ô nhớ** (con trỏ tham chiếu trên RAM) trỏ đến một Object hợp lệ.
    - Theo chuẩn ECMAScript: **Mọi Object luôn luôn là `true`** khi ép kiểu Boolean (`Boolean([]) === true`).
@@ -175,9 +175,9 @@ flowchart LR
     D -->|"4. Hai số bằng nhau"| E["true"]
 ```
 
-1. **Bước 1:** Thấy có boolean `false` $\rightarrow$ JS ép thành số: `Number(false) = 0`. Biểu thức trở thành: `[] == 0`.
-2. **Bước 2:** So sánh Object (`[]`) với Số (`0`) $\rightarrow$ JS bắt mảng biến thành kiểu nguyên thủy (gọi `[].toString()`) $\rightarrow$ ra chuỗi rỗng `""`. Biểu thức trở thành: `"" == 0`.
-3. **Bước 3:** So sánh Chuỗi (`""`) với Số (`0`) $\rightarrow$ JS ép chuỗi thành số: `Number("") = 0`. Biểu thức trở thành: `0 == 0`.
+1. **Bước 1:** Thấy có boolean `false` → JS ép thành số: `Number(false) = 0`. Biểu thức trở thành: `[] == 0`.
+2. **Bước 2:** So sánh Object (`[]`) với Số (`0`) → JS bắt mảng biến thành kiểu nguyên thủy (gọi `[].toString()`) → ra chuỗi rỗng `""`. Biểu thức trở thành: `"" == 0`.
+3. **Bước 3:** So sánh Chuỗi (`""`) với Số (`0`) → JS ép chuỗi thành số: `Number("") = 0`. Biểu thức trở thành: `0 == 0`.
 4. **Bước 4:** Cả hai vế đều là số `0`, kết quả cuối cùng: `0 == 0` là **`true`**!
 
 ### 3.3. Nghịch lý kinh điển của JavaScript

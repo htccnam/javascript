@@ -119,6 +119,8 @@ for (const key in person) {
 ---
 
 <a id="3-vòng-lặp-forof-duyệt-qua-giá-trị-của-cấu-trúc-lặp-iterable"></a>
+<a id="2-vòng-lặp-for-of-duyệt-giá-trị-mảng--chuỗi"></a>
+<a id="3-vòng-lặp-for-of"></a>
 ## 3. Vòng Lặp for...of: Duyệt Qua Giá Trị Của Cấu Trúc Lặp (Iterable)
 
 ### 3.1. Cú pháp và cách hoạt động

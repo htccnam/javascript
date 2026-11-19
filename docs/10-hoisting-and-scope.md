@@ -69,8 +69,8 @@ console.log(x); // In ra: 5
 
 **Bản chất JS Engine xử lý như sau:**
 Dòng lệnh `var x = 5;` thực chất gồm 2 bước:
-1. **Khai báo (Declaration):** `var x;` $\rightarrow$ Được đưa lên đầu phạm vi trong Creation Phase và tự động gán giá trị khởi tạo là `undefined`.
-2. **Gán giá trị (Assignment):** `x = 5;` $\rightarrow$ Giữ nguyên vị trí ban đầu và chỉ được gán khi luồng chạy tới dòng này trong Execution Phase.
+1. **Khai báo (Declaration):** `var x;` → Được đưa lên đầu phạm vi trong Creation Phase và tự động gán giá trị khởi tạo là `undefined`.
+2. **Gán giá trị (Assignment):** `x = 5;` → Giữ nguyên vị trí ban đầu và chỉ được gán khi luồng chạy tới dòng này trong Execution Phase.
 
 Đoạn code trên được JS Engine hiểu tương đương:
 ```javascript
@@ -92,7 +92,7 @@ let y = 10;
 ```
 
 > [!WARNING]
-> **Hiểu lầm phổ biến:** *"Biến `let` và `const` không được hoisted."* $\rightarrow$ **SAI!**
+> **Hiểu lầm phổ biến:** *"Biến `let` và `const` không được hoisted."* → **SAI!**
 > Cả `let` và `const` **ĐỀU ĐƯỢC HOISTED**, nhưng khác với `var`, chúng **KHÔNG** được khởi tạo giá trị `undefined`. Thay vào đó, chúng rơi vào một trạng thái gọi là **Temporal Dead Zone (TDZ - Vùng chết tạm thời)**.
 
 ```text
@@ -199,10 +199,10 @@ function run() {
 ```
 
 **Phân tích chi tiết:**
-- `run` được khai báo ở phạm vi ngoài cùng $\rightarrow$ được hoisted lên đầu file $\rightarrow$ gọi `run()` ở dòng 2 hoàn toàn hợp lệ.
-- `internalFunction` được khai báo **bên trong hàm `run()`** $\rightarrow$ nó thuộc phạm vi của `run`.
+- `run` được khai báo ở phạm vi ngoài cùng → được hoisted lên đầu file → gọi `run()` ở dòng 2 hoàn toàn hợp lệ.
+- `internalFunction` được khai báo **bên trong hàm `run()`** → nó thuộc phạm vi của `run`.
 - Nó chỉ được hoisted lên **đầu thân hàm `run`**. Do đó, gọi ở bất kỳ dòng nào bên trong `run` đều hợp lệ.
-- Tuy nhiên, từ bên ngoài hàm `run`, thế giới bên ngoài hoàn toàn không biết `internalFunction` là ai $\rightarrow$ ném lỗi **`ReferenceError: internalFunction is not defined`**.
+- Tuy nhiên, từ bên ngoài hàm `run`, thế giới bên ngoài hoàn toàn không biết `internalFunction` là ai → ném lỗi **`ReferenceError: internalFunction is not defined`**.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 

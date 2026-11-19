@@ -335,7 +335,7 @@ console.log(quote); // She said, "I'm learning JavaScript!"
 ## 4. Các lỗi thường gặp khi làm việc với chuỗi
 
 1. **Quên dùng ký tự thoát (Escape character):**
-   - Đặt nháy đơn bên trong chuỗi nháy đơn (`'It's fine'`) $\rightarrow$ Báo lỗi cú pháp (`SyntaxError`).
+   - Đặt nháy đơn bên trong chuỗi nháy đơn (`'It's fine'`) → Báo lỗi cú pháp (`SyntaxError`).
    - Sửa: Dùng `\'` hoặc đổi dấu bao quanh thành nháy kép `"` hoặc backticks `` ` ``.
 2. **Nhầm lẫn giữa nối chuỗi và cộng số:**
    - Biểu thức `"2" + 2` cho ra `"22"` chứ không phải `4`.

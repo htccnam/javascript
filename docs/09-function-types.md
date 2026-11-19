@@ -38,7 +38,7 @@
 >    - *Vì sao bắt buộc?* Giúp bạn hiểu vì sao có thể gán một hàm vào một biến (`const myFunc = function() {}` - Function Expression) và truyền hàm như một tham số đối số (First-class Citizens).
 > 3. **Lệnh `return` và rẽ nhánh `if...else`** tại [05 - Rẽ Nhánh & Hệ Thống Toán Tử (Mục 1)](file:///d:/github/studyProgram/javascript/docs/05-conditionals-and-operators.md#1-câu-lệnh-điều-kiện-if-else-if-else-if-else):
 >    - *Vì sao bắt buộc?* Bên trong thân hàm cần xử lý logic rẽ nhánh điều kiện và trả về giá trị qua từ khóa `return`.
-> * **Đích đến tiếp theo:** Hàm là động cơ của mọi cấu trúc dữ liệu! Cú pháp Arrow Function và Callback ở bài này là **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC** cho [10 - Cơ Chế Hoisting & Scope](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md), [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md), [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), và [15 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/15-dom-basics.md).
+> * **Đích đến tiếp theo:** Hàm là động cơ của mọi cấu trúc dữ liệu! Cú pháp Arrow Function và Callback ở bài này là **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC** cho [10 - Cơ Chế Hoisting & Scope](file:///d:/github/studyProgram/javascript/docs/10-hoisting-and-scope.md), [11 - Mảng (Arrays)](file:///d:/github/studyProgram/javascript/docs/11-arrays.md), [12 - Đối Tượng (Objects)](file:///d:/github/studyProgram/javascript/docs/12-objects.md), và [16 - Thao Tác DOM](file:///d:/github/studyProgram/javascript/docs/16-dom-basics.md).
 > * 🗺️ *Xem bản đồ lộ trình tổng thể:* [Bản đồ liên kết kiến thức toàn dự án (agent.md)](file:///d:/github/studyProgram/javascript/agent.md).
 
 ---

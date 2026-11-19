@@ -21,10 +21,79 @@ function loadMermaid() {
   return mermaidPromise;
 }
 
-// Đổi link tuyệt đối kiểu file:///d:/github/studyProgram/javascript/<đường dẫn> thành đường dẫn tương đối từ lab/
+// Slug generator cho heading chuẩn tiếng Việt
+export function slugifyHeading(text) {
+  if (!text) return "";
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "")
+    .replace(/\s+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+// Khởi tạo renderer cho marked để tự động gán id cho h1..h6
+let markedInitialized = false;
+function initMarkedRenderer() {
+  if (markedInitialized || !window.marked) return;
+  const renderer = {
+    heading(text, level, raw) {
+      const rawText = (raw || text).replace(/<[^>]+>/g, "").trim();
+      const id = slugifyHeading(rawText);
+      return `<h${level} id="${id}">${text}</h${level}>`;
+    },
+  };
+  window.marked.use({ renderer });
+  markedInitialized = true;
+}
+
+// Đổi link tuyệt đối kiểu file:/// hoặc link ngoài thư mục lab thành tương đối
 function rewriteFileLink(href) {
-  const m = /^file:\/\/\/.*?\/javascript\/(.+)$/i.exec(href);
-  return m ? `../${m[1]}` : href;
+  if (!href) return href;
+  const m = /(?:docs\/.*|exercises\/.*|agent\.md.*|index\.html.*)$/i.exec(href);
+  return m ? `../${m[0]}` : href;
+}
+
+// Phân tích link xem có phải liên kết đến bài học trong chương trình không
+export function parseLessonLink(href) {
+  if (!href) return null;
+  const clean = href.replace(/^file:\/\/\/.*?\/javascript\//i, "").replace(/^file:\/\/\/.*?\//i, "");
+
+  // Link dạng lab.html?lesson=NN[&tab=theory|debai][#anchor]
+  const labMatch = /lab\.html\?lesson=(\d+)(?:&tab=(theory|debai|code))?(?:#(.*))?$/i.exec(href);
+  if (labMatch) {
+    return {
+      lessonId: Number(labMatch[1]),
+      tab: labMatch[2] || "theory",
+      anchor: labMatch[3] || ""
+    };
+  }
+
+  // Link dạng docs/NN-*.md#anchor hoặc 01-overview.md#anchor
+  const docMatch = /(?:docs\/|^)(\d+)-[^#\/\s]*\.md(?:#(.*))?$/i.exec(clean);
+  if (docMatch) {
+    return {
+      lessonId: Number(docMatch[1]),
+      tab: "theory",
+      anchor: docMatch[2] || ""
+    };
+  }
+
+  // Link dạng exercises/NN-*/[debai.md]#anchor
+  const exMatch = /exercises\/(\d+)-[^#\/\s]*(?:\/debai\.md|\/)?(?:#(.*))?$/i.exec(clean);
+  if (exMatch) {
+    return {
+      lessonId: Number(exMatch[1]),
+      tab: "debai",
+      anchor: exMatch[2] || ""
+    };
+  }
+
+  return null;
 }
 
 // Chuyển "> [!IMPORTANT]" (GitHub alert) thành khối có class để CSS tô màu
@@ -53,13 +122,31 @@ async function renderMermaid(root) {
   await mermaid.run({ querySelector: ".mermaid" });
 }
 
+// Tiền xử lý văn bản: thay thế dự phòng mọi ký tự LaTeX mũi tên thành ký tự Unicode
+function preprocessMarkdown(md) {
+  if (!md) return md;
+  return md
+    .replace(/\$\\rightarrow\$/g, "→")
+    .replace(/\\rightarrow/g, "→")
+    .replace(/\$\\to\$/g, "→")
+    .replace(/\$\\longrightarrow\$/g, "→")
+    .replace(/\\longrightarrow/g, "→")
+    .replace(/\$\\Rightarrow\$/g, "⇒")
+    .replace(/\\Rightarrow/g, "⇒")
+    .replace(/\$\\Leftarrow\$/g, "⇐")
+    .replace(/\\Leftarrow/g, "⇐");
+}
+
 /**
  * @param {string} markdown  nội dung .md
  * @param {object} opts
- * @param {(lessonId:number, anchor:string) => void} [opts.onTheoryLink] bấm link tới docs/NN-*.md
+ * @param {(lessonId:number, tab:string, anchor:string) => void} [opts.onLessonNavigate] bấm link bài học
+ * @param {(lessonId:number, anchor:string) => void} [opts.onTheoryLink] tương thích ngược
  */
-export function renderMarkdown(markdown, { onTheoryLink } = {}) {
-  const html = window.marked.parse(markdown, { gfm: true });
+export function renderMarkdown(markdown, { onLessonNavigate, onTheoryLink } = {}) {
+  initMarkedRenderer();
+  const rawText = preprocessMarkdown(markdown);
+  const html = window.marked.parse(rawText, { gfm: true });
   const clean = window.DOMPurify.sanitize(html);
   const container = document.createElement("div");
   container.className = "md";
@@ -67,45 +154,68 @@ export function renderMarkdown(markdown, { onTheoryLink } = {}) {
 
   transformAlerts(container);
 
+  const nav = onLessonNavigate || ((id, tab, anchor) => {
+    if (onTheoryLink) onTheoryLink(id, anchor);
+  });
+
   container.querySelectorAll("a[href]").forEach((a) => {
     const href = a.getAttribute("href");
+    if (!href) return;
+
+    // 1. Link anchor nội bộ trong cùng tài liệu: #...
     if (href.startsWith("#")) {
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        // marked mã hoá href (ví dụ #mục-lục -> #m%E1%BB%A5c-l%E1%BB%A5c), phải giải mã trước khi tìm id
         let id = href.slice(1);
         try {
           id = decodeURIComponent(id);
-        } catch {
-          // giữ nguyên nếu chuỗi không hợp lệ
-        }
-        const target =
+        } catch {}
+        let target =
           container.querySelector(`[id="${CSS.escape(id)}"]`) ||
           container.querySelector(`[name="${CSS.escape(id)}"]`);
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!target) {
+          const norm = slugifyHeading(id);
+          target =
+            container.querySelector(`[id="${CSS.escape(norm)}"]`) ||
+            container.querySelector(`[name="${CSS.escape(norm)}"]`);
+        }
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headingEl =
+            target.nextElementSibling && /^H[1-6]$/.test(target.nextElementSibling.tagName)
+              ? target.nextElementSibling
+              : target;
+          headingEl.style.transition = "background-color 0.4s ease";
+          headingEl.style.backgroundColor = "var(--warn-bg, #fef9c3)";
+          setTimeout(() => {
+            headingEl.style.backgroundColor = "";
+          }, 2000);
+        }
       });
       return;
     }
-    const rewritten = rewriteFileLink(href);
-    const theory = /docs\/(\d+)-[^#]*\.md(#(.*))?$/i.exec(rewritten);
-    if (theory && onTheoryLink) {
+
+    // 2. Link điều hướng bài học (docs, exercises, lab.html)
+    const parsed = parseLessonLink(href);
+    if (parsed && nav) {
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        onTheoryLink(Number(theory[1]), theory[3] || "");
+        nav(parsed.lessonId, parsed.tab, parsed.anchor);
       });
       return;
     }
+
+    // 3. Các link khác (agent.md, external...)
+    const rewritten = rewriteFileLink(href);
     a.setAttribute("href", rewritten);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener");
   });
 
-  // Mermaid chạy sau khi container đã có trong DOM (xem renderInto)
   return container;
 }
 
 // Tô màu cú pháp cho khối code có khai báo ngôn ngữ (```javascript, ```html...).
-// Khối không ghi ngôn ngữ giữ nguyên, tránh đoán sai màu cho sơ đồ/text.
 function highlightCode(root) {
   if (!window.hljs) return;
   root.querySelectorAll('pre code[class*="language-"]').forEach((block) => {

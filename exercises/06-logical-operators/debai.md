@@ -41,7 +41,7 @@ let dayOff = "Sunday"; // Ngày nghỉ trong tuần
 let today = "Sunday";  // Ngày hôm nay
 ```
 **Yêu cầu:**
-1. Viết câu lệnh `if...else` sử dụng toán tử `&&` để kiểm tra điều kiện đi dã ngoại: **Nhiệt độ phải $> 20$ độ C VÀ ngày hôm nay phải trùng với ngày nghỉ**. Nếu đúng in `"Đi picnic!"`, ngược lại in `"Ở nhà!"`.
+1. Viết câu lệnh `if...else` sử dụng toán tử `&&` để kiểm tra điều kiện đi dã ngoại: **Nhiệt độ phải > 20 độ C VÀ ngày hôm nay phải trùng với ngày nghỉ**. Nếu đúng in `"Đi picnic!"`, ngược lại in `"Ở nhà!"`.
 2. Áp dụng kỹ thuật **Clean Code (Self-documenting code)**: Tạo 2 biến boolean `isWeatherGood` và `hasFreeTime`, sau đó dùng 2 biến này trong câu lệnh `if`.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
@@ -162,8 +162,8 @@ function sendNotificationEmail() {
 }
 ```
 **Yêu cầu:**
-1. Viết câu lệnh `if (false && sendNotificationEmail())` $\rightarrow$ Quan sát xem hàm `sendNotificationEmail()` có bị gọi không? `emailSentCount` bằng bao nhiêu? Giải thích cơ chế đoản mạch (Short-circuit).
-2. Reset `emailSentCount = 0` và viết câu lệnh `if (false & sendNotificationEmail())` $\rightarrow$ Quan sát xem `emailSentCount` bằng bao nhiêu? Giải thích tại sao toán tử bitwise `&` lại gây ra tác dụng phụ nguy hiểm.
+1. Viết câu lệnh `if (false && sendNotificationEmail())` → Quan sát xem hàm `sendNotificationEmail()` có bị gọi không? `emailSentCount` bằng bao nhiêu? Giải thích cơ chế đoản mạch (Short-circuit).
+2. Reset `emailSentCount = 0` và viết câu lệnh `if (false & sendNotificationEmail())` → Quan sát xem `emailSentCount` bằng bao nhiêu? Giải thích tại sao toán tử bitwise `&` lại gây ra tác dụng phụ nguy hiểm.
 
 [⬆️ Quay lại Mục lục](#mục-lục)
 

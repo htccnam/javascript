@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài tập 12: Đối tượng (Object) trong JavaScript</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="alternate icon" href="../../favicon.ico">
     <style>
         :root {
             --primary: #2563eb;
@@ -156,6 +158,7 @@
             <ul style="margin: 6px 0 0 20px; padding: 0;">
                 <li><strong>Thuộc tính & Phương thức:</strong> Thuộc tính lưu trữ dữ liệu/trạng thái (đặt tên bằng <strong>Danh từ</strong>, tiền tố <code>is...</code> cho boolean). Phương thức đại diện cho hành động (bắt đầu bằng <strong>Động từ</strong>: <code>speak()</code>, <code>calculateHumanAge()</code>, <code>updateAge()</code>). JavaScript phân biệt chữ HOA - thường (<code>dog.name !== dog.Name</code>).</li>
                 <li><strong>Từ khóa this:</strong> Tham chiếu đến đối tượng đang gọi phương thức (trước dấu chấm). Dùng <code>this.name</code> thay vì hardcode <code>person.name</code> giúp code linh hoạt, tái sử dụng phương thức và tránh lỗi sập chương trình khi biến đối tượng bị gán lại hoặc đổi tên.</li>
+                <li><strong>Bộ ba Object.keys/values/entries:</strong> <code>Object.keys(obj)</code> lấy mảng khóa & kiểm tra đối tượng rỗng (<code>Object.keys(obj).length === 0</code> thay vì so sánh <code>obj === {}</code>); <code>Object.values(obj)</code> lấy mảng giá trị phục vụ tính toán (<code>Math.max(...Object.values(obj))</code>, <code>reduce</code>); <code>Object.entries(obj)</code> trích xuất cặp <code>[key, value]</code> cho <code>for...of</code> và chuyển đổi dữ liệu.</li>
                 <li><strong>Dot notation:</strong> Dùng khi key là định danh chuẩn (<code>car.brand</code>). <strong>Bracket notation:</strong> Dùng khi key có ký tự đặc biệt hoặc là biến động (<code>car[prop]</code>).</li>
                 <li><strong>delete:</strong> Dùng để xóa hoàn toàn một cặp key-value khỏi bộ nhớ object.</li>
                 <li><strong>const với Object:</strong> <code>const</code> chỉ cố định con trỏ tham chiếu (Stack), vẫn sửa/thêm/xóa được thuộc tính (Heap). Dùng <code>Object.freeze(obj)</code> khi muốn đóng băng nông đối tượng.</li>
